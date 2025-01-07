@@ -1,2 +1,0 @@
-# nunumao.github.io
-website
