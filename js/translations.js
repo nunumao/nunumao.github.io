@@ -4,7 +4,7 @@ const resources = {
         nav: {
           home: 'Home',
           categories: 'Categories',
-          works: 'Works',
+          case: 'Case',
           archives: 'Archives',
           about: 'About'
         },
@@ -39,7 +39,7 @@ const resources = {
         nav: {
           home: '首页',
           categories: '分类',
-          works: '作品',
+          case: '作品',
           archives: '归档',
           about: '关于'
         },
@@ -74,7 +74,7 @@ const resources = {
         nav: {
           home: '首頁',
           categories: '分類',
-          works: '作品',
+          case: '作品',
           archives: '歸檔',
           about: '關於'
         },

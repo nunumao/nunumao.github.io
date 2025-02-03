@@ -96,25 +96,60 @@
       </div>
     </div>
   </div>
-  <main class="max-w-4xl mx-auto px-4 py-12">
-    <h1 class="text-3xl font-medium mb-12 text-center" data-i18n="archives.title">文章归档</h1>
-
-    <!-- 统计信息 -->
-    <div class="text-center mb-12 text-gray-600">
-        共计 <span class="text-blue-600">108</span> 篇文章
+  <main class="max-w-5xl mx-auto px-4 py-12">
+  <div class="mb-12">
+    <h1 class="text-3xl font-medium mb-4">
+      服务器
+    </h1>
+    <div class="flex items-center text-sm text-gray-500">
+      <i class="fas fa-folder-open mr-2"></i>
+      <span>共 1 篇文章</span>
     </div>
+  </div>
 
-    <!-- 年份导航 -->
-    <div class="flex justify-center space-x-6 mb-12 overflow-x-auto pb-4">
-        <a href="#2024" class="text-blue-600 hover:text-blue-800 whitespace-nowrap border-b-2 border-blue-600 pb-1">2024</a>
-        <a href="#2023" class="text-gray-600 hover:text-blue-600 whitespace-nowrap hover:border-b-2 hover:border-blue-600 pb-1">2023</a>
-        <a href="#2022" class="text-gray-600 hover:text-blue-600 whitespace-nowrap hover:border-b-2 hover:border-blue-600 pb-1">2022</a>
-    </div>
+  <!-- 文章列表 -->
+  <div class="space-y-8">
+    
+    <article class="group border-b pb-8">
+      <div class="mb-2 text-sm text-gray-500">
+        2025-02-04
+      </div>
+      <h2 class="text-xl font-medium mb-3 group-hover:text-blue-600">
+        <a href="/2025/02/04/Alpine-%E5%9F%BA%E7%A1%80%E9%95%9C%E5%83%8F/">
+          Alpine 基础镜像
+        </a>
+      </h2>
+      
+      <div class="flex flex-wrap items-center gap-4 text-sm">
+        <span class="text-gray-500">
+          <i class="fas fa-folder-open mr-2"></i>
+          
+          <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="hover:text-blue-600">
+            服务器 / 
+          </a>
+          
+          <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/docker/" class="hover:text-blue-600">
+            docker
+          </a>
+          
+        </span>
+        
+        <span class="text-gray-500">
+          <i class="fas fa-tags mr-2"></i>
+          <span class="space-x-1">
+            
+            <a href="/tags/alpine/" class="hover:text-blue-600">alpine</a>
+            
+          </span>
+        </span>
+        
+      </div>
+    </article>
+    
+  </div>
 
-    <!-- 归档列表 -->
-    <div class="space-y-16" id="archives-container">
-        <!-- 内容将通过 JavaScript 动态生成 -->
-    </div>
+  <!-- 分页 -->
+  
 </main>
   <!-- 页脚 -->
 <footer class="border-t mt-16">

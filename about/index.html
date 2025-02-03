@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>编程日记</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.0/github-markdown.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
@@ -18,13 +18,13 @@
 
 <body class="bg-gray-50 text-gray-800">
   <div class="lg:hidden fixed right-4 top-4 z-50">
-    <button class="p-2 bg-white/80 backdrop-blur-sm rounded-lg border" @click="toggleMobileMenu"><i class="fas fa-bars"></i></button>
+    <button class="p-2 bg-white/80 backdrop-blur-sm rounded-lg border" data-mobile-menu-trigger><i class="fas fa-bars"></i></button>
   </div>
   <!-- 导航栏 -->
   <nav class="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-40">
     <div class="max-w-5xl mx-auto px-4">
       <div class="flex justify-between items-center h-16">
-        <a href="/" class="text-xl font-serif">Coder's Blog</a>
+        <a href="/" class="text-xl font-serif">编程日记</a>
         <!-- 桌面端导航 -->
         <div class="hidden lg:flex items-center space-x-6">
           <div class="flex items-center space-x-6 text-sm">
@@ -38,10 +38,21 @@
                   
                     
                       
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/服务器/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>服务器</span>
+                        </a>
+                      
+                    
+                      
                         <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/后端技术/">
                           <i class="fas fa-code text-blue-500"></i>
                           <span>后端技术</span>
                         </a>
+                      
+                    
+                      
+                    
                       
                     
                       
@@ -71,13 +82,13 @@
       </div>
     </div>
   </nav>
-  <div id="mobileMenu" class="fixed inset-0 bg-white/90 backdrop-blur-sm z-40 lg:hidden">
+  <div id="mobileMenu" class="fixed inset-0 bg-white/90 backdrop-blur-sm z-40 lg:hidden hidden">
     <div class="h-full w-full flex flex-col items-center justify-center space-y-6 text-lg">
-      <NuxtLink to="/" class="hover:text-blue-600" data-i18n="nav.home">首页</NuxtLink>
-      <NuxtLink to="/category" class="hover:text-blue-600" data-i18n="nav.categories">分类</NuxtLink>
-      <NuxtLink to="/case" class="hover:text-blue-600" data-i18n="nav.case">案例</NuxtLink>
-      <NuxtLink to="/archive" class="hover:text-blue-600" data-i18n="nav.archive">归档</NuxtLink>
-      <NuxtLink to="/about" class="hover:text-blue-600" data-i18n="nav.about">关于</NuxtLink>
+      <a href="/" class="hover:text-blue-600" data-i18n="nav.home">首页</a>
+      <a href="/categories" class="hover:text-blue-600" data-i18n="nav.categories">分类</a>
+      <a href="/case" class="hover:text-blue-600" data-i18n="nav.case">作品</a>
+      <a href="/archives" class="hover:text-blue-600" data-i18n="nav.archive">归档</a>
+      <a href="/about" class="hover:text-blue-600" data-i18n="nav.about">关于</a>
       <div class="flex items-center space-x-4 mt-4">
         <button class="lang-switch hover:text-blue-600" data-lang="en">EN</button>
         <button class="lang-switch hover:text-blue-600" data-lang="zh">简</button>
@@ -154,7 +165,7 @@
             <h2 class="text-2xl font-medium mb-8 text-center">博客统计</h2>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div class="text-center p-4 border rounded-lg hover:border-blue-500 transition-colors group">
-                    <div class="text-3xl font-medium text-blue-500 mb-2 group-hover:scale-110 transition-transform">1+</div>
+                    <div class="text-3xl font-medium text-blue-500 mb-2 group-hover:scale-110 transition-transform">4+</div>
                     <div class="text-gray-600 group-hover:text-blue-500 transition-colors">技术文章</div>
                 </div>
                 <div class="text-center p-4 border rounded-lg hover:border-green-500 transition-colors group">
@@ -186,9 +197,9 @@
                 <div class="border rounded-lg p-4 hover:border-blue-500 transition-colors group">
                     <div class="flex items-center mb-2">
                         <i class="fas fa-microchip text-blue-500 mr-3 group-hover:scale-110 transition-transform"></i>
-                        <span class="font-medium group-hover:text-blue-500 transition-colors">Rust 系统编程</span>
+                        <span class="font-medium group-hover:text-blue-500 transition-colors">ESP32 嵌入式编程</span>
                     </div>
-                    <p class="text-gray-600 group-hover:text-blue-500 transition-colors">学习 Rust 语言，探索高性能编程的世界</p>
+                    <p class="text-gray-600 group-hover:text-blue-500 transition-colors">学习物联网，探索嵌入式编程</p>
                 </div>
             </div>
         </section>
@@ -197,15 +208,11 @@
         <section class="text-center">
             <h2 class="text-2xl font-bold mb-8">保持联系</h2>
             <div class="flex justify-center space-x-8">
-                <a href="https://github.com/" target="_blank" class="text-gray-600 hover:text-gray-900">
+                <a href="https://github.com/nunumao" target="_blank" class="text-gray-600 hover:text-gray-900">
                     <i class="fab fa-github text-2xl"></i>
                     <span class="sr-only">GitHub</span>
                 </a>
-                <a href="https://twitter.com/" target="_blank" class="text-gray-600 hover:text-gray-900">
-                    <i class="fab fa-twitter text-2xl"></i>
-                    <span class="sr-only">Twitter</span>
-                </a>
-                <a href="mailto:example@email.com" class="text-gray-600 hover:text-gray-900">
+                <a href="mailto:gm292018748@email.com" class="text-gray-600 hover:text-gray-900">
                     <i class="fas fa-envelope text-2xl"></i>
                     <span class="sr-only">Email</span>
                 </a>

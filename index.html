@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>编程日记</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.0/github-markdown.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
@@ -18,13 +18,13 @@
 
 <body class="bg-gray-50 text-gray-800">
   <div class="lg:hidden fixed right-4 top-4 z-50">
-    <button class="p-2 bg-white/80 backdrop-blur-sm rounded-lg border" @click="toggleMobileMenu"><i class="fas fa-bars"></i></button>
+    <button class="p-2 bg-white/80 backdrop-blur-sm rounded-lg border" data-mobile-menu-trigger><i class="fas fa-bars"></i></button>
   </div>
   <!-- 导航栏 -->
   <nav class="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-40">
     <div class="max-w-5xl mx-auto px-4">
       <div class="flex justify-between items-center h-16">
-        <a href="/" class="text-xl font-serif">Coder's Blog</a>
+        <a href="/" class="text-xl font-serif">编程日记</a>
         <!-- 桌面端导航 -->
         <div class="hidden lg:flex items-center space-x-6">
           <div class="flex items-center space-x-6 text-sm">
@@ -38,10 +38,21 @@
                   
                     
                       
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/服务器/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>服务器</span>
+                        </a>
+                      
+                    
+                      
                         <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/后端技术/">
                           <i class="fas fa-code text-blue-500"></i>
                           <span>后端技术</span>
                         </a>
+                      
+                    
+                      
+                    
                       
                     
                       
@@ -71,13 +82,13 @@
       </div>
     </div>
   </nav>
-  <div id="mobileMenu" class="fixed inset-0 bg-white/90 backdrop-blur-sm z-40 lg:hidden">
+  <div id="mobileMenu" class="fixed inset-0 bg-white/90 backdrop-blur-sm z-40 lg:hidden hidden">
     <div class="h-full w-full flex flex-col items-center justify-center space-y-6 text-lg">
-      <NuxtLink to="/" class="hover:text-blue-600" data-i18n="nav.home">首页</NuxtLink>
-      <NuxtLink to="/category" class="hover:text-blue-600" data-i18n="nav.categories">分类</NuxtLink>
-      <NuxtLink to="/case" class="hover:text-blue-600" data-i18n="nav.case">案例</NuxtLink>
-      <NuxtLink to="/archive" class="hover:text-blue-600" data-i18n="nav.archive">归档</NuxtLink>
-      <NuxtLink to="/about" class="hover:text-blue-600" data-i18n="nav.about">关于</NuxtLink>
+      <a href="/" class="hover:text-blue-600" data-i18n="nav.home">首页</a>
+      <a href="/categories" class="hover:text-blue-600" data-i18n="nav.categories">分类</a>
+      <a href="/case" class="hover:text-blue-600" data-i18n="nav.case">作品</a>
+      <a href="/archives" class="hover:text-blue-600" data-i18n="nav.archive">归档</a>
+      <a href="/about" class="hover:text-blue-600" data-i18n="nav.about">关于</a>
       <div class="flex items-center space-x-4 mt-4">
         <button class="lang-switch hover:text-blue-600" data-lang="en">EN</button>
         <button class="lang-switch hover:text-blue-600" data-lang="zh">简</button>
@@ -102,21 +113,21 @@
     
     <article class="bg-white rounded-xl overflow-hidden border mb-12">
       <div class="relative h-64 overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800" alt="Hello World" class="w-full h-full object-cover">
+        <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800" alt="Alpine 基础镜像" class="w-full h-full object-cover">
         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
         <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
           
           <h2 class="text-2xl font-medium mb-2">
-            <a href="/2025/01/08/hello-world/" class="hover:text-blue-300">Hello World</a>
+            <a href="/2025/02/04/Alpine-%E5%9F%BA%E7%A1%80%E9%95%9C%E5%83%8F/" class="hover:text-blue-300">Alpine 基础镜像</a>
           </h2>
           <p class="text-sm text-gray-200 line-clamp-2 mb-4">
-            欢迎来到 Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubl...
+            FROM alpine:3.16.3RUN sed -i &amp;#x27;s/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g&amp;#x27; /etc/apk/repositories &amp;amp;&amp;amp; \    apk add --no-cache openrc...
           </p>
           <div class="flex items-center text-sm text-gray-300">
-            <span><i class="far fa-calendar mr-2"></i>2025-01-08</span>
+            <span><i class="far fa-calendar mr-2"></i>2025-02-04</span>
             <span class="mx-3">·</span>
             
-              <span><i class="far fa-folder-open mr-2"></i>后端技术</span>
+              <span><i class="far fa-folder-open mr-2"></i>服务器</span>
             
           </div>
         </div>
@@ -125,39 +136,47 @@
 
     <!-- 文章列表 -->
     <div class="grid md:grid-cols-2 gap-6 mb-8">
-      <article class="bg-white rounded-lg border p-6 hover:border-gray-400 transition-colors">
-        <a href="/post/2" class="block">
-          <span class="text-sm text-gray-500 mb-2 block">2024-01-12</span>
-          <h3 class="text-xl font-medium mb-3 hover:text-blue-600 line-clamp-2">
-            微服务架构下的分布式事务解决方案
-          </h3>
-          <p class="text-gray-600 text-sm mb-4 line-clamp-2">
-            详细讲解在微服务架构中常见的分布式事务问题，以及几种主流的解决方案...
-          </p>
-          <div class="flex items-center text-sm text-gray-500">
-            <span><i class="fas fa-folder-open mr-2"></i>后端技术</span>
-            <span class="mx-3">·</span>
-            <span>阅读: 1,234</span>
-          </div>
-        </a>
-      </article>
-      <article class="bg-white rounded-lg border p-6 hover:border-gray-400 transition-colors"></article>
-      <a href="/post/2" class="block">
-        <span class="text-sm text-gray-500 mb-2 block">2024-01-12</span>
-        <h3 class="text-xl font-medium mb-3 hover:text-blue-600 line-clamp-2">
-          微服务架构下的分布式事务解决方案
-        </h3>
-        <p class="text-gray-600 text-sm mb-4 line-clamp-2">
-          详细讲解在微服务架构中常见的分布式事务问题，以及几种主流的解决方案...
-        </p>
-        <div class="flex items-center text-sm text-gray-500">
-          <span><i class="fas fa-folder-open mr-2"></i>后端技术</span>
-          <span class="mx-3">·</span>
-          <span>阅读: 1,234</span>
-        </div>
-      </a>
-      </article>
-      <!-- 更多文章卡片 -->
+      
+        <article class="bg-white rounded-lg border p-6 hover:border-gray-400 transition-colors">
+          <a href="/2025/02/03/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="block">
+            <span class="text-sm text-gray-500 mb-2 block">2025-02-03</span>
+            <h3 class="text-xl font-medium mb-3 hover:text-blue-600 line-clamp-2">
+              深度学习
+            </h3>
+            <p class="text-gray-600 text-sm mb-4 line-clamp-2">
+              深度学习1. 深度学习简介1.1 什么是深度学习深度学习是机器学习的一个分支，它试图使用包含复杂结构或由多个处理层组成的算法来模拟人脑的神经元网络结构。这些算法被称为深度学习算法，它们可以自动地从数据中学习特征表示。
+...
+            </p>
+            <div class="flex items-center text-sm text-gray-500">
+              
+                <span><i class="fas fa-folder-open mr-2"></i>后端技术</span>
+                <span class="mx-3">·</span>
+              
+              <span>阅读: 0</span>
+            </div>
+          </a>
+        </article>
+      
+        <article class="bg-white rounded-lg border p-6 hover:border-gray-400 transition-colors">
+          <a href="/2025/02/03/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="block">
+            <span class="text-sm text-gray-500 mb-2 block">2025-02-03</span>
+            <h3 class="text-xl font-medium mb-3 hover:text-blue-600 line-clamp-2">
+              机器学习
+            </h3>
+            <p class="text-gray-600 text-sm mb-4 line-clamp-2">
+              机器学习1. 机器学习概述1.1 什么是机器学习机器学习是人工智能的一个分支，它让计算机从数据中学习，从而无需显式编程。
+...
+            </p>
+            <div class="flex items-center text-sm text-gray-500">
+              
+                <span><i class="fas fa-folder-open mr-2"></i>后端技术</span>
+                <span class="mx-3">·</span>
+              
+              <span>阅读: 0</span>
+            </div>
+          </a>
+        </article>
+      
     </div>
   </section>
 
@@ -165,47 +184,13 @@
   <section class="mb-16">
     <div class="flex justify-between items-center mb-6">
       <h2 class="text-2xl font-medium" data-i18n="sections.featured">精选作品</h2>
-      <a href="/works" class="text-blue-600 hover:text-blue-800 text-sm" data-i18n="sections.viewAll">
-        查看所有作品 →
-      </a>
     </div>
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-      <a href="/works/1" class="group block">
-        <div class="bg-white border rounded-lg overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600" alt="协作平台预览" class="w-full h-32 object-cover">
-          <div class="p-3">
-            <h3 class="font-medium text-sm group-hover:text-blue-600">在线协作平台</h3>
-            <div class="flex gap-2 mt-2">
-              <span class="px-2 py-0.5 bg-blue-50 text-blue-600 rounded text-xs">React</span>
-              <span class="px-2 py-0.5 bg-green-50 text-green-600 rounded text-xs">Node.js</span>
-            </div>
-          </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      
+        <div class="col-span-3 text-center py-8 text-gray-500">
+          暂无作品展示
         </div>
-      </a>
-      <a href="/works/1" class="group block">
-        <div class="bg-white border rounded-lg overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600" alt="协作平台预览" class="w-full h-32 object-cover">
-          <div class="p-3">
-            <h3 class="font-medium text-sm group-hover:text-blue-600">在线协作平台</h3>
-            <div class="flex gap-2 mt-2">
-              <span class="px-2 py-0.5 bg-blue-50 text-blue-600 rounded text-xs">React</span>
-              <span class="px-2 py-0.5 bg-green-50 text-green-600 rounded text-xs">Node.js</span>
-            </div>
-          </div>
-        </div>
-      </a>
-      <a href="/works/1" class="group block"></a>
-      <div class="bg-white border rounded-lg overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600" alt="协作平台预览" class="w-full h-32 object-cover">
-        <div class="p-3">
-          <h3 class="font-medium text-sm group-hover:text-blue-600">在线协作平台</h3>
-          <div class="flex gap-2 mt-2">
-            <span class="px-2 py-0.5 bg-blue-50 text-blue-600 rounded text-xs">React</span>
-            <span class="px-2 py-0.5 bg-green-50 text-green-600 rounded text-xs">Node.js</span>
-          </div>
-        </div>
-      </div>
-      </a>
+      
     </div>
   </section>
 
@@ -213,14 +198,23 @@
   <section class="mb-16">
     <h2 class="text-2xl font-medium mb-6">文章分类</h2>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-      <a href="/category/frontend" class="bg-white p-4 border rounded-lg hover:border-blue-500 transition-colors group">
-        <div class="flex items-center mb-2">
-          <i class="fas fa-code text-blue-500 mr-2"></i>
-          <span class="font-medium group-hover:text-blue-600">前端技术</span>
-        </div>
-        <p class="text-sm text-gray-500">24 篇文章</p>
-      </a>
-      <!-- 更多分类卡片 -->
+      
+        <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="bg-white p-4 border rounded-lg hover:border-blue-500 transition-colors group">
+          <div class="flex items-center mb-2">
+            <i class="fas fa-folder text-blue-500 mr-2"></i>
+            <span class="font-medium group-hover:text-blue-600">服务器</span>
+          </div>
+          <p class="text-sm text-gray-500">1 篇文章</p>
+        </a>
+      
+        <a href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/" class="bg-white p-4 border rounded-lg hover:border-blue-500 transition-colors group">
+          <div class="flex items-center mb-2">
+            <i class="fas fa-folder text-blue-500 mr-2"></i>
+            <span class="font-medium group-hover:text-blue-600">后端技术</span>
+          </div>
+          <p class="text-sm text-gray-500">3 篇文章</p>
+        </a>
+      
     </div>
   </section>
 
@@ -229,13 +223,22 @@
     <h2 class="text-2xl font-medium mb-6">热门标签</h2>
     <div class="bg-white border rounded-lg p-6">
       <div class="flex flex-wrap gap-3">
-        <a href="/tag/react" class="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-full text-sm">
-          React (12)
-        </a>
-        <a href="/tag/vue" class="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-full text-sm">
-          Vue.js (8)
-        </a>
-        <!-- 更多标签 -->
+        
+          <a href="/tags/alpine/" 
+             class="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-full text-sm">
+            alpine (1)
+          </a>
+        
+          <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" 
+             class="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-full text-sm">
+            机器学习 (1)
+          </a>
+        
+          <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" 
+             class="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-full text-sm">
+            深度学习 (1)
+          </a>
+        
       </div>
     </div>
   </section>
