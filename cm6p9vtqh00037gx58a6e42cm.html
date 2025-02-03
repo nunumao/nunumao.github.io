@@ -38,16 +38,16 @@
                   
                     
                       
-                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/服务器/">
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/后端技术/">
                           <i class="fas fa-code text-blue-500"></i>
-                          <span>服务器</span>
+                          <span>后端技术</span>
                         </a>
                       
                     
                       
-                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/后端技术/">
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/服务器/">
                           <i class="fas fa-code text-blue-500"></i>
-                          <span>后端技术</span>
+                          <span>服务器</span>
                         </a>
                       
                     
@@ -106,7 +106,7 @@
         <div class="px-8 pt-12 pb-8">
           <!-- 标题 -->
           <h1 class="text-3xl font-medium mb-6 leading-snug">
-            Hello World
+            Alpine 基础镜像
           </h1>
 
           <!-- 元信息 -->
@@ -114,14 +114,14 @@
             <span>
               <i class="fas fa-folder-open mr-2"></i>
               
-                <a href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/JAVA/" class="hover:text-blue-600">
-                  JAVA
+                <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/docker/" class="hover:text-blue-600">
+                  docker
                 </a>
                 
             </span>
             <span>
               <i class="far fa-calendar mr-2"></i>
-              2025-01-25
+              2025-02-04
             </span>
             <span><i class="far fa-clock mr-2"></i>15 分钟阅读</span>
             <span><i class="far fa-eye mr-2"></i>
@@ -133,20 +133,9 @@
         <!-- 文章内容 -->
         <div class="px-8 py-10 border-t border-b">
           <div class="markdown-body">
-            <p>欢迎来到 <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+            <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">FROM</span> <span class="string">alpine:3.16.3</span></span><br><span class="line"></span><br><span class="line"><span class="string">RUN</span> <span class="string">sed</span> <span class="string">-i</span> <span class="string">&#x27;s/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g&#x27;</span> <span class="string">/etc/apk/repositories</span> <span class="string">&amp;&amp;</span> <span class="string">\</span></span><br><span class="line">    <span class="string">apk</span> <span class="string">add</span> <span class="string">--no-cache</span> <span class="string">openrc</span> <span class="string">tzdata</span> <span class="string">&amp;&amp;</span> <span class="string">\</span></span><br><span class="line">    <span class="string">cp</span> <span class="string">/usr/share/zoneinfo/Asia/Shanghai</span> <span class="string">/etc/localtime</span> <span class="string">&amp;&amp;</span> <span class="string">\</span></span><br><span class="line">    <span class="string">echo</span> <span class="string">&quot;Asia/Shanghai&quot;</span> <span class="string">&gt;</span> <span class="string">/etc/timezone</span> <span class="string">&amp;&amp;</span> <span class="string">\</span></span><br><span class="line">    <span class="string">apk</span> <span class="string">del</span> <span class="string">tzdata</span> <span class="string">&amp;&amp;</span> <span class="string">\</span></span><br><span class="line">    <span class="string">rm</span> <span class="string">-rf</span> <span class="string">/var/cache/apk/*</span> </span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">docker</span> <span class="string">buildx</span> <span class="string">build</span> <span class="string">--push</span> <span class="string">--platform</span>  <span class="string">linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/386,linux/arm/v7,linux/arm/v6</span> <span class="string">-t</span> <span class="string">nunumaomao/alpine</span> <span class="string">.</span></span><br></pre></td></tr></table></figure>
           </div>
         </div>
 
@@ -154,6 +143,14 @@
         <div class="px-8 py-8">
           <!-- 标签 -->
           
+            <div class="flex flex-wrap gap-2 mb-8">
+              
+                <a href="/tags/alpine/" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm text-gray-600 transition-colors">
+                  alpine
+                </a>
+                
+            </div>
+            
 
               <!-- 分享 -->
               <div class="flex items-center justify-between mb-8 py-6 border-t border-b">
@@ -168,14 +165,14 @@
               <!-- 上一篇/下一篇 -->
               <div class="flex flex-col sm:flex-row justify-between gap-4">
                 
-                  <a href="/2025/02/03/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="group flex-1">
-                    <div class="text-sm text-gray-500 mb-1">上一篇</div>
-                    <div class="group-hover:text-blue-600 transition-colors">
-                      机器学习
-                    </div>
-                  </a>
-                  
                     
+                      <a href="/cm6p9vtqm00087gx58fgt7byp.html" class="group flex-1 text-right">
+                        <div class="text-sm text-gray-500 mb-1">下一篇</div>
+                        <div class="group-hover:text-blue-600 transition-colors">
+                          深度学习
+                        </div>
+                      </a>
+                      
               </div>
         </div>
       </div>
@@ -207,7 +204,7 @@
       <div class="bg-white rounded-xl p-6 sticky top-24">
         <h2 class="text-lg font-medium mb-4">目录</h2>
         <nav class="space-y-2 text-sm">
-          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+          
         </nav>
       </div>
 
@@ -216,18 +213,6 @@
         <h2 class="text-lg font-medium mb-4">文章分类</h2>
         <div class="space-y-3">
           
-            <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="flex items-center justify-between group">
-              <div class="flex items-center">
-                <i class="fas fa-folder text-gray-500 w-5"></i>
-                <span class="text-sm group-hover:text-blue-600">
-                  服务器
-                </span>
-              </div>
-              <span class="text-xs text-gray-500">
-                1
-              </span>
-            </a>
-            
             <a href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/" class="flex items-center justify-between group">
               <div class="flex items-center">
                 <i class="fas fa-server text-green-500 w-5"></i>
@@ -240,6 +225,18 @@
               </span>
             </a>
             
+            <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="flex items-center justify-between group">
+              <div class="flex items-center">
+                <i class="fas fa-folder text-gray-500 w-5"></i>
+                <span class="text-sm group-hover:text-blue-600">
+                  服务器
+                </span>
+              </div>
+              <span class="text-xs text-gray-500">
+                1
+              </span>
+            </a>
+            
         </div>
       </div>
 
@@ -248,20 +245,8 @@
         <h2 class="text-lg font-medium mb-4">相关文章</h2>
         <div class="space-y-4">
           
-            <a href="/2025/02/03/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="block group">
-              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
-                深度学习
-              </h3>
-              <p class="text-xs text-gray-500 mt-1">2025-02-03</p>
-            </a>
-            
-            <a href="/2025/02/03/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="block group">
-              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
-                机器学习
-              </h3>
-              <p class="text-xs text-gray-500 mt-1">2025-02-03</p>
-            </a>
-            
+              <p class="text-sm text-gray-500">暂无相关文章</p>
+              
         </div>
       </div>
     </aside>
