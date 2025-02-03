@@ -8,13 +8,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.0/github-markdown.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/i18next@23.8.2/dist/umd/i18next.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/i18next-browser-languagedetector@7.2.0/dist/umd/i18nextBrowserLanguageDetector.min.js"></script>
   
 <script src="/js/jquery.min.js"></script>
-
-  
-<script src="/js/translations.js"></script>
 
   
 <script src="/js/script.js"></script>
@@ -40,24 +35,24 @@
               <!-- 优化后的下拉内容 -->
               <div class="absolute left-0 mt-2 py-2 bg-white backdrop-blur-sm border rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                 <div class="grid grid-cols-2 gap-1 w-[400px] p-4">
-                  <template v-if="categories.length">
-                    <template v-for="item in categories">
-                      <NuxtLink class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" :to="`/list/${item._path.split('/')[1]}`" v-if="item.title != ''">
-                        <i class="fas fa-code text-blue-500"></i>
-                        <span data-i18n="categories.frontend">
-                          {{ item.title }}</span>
-                      </NuxtLink>
-                    </template>
-                  </template>
-                  <template v-else>
-                    <div class="p-4 text-gray-500">加载中...</div>
-                  </template>
+                  
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/后端技术/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>后端技术</span>
+                        </a>
+                      
+                    
+                      
+                    
+                  
                 </div>
               </div>
             </div>
-            <a href="/" class="hover:text-blue-600">作品</a>
-            <a href="/" class="hover:text-blue-600">归档</a>
-            <a href="/" class="hover:text-blue-600">关于</a>
+            <a href="/case" class="hover:text-blue-600" data-i18n="nav.case">作品</a>
+            <a href="/archives" class="hover:text-blue-600" data-i18n="nav.archives">归档</a>
+            <a href="/about" class="hover:text-blue-600" data-i18n="nav.about">关于</a>
             <!-- 搜索框 -->
             <div class="relative">
               <input type="search" placeholder="Search articles..." class="w-48 px-4 py-1 text-sm border rounded-full bg-gray-50 focus:outline-none focus:ring-1 focus:ring-blue-500">
