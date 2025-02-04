@@ -121,7 +121,7 @@
         <div class="px-8 pt-12 pb-8">
           <!-- 标题 -->
           <h1 class="text-3xl font-medium mb-6 leading-snug">
-            JavaScript 模块化规范 | CommonJS
+            Alpine Jre8
           </h1>
 
           <!-- 元信息 -->
@@ -129,8 +129,8 @@
             <span>
               <i class="fas fa-folder-open mr-2"></i>
               
-                <a href="/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/JavaScript/" class="hover:text-blue-600">
-                  JavaScript
+                <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/docker/" class="hover:text-blue-600">
+                  docker
                 </a>
                 
             </span>
@@ -148,23 +148,9 @@
         <!-- 文章内容 -->
         <div class="px-8 py-10 border-t border-b">
           <div class="markdown-body">
-            <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Node 应用由模块组成，采用 CommonJS 模块规范。</p>
-<p>每个文件就是一个模块，有自己的作用域。在一个文件里面定义的变量、函数、类，都是私有的，对其他文件不可见。CommonJS规范规定，每个模块内部，<code>module</code>变量代表当前模块。这个变量是一个对象，它的<code>exports</code>属性（即<code>module.exports</code>）是对外的接口。加载某个模块，其实是加载该模块的module.exports属性。<code>require</code>方法用于加载模块。</p>
-<h2 id="CommonJS的服务端应用"><a href="#CommonJS的服务端应用" class="headerlink" title="CommonJS的服务端应用"></a>CommonJS的服务端应用</h2><p>编写模块 module1 </p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">    <span class="attr">msg</span>: <span class="string">&#x27;hello world&#x27;</span>,</span><br><span class="line">    <span class="title function_">say</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">msg</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>编写模块 module2</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">exports</span>.<span class="property">arr</span> = [<span class="number">0</span>, <span class="number">5</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">9</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">4</span>]</span><br></pre></td></tr></table></figure>
-<p>编写 app.js</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> uniq = <span class="built_in">require</span>(<span class="string">&#x27;uniq&#x27;</span>);</span><br><span class="line"><span class="keyword">let</span> module1 = <span class="built_in">require</span>(<span class="string">&#x27;./modules/module1&#x27;</span>);</span><br><span class="line"><span class="keyword">let</span> module2 = <span class="built_in">require</span>(<span class="string">&#x27;./modules/module2&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(module1);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(module2);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">uniq</span>(module2.<span class="property">arr</span>))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>引入项目中的模块需要指定相对路径，引入第三方模块只需要写模块名称即可。<br>在 NodeJS 环境下，可以直接使用 node xxx.js 的方式直接运行。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">node app.js</span><br></pre></td></tr></table></figure>
-<h2 id="CommonJS的浏览器端应用"><a href="#CommonJS的浏览器端应用" class="headerlink" title="CommonJS的浏览器端应用"></a>CommonJS的浏览器端应用</h2><p>由于浏览器不能直接识别<code>module.exports</code>和<code>require</code>，需要借助一个工具，将代码转化为浏览器可以执行的代码，安装 browserify</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install -g browserify</span><br></pre></td></tr></table></figure>
-<p>使用命令将代码转换为浏览器可以执行代码</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">browserify src/app.js -o dist/bundle.js</span><br></pre></td></tr></table></figure>
+            <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">FROM nunumaomao/alpine:latest</span><br><span class="line"></span><br><span class="line">RUN apk add --no-cache openjdk8-jre</span><br><span class="line"></span><br><span class="line">ENV JAVA_HOME /usr/lib/jvm/java-1.8-openjdk</span><br><span class="line">ENV PATH <span class="variable">$PATH</span>:<span class="variable">$JAVA_HOME</span>/bin</span><br></pre></td></tr></table></figure>
 
-<h2 id="代码仓库"><a href="#代码仓库" class="headerlink" title="代码仓库"></a>代码仓库</h2><p><a target="_blank" rel="noopener" href="https://github.com/365D1/javascript-modules.git" title="https:&#x2F;&#x2F;github.com&#x2F;365D1&#x2F;javascript-modules.git">https://github.com/365D1/javascript-modules.git</a></p>
-
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker buildx build --push --platform  linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/386,linux/arm/v7,linux/arm/v6 -t nunumaomao/java .</span><br></pre></td></tr></table></figure>
           </div>
         </div>
 
@@ -174,8 +160,8 @@
           
             <div class="flex flex-wrap gap-2 mb-8">
               
-                <a href="/tags/JavaScript/" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm text-gray-600 transition-colors">
-                  JavaScript
+                <a href="/tags/alpine/" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm text-gray-600 transition-colors">
+                  alpine
                 </a>
                 
             </div>
@@ -194,18 +180,18 @@
               <!-- 上一篇/下一篇 -->
               <div class="flex flex-col sm:flex-row justify-between gap-4">
                 
-                  <a href="/cm6pxqnqt000830x5003hb2y2.html" class="group flex-1">
+                  <a href="/cm6q0phmo0001vcx50gui235k.html" class="group flex-1">
                     <div class="text-sm text-gray-500 mb-1">上一篇</div>
                     <div class="group-hover:text-blue-600 transition-colors">
-                      Alpine Jre8
+                      Alpine 基础镜像
                     </div>
                   </a>
                   
                     
-                      <a href="/cm6pxqnqx000f30x5gm86fvk0.html" class="group flex-1 text-right">
+                      <a href="/cm6q0phmy0009vcx5gkln7p6x.html" class="group flex-1 text-right">
                         <div class="text-sm text-gray-500 mb-1">下一篇</div>
                         <div class="group-hover:text-blue-600 transition-colors">
-                          深度学习
+                          JavaScript 模块化规范 | CommonJS
                         </div>
                       </a>
                       
@@ -240,7 +226,7 @@
       <div class="bg-white rounded-xl p-6 sticky top-24">
         <h2 class="text-lg font-medium mb-4">目录</h2>
         <nav class="space-y-2 text-sm">
-          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CommonJS%E7%9A%84%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%BA%94%E7%94%A8"><span class="toc-text">CommonJS的服务端应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CommonJS%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8%E7%AB%AF%E5%BA%94%E7%94%A8"><span class="toc-text">CommonJS的浏览器端应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93"><span class="toc-text">代码仓库</span></a></li></ol>
+          
         </nav>
       </div>
 
@@ -269,7 +255,7 @@
                 </span>
               </div>
               <span class="text-xs text-gray-500">
-                3
+                7
               </span>
             </a>
             
@@ -293,8 +279,20 @@
         <h2 class="text-lg font-medium mb-4">相关文章</h2>
         <div class="space-y-4">
           
-              <p class="text-sm text-gray-500">暂无相关文章</p>
-              
+            <a href="/cm6q0phmo0001vcx50gui235k.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Alpine 基础镜像
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-04</p>
+            </a>
+            
+            <a href="/cm6q0phmw0006vcx57q9e84uj.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Alpine Redis
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-03</p>
+            </a>
+            
         </div>
       </div>
     </aside>

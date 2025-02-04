@@ -121,7 +121,7 @@
         <div class="px-8 pt-12 pb-8">
           <!-- 标题 -->
           <h1 class="text-3xl font-medium mb-6 leading-snug">
-            Alpine Redis
+            机器学习 (三) | Sklearn管道
           </h1>
 
           <!-- 元信息 -->
@@ -129,14 +129,14 @@
             <span>
               <i class="fas fa-folder-open mr-2"></i>
               
-                <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/docker/" class="hover:text-blue-600">
-                  docker
+                <a href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/PYTHON/" class="hover:text-blue-600">
+                  PYTHON
                 </a>
                 
             </span>
             <span>
               <i class="far fa-calendar mr-2"></i>
-              2025-02-03
+              2025-02-04
             </span>
             <span><i class="far fa-clock mr-2"></i>15 分钟阅读</span>
             <span><i class="far fa-eye mr-2"></i>
@@ -148,9 +148,80 @@
         <!-- 文章内容 -->
         <div class="px-8 py-10 border-t border-b">
           <div class="markdown-body">
-            <h2 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h2><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">FROM nunumaomao/alpine:latest</span><br><span class="line">  </span><br><span class="line">WORKDIR /home</span><br><span class="line"></span><br><span class="line">ADD docker-run.sh /home</span><br><span class="line"></span><br><span class="line">ENV PASSWORD <span class="string">&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">RUN <span class="built_in">chmod</span> +x /home/docker-run.sh &amp;&amp; \</span><br><span class="line">    <span class="built_in">mkdir</span> -p /run/redis &amp;&amp; \</span><br><span class="line">    apk add --no-cache redis &amp;&amp; \</span><br><span class="line">    sed -i <span class="string">&#x27;s/bind[ ]127.0.0.1[ ]-::1/bind 0.0.0.0/g&#x27;</span> /etc/redis.conf &amp;&amp; \</span><br><span class="line">    sed -i <span class="string">&#x27;s/protected-mode[ ]yes/protected-mode no/g&#x27;</span> /etc/redis.conf</span><br><span class="line"></span><br><span class="line">EXPOSE 6379</span><br><span class="line"></span><br><span class="line">ENTRYPOINT [<span class="string">&quot;./docker-run.sh&quot;</span>]</span><br></pre></td></tr></table></figure>
-<h2 id="docker-run-sh"><a href="#docker-run-sh" class="headerlink" title="docker-run.sh"></a>docker-run.sh</h2><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/ash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ ! -f /home/lock ]; <span class="keyword">then</span>    </span><br><span class="line">  sed -i <span class="string">&#x27;s/#[ ]requirepass[ ]foobared/requirepass &#x27;</span><span class="variable">$PASSWORD</span><span class="string">&#x27;/g&#x27;</span> /etc/redis.conf</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;installed&quot;</span> &gt;&gt; /home/lock</span><br><span class="line"></span><br><span class="line">redis-server /etc/redis.conf &amp;</span><br><span class="line"></span><br><span class="line"><span class="built_in">sleep</span> 3</span><br><span class="line"></span><br><span class="line"><span class="built_in">tail</span> -f /var/log/redis/redis.log</span><br></pre></td></tr></table></figure>
-<h2 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run -d --restart=always --name redis -e PASSWORD=123456 -p 6379:6379 nunumaomao/redis</span><br></pre></td></tr></table></figure>
+            <p><strong>管道 (Pipelines):  组装生产线</strong></p>
+<p>想象一下你在工厂里组装一个玩具。 你不会把所有的零件都堆在一起然后一次性组装，而是会有一个流程：先装轮子，再装车身，最后装车顶。  在机器学习中，我们也可以把不同的数据处理和模型训练步骤串联起来，形成一个“管道 (Pipeline)”。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[ 原始数据 ] --&gt; [ 特征提取 ] --&gt; [ 特征缩放 ] --&gt; [ 模型训练 ] --&gt; [ 最终模型 ]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>为什么需要管道？</strong><ul>
+<li><strong>简化代码:</strong>  不用一步步地对数据进行处理，代码更简洁易懂。</li>
+<li><strong>防止数据泄露:</strong>  在交叉验证（后面会讲到）等场景下，可以确保数据处理步骤只在训练集上进行，避免“泄露”测试集的信息。</li>
+<li><strong>方便部署:</strong>  一个管道就是一个整体，方便保存和部署。</li>
+</ul>
+</li>
+</ul>
+<p><strong>交叉验证 (Cross-Validation):  多方会诊</strong></p>
+<p>就像看病时，你可能不会只听一个医生的意见，而是会找几个医生会诊，以获得更可靠的诊断结果。 在机器学习中，为了更可靠地评估模型的性能，我们会使用“交叉验证 (Cross-Validation)”。</p>
+<p>最常见的交叉验证方法是 <strong>K 折交叉验证 (K-Fold Cross-Validation)</strong>。</p>
+<ol>
+<li><p><strong>分割数据:</strong>  把训练数据分成 K 份（称为“折”）。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[ 折 1 ] [ 折 2 ] [ 折 3 ] ... [ 折 K ]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>循环训练和评估:</strong>  进行 K 次训练和评估。 每次选择其中一份作为“验证集”来评估模型，剩下的 K-1 份作为“训练集”来训练模型。</p>
+<ul>
+<li>第一次：[ 训练集：折 2 - 折 K ]  [ 验证集：折 1 ]</li>
+<li>第二次：[ 训练集：折 1, 折 3 - 折 K ] [ 验证集：折 2 ]</li>
+<li>…</li>
+<li>第 K 次：[ 训练集：折 1 - 折 K-1 ] [ 验证集：折 K ]</li>
+</ul>
+</li>
+<li><p><strong>计算平均性能:</strong>  计算 K 次评估结果的平均值，作为模型最终的性能指标。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">评估结果 1 + 评估结果 2 + ... + 评估结果 K</span><br><span class="line">-------------------------------------  = 平均性能</span><br><span class="line">                    K</span><br></pre></td></tr></table></figure></li>
+</ol>
+<ul>
+<li><strong>为什么需要交叉验证？</strong><ul>
+<li><strong>更可靠的评估:</strong>  避免模型性能的评估结果只依赖于一次特定的数据划分，更客观地反映模型的泛化能力。</li>
+<li><strong>更好地选择模型和超参数:</strong>  可以比较不同模型或不同超参数组合在交叉验证上的表现，选择最优的方案。</li>
+</ul>
+</li>
+</ul>
+<p><strong>模型选择与超参数调优：  精雕细琢</strong></p>
+<p>我们前面提到了超参数，它们是模型训练前需要设置的参数。  找到合适的超参数组合，就像给雕塑作品进行最后的打磨，可以显著提升模型性能。</p>
+<ul>
+<li><p><strong>网格搜索 (Grid Search):</strong>  就像在一个表格里，把所有可能的超参数组合都尝试一遍。</p>
+ <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">超参数 A 的可能取值： A1, A2, A3</span><br><span class="line">超参数 B 的可能取值： B1, B2</span><br><span class="line"></span><br><span class="line">所有可能的组合：</span><br><span class="line">(A1, B1), (A1, B2)</span><br><span class="line">(A2, B1), (A2, B2)</span><br><span class="line">(A3, B1), (A3, B2)</span><br></pre></td></tr></table></figure>
+
+<p> 对于每一种组合，我们都会训练一个模型，并使用交叉验证来评估其性能，最终选择性能最好的组合。</p>
+</li>
+<li><p><strong>随机搜索 (Randomized Search):</strong>  不是尝试所有可能的组合，而是在超参数的取值范围内随机选取若干组进行尝试。  当超参数的取值范围很大时，随机搜索通常比网格搜索更高效。</p>
+ <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">超参数 A 的取值范围： [最小值, 最大值]</span><br><span class="line">超参数 B 的取值范围： [最小值, 最大值]</span><br><span class="line"></span><br><span class="line">随机选择一些点进行尝试：</span><br><span class="line">(A_random1, B_random1), (A_random2, B_random2), ...</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><strong>集成学习 (Ensemble Learning):  集思广益</strong></p>
+<p>就像一个复杂的问题，多个人一起思考往往比一个人单独思考更容易找到好的解决方案。  “集成学习 (Ensemble Learning)” 的思想就是结合多个“弱学习器”的预测结果，得到一个更强大、更准确的“强学习器”。</p>
+<ul>
+<li><p><strong>装袋 (Bagging):</strong>  就像让几个不同的木匠各自独立地制作一把椅子，然后投票决定最终的椅子是什么样的。  它会从原始训练集中有放回地抽取多个子集，用每个子集训练一个独立的模型，最终的预测结果通过投票或平均得到。  <strong>随机森林 (Random Forest)</strong> 就是装袋的代表。</p>
+</li>
+<li><p><strong>提升 (Boosting):</strong>  就像老师辅导学生，会先让学生做一套题，然后重点讲解学生做错的题目，再让学生做一套类似的题，不断地迭代提升。  提升算法会 последовательно 地训练多个模型，每个模型都试图纠正前面模型的错误。  <strong>梯度提升机 (Gradient Boosting Machine, GBM)</strong> 就是提升的代表。</p>
+</li>
+<li><p><strong>堆叠 (Stacking):</strong>  就像一个委员会，由多个专家组成，每个专家先独立给出自己的意见，然后由一个“元学习器”综合这些意见，给出最终的结论。  它会训练多个不同的基模型，然后用另一个模型（元学习器）来学习如何组合这些基模型的预测结果。</p>
+</li>
+</ul>
+<p><strong>模型持久化 (Model Persistence):  保存成果</strong></p>
+<p>训练好的模型就像你辛辛苦苦做出来的一个工具，我们希望能够保存下来，以后可以重复使用，而不用每次都重新训练。  “模型持久化 (Model Persistence)” 就是将训练好的模型保存到硬盘上，以便将来加载和使用。  这就像把菜谱保存下来，下次想做这道菜的时候就可以直接拿出来看。</p>
+<p><strong>无监督学习的更多应用：  发现隐藏的结构</strong></p>
+<p>我们前面简单介绍了聚类，它是无监督学习的一种。  无监督学习的目标是从没有标签的数据中发现隐藏的模式和结构。 除了聚类，还有一些其他的无监督学习方法：</p>
+<ul>
+<li><p><strong>降维 (Dimensionality Reduction):</strong>  我们之前提到过 PCA，它可以减少数据的特征数量，同时保留最重要的信息。  降维可以帮助我们可视化高维数据，加快模型训练速度，并去除一些噪声特征。</p>
+</li>
+<li><p><strong>异常检测 (Anomaly Detection):</strong>  识别数据中不寻常的、与其他数据点显著不同的样本。  比如，检测信用卡欺诈、设备故障等。</p>
+</li>
+<li><p><strong>关联规则挖掘 (Association Rule Mining):</strong>  发现数据项之间的有趣关系。  比如，在超市的购物篮数据中发现“买了啤酒的人也经常买尿布”的规律。</p>
+</li>
+</ul>
+<p><strong>总结</strong></p>
+<p>我们现在了解了一些更高级的 Sklearn 概念，包括如何组织机器学习的流程（管道），如何更可靠地评估模型性能（交叉验证），如何优化模型参数（网格搜索和随机搜索），如何结合多个模型的力量（集成学习），以及如何保存和重复使用模型（模型持久化）。  此外，我们也回顾了无监督学习的一些重要应用。</p>
+<p>这些概念是构建更强大、更可靠的机器学习模型的关键。  虽然我们没有涉及代码，但理解这些背后的思想，将为未来学习和应用 Sklearn 打下坚实的基础。  继续加油！</p>
+
           </div>
         </div>
 
@@ -160,8 +231,8 @@
           
             <div class="flex flex-wrap gap-2 mb-8">
               
-                <a href="/tags/alpine/" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm text-gray-600 transition-colors">
-                  alpine
+                <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm text-gray-600 transition-colors">
+                  机器学习
                 </a>
                 
             </div>
@@ -180,18 +251,18 @@
               <!-- 上一篇/下一篇 -->
               <div class="flex flex-col sm:flex-row justify-between gap-4">
                 
-                  <a href="/cm6pxqnqr000630x519nd9di8.html" class="group flex-1">
+                  <a href="/cm6q0phn1000dvcx573i467yq.html" class="group flex-1">
                     <div class="text-sm text-gray-500 mb-1">上一篇</div>
                     <div class="group-hover:text-blue-600 transition-colors">
-                      机器学习
+                      机器学习 (一) | 概述
                     </div>
                   </a>
                   
                     
-                      <a href="/cm6pxqnqu000930x5072m5cey.html" class="group flex-1 text-right">
+                      <a href="/cm6q0phn3000ivcx5br3o1z1n.html" class="group flex-1 text-right">
                         <div class="text-sm text-gray-500 mb-1">下一篇</div>
                         <div class="group-hover:text-blue-600 transition-colors">
-                          Hello World
+                          机器学习 (二) | 训练过程
                         </div>
                       </a>
                       
@@ -226,7 +297,7 @@
       <div class="bg-white rounded-xl p-6 sticky top-24">
         <h2 class="text-lg font-medium mb-4">目录</h2>
         <nav class="space-y-2 text-sm">
-          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Dockerfile"><span class="toc-text">Dockerfile</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#docker-run-sh"><span class="toc-text">docker-run.sh</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#docker"><span class="toc-text">docker</span></a></li></ol>
+          
         </nav>
       </div>
 
@@ -255,7 +326,7 @@
                 </span>
               </div>
               <span class="text-xs text-gray-500">
-                3
+                7
               </span>
             </a>
             
@@ -279,18 +350,39 @@
         <h2 class="text-lg font-medium mb-4">相关文章</h2>
         <div class="space-y-4">
           
-            <a href="/cm6pxqnqp000330x5boqcbn1n.html" class="block group">
+            <a href="/cm6q0phn1000dvcx573i467yq.html" class="block group">
               <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
-                Alpine 基础镜像
+                机器学习 (一) | 概述
               </h3>
               <p class="text-xs text-gray-500 mt-1">2025-02-04</p>
             </a>
             
-            <a href="/cm6pxqnqt000830x5003hb2y2.html" class="block group">
+            <a href="/cm6q0phn3000ivcx5br3o1z1n.html" class="block group">
               <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
-                Alpine Jre8
+                机器学习 (二) | 训练过程
               </h3>
               <p class="text-xs text-gray-500 mt-1">2025-02-04</p>
+            </a>
+            
+            <a href="/cm6q0phn5000nvcx5dt3y5lt7.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                机器学习 (四) | 常见问题的处理思路
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-04</p>
+            </a>
+            
+            <a href="/cm6q0phn5000ovcx594xgg06q.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                深度学习
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-03</p>
+            </a>
+            
+            <a href="/cm6q0phn3000jvcx554045a8q.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                机器学习
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-03</p>
             </a>
             
         </div>
