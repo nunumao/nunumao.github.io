@@ -6,7 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>编程日记</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.0/github-markdown.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  
+<link rel="stylesheet" href="/css/github-markdown.css">
+
+  
+<link rel="stylesheet" href="/css/atom-one-dark.css">
+
   <script src="https://cdn.tailwindcss.com"></script>
   
 <script src="/js/jquery.min.js"></script>
@@ -38,6 +44,13 @@
                   
                     
                       
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/服务器/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>服务器</span>
+                        </a>
+                      
+                    
+                      
                         <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/后端技术/">
                           <i class="fas fa-code text-blue-500"></i>
                           <span>后端技术</span>
@@ -45,9 +58,11 @@
                       
                     
                       
-                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/服务器/">
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/前端技术/">
                           <i class="fas fa-code text-blue-500"></i>
-                          <span>服务器</span>
+                          <span>前端技术</span>
                         </a>
                       
                     
@@ -118,7 +133,7 @@
         <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
           
           <h2 class="text-2xl font-medium mb-2">
-            <a href="/cm6p9vtqh00037gx58a6e42cm.html" class="hover:text-blue-300">Alpine 基础镜像</a>
+            <a href="/cm6pxqnqp000330x5boqcbn1n.html" class="hover:text-blue-300">Alpine 基础镜像</a>
           </h2>
           <p class="text-sm text-gray-200 line-clamp-2 mb-4">
             FROM alpine:3.16.3RUN sed -i &amp;#x27;s/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g&amp;#x27; /etc/apk/repositories &amp;amp;&amp;amp; \    apk add --no-cache openrc...
@@ -138,18 +153,19 @@
     <div class="grid md:grid-cols-2 gap-6 mb-8">
       
         <article class="bg-white rounded-lg border p-6 hover:border-gray-400 transition-colors">
-          <a href="/cm6p9vtqm00087gx58fgt7byp.html" class="block">
-            <span class="text-sm text-gray-500 mb-2 block">2025-02-03</span>
+          <a href="/cm6pxqnqt000830x5003hb2y2.html" class="block">
+            <span class="text-sm text-gray-500 mb-2 block">2025-02-04</span>
             <h3 class="text-xl font-medium mb-3 hover:text-blue-600 line-clamp-2">
-              深度学习
+              Alpine Jre8
             </h3>
             <p class="text-gray-600 text-sm mb-4 line-clamp-2">
-              深度学习1. 深度学习简介1.1 什么是深度学习深度学习是机器学习的一个分支，它试图使用包含复杂结构或由多个处理层组成的算法来模拟人脑的神经元网络结构。这些算法被称为深度学习算法，它们可以自动地从数据中学习特征表示。
-...
+              FROM nunumaomao/alpine:latestRUN apk add --no-cache openjdk8-jreENV JAVA_HOME /usr/lib/jvm/java-1.8-openjdkENV PATH $PATH:$JAVA_HOME/bin
+
+docker build...
             </p>
             <div class="flex items-center text-sm text-gray-500">
               
-                <span><i class="fas fa-folder-open mr-2"></i>后端技术</span>
+                <span><i class="fas fa-folder-open mr-2"></i>服务器</span>
                 <span class="mx-3">·</span>
               
               <span>阅读: 0</span>
@@ -158,18 +174,18 @@
         </article>
       
         <article class="bg-white rounded-lg border p-6 hover:border-gray-400 transition-colors">
-          <a href="/cm6p9vtqe00017gx57xcl65d5.html" class="block">
-            <span class="text-sm text-gray-500 mb-2 block">2025-02-03</span>
+          <a href="/cm6pxqnqw000d30x5auuk61rn.html" class="block">
+            <span class="text-sm text-gray-500 mb-2 block">2025-02-04</span>
             <h3 class="text-xl font-medium mb-3 hover:text-blue-600 line-clamp-2">
-              机器学习
+              JavaScript 模块化规范 | CommonJS
             </h3>
             <p class="text-gray-600 text-sm mb-4 line-clamp-2">
-              机器学习1. 机器学习概述1.1 什么是机器学习机器学习是人工智能的一个分支，它让计算机从数据中学习，从而无需显式编程。
-...
+              概述Node 应用由模块组成，采用 CommonJS 模块规范。
+每个文件就是一个模块，有自己的作用域。在一个文件里面定义的变量、函数、类，都是私有的，对其他文件不可见。CommonJS规范规定，每个模块内部，module变量代表当前模块。这个变量是一个对象，它的exports属性（即module....
             </p>
             <div class="flex items-center text-sm text-gray-500">
               
-                <span><i class="fas fa-folder-open mr-2"></i>后端技术</span>
+                <span><i class="fas fa-folder-open mr-2"></i>前端技术</span>
                 <span class="mx-3">·</span>
               
               <span>阅读: 0</span>
@@ -199,6 +215,14 @@
     <h2 class="text-2xl font-medium mb-6">文章分类</h2>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
       
+        <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="bg-white p-4 border rounded-lg hover:border-blue-500 transition-colors group">
+          <div class="flex items-center mb-2">
+            <i class="fas fa-folder text-blue-500 mr-2"></i>
+            <span class="font-medium group-hover:text-blue-600">服务器</span>
+          </div>
+          <p class="text-sm text-gray-500">3 篇文章</p>
+        </a>
+      
         <a href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/" class="bg-white p-4 border rounded-lg hover:border-blue-500 transition-colors group">
           <div class="flex items-center mb-2">
             <i class="fas fa-folder text-blue-500 mr-2"></i>
@@ -207,10 +231,10 @@
           <p class="text-sm text-gray-500">3 篇文章</p>
         </a>
       
-        <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="bg-white p-4 border rounded-lg hover:border-blue-500 transition-colors group">
+        <a href="/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/" class="bg-white p-4 border rounded-lg hover:border-blue-500 transition-colors group">
           <div class="flex items-center mb-2">
-            <i class="fas fa-folder text-blue-500 mr-2"></i>
-            <span class="font-medium group-hover:text-blue-600">服务器</span>
+            <i class="fas fa-code text-blue-500 mr-2"></i>
+            <span class="font-medium group-hover:text-blue-600">前端技术</span>
           </div>
           <p class="text-sm text-gray-500">1 篇文章</p>
         </a>
@@ -224,14 +248,19 @@
     <div class="bg-white border rounded-lg p-6">
       <div class="flex flex-wrap gap-3">
         
+          <a href="/tags/alpine/" 
+             class="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-full text-sm">
+            alpine (3)
+          </a>
+        
           <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" 
              class="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-full text-sm">
             机器学习 (1)
           </a>
         
-          <a href="/tags/alpine/" 
+          <a href="/tags/JavaScript/" 
              class="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-full text-sm">
-            alpine (1)
+            JavaScript (1)
           </a>
         
           <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" 

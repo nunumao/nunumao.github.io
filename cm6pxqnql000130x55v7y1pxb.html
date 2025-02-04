@@ -6,7 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>编程日记</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.0/github-markdown.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  
+<link rel="stylesheet" href="/css/github-markdown.css">
+
+  
+<link rel="stylesheet" href="/css/atom-one-dark.css">
+
   <script src="https://cdn.tailwindcss.com"></script>
   
 <script src="/js/jquery.min.js"></script>
@@ -38,6 +44,13 @@
                   
                     
                       
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/服务器/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>服务器</span>
+                        </a>
+                      
+                    
+                      
                         <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/后端技术/">
                           <i class="fas fa-code text-blue-500"></i>
                           <span>后端技术</span>
@@ -45,9 +58,11 @@
                       
                     
                       
-                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/服务器/">
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/前端技术/">
                           <i class="fas fa-code text-blue-500"></i>
-                          <span>服务器</span>
+                          <span>前端技术</span>
                         </a>
                       
                     
@@ -106,7 +121,7 @@
         <div class="px-8 pt-12 pb-8">
           <!-- 标题 -->
           <h1 class="text-3xl font-medium mb-6 leading-snug">
-            机器学习
+            Alpine Redis
           </h1>
 
           <!-- 元信息 -->
@@ -114,8 +129,8 @@
             <span>
               <i class="fas fa-folder-open mr-2"></i>
               
-                <a href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/PYTHON/" class="hover:text-blue-600">
-                  PYTHON
+                <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/docker/" class="hover:text-blue-600">
+                  docker
                 </a>
                 
             </span>
@@ -133,8 +148,9 @@
         <!-- 文章内容 -->
         <div class="px-8 py-10 border-t border-b">
           <div class="markdown-body">
-            <h1 id="机器学习"><a href="#机器学习" class="headerlink" title="机器学习"></a>机器学习</h1><h2 id="1-机器学习概述"><a href="#1-机器学习概述" class="headerlink" title="1. 机器学习概述"></a>1. 机器学习概述</h2><h3 id="1-1-什么是机器学习"><a href="#1-1-什么是机器学习" class="headerlink" title="1.1 什么是机器学习"></a>1.1 什么是机器学习</h3><p>机器学习是人工智能的一个分支，它让计算机从数据中学习，从而无需显式编程。</p>
-
+            <h2 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h2><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">FROM nunumaomao/alpine:latest</span><br><span class="line">  </span><br><span class="line">WORKDIR /home</span><br><span class="line"></span><br><span class="line">ADD docker-run.sh /home</span><br><span class="line"></span><br><span class="line">ENV PASSWORD <span class="string">&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">RUN <span class="built_in">chmod</span> +x /home/docker-run.sh &amp;&amp; \</span><br><span class="line">    <span class="built_in">mkdir</span> -p /run/redis &amp;&amp; \</span><br><span class="line">    apk add --no-cache redis &amp;&amp; \</span><br><span class="line">    sed -i <span class="string">&#x27;s/bind[ ]127.0.0.1[ ]-::1/bind 0.0.0.0/g&#x27;</span> /etc/redis.conf &amp;&amp; \</span><br><span class="line">    sed -i <span class="string">&#x27;s/protected-mode[ ]yes/protected-mode no/g&#x27;</span> /etc/redis.conf</span><br><span class="line"></span><br><span class="line">EXPOSE 6379</span><br><span class="line"></span><br><span class="line">ENTRYPOINT [<span class="string">&quot;./docker-run.sh&quot;</span>]</span><br></pre></td></tr></table></figure>
+<h2 id="docker-run-sh"><a href="#docker-run-sh" class="headerlink" title="docker-run.sh"></a>docker-run.sh</h2><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/ash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ ! -f /home/lock ]; <span class="keyword">then</span>    </span><br><span class="line">  sed -i <span class="string">&#x27;s/#[ ]requirepass[ ]foobared/requirepass &#x27;</span><span class="variable">$PASSWORD</span><span class="string">&#x27;/g&#x27;</span> /etc/redis.conf</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;installed&quot;</span> &gt;&gt; /home/lock</span><br><span class="line"></span><br><span class="line">redis-server /etc/redis.conf &amp;</span><br><span class="line"></span><br><span class="line"><span class="built_in">sleep</span> 3</span><br><span class="line"></span><br><span class="line"><span class="built_in">tail</span> -f /var/log/redis/redis.log</span><br></pre></td></tr></table></figure>
+<h2 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run -d --restart=always --name redis -e PASSWORD=123456 -p 6379:6379 nunumaomao/redis</span><br></pre></td></tr></table></figure>
           </div>
         </div>
 
@@ -144,8 +160,8 @@
           
             <div class="flex flex-wrap gap-2 mb-8">
               
-                <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm text-gray-600 transition-colors">
-                  机器学习
+                <a href="/tags/alpine/" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm text-gray-600 transition-colors">
+                  alpine
                 </a>
                 
             </div>
@@ -164,15 +180,15 @@
               <!-- 上一篇/下一篇 -->
               <div class="flex flex-col sm:flex-row justify-between gap-4">
                 
-                  <a href="/cm6p9vtqm00087gx58fgt7byp.html" class="group flex-1">
+                  <a href="/cm6pxqnqr000630x519nd9di8.html" class="group flex-1">
                     <div class="text-sm text-gray-500 mb-1">上一篇</div>
                     <div class="group-hover:text-blue-600 transition-colors">
-                      深度学习
+                      机器学习
                     </div>
                   </a>
                   
                     
-                      <a href="/cm6p9vtqk00067gx5eokj8h2z.html" class="group flex-1 text-right">
+                      <a href="/cm6pxqnqu000930x5072m5cey.html" class="group flex-1 text-right">
                         <div class="text-sm text-gray-500 mb-1">下一篇</div>
                         <div class="group-hover:text-blue-600 transition-colors">
                           Hello World
@@ -210,7 +226,7 @@
       <div class="bg-white rounded-xl p-6 sticky top-24">
         <h2 class="text-lg font-medium mb-4">目录</h2>
         <nav class="space-y-2 text-sm">
-          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0"><span class="toc-text">机器学习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%A6%82%E8%BF%B0"><span class="toc-text">1. 机器学习概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E4%BB%80%E4%B9%88%E6%98%AF%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0"><span class="toc-text">1.1 什么是机器学习</span></a></li></ol></li></ol></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Dockerfile"><span class="toc-text">Dockerfile</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#docker-run-sh"><span class="toc-text">docker-run.sh</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#docker"><span class="toc-text">docker</span></a></li></ol>
         </nav>
       </div>
 
@@ -219,6 +235,18 @@
         <h2 class="text-lg font-medium mb-4">文章分类</h2>
         <div class="space-y-3">
           
+            <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="flex items-center justify-between group">
+              <div class="flex items-center">
+                <i class="fas fa-folder text-gray-500 w-5"></i>
+                <span class="text-sm group-hover:text-blue-600">
+                  服务器
+                </span>
+              </div>
+              <span class="text-xs text-gray-500">
+                3
+              </span>
+            </a>
+            
             <a href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/" class="flex items-center justify-between group">
               <div class="flex items-center">
                 <i class="fas fa-server text-green-500 w-5"></i>
@@ -231,11 +259,11 @@
               </span>
             </a>
             
-            <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="flex items-center justify-between group">
+            <a href="/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/" class="flex items-center justify-between group">
               <div class="flex items-center">
-                <i class="fas fa-folder text-gray-500 w-5"></i>
+                <i class="fas fa-code text-blue-500 w-5"></i>
                 <span class="text-sm group-hover:text-blue-600">
-                  服务器
+                  前端技术
                 </span>
               </div>
               <span class="text-xs text-gray-500">
@@ -251,18 +279,18 @@
         <h2 class="text-lg font-medium mb-4">相关文章</h2>
         <div class="space-y-4">
           
-            <a href="/cm6p9vtqm00087gx58fgt7byp.html" class="block group">
+            <a href="/cm6pxqnqp000330x5boqcbn1n.html" class="block group">
               <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
-                深度学习
+                Alpine 基础镜像
               </h3>
-              <p class="text-xs text-gray-500 mt-1">2025-02-03</p>
+              <p class="text-xs text-gray-500 mt-1">2025-02-04</p>
             </a>
             
-            <a href="/cm6p9vtqk00067gx5eokj8h2z.html" class="block group">
+            <a href="/cm6pxqnqt000830x5003hb2y2.html" class="block group">
               <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
-                Hello World
+                Alpine Jre8
               </h3>
-              <p class="text-xs text-gray-500 mt-1">2025-01-25</p>
+              <p class="text-xs text-gray-500 mt-1">2025-02-04</p>
             </a>
             
         </div>
