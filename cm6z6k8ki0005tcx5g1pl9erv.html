@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>编程日记</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  
+<link rel="stylesheet" href="/css/github-markdown.css">
+
+  
+<link rel="stylesheet" href="/css/atom-one-dark.css">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+<script src="/js/jquery.min.js"></script>
+
+  
+<script src="/js/script.js"></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="bg-gray-50 text-gray-800">
+  <div class="lg:hidden fixed right-4 top-4 z-50">
+    <button class="p-2 bg-white/80 backdrop-blur-sm rounded-lg border" data-mobile-menu-trigger><i class="fas fa-bars"></i></button>
+  </div>
+  <!-- 导航栏 -->
+  <nav class="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-40">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="flex justify-between items-center h-16">
+        <a href="/" class="text-xl font-serif">编程日记</a>
+        <!-- 桌面端导航 -->
+        <div class="hidden lg:flex items-center space-x-6">
+          <div class="flex items-center space-x-6 text-sm">
+            <a href="/" class="hover:text-blue-600" data-i18n="nav.home">首页</a>
+            <!-- 分类下拉菜单 -->
+            <div class="relative group">
+              <a href="/categories" class="hover:text-blue-600">分类</a>
+              <!-- 优化后的下拉内容 -->
+              <div class="absolute left-0 mt-2 py-2 bg-white backdrop-blur-sm border rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div class="grid grid-cols-2 gap-1 w-[400px] p-4">
+                  
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/服务器/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>服务器</span>
+                        </a>
+                      
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/后端技术/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>后端技术</span>
+                        </a>
+                      
+                    
+                      
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/前端技术/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>前端技术</span>
+                        </a>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                  
+                </div>
+              </div>
+            </div>
+            <a href="/case" class="hover:text-blue-600" data-i18n="nav.case">作品</a>
+            <a href="/archives" class="hover:text-blue-600" data-i18n="nav.archives">归档</a>
+            <a href="/about" class="hover:text-blue-600" data-i18n="nav.about">关于</a>
+            <!-- 搜索框 -->
+            <div class="relative">
+              <input type="search" placeholder="Search articles..." class="w-48 px-4 py-1 text-sm border rounded-full bg-gray-50 focus:outline-none focus:ring-1 focus:ring-blue-500">
+              <i class="fas fa-search absolute right-3 top-2 text-gray-400"></i>
+            </div>
+            <!-- 语言切换 -->
+            <div class="flex items-center space-x-2 ml-4 text-sm border-l pl-4">
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('en-US')">EN</button>
+              <span class="text-gray-300">|</span>
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('zh-CN')">简</button>
+              <span class="text-gray-300">|</span>
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('zh-TW')">繁</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div id="mobileMenu" class="fixed inset-0 bg-white/90 backdrop-blur-sm z-40 lg:hidden hidden">
+    <div class="h-full w-full flex flex-col items-center justify-center space-y-6 text-lg">
+      <a href="/" class="hover:text-blue-600" data-i18n="nav.home">首页</a>
+      <a href="/categories" class="hover:text-blue-600" data-i18n="nav.categories">分类</a>
+      <a href="/case" class="hover:text-blue-600" data-i18n="nav.case">作品</a>
+      <a href="/archives" class="hover:text-blue-600" data-i18n="nav.archive">归档</a>
+      <a href="/about" class="hover:text-blue-600" data-i18n="nav.about">关于</a>
+      <div class="flex items-center space-x-4 mt-4">
+        <button class="lang-switch hover:text-blue-600" data-lang="en">EN</button>
+        <button class="lang-switch hover:text-blue-600" data-lang="zh">简</button>
+        <button class="lang-switch hover:text-blue-600" data-lang="zh-TW">繁</button>
+      </div>
+    </div>
+  </div>
+  <main class="max-w-5xl mx-auto px-4 py-12">
+  <div class="lg:flex lg:gap-8">
+    <!-- 文章主体 -->
+    <article class="lg:w-3/4">
+      <!-- 文章容器 -->
+      <div class="bg-white rounded-xl overflow-hidden">
+        <!-- 文章头部 -->
+        <div class="px-8 pt-12 pb-8">
+          <!-- 标题 -->
+          <h1 class="text-3xl font-medium mb-6 leading-snug">
+            Kotlin (六) | 接口
+          </h1>
+
+          <!-- 元信息 -->
+          <div class="flex flex-wrap items-center gap-6 text-sm text-gray-500">
+            <span>
+              <i class="fas fa-folder-open mr-2"></i>
+              
+                <a href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/KOTLIN/" class="hover:text-blue-600">
+                  KOTLIN
+                </a>
+                
+            </span>
+            <span>
+              <i class="far fa-calendar mr-2"></i>
+              2025-02-10
+            </span>
+            <span><i class="far fa-clock mr-2"></i>15 分钟阅读</span>
+            <span><i class="far fa-eye mr-2"></i>
+              0
+            </span>
+          </div>
+        </div>
+
+        <!-- 文章内容 -->
+        <div class="px-8 py-10 border-t border-b">
+          <div class="markdown-body">
+            <p><strong>接口 (Interfaces)</strong></p>
+<p>接口是面向对象编程中另一个重要的概念。 接口定义了一组方法签名，但不提供方法的具体实现。 类可以实现一个或多个接口，从而承诺提供接口中定义的方法的具体实现。 接口主要用于定义契约 (contract)，实现多态 (polymorphism) 和实现行为的 “多重继承”。</p>
+<p><strong>接口的定义</strong></p>
+<p>在 Kotlin 中，我们使用 <code>interface</code> 关键字来定义接口。</p>
+<p><strong>语法:</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="keyword">interface</span> 接口名 &#123;</span><br><span class="line">    <span class="comment">// 接口体 (interface body)</span></span><br><span class="line">    <span class="comment">// 属性声明 (property declarations) - 抽象属性或带有 backing field 的属性 (Kotlin 1.4+)</span></span><br><span class="line">    <span class="comment">// 方法声明 (method declarations) - 抽象方法或默认方法</span></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong><code>interface</code>:</strong> 关键字，表示这是一个接口定义。</li>
+<li><strong>接口名:</strong>  接口的名称，遵循标识符命名规则，通常使用 PascalCase 命名法 (例如 <code>Clickable</code>, <code>Drawable</code>, <code>Comparable</code>)。</li>
+<li><strong>接口体:</strong>  用花括号 <code>&#123;&#125;</code> 包裹的部分，包含接口的成员 (属性声明、方法声明)。</li>
+</ul>
+<p><strong>例子：</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Drawable</span> &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">draw</span><span class="params">()</span></span> <span class="comment">// 抽象方法，没有方法体</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Clickable</span> &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">click</span><span class="params">()</span></span> <span class="comment">// 抽象方法，没有方法体</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>接口成员:</strong></p>
+<ul>
+<li><p><strong>抽象属性 (Abstract Properties):</strong>  接口可以声明属性，但不能提供初始值。  实现接口的类必须提供属性的实现 (必须是 <code>override</code> 并且需要提供初始值或通过 getter&#x2F;setter 初始化)。  从 Kotlin 1.4 开始，接口也可以声明带有 backing field 的属性，从而在接口中提供属性的默认实现，但这比较少见，我们先关注抽象属性。</p>
+  <figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">MyInterface</span> &#123;</span><br><span class="line">    <span class="keyword">val</span> property: String <span class="comment">// 抽象属性，没有初始值</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">method</span><span class="params">()</span></span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span> : <span class="type">MyInterface</span> &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="keyword">val</span> property: String = <span class="string">&quot;实现属性&quot;</span> <span class="comment">// 实现接口的属性，必须提供初始值</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">method</span><span class="params">()</span></span> &#123;</span><br><span class="line">        println(<span class="string">&quot;实现接口的方法&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>抽象方法 (Abstract Methods):</strong>  接口中声明的方法默认是抽象的 (abstract)，不需要显式使用 <code>abstract</code> 关键字。  抽象方法没有方法体，只有方法签名。  实现接口的类必须提供抽象方法的具体实现 (必须使用 <code>override</code> 关键字)。</p>
+</li>
+<li><p><strong>默认方法 (Default Methods):</strong>  从 Java 8 开始，接口可以包含默认方法，Kotlin 也支持。  默认方法在接口中提供方法的默认实现。  实现接口的类可以选择使用默认实现，也可以重写默认方法提供自己的实现。  默认方法使用 <code>fun</code> 关键字并提供方法体。</p>
+  <figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">MyInterfaceWithDefault</span> &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">abstractMethod</span><span class="params">()</span></span> <span class="comment">// 抽象方法</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">defaultMethod</span><span class="params">()</span></span> &#123; <span class="comment">// 默认方法，提供默认实现</span></span><br><span class="line">        println(<span class="string">&quot;接口的默认方法实现&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyClassImpl</span> : <span class="type">MyInterfaceWithDefault</span> &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">abstractMethod</span><span class="params">()</span></span> &#123;</span><br><span class="line">        println(<span class="string">&quot;实现抽象方法&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 可以选择不重写 defaultMethod，使用接口提供的默认实现</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyClassOverrideDefault</span> : <span class="type">MyInterfaceWithDefault</span> &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">abstractMethod</span><span class="params">()</span></span> &#123;</span><br><span class="line">        println(<span class="string">&quot;实现抽象方法&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">defaultMethod</span><span class="params">()</span></span> &#123; <span class="comment">// 重写默认方法，提供自己的实现</span></span><br><span class="line">        println(<span class="string">&quot;类重写的默认方法实现&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><strong>类实现接口</strong></p>
+<p>类可以使用冒号 <code>:</code> 后面跟接口名来声明实现一个或多个接口。  如果一个类既要继承类，又要实现接口，则父类名放在最前面，接口名在后面，用逗号 <code>,</code> 分隔。</p>
+<p><strong>语法:</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> 类名 : 接口名<span class="number">1</span>, 接口名<span class="number">2</span>, ... &#123; <span class="comment">// 实现多个接口</span></span><br><span class="line">    <span class="comment">// ... 实现接口的抽象成员 (属性和方法)</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> 类名 : 父类名(), 接口名<span class="number">1</span>, 接口名<span class="number">2</span>, ... &#123; <span class="comment">// 继承类并实现多个接口</span></span><br><span class="line">    <span class="comment">// ... 实现接口的抽象成员，重写父类的 open 成员</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>例子：</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Drivable</span> &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">start</span><span class="params">()</span></span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">stop</span><span class="params">()</span></span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> قابلRepair &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">repair</span><span class="params">()</span></span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Car</span> : <span class="type">Drivable</span>, <span class="type">قابلRepair</span> &#123; <span class="comment">// Car 类实现 Drivable 和 قابلRepair 接口</span></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">start</span><span class="params">()</span></span> &#123;</span><br><span class="line">        println(<span class="string">&quot;汽车启动&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">stop</span><span class="params">()</span></span> &#123;</span><br><span class="line">        println(<span class="string">&quot;汽车停止&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">repair</span><span class="params">()</span></span> &#123;</span><br><span class="line">        println(<span class="string">&quot;汽车维修&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">drive</span><span class="params">()</span></span> &#123;</span><br><span class="line">        println(<span class="string">&quot;驾驶汽车&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> myCar = Car()</span><br><span class="line">    myCar.start()</span><br><span class="line">    myCar.drive()</span><br><span class="line">    myCar.stop()</span><br><span class="line">    myCar.repair()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>实现接口的抽象成员:</strong>  实现接口的类必须提供接口中所有抽象成员 (属性和方法) 的具体实现，并使用 <code>override</code> 关键字。</p>
+<p><strong>接口的多重继承 (Multiple Inheritance)</strong></p>
+<p>与类只能单继承不同，一个类可以实现多个接口，这被称为接口的多重继承。  接口的多重继承允许一个类拥有多个接口定义的行为，从而实现更灵活的组合和复用。</p>
+<p><strong>例子见 7.2 中的 <code>Car</code> 类，它同时实现了 <code>Drivable</code> 和 <code>قابلRepair</code> 两个接口，拥有了这两个接口定义的行为。</strong></p>
+<p><strong>接口的默认方法 (Default Methods in Interfaces)</strong></p>
+<p>接口的默认方法提供了一种在不破坏已实现接口的类的情况下，向接口添加新方法的机制。  实现接口的类可以选择使用默认实现，也可以重写默认方法提供自己的实现。</p>
+<p><strong>例子：</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Logger</span> &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">log</span><span class="params">(message: <span class="type">String</span>)</span></span> <span class="comment">// 抽象方法</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">logError</span><span class="params">(message: <span class="type">String</span>)</span></span> &#123; <span class="comment">// 默认方法，提供默认的错误日志实现</span></span><br><span class="line">        println(<span class="string">&quot;ERROR: <span class="variable">$message</span>&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ConsoleLogger</span> : <span class="type">Logger</span> &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">log</span><span class="params">(message: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">        println(<span class="string">&quot;Log: <span class="variable">$message</span>&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 没有重写 logError，将使用接口的默认实现</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">FileLogger</span> : <span class="type">Logger</span> &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">log</span><span class="params">(message: <span class="type">String</span>)</span></span> &#123;</span><br><span class="line">        <span class="comment">// 将日志写入文件</span></span><br><span class="line">        println(<span class="string">&quot;写入文件日志: <span class="variable">$message</span>&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">logError</span><span class="params">(message: <span class="type">String</span>)</span></span> &#123; <span class="comment">// 重写默认方法，提供不同的错误日志实现</span></span><br><span class="line">        println(<span class="string">&quot;FILE ERROR: <span class="variable">$message</span>&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> consoleLogger = ConsoleLogger()</span><br><span class="line">    consoleLogger.log(<span class="string">&quot;程序开始运行&quot;</span>)</span><br><span class="line">    consoleLogger.logError(<span class="string">&quot;发生了一个错误&quot;</span>) <span class="comment">// 使用接口的默认实现</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> fileLogger = FileLogger()</span><br><span class="line">    fileLogger.log(<span class="string">&quot;程序开始运行&quot;</span>)</span><br><span class="line">    fileLogger.logError(<span class="string">&quot;发生了一个错误&quot;</span>) <span class="comment">// 使用 FileLogger 重写后的实现</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>接口的默认方法解决了一些传统接口的局限性，使得接口在演化过程中更加灵活。</strong></p>
+<p><strong>接口继承接口:</strong>  接口也可以继承其他接口，使用冒号 <code>:</code> 语法。  一个接口可以继承多个接口。  继承接口的接口会继承父接口的所有成员。</p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">ParentInterface</span> &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">parentMethod</span><span class="params">()</span></span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">ChildInterface</span> : <span class="type">ParentInterface</span> &#123; <span class="comment">// ChildInterface 继承 ParentInterface</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">childMethod</span><span class="params">()</span></span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ImplementationClass</span> : <span class="type">ChildInterface</span> &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">parentMethod</span><span class="params">()</span></span> &#123; <span class="comment">// 必须实现 ParentInterface 的方法</span></span><br><span class="line">        println(<span class="string">&quot;实现 ParentInterface 的方法&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">childMethod</span><span class="params">()</span></span> &#123; <span class="comment">// 必须实现 ChildInterface 的方法</span></span><br><span class="line">        println(<span class="string">&quot;实现 ChildInterface 的方法&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>接口与抽象类的对比 (总结):</strong></p>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>接口 (Interface)</th>
+<th>抽象类 (Abstract Class)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>关键字</td>
+<td><code>interface</code></td>
+<td><code>abstract class</code></td>
+</tr>
+<tr>
+<td>继承&#x2F;实现</td>
+<td>类可以实现多个接口 (多重继承行为)</td>
+<td>类只能继承一个抽象类 (单继承)</td>
+</tr>
+<tr>
+<td>构造函数</td>
+<td>没有构造函数</td>
+<td>可以有构造函数</td>
+</tr>
+<tr>
+<td>属性</td>
+<td>可以声明抽象属性 (需要实现类提供实现)，Kotlin 1.4+ 可以声明带有 backing field 的属性 (提供默认实现)</td>
+<td>可以声明抽象属性和非抽象属性 (可以有状态)</td>
+</tr>
+<tr>
+<td>方法</td>
+<td>可以声明抽象方法和默认方法</td>
+<td>可以声明抽象方法和非抽象方法 (可以提供部分实现)</td>
+</tr>
+<tr>
+<td>实例化</td>
+<td>不能被实例化</td>
+<td>不能被实例化</td>
+</tr>
+<tr>
+<td>主要用途</td>
+<td>定义契约，实现多态，实现行为的 “多重继承”</td>
+<td>定义类的通用模板，代码复用，部分实现，继承层次的骨架</td>
+</tr>
+<tr>
+<td>应用场景</td>
+<td>定义组件之间的协议，插件式架构，实现各种行为的组合</td>
+<td>定义一组相关类的共同特性，提取公共代码，构建框架</td>
+</tr>
+</tbody></table>
+
+          </div>
+        </div>
+
+        <!-- 文章底部 -->
+        <div class="px-8 py-8">
+          <!-- 标签 -->
+          
+            <div class="flex flex-wrap gap-2 mb-8">
+              
+                <a href="/tags/KOTLIN/" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm text-gray-600 transition-colors">
+                  KOTLIN
+                </a>
+                
+            </div>
+            
+
+              <!-- 分享 -->
+              <div class="flex items-center justify-between mb-8 py-6 border-t border-b">
+                <div class="text-sm text-gray-500">分享文章：</div>
+                <div class="flex gap-4">
+                  <button class="text-gray-400 hover:text-gray-600 transition-colors">
+                    <i class="far fa-copy text-xl"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- 上一篇/下一篇 -->
+              <div class="flex flex-col sm:flex-row justify-between gap-4">
+                
+                  <a href="/cm6z6k8kh0003tcx579g58fpk.html" class="group flex-1">
+                    <div class="text-sm text-gray-500 mb-1">上一篇</div>
+                    <div class="group-hover:text-blue-600 transition-colors">
+                      Kotlin (八) | 空安全
+                    </div>
+                  </a>
+                  
+                    
+                      <a href="/cm6z6k8kj0007tcx5d6gvb0zu.html" class="group flex-1 text-right">
+                        <div class="text-sm text-gray-500 mb-1">下一篇</div>
+                        <div class="group-hover:text-blue-600 transition-colors">
+                          Kotlin (五) | 继承
+                        </div>
+                      </a>
+                      
+              </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 侧边栏 -->
+    <aside class="lg:w-1/4 mt-8 lg:mt-0 space-y-6">
+      <!-- 作者信息 -->
+      <div class="bg-white rounded-xl p-6">
+        <div class="flex items-center gap-4 mb-4">
+          <img src="/images/avatar.jpg" class="w-16 h-16 rounded-full">
+          <div>
+            <h3 class="font-medium">Nunumao</h3>
+            <p class="text-sm text-gray-500">开发工程师</p>
+          </div>
+        </div>
+        <p class="text-sm text-gray-600 mb-4">专注于技术研究，热爱分享技术心得</p>
+        <div class="flex justify-center gap-4">
+          <a href="https://github.com/nunumao" target="_blank" class="text-gray-400 hover:text-gray-600">
+            <i class="fab fa-github text-xl"></i>
+          </a>
+          <a href="mailto:gm292018748@email.com" target="_blank" class="text-gray-400 hover:text-[#1DA1F2]">
+            <i class="fas fa-envelope text-xl"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 目录 -->
+      <div class="bg-white rounded-xl p-6 sticky top-24">
+        <h2 class="text-lg font-medium mb-4">目录</h2>
+        <nav class="space-y-2 text-sm">
+          
+        </nav>
+      </div>
+
+      <!-- 分类列表 -->
+      <div class="bg-white rounded-xl p-6">
+        <h2 class="text-lg font-medium mb-4">文章分类</h2>
+        <div class="space-y-3">
+          
+            <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="flex items-center justify-between group">
+              <div class="flex items-center">
+                <i class="fas fa-folder text-gray-500 w-5"></i>
+                <span class="text-sm group-hover:text-blue-600">
+                  服务器
+                </span>
+              </div>
+              <span class="text-xs text-gray-500">
+                3
+              </span>
+            </a>
+            
+            <a href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/" class="flex items-center justify-between group">
+              <div class="flex items-center">
+                <i class="fas fa-server text-green-500 w-5"></i>
+                <span class="text-sm group-hover:text-blue-600">
+                  后端技术
+                </span>
+              </div>
+              <span class="text-xs text-gray-500">
+                20
+              </span>
+            </a>
+            
+            <a href="/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/" class="flex items-center justify-between group">
+              <div class="flex items-center">
+                <i class="fas fa-code text-blue-500 w-5"></i>
+                <span class="text-sm group-hover:text-blue-600">
+                  前端技术
+                </span>
+              </div>
+              <span class="text-xs text-gray-500">
+                1
+              </span>
+            </a>
+            
+        </div>
+      </div>
+
+      <!-- 相关文章 -->
+      <div class="bg-white rounded-xl p-6">
+        <h2 class="text-lg font-medium mb-4">相关文章</h2>
+        <div class="space-y-4">
+          
+            <a href="/cm6z562wp0000ysx5fx4xfxyq.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (一) | 基本语法
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm6z562wt0001ysx5g3tn4b0o.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (四) | 类和对象
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm6z562wx0003ysx5e2pn7bg7.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (二) | 控制流
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm6z562wy0005ysx551of5kin.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (三) | 函数
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm6z6k8kb0000tcx56eq63qfa.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (七) | 集合
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+        </div>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<style>
+  .markdown-body {
+    box-sizing: border-box;
+    min-width: 200px;
+    max-width: 100%;
+    margin: 0 auto;
+    background-color: white;
+  }
+
+  /* 适配深色模式 */
+  @media (prefers-color-scheme: dark) {
+    .markdown-body {
+      color-scheme: dark;
+      --color-prettylights-syntax-comment: #8b949e;
+      --color-prettylights-syntax-constant: #79c0ff;
+      --color-prettylights-syntax-entity: #d2a8ff;
+      --color-prettylights-syntax-storage-modifier-import: #c9d1d9;
+      --color-prettylights-syntax-entity-tag: #7ee787;
+      --color-prettylights-syntax-keyword: #ff7b72;
+      --color-prettylights-syntax-string: #a5d6ff;
+      --color-prettylights-syntax-variable: #ffa657;
+      --color-prettylights-syntax-brackethighlighter-unmatched: #f85149;
+      --color-prettylights-syntax-invalid-illegal-text: #f0f6fc;
+      --color-prettylights-syntax-invalid-illegal-bg: #8e1519;
+      --color-prettylights-syntax-carriage-return-text: #f0f6fc;
+      --color-prettylights-syntax-carriage-return-bg: #b62324;
+      --color-prettylights-syntax-string-regexp: #7ee787;
+      --color-prettylights-syntax-markup-list: #f2cc60;
+      --color-prettylights-syntax-markup-heading: #1f6feb;
+      --color-prettylights-syntax-markup-italic: #c9d1d9;
+      --color-prettylights-syntax-markup-bold: #c9d1d9;
+      --color-prettylights-syntax-markup-deleted-text: #ffdcd7;
+      --color-prettylights-syntax-markup-deleted-bg: #67060c;
+      --color-prettylights-syntax-markup-inserted-text: #aff5b4;
+      --color-prettylights-syntax-markup-inserted-bg: #033a16;
+      --color-prettylights-syntax-markup-changed-text: #ffdfb6;
+      --color-prettylights-syntax-markup-changed-bg: #5a1e02;
+      --color-prettylights-syntax-markup-ignored-text: #c9d1d9;
+      --color-prettylights-syntax-markup-ignored-bg: #1158c7;
+      --color-prettylights-syntax-meta-diff-range: #d2a8ff;
+      --color-prettylights-syntax-brackethighlighter-angle: #8b949e;
+      --color-prettylights-syntax-sublimelinter-gutter-mark: #484f58;
+      --color-prettylights-syntax-constant-other-reference-link: #a5d6ff;
+      --color-fg-default: #c9d1d9;
+      --color-fg-muted: #8b949e;
+      --color-fg-subtle: #6e7681;
+      --color-canvas-default: #0d1117;
+      --color-canvas-subtle: #161b22;
+      --color-border-default: #30363d;
+      --color-border-muted: #21262d;
+      --color-neutral-muted: rgba(110, 118, 129, 0.4);
+      --color-accent-fg: #58a6ff;
+      --color-accent-emphasis: #1f6feb;
+      --color-attention-subtle: rgba(187, 128, 9, 0.15);
+      --color-danger-fg: #f85149;
+    }
+  }
+</style>
+  <!-- 页脚 -->
+<footer class="border-t mt-16">
+  <div class="max-w-4xl mx-auto px-4 py-8 text-center text-sm text-gray-500">
+    <p>© 2025 nunumao. Built with <a href="#" class="text-blue-600">Hexo</a></p>
+  </div>
+</footer>
+</body>
+
+</html>

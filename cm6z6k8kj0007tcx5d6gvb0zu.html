@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>编程日记</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  
+<link rel="stylesheet" href="/css/github-markdown.css">
+
+  
+<link rel="stylesheet" href="/css/atom-one-dark.css">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+<script src="/js/jquery.min.js"></script>
+
+  
+<script src="/js/script.js"></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="bg-gray-50 text-gray-800">
+  <div class="lg:hidden fixed right-4 top-4 z-50">
+    <button class="p-2 bg-white/80 backdrop-blur-sm rounded-lg border" data-mobile-menu-trigger><i class="fas fa-bars"></i></button>
+  </div>
+  <!-- 导航栏 -->
+  <nav class="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-40">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="flex justify-between items-center h-16">
+        <a href="/" class="text-xl font-serif">编程日记</a>
+        <!-- 桌面端导航 -->
+        <div class="hidden lg:flex items-center space-x-6">
+          <div class="flex items-center space-x-6 text-sm">
+            <a href="/" class="hover:text-blue-600" data-i18n="nav.home">首页</a>
+            <!-- 分类下拉菜单 -->
+            <div class="relative group">
+              <a href="/categories" class="hover:text-blue-600">分类</a>
+              <!-- 优化后的下拉内容 -->
+              <div class="absolute left-0 mt-2 py-2 bg-white backdrop-blur-sm border rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div class="grid grid-cols-2 gap-1 w-[400px] p-4">
+                  
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/服务器/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>服务器</span>
+                        </a>
+                      
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/后端技术/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>后端技术</span>
+                        </a>
+                      
+                    
+                      
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/前端技术/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>前端技术</span>
+                        </a>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                  
+                </div>
+              </div>
+            </div>
+            <a href="/case" class="hover:text-blue-600" data-i18n="nav.case">作品</a>
+            <a href="/archives" class="hover:text-blue-600" data-i18n="nav.archives">归档</a>
+            <a href="/about" class="hover:text-blue-600" data-i18n="nav.about">关于</a>
+            <!-- 搜索框 -->
+            <div class="relative">
+              <input type="search" placeholder="Search articles..." class="w-48 px-4 py-1 text-sm border rounded-full bg-gray-50 focus:outline-none focus:ring-1 focus:ring-blue-500">
+              <i class="fas fa-search absolute right-3 top-2 text-gray-400"></i>
+            </div>
+            <!-- 语言切换 -->
+            <div class="flex items-center space-x-2 ml-4 text-sm border-l pl-4">
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('en-US')">EN</button>
+              <span class="text-gray-300">|</span>
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('zh-CN')">简</button>
+              <span class="text-gray-300">|</span>
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('zh-TW')">繁</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div id="mobileMenu" class="fixed inset-0 bg-white/90 backdrop-blur-sm z-40 lg:hidden hidden">
+    <div class="h-full w-full flex flex-col items-center justify-center space-y-6 text-lg">
+      <a href="/" class="hover:text-blue-600" data-i18n="nav.home">首页</a>
+      <a href="/categories" class="hover:text-blue-600" data-i18n="nav.categories">分类</a>
+      <a href="/case" class="hover:text-blue-600" data-i18n="nav.case">作品</a>
+      <a href="/archives" class="hover:text-blue-600" data-i18n="nav.archive">归档</a>
+      <a href="/about" class="hover:text-blue-600" data-i18n="nav.about">关于</a>
+      <div class="flex items-center space-x-4 mt-4">
+        <button class="lang-switch hover:text-blue-600" data-lang="en">EN</button>
+        <button class="lang-switch hover:text-blue-600" data-lang="zh">简</button>
+        <button class="lang-switch hover:text-blue-600" data-lang="zh-TW">繁</button>
+      </div>
+    </div>
+  </div>
+  <main class="max-w-5xl mx-auto px-4 py-12">
+  <div class="lg:flex lg:gap-8">
+    <!-- 文章主体 -->
+    <article class="lg:w-3/4">
+      <!-- 文章容器 -->
+      <div class="bg-white rounded-xl overflow-hidden">
+        <!-- 文章头部 -->
+        <div class="px-8 pt-12 pb-8">
+          <!-- 标题 -->
+          <h1 class="text-3xl font-medium mb-6 leading-snug">
+            Kotlin (五) | 继承
+          </h1>
+
+          <!-- 元信息 -->
+          <div class="flex flex-wrap items-center gap-6 text-sm text-gray-500">
+            <span>
+              <i class="fas fa-folder-open mr-2"></i>
+              
+                <a href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/KOTLIN/" class="hover:text-blue-600">
+                  KOTLIN
+                </a>
+                
+            </span>
+            <span>
+              <i class="far fa-calendar mr-2"></i>
+              2025-02-10
+            </span>
+            <span><i class="far fa-clock mr-2"></i>15 分钟阅读</span>
+            <span><i class="far fa-eye mr-2"></i>
+              0
+            </span>
+          </div>
+        </div>
+
+        <!-- 文章内容 -->
+        <div class="px-8 py-10 border-t border-b">
+          <div class="markdown-body">
+            <p><strong>继承 (Inheritance)</strong></p>
+<p>继承是面向对象编程 (OOP) 的另一个核心概念。 它允许我们创建一个新的类 (子类&#x2F;派生类)，继承已存在的类 (父类&#x2F;超类) 的属性和方法。  继承实现了代码重用，并建立了类之间的 “is-a” 关系。 例如， “狗 <em>是</em> 动物”，那么 <code>Dog</code> 类可以继承 <code>Animal</code> 类。</p>
+<p><strong>类的继承</strong></p>
+<p>在 Kotlin 中，默认情况下，类和类的成员 (属性和方法) 都是 <code>final</code> 的，这意味着它们不能被继承或重写。  要允许一个类被继承，或者允许类中的成员被子类重写，需要使用 <code>open</code> 关键字。</p>
+<ul>
+<li><strong><code>open</code> 关键字:</strong>  用于修饰类和成员 (属性和方法)，表示它们是开放的，可以被继承和重写。</li>
+</ul>
+<p><strong><code>open</code> 关键字</strong></p>
+<ul>
+<li><strong><code>open</code> 类:</strong>  使用 <code>open</code> 关键字修饰的类才能被其他类继承。</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="keyword">open</span> <span class="keyword">class</span> <span class="title class_">Animal</span> &#123; <span class="comment">// 使用 open 关键字，Animal 类可以被继承</span></span><br><span class="line">    <span class="keyword">open</span> <span class="keyword">var</span> name: String = <span class="string">&quot;&quot;</span> <span class="comment">// name 属性默认也是 final 的，需要用 open 修饰才能被子类重写</span></span><br><span class="line">    <span class="keyword">open</span> <span class="function"><span class="keyword">fun</span> <span class="title">makeSound</span><span class="params">()</span></span> &#123; <span class="comment">// makeSound 方法默认也是 final 的，需要用 open 修饰才能被子类重写</span></span><br><span class="line">        println(<span class="string">&quot;动物发出声音&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Dog 类继承自 Animal 类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Dog</span> : <span class="type">Animal</span>() &#123; <span class="comment">// 使用冒号 `:` 和父类名表示继承，Animal() 调用父类的构造函数</span></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Cat</span> : <span class="type">Animal</span>() &#123; <span class="comment">// Cat 类也继承自 Animal 类</span></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong><code>open</code> 成员 (属性和方法):</strong>  使用 <code>open</code> 关键字修饰的属性和方法才能在子类中被重写 (override)。</li>
+</ul>
+<p><strong>继承类</strong></p>
+<p>要让一个类继承另一个类，需要在子类声明的类名后面使用冒号 <code>:</code>，后跟父类名，并在父类名后加上括号 <code>()</code> 调用父类的构造函数 (主构造函数或次构造函数)。</p>
+<p><strong>语法:</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="keyword">open</span> <span class="keyword">class</span> 父类 &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> 子类 : 父类(父类构造函数参数) &#123; <span class="comment">// 使用 : 父类名() 表示继承</span></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>例子：</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="keyword">open</span> <span class="keyword">class</span> <span class="title class_">Animal</span>(<span class="keyword">open</span> <span class="keyword">var</span> name: String) &#123; <span class="comment">// 父类 Animal，name 属性是 open 的</span></span><br><span class="line">    <span class="keyword">open</span> <span class="function"><span class="keyword">fun</span> <span class="title">makeSound</span><span class="params">()</span></span> &#123;</span><br><span class="line">        println(<span class="string">&quot;动物发出声音&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Dog</span>(<span class="keyword">override</span> <span class="keyword">var</span> name: String) : Animal(name) &#123; <span class="comment">// Dog 类继承 Animal，并重写 name 属性和 makeSound 方法</span></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">makeSound</span><span class="params">()</span></span> &#123; <span class="comment">// 使用 override 关键字重写父类的方法</span></span><br><span class="line">        println(<span class="string">&quot;汪汪汪&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">bark</span><span class="params">()</span></span> &#123;</span><br><span class="line">        println(<span class="string">&quot;狗狗在叫&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Cat</span>(<span class="keyword">override</span> <span class="keyword">var</span> name: String) : Animal(name) &#123; <span class="comment">// Cat 类继承 Animal，并重写 name 属性和 makeSound 方法</span></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">makeSound</span><span class="params">()</span></span> &#123;</span><br><span class="line">        println(<span class="string">&quot;喵喵喵&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">meow</span><span class="params">()</span></span> &#123;</span><br><span class="line">        println(<span class="string">&quot;猫咪在叫&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> animal = Animal(<span class="string">&quot;普通动物&quot;</span>)</span><br><span class="line">    animal.makeSound() <span class="comment">// 输出: 动物发出声音</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> dog = Dog(<span class="string">&quot;旺财&quot;</span>)</span><br><span class="line">    dog.makeSound() <span class="comment">// 输出: 汪汪汪 (调用 Dog 类重写后的 makeSound 方法)</span></span><br><span class="line">    dog.bark()      <span class="comment">// 输出: 狗狗在叫 (调用 Dog 类自己的 bark 方法)</span></span><br><span class="line">    println(<span class="string">&quot;狗狗的名字: <span class="subst">$&#123;dog.name&#125;</span>&quot;</span>) <span class="comment">// 输出: 狗狗的名字: 旺财 (访问 Dog 类继承并重写的 name 属性)</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> cat = Cat(<span class="string">&quot;咪咪&quot;</span>)</span><br><span class="line">    cat.makeSound() <span class="comment">// 输出: 喵喵喵 (调用 Cat 类重写后的 makeSound 方法)</span></span><br><span class="line">    cat.meow()      <span class="comment">// 输出: 猫咪在叫 (调用 Cat 类自己的 meow 方法)</span></span><br><span class="line">    println(<span class="string">&quot;猫咪的名字: <span class="subst">$&#123;cat.name&#125;</span>&quot;</span>) <span class="comment">// 输出: 猫咪的名字: 咪咪 (访问 Cat 类继承并重写的 name 属性)</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>方法重写 (Method Overriding)</strong></p>
+<p>子类可以重写 (override) 父类中 <code>open</code> 修饰的方法，以提供不同的实现。  在子类中重写方法时，需要使用 <code>override</code> 关键字。</p>
+<ul>
+<li><strong><code>override</code> 关键字:</strong>  用于在子类中声明重写父类的方法或属性。  Kotlin 要求显式使用 <code>override</code> 关键字，以提高代码可读性和安全性，防止意外重写。</li>
+</ul>
+<p><strong>例子见 6.3 中的 <code>Dog</code> 和 <code>Cat</code> 类，它们都重写了 <code>Animal</code> 类的 <code>makeSound()</code> 方法。</strong></p>
+<p><strong><code>super</code> 关键字</strong></p>
+<p>在子类中，可以使用 <code>super</code> 关键字来调用父类的成员 (属性和方法) 或构造函数。</p>
+<ul>
+<li><strong><code>super.属性名</code>:</strong>  访问父类的属性。</li>
+<li><strong><code>super.方法名()</code>:</strong>  调用父类的方法。</li>
+<li><strong><code>super()</code>:</strong>  在子类的构造函数中调用父类的构造函数。  <strong>如果子类有主构造函数，并且父类也有主构造函数，则子类的主构造函数必须直接或间接地调用父类的主构造函数。</strong>  这在继承类时已经体现了，例如 <code>class Dog(override var name: String) : Animal(name)</code> 中的 <code>Animal(name)</code> 就是调用父类 <code>Animal</code> 的主构造函数。</li>
+</ul>
+<p><strong>例子：</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="keyword">open</span> <span class="keyword">class</span> <span class="title class_">Vehicle</span>(<span class="keyword">open</span> <span class="keyword">var</span> color: String) &#123;</span><br><span class="line">    <span class="keyword">open</span> <span class="function"><span class="keyword">fun</span> <span class="title">startEngine</span><span class="params">()</span></span> &#123;</span><br><span class="line">        println(<span class="string">&quot;启动发动机&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Car</span>(<span class="keyword">override</span> <span class="keyword">var</span> color: String, <span class="keyword">var</span> brand: String) : Vehicle(color) &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">startEngine</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.startEngine() <span class="comment">// 先调用父类的 startEngine 方法</span></span><br><span class="line">        println(<span class="string">&quot;汽车发动机启动&quot;</span>) <span class="comment">// 然后执行子类自己的逻辑</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">displayInfo</span><span class="params">()</span></span> &#123;</span><br><span class="line">        println(<span class="string">&quot;颜色: <span class="variable">$color</span>, 品牌: <span class="variable">$brand</span>&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> myCar = Car(<span class="string">&quot;红色&quot;</span>, <span class="string">&quot;宝马&quot;</span>)</span><br><span class="line">    myCar.displayInfo() <span class="comment">// 输出: 颜色: 红色, 品牌: 宝马</span></span><br><span class="line">    myCar.startEngine() <span class="comment">// 输出:</span></span><br><span class="line">                        <span class="comment">// 启动发动机 (来自父类 Vehicle)</span></span><br><span class="line">                        <span class="comment">// 汽车发动机启动 (来自子类 Car)</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在 <code>Car</code> 类的 <code>startEngine()</code> 方法中，<code>super.startEngine()</code> 调用了父类 <code>Vehicle</code> 的 <code>startEngine()</code> 方法，然后再执行 <code>Car</code> 类自己的启动逻辑。  这实现了在子类方法中扩展父类方法的功能。</p>
+<p><strong>抽象类 (Abstract Classes)</strong></p>
+<p>抽象类是一种不能被实例化的类，只能作为其他类的父类使用。  抽象类可以包含抽象成员 (抽象属性和抽象方法) 和非抽象成员。</p>
+<ul>
+<li><p><strong><code>abstract</code> 关键字:</strong>  用于修饰抽象类和抽象成员。</p>
+</li>
+<li><p><strong>抽象类:</strong>  使用 <code>abstract</code> 关键字修饰的类。  抽象类不能创建对象。</p>
+</li>
+<li><p><strong>抽象成员 (属性和方法):</strong>  使用 <code>abstract</code> 关键字修饰的属性和方法。  抽象成员没有实现 (没有方法体)，子类必须重写抽象父类的所有抽象成员才能成为具体类 (可以被实例化)。</p>
+</li>
+</ul>
+<p><strong>语法:</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> 抽象类名 &#123;</span><br><span class="line">    <span class="keyword">abstract</span> <span class="keyword">var</span> 抽象属性名: 数据类型 <span class="comment">// 抽象属性，没有初始值</span></span><br><span class="line">    <span class="keyword">abstract</span> <span class="function"><span class="keyword">fun</span> 抽象方法名<span class="params">()</span></span>         <span class="comment">// 抽象方法，没有方法体</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 可以包含非抽象成员 (有实现的属性和方法)</span></span><br><span class="line">    <span class="keyword">var</span> 非抽象属性名: 数据类型 = 初始值</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> 非抽象方法名<span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="comment">// 方法体</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> 具体子类 : 抽象类() &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="keyword">var</span> 抽象属性名: 数据类型 = ... <span class="comment">// 必须重写抽象属性，并提供初始值</span></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> 抽象方法名<span class="params">()</span></span> &#123;           <span class="comment">// 必须重写抽象方法，并提供方法体</span></span><br><span class="line">        <span class="comment">// 方法体</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>例子：</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">Shape</span> &#123; <span class="comment">// 抽象类 Shape</span></span><br><span class="line">    <span class="keyword">abstract</span> <span class="function"><span class="keyword">fun</span> <span class="title">getArea</span><span class="params">()</span></span>: <span class="built_in">Double</span> <span class="comment">// 抽象方法 getArea，计算面积，没有方法体</span></span><br><span class="line">    <span class="keyword">abstract</span> <span class="keyword">val</span> color: String     <span class="comment">// 抽象属性 color，颜色，没有初始值</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">displayColor</span><span class="params">()</span></span> &#123; <span class="comment">// 非抽象方法，显示颜色</span></span><br><span class="line">        println(<span class="string">&quot;形状颜色: <span class="variable">$color</span>&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Circle</span>(<span class="keyword">override</span> <span class="keyword">val</span> color: String, <span class="keyword">val</span> radius: <span class="built_in">Double</span>) : Shape() &#123; <span class="comment">// Circle 继承 Shape，必须重写抽象成员</span></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">getArea</span><span class="params">()</span></span>: <span class="built_in">Double</span> &#123; <span class="comment">// 重写抽象方法 getArea</span></span><br><span class="line">        <span class="keyword">return</span> Math.PI * radius * radius</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Rectangle</span>(<span class="keyword">override</span> <span class="keyword">val</span> color: String, <span class="keyword">val</span> length: <span class="built_in">Double</span>, <span class="keyword">val</span> width: <span class="built_in">Double</span>) : Shape() &#123; <span class="comment">// Rectangle 继承 Shape，必须重写抽象成员</span></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">getArea</span><span class="params">()</span></span>: <span class="built_in">Double</span> &#123; <span class="comment">// 重写抽象方法 getArea</span></span><br><span class="line">        <span class="keyword">return</span> length * width</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">// val shape = Shape() // 错误！ 抽象类 Shape 不能被实例化</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> circle = Circle(<span class="string">&quot;蓝色&quot;</span>, <span class="number">5.0</span>)</span><br><span class="line">    circle.displayColor() <span class="comment">// 输出: 形状颜色: 蓝色</span></span><br><span class="line">    println(<span class="string">&quot;圆的面积: <span class="subst">$&#123;circle.getArea()&#125;</span>&quot;</span>) <span class="comment">// 输出: 圆的面积: ...</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> rectangle = Rectangle(<span class="string">&quot;红色&quot;</span>, <span class="number">10.0</span>, <span class="number">8.0</span>)</span><br><span class="line">    rectangle.displayColor() <span class="comment">// 输出: 形状颜色: 红色</span></span><br><span class="line">    println(<span class="string">&quot;矩形的面积: <span class="subst">$&#123;rectangle.getArea()&#125;</span>&quot;</span>) <span class="comment">// 输出: 矩形的面积: ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>抽象类用于定义一组相关类的通用接口 (抽象方法和抽象属性)，并强制子类实现这些接口。  抽象类可以包含一些通用的非抽象方法，供子类直接使用或重写。</p>
+
+          </div>
+        </div>
+
+        <!-- 文章底部 -->
+        <div class="px-8 py-8">
+          <!-- 标签 -->
+          
+            <div class="flex flex-wrap gap-2 mb-8">
+              
+                <a href="/tags/KOTLIN/" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm text-gray-600 transition-colors">
+                  KOTLIN
+                </a>
+                
+            </div>
+            
+
+              <!-- 分享 -->
+              <div class="flex items-center justify-between mb-8 py-6 border-t border-b">
+                <div class="text-sm text-gray-500">分享文章：</div>
+                <div class="flex gap-4">
+                  <button class="text-gray-400 hover:text-gray-600 transition-colors">
+                    <i class="far fa-copy text-xl"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- 上一篇/下一篇 -->
+              <div class="flex flex-col sm:flex-row justify-between gap-4">
+                
+                  <a href="/cm6z6k8ki0005tcx5g1pl9erv.html" class="group flex-1">
+                    <div class="text-sm text-gray-500 mb-1">上一篇</div>
+                    <div class="group-hover:text-blue-600 transition-colors">
+                      Kotlin (六) | 接口
+                    </div>
+                  </a>
+                  
+                    
+                      <a href="/cm6z6k8kk000atcx55f4a7enk.html" class="group flex-1 text-right">
+                        <div class="text-sm text-gray-500 mb-1">下一篇</div>
+                        <div class="group-hover:text-blue-600 transition-colors">
+                          Kotlin (十) | 数据类和密封类
+                        </div>
+                      </a>
+                      
+              </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 侧边栏 -->
+    <aside class="lg:w-1/4 mt-8 lg:mt-0 space-y-6">
+      <!-- 作者信息 -->
+      <div class="bg-white rounded-xl p-6">
+        <div class="flex items-center gap-4 mb-4">
+          <img src="/images/avatar.jpg" class="w-16 h-16 rounded-full">
+          <div>
+            <h3 class="font-medium">Nunumao</h3>
+            <p class="text-sm text-gray-500">开发工程师</p>
+          </div>
+        </div>
+        <p class="text-sm text-gray-600 mb-4">专注于技术研究，热爱分享技术心得</p>
+        <div class="flex justify-center gap-4">
+          <a href="https://github.com/nunumao" target="_blank" class="text-gray-400 hover:text-gray-600">
+            <i class="fab fa-github text-xl"></i>
+          </a>
+          <a href="mailto:gm292018748@email.com" target="_blank" class="text-gray-400 hover:text-[#1DA1F2]">
+            <i class="fas fa-envelope text-xl"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 目录 -->
+      <div class="bg-white rounded-xl p-6 sticky top-24">
+        <h2 class="text-lg font-medium mb-4">目录</h2>
+        <nav class="space-y-2 text-sm">
+          
+        </nav>
+      </div>
+
+      <!-- 分类列表 -->
+      <div class="bg-white rounded-xl p-6">
+        <h2 class="text-lg font-medium mb-4">文章分类</h2>
+        <div class="space-y-3">
+          
+            <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="flex items-center justify-between group">
+              <div class="flex items-center">
+                <i class="fas fa-folder text-gray-500 w-5"></i>
+                <span class="text-sm group-hover:text-blue-600">
+                  服务器
+                </span>
+              </div>
+              <span class="text-xs text-gray-500">
+                3
+              </span>
+            </a>
+            
+            <a href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/" class="flex items-center justify-between group">
+              <div class="flex items-center">
+                <i class="fas fa-server text-green-500 w-5"></i>
+                <span class="text-sm group-hover:text-blue-600">
+                  后端技术
+                </span>
+              </div>
+              <span class="text-xs text-gray-500">
+                20
+              </span>
+            </a>
+            
+            <a href="/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/" class="flex items-center justify-between group">
+              <div class="flex items-center">
+                <i class="fas fa-code text-blue-500 w-5"></i>
+                <span class="text-sm group-hover:text-blue-600">
+                  前端技术
+                </span>
+              </div>
+              <span class="text-xs text-gray-500">
+                1
+              </span>
+            </a>
+            
+        </div>
+      </div>
+
+      <!-- 相关文章 -->
+      <div class="bg-white rounded-xl p-6">
+        <h2 class="text-lg font-medium mb-4">相关文章</h2>
+        <div class="space-y-4">
+          
+            <a href="/cm6z562wp0000ysx5fx4xfxyq.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (一) | 基本语法
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm6z562wt0001ysx5g3tn4b0o.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (四) | 类和对象
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm6z562wx0003ysx5e2pn7bg7.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (二) | 控制流
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm6z562wy0005ysx551of5kin.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (三) | 函数
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm6z6k8kb0000tcx56eq63qfa.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (七) | 集合
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+        </div>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<style>
+  .markdown-body {
+    box-sizing: border-box;
+    min-width: 200px;
+    max-width: 100%;
+    margin: 0 auto;
+    background-color: white;
+  }
+
+  /* 适配深色模式 */
+  @media (prefers-color-scheme: dark) {
+    .markdown-body {
+      color-scheme: dark;
+      --color-prettylights-syntax-comment: #8b949e;
+      --color-prettylights-syntax-constant: #79c0ff;
+      --color-prettylights-syntax-entity: #d2a8ff;
+      --color-prettylights-syntax-storage-modifier-import: #c9d1d9;
+      --color-prettylights-syntax-entity-tag: #7ee787;
+      --color-prettylights-syntax-keyword: #ff7b72;
+      --color-prettylights-syntax-string: #a5d6ff;
+      --color-prettylights-syntax-variable: #ffa657;
+      --color-prettylights-syntax-brackethighlighter-unmatched: #f85149;
+      --color-prettylights-syntax-invalid-illegal-text: #f0f6fc;
+      --color-prettylights-syntax-invalid-illegal-bg: #8e1519;
+      --color-prettylights-syntax-carriage-return-text: #f0f6fc;
+      --color-prettylights-syntax-carriage-return-bg: #b62324;
+      --color-prettylights-syntax-string-regexp: #7ee787;
+      --color-prettylights-syntax-markup-list: #f2cc60;
+      --color-prettylights-syntax-markup-heading: #1f6feb;
+      --color-prettylights-syntax-markup-italic: #c9d1d9;
+      --color-prettylights-syntax-markup-bold: #c9d1d9;
+      --color-prettylights-syntax-markup-deleted-text: #ffdcd7;
+      --color-prettylights-syntax-markup-deleted-bg: #67060c;
+      --color-prettylights-syntax-markup-inserted-text: #aff5b4;
+      --color-prettylights-syntax-markup-inserted-bg: #033a16;
+      --color-prettylights-syntax-markup-changed-text: #ffdfb6;
+      --color-prettylights-syntax-markup-changed-bg: #5a1e02;
+      --color-prettylights-syntax-markup-ignored-text: #c9d1d9;
+      --color-prettylights-syntax-markup-ignored-bg: #1158c7;
+      --color-prettylights-syntax-meta-diff-range: #d2a8ff;
+      --color-prettylights-syntax-brackethighlighter-angle: #8b949e;
+      --color-prettylights-syntax-sublimelinter-gutter-mark: #484f58;
+      --color-prettylights-syntax-constant-other-reference-link: #a5d6ff;
+      --color-fg-default: #c9d1d9;
+      --color-fg-muted: #8b949e;
+      --color-fg-subtle: #6e7681;
+      --color-canvas-default: #0d1117;
+      --color-canvas-subtle: #161b22;
+      --color-border-default: #30363d;
+      --color-border-muted: #21262d;
+      --color-neutral-muted: rgba(110, 118, 129, 0.4);
+      --color-accent-fg: #58a6ff;
+      --color-accent-emphasis: #1f6feb;
+      --color-attention-subtle: rgba(187, 128, 9, 0.15);
+      --color-danger-fg: #f85149;
+    }
+  }
+</style>
+  <!-- 页脚 -->
+<footer class="border-t mt-16">
+  <div class="max-w-4xl mx-auto px-4 py-8 text-center text-sm text-gray-500">
+    <p>© 2025 nunumao. Built with <a href="#" class="text-blue-600">Hexo</a></p>
+  </div>
+</footer>
+</body>
+
+</html>

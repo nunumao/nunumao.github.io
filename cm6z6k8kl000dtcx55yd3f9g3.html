@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>编程日记</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  
+<link rel="stylesheet" href="/css/github-markdown.css">
+
+  
+<link rel="stylesheet" href="/css/atom-one-dark.css">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+<script src="/js/jquery.min.js"></script>
+
+  
+<script src="/js/script.js"></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="bg-gray-50 text-gray-800">
+  <div class="lg:hidden fixed right-4 top-4 z-50">
+    <button class="p-2 bg-white/80 backdrop-blur-sm rounded-lg border" data-mobile-menu-trigger><i class="fas fa-bars"></i></button>
+  </div>
+  <!-- 导航栏 -->
+  <nav class="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-40">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="flex justify-between items-center h-16">
+        <a href="/" class="text-xl font-serif">编程日记</a>
+        <!-- 桌面端导航 -->
+        <div class="hidden lg:flex items-center space-x-6">
+          <div class="flex items-center space-x-6 text-sm">
+            <a href="/" class="hover:text-blue-600" data-i18n="nav.home">首页</a>
+            <!-- 分类下拉菜单 -->
+            <div class="relative group">
+              <a href="/categories" class="hover:text-blue-600">分类</a>
+              <!-- 优化后的下拉内容 -->
+              <div class="absolute left-0 mt-2 py-2 bg-white backdrop-blur-sm border rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div class="grid grid-cols-2 gap-1 w-[400px] p-4">
+                  
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/服务器/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>服务器</span>
+                        </a>
+                      
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/后端技术/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>后端技术</span>
+                        </a>
+                      
+                    
+                      
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/前端技术/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>前端技术</span>
+                        </a>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                  
+                </div>
+              </div>
+            </div>
+            <a href="/case" class="hover:text-blue-600" data-i18n="nav.case">作品</a>
+            <a href="/archives" class="hover:text-blue-600" data-i18n="nav.archives">归档</a>
+            <a href="/about" class="hover:text-blue-600" data-i18n="nav.about">关于</a>
+            <!-- 搜索框 -->
+            <div class="relative">
+              <input type="search" placeholder="Search articles..." class="w-48 px-4 py-1 text-sm border rounded-full bg-gray-50 focus:outline-none focus:ring-1 focus:ring-blue-500">
+              <i class="fas fa-search absolute right-3 top-2 text-gray-400"></i>
+            </div>
+            <!-- 语言切换 -->
+            <div class="flex items-center space-x-2 ml-4 text-sm border-l pl-4">
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('en-US')">EN</button>
+              <span class="text-gray-300">|</span>
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('zh-CN')">简</button>
+              <span class="text-gray-300">|</span>
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('zh-TW')">繁</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div id="mobileMenu" class="fixed inset-0 bg-white/90 backdrop-blur-sm z-40 lg:hidden hidden">
+    <div class="h-full w-full flex flex-col items-center justify-center space-y-6 text-lg">
+      <a href="/" class="hover:text-blue-600" data-i18n="nav.home">首页</a>
+      <a href="/categories" class="hover:text-blue-600" data-i18n="nav.categories">分类</a>
+      <a href="/case" class="hover:text-blue-600" data-i18n="nav.case">作品</a>
+      <a href="/archives" class="hover:text-blue-600" data-i18n="nav.archive">归档</a>
+      <a href="/about" class="hover:text-blue-600" data-i18n="nav.about">关于</a>
+      <div class="flex items-center space-x-4 mt-4">
+        <button class="lang-switch hover:text-blue-600" data-lang="en">EN</button>
+        <button class="lang-switch hover:text-blue-600" data-lang="zh">简</button>
+        <button class="lang-switch hover:text-blue-600" data-lang="zh-TW">繁</button>
+      </div>
+    </div>
+  </div>
+  <main class="max-w-5xl mx-auto px-4 py-12">
+  <div class="lg:flex lg:gap-8">
+    <!-- 文章主体 -->
+    <article class="lg:w-3/4">
+      <!-- 文章容器 -->
+      <div class="bg-white rounded-xl overflow-hidden">
+        <!-- 文章头部 -->
+        <div class="px-8 pt-12 pb-8">
+          <!-- 标题 -->
+          <h1 class="text-3xl font-medium mb-6 leading-snug">
+            Kotlin (十一) | 泛型
+          </h1>
+
+          <!-- 元信息 -->
+          <div class="flex flex-wrap items-center gap-6 text-sm text-gray-500">
+            <span>
+              <i class="fas fa-folder-open mr-2"></i>
+              
+                <a href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/KOTLIN/" class="hover:text-blue-600">
+                  KOTLIN
+                </a>
+                
+            </span>
+            <span>
+              <i class="far fa-calendar mr-2"></i>
+              2025-02-10
+            </span>
+            <span><i class="far fa-clock mr-2"></i>15 分钟阅读</span>
+            <span><i class="far fa-eye mr-2"></i>
+              0
+            </span>
+          </div>
+        </div>
+
+        <!-- 文章内容 -->
+        <div class="px-8 py-10 border-t border-b">
+          <div class="markdown-body">
+            <p><strong>泛型 (Generics)</strong></p>
+<p>泛型是编程语言中一种强大的特性，它允许你编写<strong>类型参数化</strong>的代码。  这意味着你可以编写类、接口和函数，使其能够操作多种类型的数据，而无需在编写代码时指定具体的类型。  泛型的主要目的是提高代码的<strong>重用性</strong>、<strong>类型安全</strong>和<strong>性能</strong>。</p>
+<p><strong>泛型的基本概念</strong></p>
+<p>在没有泛型的情况下，如果你需要编写一个函数来处理不同类型的列表，例如 <code>List&lt;Int&gt;</code> 和 <code>List&lt;String&gt;</code>，你可能需要编写多个重载函数，或者使用 <code>Any</code> 类型来处理，但这会牺牲类型安全。  泛型允许你编写一个函数，它可以接受 <code>List&lt;T&gt;</code> (其中 <code>T</code> 是一个类型参数)，并且在调用时可以指定 <code>T</code> 为 <code>Int</code>, <code>String</code> 或任何其他类型。</p>
+<p><strong>泛型的优势:</strong></p>
+<ul>
+<li><strong>代码重用:</strong>  使用泛型可以编写通用的代码，可以应用于多种类型的数据，减少代码重复。</li>
+<li><strong>类型安全:</strong>  泛型在编译时进行类型检查，可以避免类型转换错误，提高代码的安全性。  编译器会确保你在使用泛型代码时，类型是正确的。</li>
+<li><strong>性能提升:</strong>  泛型在编译时进行类型擦除 (Type Erasure)，运行时没有额外的类型信息开销，性能与非泛型代码相近。</li>
+</ul>
+<p><strong>类型参数 (Type Parameters):</strong></p>
+<p>在泛型定义中，我们使用<strong>类型参数</strong>来表示类型占位符。  类型参数通常使用单个大写字母表示，例如 <code>T</code>, <code>E</code>, <code>K</code>, <code>V</code> 等。  你可以自定义任何合法的标识符作为类型参数名，但通常约定俗成使用单个大写字母。</p>
+<p><strong>泛型类 (Generic Classes)</strong></p>
+<p>泛型类是在类定义时使用类型参数的类。  类型参数在类名后面用尖括号 <code>&lt;&gt;</code> 括起来。  在类的内部，可以使用类型参数作为属性类型、方法参数类型、方法返回值类型等。</p>
+<p><strong>语法:</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> 类名&lt;类型参数<span class="number">1</span>, 类型参数<span class="number">2</span>, ...&gt; &#123;</span><br><span class="line">    <span class="comment">// 类体</span></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>例子：一个泛型类 <code>Box&lt;T&gt;</code>，用于存储任意类型的物品。</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Box</span>&lt;<span class="type">T</span>&gt;(<span class="keyword">var</span> content: T) &#123; <span class="comment">// 类型参数 T 在类定义中使用</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">getContent</span><span class="params">()</span></span>: T &#123;</span><br><span class="line">        <span class="keyword">return</span> content</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">setContent</span><span class="params">(newContent: <span class="type">T</span>)</span></span> &#123;</span><br><span class="line">        content = newContent</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> intBox: Box&lt;<span class="built_in">Int</span>&gt; = Box(<span class="number">10</span>) <span class="comment">// 创建 Box&lt;Int&gt; 类型的对象，指定 T 为 Int</span></span><br><span class="line">    println(<span class="string">&quot;Int Box content: <span class="subst">$&#123;intBox.getContent()&#125;</span>&quot;</span>) <span class="comment">// 输出: Int Box content: 10</span></span><br><span class="line">    intBox.setContent(<span class="number">20</span>)</span><br><span class="line">    println(<span class="string">&quot;Int Box content after set: <span class="subst">$&#123;intBox.getContent()&#125;</span>&quot;</span>) <span class="comment">// 输出: Int Box content after set: 20</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> stringBox: Box&lt;String&gt; = Box(<span class="string">&quot;Hello&quot;</span>) <span class="comment">// 创建 Box&lt;String&gt; 类型的对象，指定 T 为 String</span></span><br><span class="line">    println(<span class="string">&quot;String Box content: <span class="subst">$&#123;stringBox.getContent()&#125;</span>&quot;</span>) <span class="comment">// 输出: String Box content: Hello</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 类型推断，可以省略类型参数声明</span></span><br><span class="line">    <span class="keyword">val</span> box1 = Box(<span class="number">3.14</span>) <span class="comment">// 推断为 Box&lt;Double&gt;</span></span><br><span class="line">    <span class="keyword">val</span> box2 = Box(<span class="literal">true</span>)  <span class="comment">// 推断为 Box&lt;Boolean&gt;</span></span><br><span class="line">    <span class="keyword">val</span> box3 = Box(listOf(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)) <span class="comment">// 推断为 Box&lt;List&lt;Int&gt;&gt;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在创建 <code>Box</code> 类的对象时，需要指定类型参数 <code>T</code> 的具体类型，例如 <code>Box&lt;Int&gt;</code>, <code>Box&lt;String&gt;</code>, <code>Box&lt;Double&gt;</code> 等。  编译器会在编译时检查类型参数的使用是否正确，确保类型安全。  如果类型参数可以被推断出来，例如通过构造函数的参数类型，也可以省略类型参数的显式声明。</p>
+<p><strong>泛型函数 (Generic Functions)</strong></p>
+<p>泛型函数是在函数定义时使用类型参数的函数。  类型参数在函数名之前用尖括号 <code>&lt;&gt;</code> 括起来。  类型参数可以在函数的参数列表、返回值类型和函数体中使用。</p>
+<p><strong>语法:</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="type">&lt;类型参数1, 类型参数2, ...&gt;</span> 函数名<span class="params">(参数列表)</span></span>: 返回值类型 &#123;</span><br><span class="line">    <span class="comment">// 函数体</span></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>例子：一个泛型函数 <code>printBoxContent&lt;T&gt;(box: Box&lt;T&gt;)</code>，用于打印任意 <code>Box&lt;T&gt;</code> 对象的内容。</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="type">&lt;T&gt;</span> <span class="title">printBoxContent</span><span class="params">(box: <span class="type">Box</span>&lt;<span class="type">T</span>&gt;)</span></span> &#123; <span class="comment">// 类型参数 T 在函数定义中使用</span></span><br><span class="line">    println(<span class="string">&quot;Box content: <span class="subst">$&#123;box.getContent()&#125;</span>&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> intBox = Box(<span class="number">10</span>)</span><br><span class="line">    <span class="keyword">val</span> stringBox = Box(<span class="string">&quot;World&quot;</span>)</span><br><span class="line"></span><br><span class="line">    printBoxContent(intBox)  <span class="comment">// 调用 printBoxContent&lt;Int&gt;，T 被推断为 Int</span></span><br><span class="line">    printBoxContent(stringBox) <span class="comment">// 调用 printBoxContent&lt;String&gt;，T 被推断为 String</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 显式指定类型参数 (可选，通常编译器可以推断出来)</span></span><br><span class="line">    printBoxContent&lt;<span class="built_in">Int</span>&gt;(intBox)</span><br><span class="line">    printBoxContent&lt;String&gt;(stringBox)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>类型参数的位置:</strong>  泛型函数的类型参数放在函数名之前，而泛型类的类型参数放在类名之后。</p>
+<p><strong>类型约束 (Type Constraints)</strong></p>
+<p>类型约束用于限制类型参数可以接受的类型范围。  通过类型约束，可以指定类型参数必须是某个类或接口的子类型，或者必须满足某些条件。</p>
+<p><strong>语法:</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 类型参数 T 必须是 类型上界 或其子类型</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="type">&lt;T : 类型上界&gt;</span> 函数名<span class="params">(参数列表)</span></span>: 返回值类型 &#123; ... &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 类型参数 T 必须实现 接口 或其子类型</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="type">&lt;T : 接口名&gt;</span> 函数名<span class="params">(参数列表)</span></span>: 返回值类型 &#123; ... &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 多重类型约束，类型参数 T 必须同时满足多个约束条件 (使用 where 关键字)</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="type">&lt;T&gt;</span> 函数名<span class="params">(参数列表)</span></span> <span class="keyword">where</span> T : 类型上界<span class="number">1</span>, T : 类型上界<span class="number">2</span>, T : 接口名<span class="number">1</span>, T : 接口名<span class="number">2</span> &#123; ... &#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>类型上界 (Upper Bound):</strong>  指定类型参数必须是某个类或其子类。  使用冒号 <code>:</code> 后跟类型上界。  默认的类型上界是 <code>Any?</code> (可空 Any 类型)。  如果需要非空类型上界，可以使用 <code>Any</code>。</li>
+<li><strong>接口约束 (Interface Constraint):</strong>  指定类型参数必须实现某个接口或其子接口。  也使用冒号 <code>:</code> 后跟接口名。</li>
+<li><strong>多重类型约束 (Multiple Type Constraints):</strong>  使用 <code>where</code> 关键字可以指定多个类型约束条件。</li>
+</ul>
+<p><strong>例子：泛型函数 <code>copyAndPrint&lt;T: Number&gt;(value: T)</code>，类型参数 <code>T</code> 必须是 <code>Number</code> 或其子类 (例如 <code>Int</code>, <code>Double</code>, <code>Float</code> 等)。</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="type">&lt;T : Number&gt;</span> <span class="title">copyAndPrint</span><span class="params">(value: <span class="type">T</span>)</span></span>: T &#123; <span class="comment">// 类型参数 T 约束为 Number 或其子类</span></span><br><span class="line">    println(<span class="string">&quot;Value: <span class="variable">$value</span>, Class: <span class="subst">$&#123;value::class.simpleName&#125;</span>&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> value <span class="comment">// 返回传入的值</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    copyAndPrint(<span class="number">10</span>)    <span class="comment">// T 被推断为 Int，Int 是 Number 的子类</span></span><br><span class="line">    copyAndPrint(<span class="number">3.14</span>)  <span class="comment">// T 被推断为 Double，Double 是 Number 的子类</span></span><br><span class="line">    copyAndPrint(<span class="number">5.0f</span>)  <span class="comment">// T 被推断为 Float，Float 是 Number 的子类</span></span><br><span class="line">    <span class="comment">// copyAndPrint(&quot;Hello&quot;) // 编译错误：Type argument String is not within its bounds.</span></span><br><span class="line">                               <span class="comment">// Expected: Number</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>另一个例子：泛型函数 <code>processList&lt;T&gt;(list: List&lt;T&gt;) where T : Comparable&lt;T&gt;, T : Appendable</code>，类型参数 <code>T</code> 必须同时实现 <code>Comparable&lt;T&gt;</code> 接口和 <code>Appendable</code> 接口。</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="type">&lt;T&gt;</span> <span class="title">processList</span><span class="params">(list: <span class="type">List</span>&lt;<span class="type">T</span>&gt;)</span></span> <span class="keyword">where</span> T : Comparable&lt;T&gt;, T : Appendable &#123; <span class="comment">// 多重类型约束</span></span><br><span class="line">    <span class="comment">// 在函数体中，T 既可以进行比较 (Comparable&lt;T&gt;)，也可以进行 append 操作 (Appendable)</span></span><br><span class="line">    println(<span class="string">&quot;List size: <span class="subst">$&#123;list.size&#125;</span>&quot;</span>)</span><br><span class="line">    <span class="keyword">val</span> sortedList = list.sorted() <span class="comment">// 可以调用 Comparable&lt;T&gt; 接口的方法</span></span><br><span class="line">    println(<span class="string">&quot;Sorted list: <span class="variable">$sortedList</span>&quot;</span>)</span><br><span class="line">    <span class="keyword">val</span> firstElement = sortedList.firstOrNull()</span><br><span class="line">    firstElement?.append(<span class="string">&quot; - First Element&quot;</span>) <span class="comment">// 可以调用 Appendable 接口的方法</span></span><br><span class="line">    println(<span class="string">&quot;Modified first element: <span class="variable">$firstElement</span>&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyType</span>(<span class="keyword">val</span> value: String) : Comparable&lt;MyType&gt;, Appendable &#123; <span class="comment">// MyType 类同时实现 Comparable&lt;MyType&gt; 和 Appendable</span></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">compareTo</span><span class="params">(other: <span class="type">MyType</span>)</span></span>: <span class="built_in">Int</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> value.compareTo(other.value)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">append</span><span class="params">(charSequence: <span class="type">CharSequence</span>?)</span></span>: Appendable &#123;</span><br><span class="line">        println(<span class="string">&quot;Append: <span class="variable">$charSequence</span> to <span class="variable">$value</span>&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">append</span><span class="params">(charSequence: <span class="type">CharSequence</span>?, startIndex: <span class="type">Int</span>, endIndex: <span class="type">Int</span>)</span></span>: Appendable &#123;</span><br><span class="line">        println(<span class="string">&quot;Append: <span class="variable">$charSequence</span> from <span class="variable">$startIndex</span> to <span class="variable">$endIndex</span> to <span class="variable">$value</span>&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">append</span><span class="params">(char: <span class="type">Char</span>)</span></span>: Appendable &#123;</span><br><span class="line">        println(<span class="string">&quot;Append: <span class="variable">$char</span> to <span class="variable">$value</span>&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">toString</span><span class="params">()</span></span>: String &#123;</span><br><span class="line">        <span class="keyword">return</span> value</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> myList = listOf(MyType(<span class="string">&quot;Banana&quot;</span>), MyType(<span class="string">&quot;Apple&quot;</span>), MyType(<span class="string">&quot;Cherry&quot;</span>))</span><br><span class="line">    processList(myList) <span class="comment">// 调用 processList 函数，MyType 满足类型约束</span></span><br><span class="line">    <span class="comment">// processList(listOf(1, 2, 3)) // 编译错误：Type argument Int is not within its bounds.</span></span><br><span class="line">                                   <span class="comment">// Required: Comparable&lt;Int&gt;, Appendable</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>类型约束可以提高泛型代码的类型安全性，并允许你在泛型代码中调用类型参数的特定方法或属性。</p>
+<p><strong>星号投影 (Star Projection)</strong></p>
+<p>星号投影 <code>*</code> 是一种特殊的泛型类型参数，用于表示<strong>未知类型参数</strong>。  当你不需要知道泛型类型的具体类型，或者类型参数的具体类型不重要时，可以使用星号投影。</p>
+<p><strong>使用场景:</strong></p>
+<ul>
+<li><strong>只读操作:</strong>  当你只需要读取泛型类或接口的数据，而不需要修改数据，并且不关心具体类型时。</li>
+<li><strong>与 Java 泛型互操作:</strong>  在与 Java 泛型代码互操作时，有时会遇到类型信息丢失的情况，可以使用星号投影来处理。</li>
+</ul>
+<p><strong>例子：一个泛型接口 <code>DataSource&lt;T&gt;</code>，表示数据源。  我们只想编写一个函数 <code>printDataSourceInfo(dataSource: DataSource&lt;*&gt;)</code>，打印数据源的信息，但不关心数据源存储的具体数据类型。</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">DataSource</span>&lt;<span class="type">out T</span>&gt; &#123; <span class="comment">// 使用 out 协变修饰符 (后续章节会学习)</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">getData</span><span class="params">()</span></span>: T? <span class="comment">// 返回 T 类型的数据，可能为 null</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">getInfo</span><span class="params">()</span></span>: String</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">IntDataSource</span>(<span class="keyword">val</span> <span class="keyword">data</span>: <span class="built_in">Int</span>?) : DataSource&lt;<span class="built_in">Int</span>&gt; &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">getData</span><span class="params">()</span></span>: <span class="built_in">Int</span>? &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">data</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">getInfo</span><span class="params">()</span></span>: String &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Int Data Source, data: <span class="variable">$data</span>&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">StringDataSource</span>(<span class="keyword">val</span> <span class="keyword">data</span>: String?) : DataSource&lt;String&gt; &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">getData</span><span class="params">()</span></span>: String? &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">data</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">getInfo</span><span class="params">()</span></span>: String &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;String Data Source, data: <span class="variable">$data</span>&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">printDataSourceInfo</span><span class="params">(dataSource: <span class="type">DataSource</span>&lt;*&gt;)</span></span> &#123; <span class="comment">// 使用星号投影 DataSource&lt;*&gt;，表示类型参数未知</span></span><br><span class="line">    println(<span class="string">&quot;Data Source Info: <span class="subst">$&#123;dataSource.getInfo()&#125;</span>&quot;</span>)</span><br><span class="line">    <span class="comment">// val data = dataSource.getData() // 编译错误：类型推断为 Any?，getData() 返回值类型未知</span></span><br><span class="line">    <span class="comment">// println(&quot;Data: $data&quot;)</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> intDataSource = IntDataSource(<span class="number">100</span>)</span><br><span class="line">    <span class="keyword">val</span> stringDataSource = StringDataSource(<span class="string">&quot;Data from string source&quot;</span>)</span><br><span class="line"></span><br><span class="line">    printDataSourceInfo(intDataSource) <span class="comment">// 调用 printDataSourceInfo，参数类型为 DataSource&lt;*&gt;，可以接受任何 DataSource 类型</span></span><br><span class="line">    printDataSourceInfo(stringDataSource)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在使用星号投影 <code>DataSource&lt;*&gt;</code> 时，你只能安全地调用那些不依赖于具体类型参数的方法，例如 <code>getInfo()</code>。  如果你尝试调用 <code>getData()</code> 这样的方法，编译器会认为返回值类型是 <code>Any?</code> (或类型上界的可空类型)，因为类型参数 <code>T</code> 是未知的。</p>
+<p><strong>星号投影 <code>*</code> 相当于 Java 泛型中的无界通配符 <code>&lt;?&gt;</code>。</strong></p>
+
+          </div>
+        </div>
+
+        <!-- 文章底部 -->
+        <div class="px-8 py-8">
+          <!-- 标签 -->
+          
+            <div class="flex flex-wrap gap-2 mb-8">
+              
+                <a href="/tags/KOTLIN/" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm text-gray-600 transition-colors">
+                  KOTLIN
+                </a>
+                
+            </div>
+            
+
+              <!-- 分享 -->
+              <div class="flex items-center justify-between mb-8 py-6 border-t border-b">
+                <div class="text-sm text-gray-500">分享文章：</div>
+                <div class="flex gap-4">
+                  <button class="text-gray-400 hover:text-gray-600 transition-colors">
+                    <i class="far fa-copy text-xl"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- 上一篇/下一篇 -->
+              <div class="flex flex-col sm:flex-row justify-between gap-4">
+                
+                  <a href="/cm6z6k8kk000atcx55f4a7enk.html" class="group flex-1">
+                    <div class="text-sm text-gray-500 mb-1">上一篇</div>
+                    <div class="group-hover:text-blue-600 transition-colors">
+                      Kotlin (十) | 数据类和密封类
+                    </div>
+                  </a>
+                  
+                    
+                      <a href="/cm6z6k8ko000stcx56um5fvfc.html" class="group flex-1 text-right">
+                        <div class="text-sm text-gray-500 mb-1">下一篇</div>
+                        <div class="group-hover:text-blue-600 transition-colors">
+                          Kotlin (十三) | Kotlin 与 Java 互操作
+                        </div>
+                      </a>
+                      
+              </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 侧边栏 -->
+    <aside class="lg:w-1/4 mt-8 lg:mt-0 space-y-6">
+      <!-- 作者信息 -->
+      <div class="bg-white rounded-xl p-6">
+        <div class="flex items-center gap-4 mb-4">
+          <img src="/images/avatar.jpg" class="w-16 h-16 rounded-full">
+          <div>
+            <h3 class="font-medium">Nunumao</h3>
+            <p class="text-sm text-gray-500">开发工程师</p>
+          </div>
+        </div>
+        <p class="text-sm text-gray-600 mb-4">专注于技术研究，热爱分享技术心得</p>
+        <div class="flex justify-center gap-4">
+          <a href="https://github.com/nunumao" target="_blank" class="text-gray-400 hover:text-gray-600">
+            <i class="fab fa-github text-xl"></i>
+          </a>
+          <a href="mailto:gm292018748@email.com" target="_blank" class="text-gray-400 hover:text-[#1DA1F2]">
+            <i class="fas fa-envelope text-xl"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 目录 -->
+      <div class="bg-white rounded-xl p-6 sticky top-24">
+        <h2 class="text-lg font-medium mb-4">目录</h2>
+        <nav class="space-y-2 text-sm">
+          
+        </nav>
+      </div>
+
+      <!-- 分类列表 -->
+      <div class="bg-white rounded-xl p-6">
+        <h2 class="text-lg font-medium mb-4">文章分类</h2>
+        <div class="space-y-3">
+          
+            <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="flex items-center justify-between group">
+              <div class="flex items-center">
+                <i class="fas fa-folder text-gray-500 w-5"></i>
+                <span class="text-sm group-hover:text-blue-600">
+                  服务器
+                </span>
+              </div>
+              <span class="text-xs text-gray-500">
+                3
+              </span>
+            </a>
+            
+            <a href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/" class="flex items-center justify-between group">
+              <div class="flex items-center">
+                <i class="fas fa-server text-green-500 w-5"></i>
+                <span class="text-sm group-hover:text-blue-600">
+                  后端技术
+                </span>
+              </div>
+              <span class="text-xs text-gray-500">
+                20
+              </span>
+            </a>
+            
+            <a href="/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/" class="flex items-center justify-between group">
+              <div class="flex items-center">
+                <i class="fas fa-code text-blue-500 w-5"></i>
+                <span class="text-sm group-hover:text-blue-600">
+                  前端技术
+                </span>
+              </div>
+              <span class="text-xs text-gray-500">
+                1
+              </span>
+            </a>
+            
+        </div>
+      </div>
+
+      <!-- 相关文章 -->
+      <div class="bg-white rounded-xl p-6">
+        <h2 class="text-lg font-medium mb-4">相关文章</h2>
+        <div class="space-y-4">
+          
+            <a href="/cm6z562wp0000ysx5fx4xfxyq.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (一) | 基本语法
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm6z562wt0001ysx5g3tn4b0o.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (四) | 类和对象
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm6z562wx0003ysx5e2pn7bg7.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (二) | 控制流
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm6z562wy0005ysx551of5kin.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (三) | 函数
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm6z6k8kb0000tcx56eq63qfa.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (七) | 集合
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+        </div>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<style>
+  .markdown-body {
+    box-sizing: border-box;
+    min-width: 200px;
+    max-width: 100%;
+    margin: 0 auto;
+    background-color: white;
+  }
+
+  /* 适配深色模式 */
+  @media (prefers-color-scheme: dark) {
+    .markdown-body {
+      color-scheme: dark;
+      --color-prettylights-syntax-comment: #8b949e;
+      --color-prettylights-syntax-constant: #79c0ff;
+      --color-prettylights-syntax-entity: #d2a8ff;
+      --color-prettylights-syntax-storage-modifier-import: #c9d1d9;
+      --color-prettylights-syntax-entity-tag: #7ee787;
+      --color-prettylights-syntax-keyword: #ff7b72;
+      --color-prettylights-syntax-string: #a5d6ff;
+      --color-prettylights-syntax-variable: #ffa657;
+      --color-prettylights-syntax-brackethighlighter-unmatched: #f85149;
+      --color-prettylights-syntax-invalid-illegal-text: #f0f6fc;
+      --color-prettylights-syntax-invalid-illegal-bg: #8e1519;
+      --color-prettylights-syntax-carriage-return-text: #f0f6fc;
+      --color-prettylights-syntax-carriage-return-bg: #b62324;
+      --color-prettylights-syntax-string-regexp: #7ee787;
+      --color-prettylights-syntax-markup-list: #f2cc60;
+      --color-prettylights-syntax-markup-heading: #1f6feb;
+      --color-prettylights-syntax-markup-italic: #c9d1d9;
+      --color-prettylights-syntax-markup-bold: #c9d1d9;
+      --color-prettylights-syntax-markup-deleted-text: #ffdcd7;
+      --color-prettylights-syntax-markup-deleted-bg: #67060c;
+      --color-prettylights-syntax-markup-inserted-text: #aff5b4;
+      --color-prettylights-syntax-markup-inserted-bg: #033a16;
+      --color-prettylights-syntax-markup-changed-text: #ffdfb6;
+      --color-prettylights-syntax-markup-changed-bg: #5a1e02;
+      --color-prettylights-syntax-markup-ignored-text: #c9d1d9;
+      --color-prettylights-syntax-markup-ignored-bg: #1158c7;
+      --color-prettylights-syntax-meta-diff-range: #d2a8ff;
+      --color-prettylights-syntax-brackethighlighter-angle: #8b949e;
+      --color-prettylights-syntax-sublimelinter-gutter-mark: #484f58;
+      --color-prettylights-syntax-constant-other-reference-link: #a5d6ff;
+      --color-fg-default: #c9d1d9;
+      --color-fg-muted: #8b949e;
+      --color-fg-subtle: #6e7681;
+      --color-canvas-default: #0d1117;
+      --color-canvas-subtle: #161b22;
+      --color-border-default: #30363d;
+      --color-border-muted: #21262d;
+      --color-neutral-muted: rgba(110, 118, 129, 0.4);
+      --color-accent-fg: #58a6ff;
+      --color-accent-emphasis: #1f6feb;
+      --color-attention-subtle: rgba(187, 128, 9, 0.15);
+      --color-danger-fg: #f85149;
+    }
+  }
+</style>
+  <!-- 页脚 -->
+<footer class="border-t mt-16">
+  <div class="max-w-4xl mx-auto px-4 py-8 text-center text-sm text-gray-500">
+    <p>© 2025 nunumao. Built with <a href="#" class="text-blue-600">Hexo</a></p>
+  </div>
+</footer>
+</body>
+
+</html>

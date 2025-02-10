@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>编程日记</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  
+<link rel="stylesheet" href="/css/github-markdown.css">
+
+  
+<link rel="stylesheet" href="/css/atom-one-dark.css">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+<script src="/js/jquery.min.js"></script>
+
+  
+<script src="/js/script.js"></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="bg-gray-50 text-gray-800">
+  <div class="lg:hidden fixed right-4 top-4 z-50">
+    <button class="p-2 bg-white/80 backdrop-blur-sm rounded-lg border" data-mobile-menu-trigger><i class="fas fa-bars"></i></button>
+  </div>
+  <!-- 导航栏 -->
+  <nav class="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-40">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="flex justify-between items-center h-16">
+        <a href="/" class="text-xl font-serif">编程日记</a>
+        <!-- 桌面端导航 -->
+        <div class="hidden lg:flex items-center space-x-6">
+          <div class="flex items-center space-x-6 text-sm">
+            <a href="/" class="hover:text-blue-600" data-i18n="nav.home">首页</a>
+            <!-- 分类下拉菜单 -->
+            <div class="relative group">
+              <a href="/categories" class="hover:text-blue-600">分类</a>
+              <!-- 优化后的下拉内容 -->
+              <div class="absolute left-0 mt-2 py-2 bg-white backdrop-blur-sm border rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div class="grid grid-cols-2 gap-1 w-[400px] p-4">
+                  
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/服务器/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>服务器</span>
+                        </a>
+                      
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/后端技术/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>后端技术</span>
+                        </a>
+                      
+                    
+                      
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/前端技术/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>前端技术</span>
+                        </a>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                  
+                </div>
+              </div>
+            </div>
+            <a href="/case" class="hover:text-blue-600" data-i18n="nav.case">作品</a>
+            <a href="/archives" class="hover:text-blue-600" data-i18n="nav.archives">归档</a>
+            <a href="/about" class="hover:text-blue-600" data-i18n="nav.about">关于</a>
+            <!-- 搜索框 -->
+            <div class="relative">
+              <input type="search" placeholder="Search articles..." class="w-48 px-4 py-1 text-sm border rounded-full bg-gray-50 focus:outline-none focus:ring-1 focus:ring-blue-500">
+              <i class="fas fa-search absolute right-3 top-2 text-gray-400"></i>
+            </div>
+            <!-- 语言切换 -->
+            <div class="flex items-center space-x-2 ml-4 text-sm border-l pl-4">
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('en-US')">EN</button>
+              <span class="text-gray-300">|</span>
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('zh-CN')">简</button>
+              <span class="text-gray-300">|</span>
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('zh-TW')">繁</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div id="mobileMenu" class="fixed inset-0 bg-white/90 backdrop-blur-sm z-40 lg:hidden hidden">
+    <div class="h-full w-full flex flex-col items-center justify-center space-y-6 text-lg">
+      <a href="/" class="hover:text-blue-600" data-i18n="nav.home">首页</a>
+      <a href="/categories" class="hover:text-blue-600" data-i18n="nav.categories">分类</a>
+      <a href="/case" class="hover:text-blue-600" data-i18n="nav.case">作品</a>
+      <a href="/archives" class="hover:text-blue-600" data-i18n="nav.archive">归档</a>
+      <a href="/about" class="hover:text-blue-600" data-i18n="nav.about">关于</a>
+      <div class="flex items-center space-x-4 mt-4">
+        <button class="lang-switch hover:text-blue-600" data-lang="en">EN</button>
+        <button class="lang-switch hover:text-blue-600" data-lang="zh">简</button>
+        <button class="lang-switch hover:text-blue-600" data-lang="zh-TW">繁</button>
+      </div>
+    </div>
+  </div>
+  <main class="max-w-5xl mx-auto px-4 py-12">
+  <div class="lg:flex lg:gap-8">
+    <!-- 文章主体 -->
+    <article class="lg:w-3/4">
+      <!-- 文章容器 -->
+      <div class="bg-white rounded-xl overflow-hidden">
+        <!-- 文章头部 -->
+        <div class="px-8 pt-12 pb-8">
+          <!-- 标题 -->
+          <h1 class="text-3xl font-medium mb-6 leading-snug">
+            Kotlin (二) | 控制流
+          </h1>
+
+          <!-- 元信息 -->
+          <div class="flex flex-wrap items-center gap-6 text-sm text-gray-500">
+            <span>
+              <i class="fas fa-folder-open mr-2"></i>
+              
+                <a href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/KOTLIN/" class="hover:text-blue-600">
+                  KOTLIN
+                </a>
+                
+            </span>
+            <span>
+              <i class="far fa-calendar mr-2"></i>
+              2025-02-10
+            </span>
+            <span><i class="far fa-clock mr-2"></i>15 分钟阅读</span>
+            <span><i class="far fa-eye mr-2"></i>
+              0
+            </span>
+          </div>
+        </div>
+
+        <!-- 文章内容 -->
+        <div class="px-8 py-10 border-t border-b">
+          <div class="markdown-body">
+            <p><strong>控制流 (Control Flow)</strong></p>
+<p>控制流语句允许我们根据条件或重复执行特定的代码块。 本章我们将学习 Kotlin 中常用的控制流语句。</p>
+<p><strong>条件语句 (Conditional Statements): <code>if</code>, <code>else if</code>, <code>else</code></strong></p>
+<p><code>if</code> 语句用于根据条件执行不同的代码块。  Kotlin 的 <code>if</code> 语句与 Java 和其他语言类似，但有一些 Kotlin 特有的特性。</p>
+<p><strong>语法:</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (条件<span class="number">1</span>) &#123;</span><br><span class="line">    <span class="comment">// 条件1 为 true 时执行的代码块</span></span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (条件<span class="number">2</span>) &#123;</span><br><span class="line">    <span class="comment">// 条件1 为 false 且 条件2 为 true 时执行的代码块</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 所有条件都为 false 时执行的代码块 (可选)</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>条件:</strong>  一个布尔表达式 (结果为 <code>true</code> 或 <code>false</code>)。</li>
+<li><strong>代码块:</strong>  用花括号 <code>&#123;&#125;</code> 包裹的一段代码。 如果代码块只包含一行语句，花括号可以省略 (但不推荐为了代码可读性，最好总是加上花括号)。</li>
+<li><strong><code>else if</code>:</strong>  可以有零个或多个 <code>else if</code> 分支。</li>
+<li><strong><code>else</code>:</strong>  最多只有一个 <code>else</code> 分支，并且必须放在所有 <code>else if</code> 分支之后。</li>
+</ul>
+<p><strong>例子:</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> score = <span class="number">85</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (score &gt;= <span class="number">90</span>) &#123;</span><br><span class="line">        println(<span class="string">&quot;优秀&quot;</span>)</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (score &gt;= <span class="number">80</span>) &#123;</span><br><span class="line">        println(<span class="string">&quot;良好&quot;</span>)</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (score &gt;= <span class="number">60</span>) &#123;</span><br><span class="line">        println(<span class="string">&quot;及格&quot;</span>)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        println(<span class="string">&quot;不及格&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> isRaining = <span class="literal">true</span></span><br><span class="line">    <span class="keyword">if</span> (isRaining) &#123;</span><br><span class="line">        println(<span class="string">&quot;带伞出门&quot;</span>)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        println(<span class="string">&quot;不用带伞&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong><code>if</code> 表达式 (If Expression):</strong></p>
+<p>在 Kotlin 中，<code>if</code> 不仅是语句，还可以作为表达式，这意味着 <code>if</code> 可以返回一个值。  这在很多情况下非常方便。</p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> a = <span class="number">10</span></span><br><span class="line">    <span class="keyword">val</span> b = <span class="number">20</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// if 作为表达式，返回较大值</span></span><br><span class="line">    <span class="keyword">val</span> max = <span class="keyword">if</span> (a &gt; b) &#123;</span><br><span class="line">        a</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        b</span><br><span class="line">    &#125;</span><br><span class="line">    println(<span class="string">&quot;较大值: <span class="variable">$max</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 简化写法，如果代码块只有一行，可以省略花括号</span></span><br><span class="line">    <span class="keyword">val</span> min = <span class="keyword">if</span> (a &lt; b) a <span class="keyword">else</span> b</span><br><span class="line">    println(<span class="string">&quot;较小值: <span class="variable">$min</span>&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当 <code>if</code> 作为表达式时，<strong><code>if</code> 和 <code>else</code> 分支都必须有返回值</strong> (除非返回值类型是 <code>Unit</code>，即 void)。  最后一个表达式的值就是 <code>if</code> 表达式的返回值。</p>
+<p><strong><code>when</code> 表达式 (When Expression)</strong></p>
+<p><code>when</code> 表达式是 Kotlin 中更强大、更灵活的条件语句，类似于 Java 和 C++ 中的 <code>switch</code> 语句，但功能更强大。</p>
+<p><strong>语法:</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="keyword">when</span> (表达式) &#123;</span><br><span class="line">    值<span class="number">1</span> -&gt; &#123;</span><br><span class="line">        <span class="comment">// 当 表达式 的值等于 值1 时执行的代码块</span></span><br><span class="line">    &#125;</span><br><span class="line">    值<span class="number">2</span>, 值<span class="number">3</span> -&gt; &#123;</span><br><span class="line">        <span class="comment">// 当 表达式 的值等于 值2 或 值3 时执行的代码块</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">in</span> 范围 -&gt; &#123;</span><br><span class="line">        <span class="comment">// 当 表达式 的值在 范围 内时执行的代码块</span></span><br><span class="line">    &#125;</span><br><span class="line">    !<span class="keyword">in</span> 范围 -&gt; &#123;</span><br><span class="line">        <span class="comment">// 当 表达式 的值不在 范围 内时执行的代码块</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">is</span> 类型 -&gt; &#123;</span><br><span class="line">        <span class="comment">// 当 表达式 是指定类型时执行的代码块</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> -&gt; &#123;</span><br><span class="line">        <span class="comment">// 当 表达式 的值与所有 case 都不匹配时执行的代码块 (可选，但建议在作为表达式时使用)</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>表达式:</strong>  可以是任何类型的表达式。</li>
+<li><strong>值:</strong>  要匹配的值，可以是常量、变量、表达式等。  可以使用逗号 <code>,</code> 分隔多个值。</li>
+<li><strong>范围:</strong>  可以使用 <code>..</code> 运算符表示范围 (例如 <code>1..10</code>)。</li>
+<li><strong>类型:</strong>  可以使用 <code>is</code> 关键字检查类型。</li>
+<li><strong><code>else</code>:</strong>  类似于 <code>switch</code> 语句的 <code>default</code> 分支，当所有 <code>case</code> 都不匹配时执行。  <strong>当 <code>when</code> 作为表达式使用时，<code>else</code> 分支通常是必需的，除非编译器能推断出所有可能的情况都已覆盖。</strong></li>
+</ul>
+<p><strong>例子:</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> dayOfWeek = <span class="number">3</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">when</span> (dayOfWeek) &#123;</span><br><span class="line">        <span class="number">1</span> -&gt; println(<span class="string">&quot;星期一&quot;</span>)</span><br><span class="line">        <span class="number">2</span> -&gt; println(<span class="string">&quot;星期二&quot;</span>)</span><br><span class="line">        <span class="number">3</span> -&gt; println(<span class="string">&quot;星期三&quot;</span>)</span><br><span class="line">        <span class="number">4</span> -&gt; println(<span class="string">&quot;星期四&quot;</span>)</span><br><span class="line">        <span class="number">5</span> -&gt; println(<span class="string">&quot;星期五&quot;</span>)</span><br><span class="line">        <span class="number">6</span>, <span class="number">7</span> -&gt; println(<span class="string">&quot;周末&quot;</span>) <span class="comment">// 多个值</span></span><br><span class="line">        <span class="keyword">else</span> -&gt; println(<span class="string">&quot;无效的日期&quot;</span>) <span class="comment">// 默认分支</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> score = <span class="number">75</span></span><br><span class="line">    <span class="keyword">when</span> (score) &#123;</span><br><span class="line">        <span class="keyword">in</span> <span class="number">90.</span><span class="number">.100</span> -&gt; println(<span class="string">&quot;优秀&quot;</span>)  <span class="comment">// 范围</span></span><br><span class="line">        <span class="keyword">in</span> <span class="number">80.</span><span class="number">.89</span> -&gt; println(<span class="string">&quot;良好&quot;</span>)</span><br><span class="line">        <span class="keyword">in</span> <span class="number">60.</span><span class="number">.79</span> -&gt; println(<span class="string">&quot;及格&quot;</span>)</span><br><span class="line">        <span class="keyword">in</span> <span class="number">0.</span><span class="number">.59</span> -&gt; println(<span class="string">&quot;不及格&quot;</span>)</span><br><span class="line">        <span class="keyword">else</span> -&gt; println(<span class="string">&quot;无效的分数&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> obj: Any = <span class="string">&quot;Hello&quot;</span> <span class="comment">// Any 是 Kotlin 中所有类的超类</span></span><br><span class="line">    <span class="keyword">when</span> (obj) &#123;</span><br><span class="line">        <span class="keyword">is</span> String -&gt; println(<span class="string">&quot;这是一个字符串，长度: <span class="subst">$&#123;obj.length&#125;</span>&quot;</span>) <span class="comment">// 类型检查</span></span><br><span class="line">        <span class="keyword">is</span> <span class="built_in">Int</span> -&gt; println(<span class="string">&quot;这是一个整数&quot;</span>)</span><br><span class="line">        <span class="keyword">else</span> -&gt; println(<span class="string">&quot;未知类型&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// when 作为表达式，返回描述</span></span><br><span class="line">    <span class="keyword">val</span> description = <span class="keyword">when</span> (dayOfWeek) &#123;</span><br><span class="line">        <span class="number">1</span> -&gt; <span class="string">&quot;一周的开始&quot;</span></span><br><span class="line">        <span class="number">2</span> -&gt; <span class="string">&quot;努力工作&quot;</span></span><br><span class="line">        <span class="number">3</span> -&gt; <span class="string">&quot;一周过半&quot;</span></span><br><span class="line">        <span class="number">4</span> -&gt; <span class="string">&quot;快到周末了&quot;</span></span><br><span class="line">        <span class="number">5</span> -&gt; <span class="string">&quot;解放前夕&quot;</span></span><br><span class="line">        <span class="number">6</span>, <span class="number">7</span> -&gt; <span class="string">&quot;好好休息&quot;</span></span><br><span class="line">        <span class="keyword">else</span> -&gt; <span class="string">&quot;未知&quot;</span> <span class="comment">// else 分支是必需的，因为 when 作为表达式使用</span></span><br><span class="line">    &#125;</span><br><span class="line">    println(<span class="string">&quot;描述: <span class="variable">$description</span>&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong><code>when</code> 的无参数形式:</strong></p>
+<p><code>when</code> 也可以不带参数，这时每个分支的条件都是一个独立的布尔表达式。  类似于 <code>if-else if-else</code> 结构。</p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> temperature = <span class="number">25</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">when</span> &#123;</span><br><span class="line">        temperature &gt; <span class="number">30</span> -&gt; println(<span class="string">&quot;炎热&quot;</span>)</span><br><span class="line">        temperature <span class="keyword">in</span> <span class="number">20.</span><span class="number">.30</span> -&gt; println(<span class="string">&quot;舒适&quot;</span>)</span><br><span class="line">        temperature <span class="keyword">in</span> <span class="number">10.</span><span class="number">.19</span> -&gt; println(<span class="string">&quot;凉爽&quot;</span>)</span><br><span class="line">        temperature &lt; <span class="number">10</span> -&gt; println(<span class="string">&quot;寒冷&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>总结:</strong> <code>when</code> 表达式比 <code>if-else if-else</code> 结构更简洁、更易读，功能更强大，是 Kotlin 中推荐使用的条件语句。</p>
+<p><strong>循环 (Loops): <code>for</code>, <code>while</code>, <code>do-while</code></strong></p>
+<p>循环语句用于重复执行一段代码块。 Kotlin 提供了 <code>for</code>, <code>while</code>, <code>do-while</code> 三种循环。</p>
+<ul>
+<li><p><strong><code>for</code> 循环:</strong>  用于遍历集合 (例如列表、数组、范围等) 或执行固定次数的循环。</p>
+<ul>
+<li><strong>遍历集合:</strong></li>
+</ul>
+  <figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> numbers = listOf(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 遍历列表</span></span><br><span class="line">    <span class="keyword">for</span> (number <span class="keyword">in</span> numbers) &#123;</span><br><span class="line">        println(number)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> names = arrayOf(<span class="string">&quot;Alice&quot;</span>, <span class="string">&quot;Bob&quot;</span>, <span class="string">&quot;Charlie&quot;</span>)</span><br><span class="line">    <span class="comment">// 遍历数组</span></span><br><span class="line">    <span class="keyword">for</span> (name <span class="keyword">in</span> names) &#123;</span><br><span class="line">        println(<span class="string">&quot;Hello, <span class="variable">$name</span>&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 遍历范围</span></span><br><span class="line">    <span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">1.</span><span class="number">.5</span>) &#123; <span class="comment">// 1 到 5，包含 5</span></span><br><span class="line">        println(<span class="string">&quot;计数: <span class="variable">$i</span>&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">1</span> until <span class="number">5</span>) &#123; <span class="comment">// 1 到 5，不包含 5，即 1, 2, 3, 4</span></span><br><span class="line">        println(<span class="string">&quot;计数 (until): <span class="variable">$i</span>&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">5</span> downTo <span class="number">1</span>) &#123; <span class="comment">// 从 5 递减到 1</span></span><br><span class="line">        println(<span class="string">&quot;倒数: <span class="variable">$i</span>&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">1.</span><span class="number">.10</span> step <span class="number">2</span>) &#123; <span class="comment">// 步长为 2， 1, 3, 5, 7, 9</span></span><br><span class="line">        println(<span class="string">&quot;步长为 2: <span class="variable">$i</span>&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 遍历列表的索引和元素</span></span><br><span class="line">    <span class="keyword">for</span> ((index, value) <span class="keyword">in</span> numbers.withIndex()) &#123;</span><br><span class="line">        println(<span class="string">&quot;索引: <span class="variable">$index</span>, 值: <span class="variable">$value</span>&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong><code>for</code> 循环还可以遍历字符串:</strong></li>
+</ul>
+  <figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> message = <span class="string">&quot;Kotlin&quot;</span></span><br><span class="line">    <span class="keyword">for</span> (char <span class="keyword">in</span> message) &#123;</span><br><span class="line">        println(char) <span class="comment">// 逐个字符打印</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong><code>while</code> 循环:</strong>  当条件为 <code>true</code> 时，重复执行代码块。  先判断条件，后执行循环体。</p>
+  <figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> (count &lt; <span class="number">5</span>) &#123;</span><br><span class="line">        println(<span class="string">&quot;Count: <span class="variable">$count</span>&quot;</span>)</span><br><span class="line">        count++</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong><code>do-while</code> 循环:</strong>  先执行一次代码块，然后判断条件，如果条件为 <code>true</code>，则继续重复执行。  至少执行一次循环体。</p>
+  <figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> i = <span class="number">0</span></span><br><span class="line">    <span class="keyword">do</span> &#123;</span><br><span class="line">        println(<span class="string">&quot;i: <span class="variable">$i</span>&quot;</span>)</span><br><span class="line">        i++</span><br><span class="line">    &#125; <span class="keyword">while</span> (i &lt; <span class="number">3</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><strong><code>break</code> 和 <code>continue</code></strong></p>
+<ul>
+<li><strong><code>break</code>:</strong>  用于立即终止循环，跳出循环体。</li>
+<li><strong><code>continue</code>:</strong>  用于跳过当前循环迭代的剩余代码，直接进入下一次迭代。</li>
+</ul>
+<p><strong>例子:</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">1.</span><span class="number">.10</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (i == <span class="number">3</span>) &#123;</span><br><span class="line">            <span class="keyword">break</span> <span class="comment">// 当 i 等于 3 时，跳出循环</span></span><br><span class="line">        &#125;</span><br><span class="line">        println(<span class="string">&quot;i = <span class="variable">$i</span>&quot;</span>) <span class="comment">// 输出 1, 2</span></span><br><span class="line">    &#125;</span><br><span class="line">    println(<span class="string">&quot;循环结束&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">1.</span><span class="number">.5</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (i == <span class="number">3</span>) &#123;</span><br><span class="line">            <span class="keyword">continue</span> <span class="comment">// 当 i 等于 3 时，跳过本次迭代的剩余代码，继续下一次迭代</span></span><br><span class="line">        &#125;</span><br><span class="line">        println(<span class="string">&quot;i = <span class="variable">$i</span>&quot;</span>) <span class="comment">// 输出 1, 2, 4, 5，跳过了 3</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>标签 (Labels) 和 <code>break</code>&#x2F;<code>continue</code>:</strong></p>
+<p>在嵌套循环中，可以使用标签来指定 <code>break</code> 或 <code>continue</code> 要作用于哪个循环。</p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="symbol">outerLoop@</span> <span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">1.</span><span class="number">.3</span>) &#123; <span class="comment">// outerLoop 是一个标签</span></span><br><span class="line">        <span class="keyword">for</span> (j <span class="keyword">in</span> <span class="number">1.</span><span class="number">.3</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i == <span class="number">2</span> &amp;&amp; j == <span class="number">2</span>) &#123;</span><br><span class="line">                <span class="keyword">break</span><span class="symbol">@outerLoop</span> <span class="comment">// 跳出 outerLoop 标记的循环</span></span><br><span class="line">            &#125;</span><br><span class="line">            println(<span class="string">&quot;i = <span class="variable">$i</span>, j = <span class="variable">$j</span>&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    println(<span class="string">&quot;外层循环结束&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          </div>
+        </div>
+
+        <!-- 文章底部 -->
+        <div class="px-8 py-8">
+          <!-- 标签 -->
+          
+            <div class="flex flex-wrap gap-2 mb-8">
+              
+                <a href="/tags/KOTLIN/" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm text-gray-600 transition-colors">
+                  KOTLIN
+                </a>
+                
+            </div>
+            
+
+              <!-- 分享 -->
+              <div class="flex items-center justify-between mb-8 py-6 border-t border-b">
+                <div class="text-sm text-gray-500">分享文章：</div>
+                <div class="flex gap-4">
+                  <button class="text-gray-400 hover:text-gray-600 transition-colors">
+                    <i class="far fa-copy text-xl"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- 上一篇/下一篇 -->
+              <div class="flex flex-col sm:flex-row justify-between gap-4">
+                
+                  <a href="/cm6z562wt0001ysx5g3tn4b0o.html" class="group flex-1">
+                    <div class="text-sm text-gray-500 mb-1">上一篇</div>
+                    <div class="group-hover:text-blue-600 transition-colors">
+                      Kotlin (四) | 类和对象
+                    </div>
+                  </a>
+                  
+                    
+                      <a href="/cm6z562wy0005ysx551of5kin.html" class="group flex-1 text-right">
+                        <div class="text-sm text-gray-500 mb-1">下一篇</div>
+                        <div class="group-hover:text-blue-600 transition-colors">
+                          Kotlin (三) | 函数
+                        </div>
+                      </a>
+                      
+              </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 侧边栏 -->
+    <aside class="lg:w-1/4 mt-8 lg:mt-0 space-y-6">
+      <!-- 作者信息 -->
+      <div class="bg-white rounded-xl p-6">
+        <div class="flex items-center gap-4 mb-4">
+          <img src="/images/avatar.jpg" class="w-16 h-16 rounded-full">
+          <div>
+            <h3 class="font-medium">Nunumao</h3>
+            <p class="text-sm text-gray-500">开发工程师</p>
+          </div>
+        </div>
+        <p class="text-sm text-gray-600 mb-4">专注于技术研究，热爱分享技术心得</p>
+        <div class="flex justify-center gap-4">
+          <a href="https://github.com/nunumao" target="_blank" class="text-gray-400 hover:text-gray-600">
+            <i class="fab fa-github text-xl"></i>
+          </a>
+          <a href="mailto:gm292018748@email.com" target="_blank" class="text-gray-400 hover:text-[#1DA1F2]">
+            <i class="fas fa-envelope text-xl"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 目录 -->
+      <div class="bg-white rounded-xl p-6 sticky top-24">
+        <h2 class="text-lg font-medium mb-4">目录</h2>
+        <nav class="space-y-2 text-sm">
+          
+        </nav>
+      </div>
+
+      <!-- 分类列表 -->
+      <div class="bg-white rounded-xl p-6">
+        <h2 class="text-lg font-medium mb-4">文章分类</h2>
+        <div class="space-y-3">
+          
+            <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="flex items-center justify-between group">
+              <div class="flex items-center">
+                <i class="fas fa-folder text-gray-500 w-5"></i>
+                <span class="text-sm group-hover:text-blue-600">
+                  服务器
+                </span>
+              </div>
+              <span class="text-xs text-gray-500">
+                3
+              </span>
+            </a>
+            
+            <a href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/" class="flex items-center justify-between group">
+              <div class="flex items-center">
+                <i class="fas fa-server text-green-500 w-5"></i>
+                <span class="text-sm group-hover:text-blue-600">
+                  后端技术
+                </span>
+              </div>
+              <span class="text-xs text-gray-500">
+                20
+              </span>
+            </a>
+            
+            <a href="/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/" class="flex items-center justify-between group">
+              <div class="flex items-center">
+                <i class="fas fa-code text-blue-500 w-5"></i>
+                <span class="text-sm group-hover:text-blue-600">
+                  前端技术
+                </span>
+              </div>
+              <span class="text-xs text-gray-500">
+                1
+              </span>
+            </a>
+            
+        </div>
+      </div>
+
+      <!-- 相关文章 -->
+      <div class="bg-white rounded-xl p-6">
+        <h2 class="text-lg font-medium mb-4">相关文章</h2>
+        <div class="space-y-4">
+          
+            <a href="/cm6z562wp0000ysx5fx4xfxyq.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (一) | 基本语法
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm6z562wt0001ysx5g3tn4b0o.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (四) | 类和对象
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm6z562wy0005ysx551of5kin.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (三) | 函数
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm6z6k8kb0000tcx56eq63qfa.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (七) | 集合
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm6z6k8kg0001tcx51mpl4qpj.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (九) | 扩展函数和扩展属性
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+        </div>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<style>
+  .markdown-body {
+    box-sizing: border-box;
+    min-width: 200px;
+    max-width: 100%;
+    margin: 0 auto;
+    background-color: white;
+  }
+
+  /* 适配深色模式 */
+  @media (prefers-color-scheme: dark) {
+    .markdown-body {
+      color-scheme: dark;
+      --color-prettylights-syntax-comment: #8b949e;
+      --color-prettylights-syntax-constant: #79c0ff;
+      --color-prettylights-syntax-entity: #d2a8ff;
+      --color-prettylights-syntax-storage-modifier-import: #c9d1d9;
+      --color-prettylights-syntax-entity-tag: #7ee787;
+      --color-prettylights-syntax-keyword: #ff7b72;
+      --color-prettylights-syntax-string: #a5d6ff;
+      --color-prettylights-syntax-variable: #ffa657;
+      --color-prettylights-syntax-brackethighlighter-unmatched: #f85149;
+      --color-prettylights-syntax-invalid-illegal-text: #f0f6fc;
+      --color-prettylights-syntax-invalid-illegal-bg: #8e1519;
+      --color-prettylights-syntax-carriage-return-text: #f0f6fc;
+      --color-prettylights-syntax-carriage-return-bg: #b62324;
+      --color-prettylights-syntax-string-regexp: #7ee787;
+      --color-prettylights-syntax-markup-list: #f2cc60;
+      --color-prettylights-syntax-markup-heading: #1f6feb;
+      --color-prettylights-syntax-markup-italic: #c9d1d9;
+      --color-prettylights-syntax-markup-bold: #c9d1d9;
+      --color-prettylights-syntax-markup-deleted-text: #ffdcd7;
+      --color-prettylights-syntax-markup-deleted-bg: #67060c;
+      --color-prettylights-syntax-markup-inserted-text: #aff5b4;
+      --color-prettylights-syntax-markup-inserted-bg: #033a16;
+      --color-prettylights-syntax-markup-changed-text: #ffdfb6;
+      --color-prettylights-syntax-markup-changed-bg: #5a1e02;
+      --color-prettylights-syntax-markup-ignored-text: #c9d1d9;
+      --color-prettylights-syntax-markup-ignored-bg: #1158c7;
+      --color-prettylights-syntax-meta-diff-range: #d2a8ff;
+      --color-prettylights-syntax-brackethighlighter-angle: #8b949e;
+      --color-prettylights-syntax-sublimelinter-gutter-mark: #484f58;
+      --color-prettylights-syntax-constant-other-reference-link: #a5d6ff;
+      --color-fg-default: #c9d1d9;
+      --color-fg-muted: #8b949e;
+      --color-fg-subtle: #6e7681;
+      --color-canvas-default: #0d1117;
+      --color-canvas-subtle: #161b22;
+      --color-border-default: #30363d;
+      --color-border-muted: #21262d;
+      --color-neutral-muted: rgba(110, 118, 129, 0.4);
+      --color-accent-fg: #58a6ff;
+      --color-accent-emphasis: #1f6feb;
+      --color-attention-subtle: rgba(187, 128, 9, 0.15);
+      --color-danger-fg: #f85149;
+    }
+  }
+</style>
+  <!-- 页脚 -->
+<footer class="border-t mt-16">
+  <div class="max-w-4xl mx-auto px-4 py-8 text-center text-sm text-gray-500">
+    <p>© 2025 nunumao. Built with <a href="#" class="text-blue-600">Hexo</a></p>
+  </div>
+</footer>
+</body>
+
+</html>

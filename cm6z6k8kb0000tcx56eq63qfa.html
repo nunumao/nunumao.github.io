@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>编程日记</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  
+<link rel="stylesheet" href="/css/github-markdown.css">
+
+  
+<link rel="stylesheet" href="/css/atom-one-dark.css">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+<script src="/js/jquery.min.js"></script>
+
+  
+<script src="/js/script.js"></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="bg-gray-50 text-gray-800">
+  <div class="lg:hidden fixed right-4 top-4 z-50">
+    <button class="p-2 bg-white/80 backdrop-blur-sm rounded-lg border" data-mobile-menu-trigger><i class="fas fa-bars"></i></button>
+  </div>
+  <!-- 导航栏 -->
+  <nav class="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-40">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="flex justify-between items-center h-16">
+        <a href="/" class="text-xl font-serif">编程日记</a>
+        <!-- 桌面端导航 -->
+        <div class="hidden lg:flex items-center space-x-6">
+          <div class="flex items-center space-x-6 text-sm">
+            <a href="/" class="hover:text-blue-600" data-i18n="nav.home">首页</a>
+            <!-- 分类下拉菜单 -->
+            <div class="relative group">
+              <a href="/categories" class="hover:text-blue-600">分类</a>
+              <!-- 优化后的下拉内容 -->
+              <div class="absolute left-0 mt-2 py-2 bg-white backdrop-blur-sm border rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div class="grid grid-cols-2 gap-1 w-[400px] p-4">
+                  
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/服务器/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>服务器</span>
+                        </a>
+                      
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/后端技术/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>后端技术</span>
+                        </a>
+                      
+                    
+                      
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/前端技术/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>前端技术</span>
+                        </a>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                  
+                </div>
+              </div>
+            </div>
+            <a href="/case" class="hover:text-blue-600" data-i18n="nav.case">作品</a>
+            <a href="/archives" class="hover:text-blue-600" data-i18n="nav.archives">归档</a>
+            <a href="/about" class="hover:text-blue-600" data-i18n="nav.about">关于</a>
+            <!-- 搜索框 -->
+            <div class="relative">
+              <input type="search" placeholder="Search articles..." class="w-48 px-4 py-1 text-sm border rounded-full bg-gray-50 focus:outline-none focus:ring-1 focus:ring-blue-500">
+              <i class="fas fa-search absolute right-3 top-2 text-gray-400"></i>
+            </div>
+            <!-- 语言切换 -->
+            <div class="flex items-center space-x-2 ml-4 text-sm border-l pl-4">
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('en-US')">EN</button>
+              <span class="text-gray-300">|</span>
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('zh-CN')">简</button>
+              <span class="text-gray-300">|</span>
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('zh-TW')">繁</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div id="mobileMenu" class="fixed inset-0 bg-white/90 backdrop-blur-sm z-40 lg:hidden hidden">
+    <div class="h-full w-full flex flex-col items-center justify-center space-y-6 text-lg">
+      <a href="/" class="hover:text-blue-600" data-i18n="nav.home">首页</a>
+      <a href="/categories" class="hover:text-blue-600" data-i18n="nav.categories">分类</a>
+      <a href="/case" class="hover:text-blue-600" data-i18n="nav.case">作品</a>
+      <a href="/archives" class="hover:text-blue-600" data-i18n="nav.archive">归档</a>
+      <a href="/about" class="hover:text-blue-600" data-i18n="nav.about">关于</a>
+      <div class="flex items-center space-x-4 mt-4">
+        <button class="lang-switch hover:text-blue-600" data-lang="en">EN</button>
+        <button class="lang-switch hover:text-blue-600" data-lang="zh">简</button>
+        <button class="lang-switch hover:text-blue-600" data-lang="zh-TW">繁</button>
+      </div>
+    </div>
+  </div>
+  <main class="max-w-5xl mx-auto px-4 py-12">
+  <div class="lg:flex lg:gap-8">
+    <!-- 文章主体 -->
+    <article class="lg:w-3/4">
+      <!-- 文章容器 -->
+      <div class="bg-white rounded-xl overflow-hidden">
+        <!-- 文章头部 -->
+        <div class="px-8 pt-12 pb-8">
+          <!-- 标题 -->
+          <h1 class="text-3xl font-medium mb-6 leading-snug">
+            Kotlin (七) | 集合
+          </h1>
+
+          <!-- 元信息 -->
+          <div class="flex flex-wrap items-center gap-6 text-sm text-gray-500">
+            <span>
+              <i class="fas fa-folder-open mr-2"></i>
+              
+                <a href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/KOTLIN/" class="hover:text-blue-600">
+                  KOTLIN
+                </a>
+                
+            </span>
+            <span>
+              <i class="far fa-calendar mr-2"></i>
+              2025-02-10
+            </span>
+            <span><i class="far fa-clock mr-2"></i>15 分钟阅读</span>
+            <span><i class="far fa-eye mr-2"></i>
+              0
+            </span>
+          </div>
+        </div>
+
+        <!-- 文章内容 -->
+        <div class="px-8 py-10 border-t border-b">
+          <div class="markdown-body">
+            <p><strong>集合 (Collections)</strong></p>
+<p>集合是编程中非常常用的数据结构，用于存储和操作一组对象。 Kotlin 提供了丰富的集合类型，并且对集合操作提供了强大的支持。 Kotlin 的集合框架设计简洁、安全且高效。</p>
+<p><strong>List (列表), Set (集合), Map (映射)</strong></p>
+<p>Kotlin 集合框架主要包含三种基本类型的集合：</p>
+<ul>
+<li><p><strong>List (列表):</strong>  有序集合，元素可以重复。  List 中的元素按照插入顺序排列，可以通过索引访问元素。  例如，存储一组学生的名字列表，允许有同名的学生。</p>
+<ul>
+<li><strong>特点:</strong><ul>
+<li>有序 (Ordered): 元素按照插入顺序存储。</li>
+<li>允许重复元素 (Duplicates Allowed): 可以包含相同的元素。</li>
+<li>可以通过索引访问元素 (Indexed Access): 可以使用索引 (从 0 开始) 获取特定位置的元素。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Set (集合):</strong>  无序集合，元素不允许重复。  Set 主要用于存储唯一的元素，例如存储一组学生的学号，学号应该是唯一的。</p>
+<ul>
+<li><strong>特点:</strong><ul>
+<li>无序 (Unordered): 元素没有特定的顺序 (通常基于哈希值存储，顺序不保证稳定)。</li>
+<li>不允许重复元素 (No Duplicates): 每个元素在 Set 中只能出现一次。</li>
+<li>高效的元素查找 (Efficient Element Lookup):  Set 提供了快速的元素查找操作。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Map (映射):</strong>  键值对 (key-value pairs) 的集合。  每个元素都是一个键值对，键 (key) 是唯一的，值 (value) 可以重复。  Map 用于存储键值对关系的数据，例如存储学生的学号和姓名，学号是键，姓名是值。</p>
+<ul>
+<li><strong>特点:</strong><ul>
+<li>键值对存储 (Key-Value Pairs):  存储键和值之间的关联关系。</li>
+<li>键唯一 (Unique Keys):  每个键在 Map 中只能出现一次。</li>
+<li>通过键访问值 (Value Access by Key):  可以使用键快速查找对应的值。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>可变集合和不可变集合 (Mutable and Immutable Collections)</strong></p>
+<p>Kotlin 区分可变集合 (Mutable Collections) 和不可变集合 (Immutable Collections)。</p>
+<ul>
+<li><p><strong>不可变集合 (Immutable Collections):</strong>  创建后内容不能被修改 (不能添加、删除或修改元素)。  不可变集合是线程安全的，更易于理解和维护，推荐尽可能使用不可变集合。</p>
+<ul>
+<li><strong>创建不可变集合的函数:</strong><ul>
+<li><code>listOf(...)</code>: 创建不可变的 List</li>
+<li><code>setOf(...)</code>: 创建不可变的 Set</li>
+<li><code>mapOf(...)</code>: 创建不可变的 Map</li>
+</ul>
+</li>
+</ul>
+<p>  <strong>例子:</strong></p>
+  <figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> numbers: List&lt;<span class="built_in">Int</span>&gt; = listOf(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>) <span class="comment">// 创建不可变 List</span></span><br><span class="line">    <span class="keyword">val</span> colors: Set&lt;String&gt; = setOf(<span class="string">&quot;red&quot;</span>, <span class="string">&quot;green&quot;</span>, <span class="string">&quot;blue&quot;</span>) <span class="comment">// 创建不可变 Set</span></span><br><span class="line">    <span class="keyword">val</span> ages: Map&lt;String, <span class="built_in">Int</span>&gt; = mapOf(<span class="string">&quot;Alice&quot;</span> to <span class="number">30</span>, <span class="string">&quot;Bob&quot;</span> to <span class="number">25</span>) <span class="comment">// 创建不可变 Map (使用 to 创建键值对)</span></span><br><span class="line"></span><br><span class="line">    println(<span class="string">&quot;Numbers List: <span class="variable">$numbers</span>&quot;</span>)</span><br><span class="line">    println(<span class="string">&quot;Colors Set: <span class="variable">$colors</span>&quot;</span>)</span><br><span class="line">    println(<span class="string">&quot;Ages Map: <span class="variable">$ages</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// numbers.add(6) // 错误！不可变 List 不能添加元素</span></span><br><span class="line">    <span class="comment">// colors.remove(&quot;red&quot;) // 错误！不可变 Set 不能删除元素</span></span><br><span class="line">    <span class="comment">// ages[&quot;Charlie&quot;] = 28 // 错误！不可变 Map 不能添加键值对</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>可变集合 (Mutable Collections):</strong>  创建后内容可以被修改 (可以添加、删除、修改元素)。  可变集合提供了修改集合内容的方法。</p>
+<ul>
+<li><strong>创建可变集合的函数:</strong><ul>
+<li><code>mutableListOf(...)</code>: 创建可变的 List</li>
+<li><code>mutableSetOf(...)</code>: 创建可变的 Set</li>
+<li><code>mutableMapOf(...)</code>: 创建可变的 Map</li>
+</ul>
+</li>
+</ul>
+<p>  <strong>例子:</strong></p>
+  <figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> mutableNumbers: MutableList&lt;<span class="built_in">Int</span>&gt; = mutableListOf(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>) <span class="comment">// 创建可变 List</span></span><br><span class="line">    <span class="keyword">val</span> mutableColors: MutableSet&lt;String&gt; = mutableSetOf(<span class="string">&quot;red&quot;</span>, <span class="string">&quot;green&quot;</span>) <span class="comment">// 创建可变 Set</span></span><br><span class="line">    <span class="keyword">val</span> mutableAges: MutableMap&lt;String, <span class="built_in">Int</span>&gt; = mutableMapOf(<span class="string">&quot;Alice&quot;</span> to <span class="number">30</span>) <span class="comment">// 创建可变 Map</span></span><br><span class="line"></span><br><span class="line">    mutableNumbers.add(<span class="number">4</span>) <span class="comment">// 可以向可变 List 添加元素</span></span><br><span class="line">    mutableColors.remove(<span class="string">&quot;red&quot;</span>) <span class="comment">// 可以从可变 Set 删除元素</span></span><br><span class="line">    mutableAges[<span class="string">&quot;Bob&quot;</span>] = <span class="number">25</span> <span class="comment">// 可以向可变 Map 添加键值对</span></span><br><span class="line"></span><br><span class="line">    println(<span class="string">&quot;Mutable Numbers List: <span class="variable">$mutableNumbers</span>&quot;</span>)</span><br><span class="line">    println(<span class="string">&quot;Mutable Colors Set: <span class="variable">$mutableColors</span>&quot;</span>)</span><br><span class="line">    println(<span class="string">&quot;Mutable Ages Map: <span class="variable">$mutableAges</span>&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><strong>选择可变性:</strong>  优先使用不可变集合，除非你需要修改集合的内容。  不可变集合可以提高程序的安全性和可预测性。  如果需要修改集合，才使用可变集合。</p>
+<p><strong>类型推断和集合:</strong>  Kotlin 能够推断集合的元素类型。  也可以显式指定元素类型，例如 <code>List&lt;String&gt;</code>, <code>Set&lt;Int&gt;</code>, <code>Map&lt;String, Double&gt;</code>。</p>
+<p><strong>8.3 集合的常用操作</strong></p>
+<p>Kotlin 集合框架提供了丰富的操作函数，用于对集合进行各种操作，例如添加、删除、查找、遍历、过滤、转换等。  这些操作函数通常以扩展函数的形式提供，可以直接在集合对象上调用。</p>
+<p><strong>常用操作函数 (部分):</strong></p>
+<ul>
+<li><p><strong>添加元素:</strong></p>
+<ul>
+<li><code>add(element)</code> (MutableList, MutableSet): 添加单个元素</li>
+<li><code>addAll(collection)</code> (MutableList, MutableSet): 添加另一个集合的所有元素</li>
+<li><code>put(key, value)</code> (MutableMap): 添加键值对</li>
+<li><code>putAll(map)</code> (MutableMap): 添加另一个 Map 的所有键值对</li>
+</ul>
+</li>
+<li><p><strong>删除元素:</strong></p>
+<ul>
+<li><code>remove(element)</code> (MutableList, MutableSet): 删除指定元素</li>
+<li><code>removeAll(collection)</code> (MutableList, MutableSet): 删除与另一个集合中元素相同的元素</li>
+<li><code>clear()</code> (MutableList, MutableSet, MutableMap): 清空集合</li>
+<li><code>remove(key)</code> (MutableMap): 删除指定键的键值对</li>
+</ul>
+</li>
+<li><p><strong>查找元素:</strong></p>
+<ul>
+<li><code>contains(element)</code> 或 <code>containsAll(collection)</code> (List, Set): 检查集合是否包含指定元素或所有元素</li>
+<li><code>containsKey(key)</code> 或 <code>containsValue(value)</code> (Map): 检查 Map 是否包含指定键或值</li>
+<li><code>get(index)</code> (List): 获取指定索引位置的元素</li>
+<li><code>get(key)</code> 或 <code>getOrDefault(key, defaultValue)</code> (Map): 获取指定键的值</li>
+</ul>
+</li>
+<li><p><strong>遍历集合:</strong></p>
+<ul>
+<li><code>for (element in collection)</code>:  迭代集合中的每个元素</li>
+<li><code>forEach &#123; element -&gt; ... &#125;</code>:  对集合中的每个元素执行操作 (Lambda 表达式)</li>
+<li><code>iterator()</code>:  获取迭代器，手动遍历集合</li>
+</ul>
+</li>
+<li><p><strong>过滤集合:</strong></p>
+<ul>
+<li><code>filter &#123; element -&gt; condition &#125;</code>:  过滤满足条件的元素，返回新的 List</li>
+<li><code>filterNot &#123; element -&gt; condition &#125;</code>:  过滤不满足条件的元素，返回新的 List</li>
+<li><code>filterNotNull()</code> (List&lt;T?&gt;):  过滤掉 List 中的 null 元素，返回新的 List<T></li>
+</ul>
+</li>
+<li><p><strong>转换集合:</strong></p>
+<ul>
+<li><code>map &#123; element -&gt; transform &#125;</code>:  将集合中的每个元素转换为另一个值，返回新的 List</li>
+<li><code>flatMap &#123; element -&gt; collection &#125;</code>:  将集合中的每个元素转换为一个集合，并将所有子集合合并成一个 List</li>
+<li><code>toSet()</code>, <code>toList()</code>, <code>toMap()</code>:  将集合转换为 Set, List, Map</li>
+</ul>
+</li>
+<li><p><strong>排序集合:</strong></p>
+<ul>
+<li><code>sorted()</code>, <code>sortedDescending()</code> (List, Set):  对集合进行排序，返回新的 List</li>
+<li><code>sortedBy &#123; element -&gt; key &#125;</code>, <code>sortedByDescending &#123; element -&gt; key &#125;</code> (List, Set):  根据指定的 key 对集合进行排序，返回新的 List</li>
+</ul>
+</li>
+<li><p><strong>聚合操作:</strong></p>
+<ul>
+<li><code>sum()</code>, <code>average()</code>, <code>count()</code>, <code>max()</code>, <code>min()</code> (List, Set):  计算集合元素的总和、平均值、数量、最大值、最小值</li>
+<li><code>reduce &#123; accumulator, element -&gt; operation &#125;</code>:  将集合元素聚合为一个值 (例如求和、求积)</li>
+<li><code>fold(initialValue) &#123; accumulator, element -&gt; operation &#125;</code>:  与 <code>reduce</code> 类似，但可以指定初始值</li>
+</ul>
+</li>
+</ul>
+<p><strong>集合操作链 (Chaining Collection Operations):</strong></p>
+<p>Kotlin 集合操作函数可以链式调用，将多个操作组合在一起，以简洁、流畅的方式完成复杂的数据处理。</p>
+<p><strong>例子：</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> numbers = listOf(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 链式操作示例：</span></span><br><span class="line">    <span class="keyword">val</span> result = numbers</span><br><span class="line">        .filter &#123; it % <span class="number">2</span> == <span class="number">0</span> &#125; <span class="comment">// 过滤偶数</span></span><br><span class="line">        .map &#123; it * it &#125;       <span class="comment">// 将偶数平方</span></span><br><span class="line">        .sortedDescending()    <span class="comment">// 降序排序</span></span><br><span class="line">        .take(<span class="number">3</span>)               <span class="comment">// 取前 3 个元素</span></span><br><span class="line"></span><br><span class="line">    println(<span class="string">&quot;Result: <span class="variable">$result</span>&quot;</span>) <span class="comment">// 输出: Result: [100, 64, 36] (10*10, 8*8, 6*6)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 遍历 Map</span></span><br><span class="line">    <span class="keyword">val</span> ages = mapOf(<span class="string">&quot;Alice&quot;</span> to <span class="number">30</span>, <span class="string">&quot;Bob&quot;</span> to <span class="number">25</span>, <span class="string">&quot;Charlie&quot;</span> to <span class="number">35</span>)</span><br><span class="line">    ages.forEach &#123; name, age -&gt;</span><br><span class="line">        println(<span class="string">&quot;<span class="variable">$name</span> is <span class="variable">$age</span> years old&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用 Set 去重</span></span><br><span class="line">    <span class="keyword">val</span> duplicatedList = listOf(<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">4</span>)</span><br><span class="line">    <span class="keyword">val</span> uniqueNumbers = duplicatedList.toSet()</span><br><span class="line">    println(<span class="string">&quot;Unique numbers: <span class="variable">$uniqueNumbers</span>&quot;</span>) <span class="comment">// 输出: Unique numbers: [1, 2, 3, 4]</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          </div>
+        </div>
+
+        <!-- 文章底部 -->
+        <div class="px-8 py-8">
+          <!-- 标签 -->
+          
+            <div class="flex flex-wrap gap-2 mb-8">
+              
+                <a href="/tags/KOTLIN/" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm text-gray-600 transition-colors">
+                  KOTLIN
+                </a>
+                
+            </div>
+            
+
+              <!-- 分享 -->
+              <div class="flex items-center justify-between mb-8 py-6 border-t border-b">
+                <div class="text-sm text-gray-500">分享文章：</div>
+                <div class="flex gap-4">
+                  <button class="text-gray-400 hover:text-gray-600 transition-colors">
+                    <i class="far fa-copy text-xl"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- 上一篇/下一篇 -->
+              <div class="flex flex-col sm:flex-row justify-between gap-4">
+                
+                  <a href="/cm6z562wy0005ysx551of5kin.html" class="group flex-1">
+                    <div class="text-sm text-gray-500 mb-1">上一篇</div>
+                    <div class="group-hover:text-blue-600 transition-colors">
+                      Kotlin (三) | 函数
+                    </div>
+                  </a>
+                  
+                    
+                      <a href="/cm6z6k8kg0001tcx51mpl4qpj.html" class="group flex-1 text-right">
+                        <div class="text-sm text-gray-500 mb-1">下一篇</div>
+                        <div class="group-hover:text-blue-600 transition-colors">
+                          Kotlin (九) | 扩展函数和扩展属性
+                        </div>
+                      </a>
+                      
+              </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 侧边栏 -->
+    <aside class="lg:w-1/4 mt-8 lg:mt-0 space-y-6">
+      <!-- 作者信息 -->
+      <div class="bg-white rounded-xl p-6">
+        <div class="flex items-center gap-4 mb-4">
+          <img src="/images/avatar.jpg" class="w-16 h-16 rounded-full">
+          <div>
+            <h3 class="font-medium">Nunumao</h3>
+            <p class="text-sm text-gray-500">开发工程师</p>
+          </div>
+        </div>
+        <p class="text-sm text-gray-600 mb-4">专注于技术研究，热爱分享技术心得</p>
+        <div class="flex justify-center gap-4">
+          <a href="https://github.com/nunumao" target="_blank" class="text-gray-400 hover:text-gray-600">
+            <i class="fab fa-github text-xl"></i>
+          </a>
+          <a href="mailto:gm292018748@email.com" target="_blank" class="text-gray-400 hover:text-[#1DA1F2]">
+            <i class="fas fa-envelope text-xl"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 目录 -->
+      <div class="bg-white rounded-xl p-6 sticky top-24">
+        <h2 class="text-lg font-medium mb-4">目录</h2>
+        <nav class="space-y-2 text-sm">
+          
+        </nav>
+      </div>
+
+      <!-- 分类列表 -->
+      <div class="bg-white rounded-xl p-6">
+        <h2 class="text-lg font-medium mb-4">文章分类</h2>
+        <div class="space-y-3">
+          
+            <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="flex items-center justify-between group">
+              <div class="flex items-center">
+                <i class="fas fa-folder text-gray-500 w-5"></i>
+                <span class="text-sm group-hover:text-blue-600">
+                  服务器
+                </span>
+              </div>
+              <span class="text-xs text-gray-500">
+                3
+              </span>
+            </a>
+            
+            <a href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/" class="flex items-center justify-between group">
+              <div class="flex items-center">
+                <i class="fas fa-server text-green-500 w-5"></i>
+                <span class="text-sm group-hover:text-blue-600">
+                  后端技术
+                </span>
+              </div>
+              <span class="text-xs text-gray-500">
+                20
+              </span>
+            </a>
+            
+            <a href="/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/" class="flex items-center justify-between group">
+              <div class="flex items-center">
+                <i class="fas fa-code text-blue-500 w-5"></i>
+                <span class="text-sm group-hover:text-blue-600">
+                  前端技术
+                </span>
+              </div>
+              <span class="text-xs text-gray-500">
+                1
+              </span>
+            </a>
+            
+        </div>
+      </div>
+
+      <!-- 相关文章 -->
+      <div class="bg-white rounded-xl p-6">
+        <h2 class="text-lg font-medium mb-4">相关文章</h2>
+        <div class="space-y-4">
+          
+            <a href="/cm6z562wp0000ysx5fx4xfxyq.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (一) | 基本语法
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm6z562wt0001ysx5g3tn4b0o.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (四) | 类和对象
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm6z562wx0003ysx5e2pn7bg7.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (二) | 控制流
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm6z562wy0005ysx551of5kin.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (三) | 函数
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm6z6k8kg0001tcx51mpl4qpj.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (九) | 扩展函数和扩展属性
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+        </div>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<style>
+  .markdown-body {
+    box-sizing: border-box;
+    min-width: 200px;
+    max-width: 100%;
+    margin: 0 auto;
+    background-color: white;
+  }
+
+  /* 适配深色模式 */
+  @media (prefers-color-scheme: dark) {
+    .markdown-body {
+      color-scheme: dark;
+      --color-prettylights-syntax-comment: #8b949e;
+      --color-prettylights-syntax-constant: #79c0ff;
+      --color-prettylights-syntax-entity: #d2a8ff;
+      --color-prettylights-syntax-storage-modifier-import: #c9d1d9;
+      --color-prettylights-syntax-entity-tag: #7ee787;
+      --color-prettylights-syntax-keyword: #ff7b72;
+      --color-prettylights-syntax-string: #a5d6ff;
+      --color-prettylights-syntax-variable: #ffa657;
+      --color-prettylights-syntax-brackethighlighter-unmatched: #f85149;
+      --color-prettylights-syntax-invalid-illegal-text: #f0f6fc;
+      --color-prettylights-syntax-invalid-illegal-bg: #8e1519;
+      --color-prettylights-syntax-carriage-return-text: #f0f6fc;
+      --color-prettylights-syntax-carriage-return-bg: #b62324;
+      --color-prettylights-syntax-string-regexp: #7ee787;
+      --color-prettylights-syntax-markup-list: #f2cc60;
+      --color-prettylights-syntax-markup-heading: #1f6feb;
+      --color-prettylights-syntax-markup-italic: #c9d1d9;
+      --color-prettylights-syntax-markup-bold: #c9d1d9;
+      --color-prettylights-syntax-markup-deleted-text: #ffdcd7;
+      --color-prettylights-syntax-markup-deleted-bg: #67060c;
+      --color-prettylights-syntax-markup-inserted-text: #aff5b4;
+      --color-prettylights-syntax-markup-inserted-bg: #033a16;
+      --color-prettylights-syntax-markup-changed-text: #ffdfb6;
+      --color-prettylights-syntax-markup-changed-bg: #5a1e02;
+      --color-prettylights-syntax-markup-ignored-text: #c9d1d9;
+      --color-prettylights-syntax-markup-ignored-bg: #1158c7;
+      --color-prettylights-syntax-meta-diff-range: #d2a8ff;
+      --color-prettylights-syntax-brackethighlighter-angle: #8b949e;
+      --color-prettylights-syntax-sublimelinter-gutter-mark: #484f58;
+      --color-prettylights-syntax-constant-other-reference-link: #a5d6ff;
+      --color-fg-default: #c9d1d9;
+      --color-fg-muted: #8b949e;
+      --color-fg-subtle: #6e7681;
+      --color-canvas-default: #0d1117;
+      --color-canvas-subtle: #161b22;
+      --color-border-default: #30363d;
+      --color-border-muted: #21262d;
+      --color-neutral-muted: rgba(110, 118, 129, 0.4);
+      --color-accent-fg: #58a6ff;
+      --color-accent-emphasis: #1f6feb;
+      --color-attention-subtle: rgba(187, 128, 9, 0.15);
+      --color-danger-fg: #f85149;
+    }
+  }
+</style>
+  <!-- 页脚 -->
+<footer class="border-t mt-16">
+  <div class="max-w-4xl mx-auto px-4 py-8 text-center text-sm text-gray-500">
+    <p>© 2025 nunumao. Built with <a href="#" class="text-blue-600">Hexo</a></p>
+  </div>
+</footer>
+</body>
+
+</html>

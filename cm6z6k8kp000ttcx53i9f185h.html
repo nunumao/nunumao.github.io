@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>编程日记</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  
+<link rel="stylesheet" href="/css/github-markdown.css">
+
+  
+<link rel="stylesheet" href="/css/atom-one-dark.css">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+<script src="/js/jquery.min.js"></script>
+
+  
+<script src="/js/script.js"></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="bg-gray-50 text-gray-800">
+  <div class="lg:hidden fixed right-4 top-4 z-50">
+    <button class="p-2 bg-white/80 backdrop-blur-sm rounded-lg border" data-mobile-menu-trigger><i class="fas fa-bars"></i></button>
+  </div>
+  <!-- 导航栏 -->
+  <nav class="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-40">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="flex justify-between items-center h-16">
+        <a href="/" class="text-xl font-serif">编程日记</a>
+        <!-- 桌面端导航 -->
+        <div class="hidden lg:flex items-center space-x-6">
+          <div class="flex items-center space-x-6 text-sm">
+            <a href="/" class="hover:text-blue-600" data-i18n="nav.home">首页</a>
+            <!-- 分类下拉菜单 -->
+            <div class="relative group">
+              <a href="/categories" class="hover:text-blue-600">分类</a>
+              <!-- 优化后的下拉内容 -->
+              <div class="absolute left-0 mt-2 py-2 bg-white backdrop-blur-sm border rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div class="grid grid-cols-2 gap-1 w-[400px] p-4">
+                  
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/服务器/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>服务器</span>
+                        </a>
+                      
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/后端技术/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>后端技术</span>
+                        </a>
+                      
+                    
+                      
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/前端技术/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>前端技术</span>
+                        </a>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                  
+                </div>
+              </div>
+            </div>
+            <a href="/case" class="hover:text-blue-600" data-i18n="nav.case">作品</a>
+            <a href="/archives" class="hover:text-blue-600" data-i18n="nav.archives">归档</a>
+            <a href="/about" class="hover:text-blue-600" data-i18n="nav.about">关于</a>
+            <!-- 搜索框 -->
+            <div class="relative">
+              <input type="search" placeholder="Search articles..." class="w-48 px-4 py-1 text-sm border rounded-full bg-gray-50 focus:outline-none focus:ring-1 focus:ring-blue-500">
+              <i class="fas fa-search absolute right-3 top-2 text-gray-400"></i>
+            </div>
+            <!-- 语言切换 -->
+            <div class="flex items-center space-x-2 ml-4 text-sm border-l pl-4">
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('en-US')">EN</button>
+              <span class="text-gray-300">|</span>
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('zh-CN')">简</button>
+              <span class="text-gray-300">|</span>
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('zh-TW')">繁</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div id="mobileMenu" class="fixed inset-0 bg-white/90 backdrop-blur-sm z-40 lg:hidden hidden">
+    <div class="h-full w-full flex flex-col items-center justify-center space-y-6 text-lg">
+      <a href="/" class="hover:text-blue-600" data-i18n="nav.home">首页</a>
+      <a href="/categories" class="hover:text-blue-600" data-i18n="nav.categories">分类</a>
+      <a href="/case" class="hover:text-blue-600" data-i18n="nav.case">作品</a>
+      <a href="/archives" class="hover:text-blue-600" data-i18n="nav.archive">归档</a>
+      <a href="/about" class="hover:text-blue-600" data-i18n="nav.about">关于</a>
+      <div class="flex items-center space-x-4 mt-4">
+        <button class="lang-switch hover:text-blue-600" data-lang="en">EN</button>
+        <button class="lang-switch hover:text-blue-600" data-lang="zh">简</button>
+        <button class="lang-switch hover:text-blue-600" data-lang="zh-TW">繁</button>
+      </div>
+    </div>
+  </div>
+  <main class="max-w-5xl mx-auto px-4 py-12">
+  <div class="lg:flex lg:gap-8">
+    <!-- 文章主体 -->
+    <article class="lg:w-3/4">
+      <!-- 文章容器 -->
+      <div class="bg-white rounded-xl overflow-hidden">
+        <!-- 文章头部 -->
+        <div class="px-8 pt-12 pb-8">
+          <!-- 标题 -->
+          <h1 class="text-3xl font-medium mb-6 leading-snug">
+            Kotlin (十二) | 协程
+          </h1>
+
+          <!-- 元信息 -->
+          <div class="flex flex-wrap items-center gap-6 text-sm text-gray-500">
+            <span>
+              <i class="fas fa-folder-open mr-2"></i>
+              
+                <a href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/KOTLIN/" class="hover:text-blue-600">
+                  KOTLIN
+                </a>
+                
+            </span>
+            <span>
+              <i class="far fa-calendar mr-2"></i>
+              2025-02-10
+            </span>
+            <span><i class="far fa-clock mr-2"></i>15 分钟阅读</span>
+            <span><i class="far fa-eye mr-2"></i>
+              0
+            </span>
+          </div>
+        </div>
+
+        <!-- 文章内容 -->
+        <div class="px-8 py-10 border-t border-b">
+          <div class="markdown-body">
+            <p><strong>协程 (Coroutines)</strong></p>
+<p>协程 (Coroutines) 是 Kotlin 中用于编写异步和并发代码的强大工具。  它们提供了一种比线程更轻量级、更高效的并发模型，可以简化异步编程，并提高应用程序的性能和响应性。  本章我们将对协程进行初步介绍，了解协程的基本概念和用法。</p>
+<p><strong>什么是协程？协程的优势</strong></p>
+<ul>
+<li><p><strong>什么是协程 (Coroutines)?</strong></p>
+<ul>
+<li><p>协程是一种<strong>轻量级的线程</strong>。  你可以把协程看作是用户级线程或轻量级线程。  与操作系统线程相比，协程的创建、切换和销毁的开销非常小，因为协程的调度是由程序自身控制的，而不是由操作系统内核控制。</p>
+</li>
+<li><p>协程是<strong>协作式多任务 (cooperative multitasking)</strong> 的实现。  在协作式多任务中，任务 (协程) 主动让出 CPU 执行权，而不是像抢占式多任务那样由操作系统强制切换。  协程的挂起 (suspending) 和恢复 (resuming) 是由开发者显式控制的。</p>
+</li>
+<li><p>协程主要用于<strong>简化异步编程</strong>。  异步编程通常涉及回调、Promise、Future 等复杂的机制来处理非阻塞操作。  协程提供了一种<strong>顺序编写异步代码</strong>的方式，使得异步代码看起来像同步代码一样易于理解和维护。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>协程的优势:</strong></p>
+<ul>
+<li><strong>轻量级 (Lightweight):</strong>  创建和切换协程的开销远小于线程，可以在一个程序中创建数百万个协程而不会造成性能问题。</li>
+<li><strong>高效 (Efficient):</strong>  协程的调度和切换在用户空间完成，避免了操作系统内核的上下文切换开销，提高了并发性能。</li>
+<li><strong>简化异步代码 (Simplified Asynchronous Code):</strong>  协程使用 <code>suspend</code> 函数和顺序代码风格来处理异步操作，使得异步代码更易于编写、阅读和调试，避免了回调地狱 (callback hell) 和 Promise 链的复杂性。</li>
+<li><strong>结构化并发 (Structured Concurrency):</strong>  Kotlin 协程提供了结构化并发的机制，例如作用域 (CoroutineScope) 和结构化并发构建器 (<code>launch</code>, <code>async</code>)，可以更好地管理协程的生命周期，避免协程泄漏和资源泄漏。</li>
+<li><strong>易于与现有代码集成 (Easy Integration):</strong>  Kotlin 协程可以与现有的基于线程的代码、Java 库和 Android 框架无缝集成。</li>
+</ul>
+</li>
+<li><p><strong>协程 vs. 线程 (Threads):</strong></p>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>协程 (Coroutines)</th>
+<th>线程 (Threads)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>重量级</td>
+<td>轻量级 (Lightweight)</td>
+<td>重量级 (Heavyweight)</td>
+</tr>
+<tr>
+<td>创建开销</td>
+<td>低 (Low)</td>
+<td>高 (High)</td>
+</tr>
+<tr>
+<td>切换开销</td>
+<td>低 (Low, 用户空间)</td>
+<td>高 (High, 内核空间)</td>
+</tr>
+<tr>
+<td>调度</td>
+<td>程序自身控制 (User-space scheduling)</td>
+<td>操作系统内核控制 (Kernel-space scheduling)</td>
+</tr>
+<tr>
+<td>并发模型</td>
+<td>协作式多任务 (Cooperative multitasking)</td>
+<td>抢占式多任务 (Preemptive multitasking)</td>
+</tr>
+<tr>
+<td>主要用途</td>
+<td>简化异步编程，处理 I&#x2F;O 密集型任务</td>
+<td>并行计算，CPU 密集型任务，多核处理器利用</td>
+</tr>
+<tr>
+<td>资源消耗</td>
+<td>低 (Low, 内存消耗少)</td>
+<td>高 (High, 内存消耗大，线程数量受限)</td>
+</tr>
+<tr>
+<td>适用场景</td>
+<td>网络请求、UI 编程、异步 I&#x2F;O、高并发 I&#x2F;O 服务</td>
+<td>并行计算、后台任务、需要真正并行执行的任务</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<p><strong>总结:</strong>  协程更适合处理 I&#x2F;O 密集型任务 (例如网络请求、文件操作、数据库访问等)，在这些场景下，程序的大部分时间都在等待 I&#x2F;O 操作完成，而不是进行 CPU 计算。  使用协程可以高效地利用 CPU 时间，提高程序的并发性能和响应性。  线程更适合处理 CPU 密集型任务 (例如图像处理、科学计算等)，可以利用多核处理器的并行计算能力。</p>
+<p><strong><code>suspend</code> 函数</strong></p>
+<p><code>suspend</code> 关键字是 Kotlin 协程的核心概念。  <code>suspend</code> 关键字用于修饰函数，表示该函数是一个<strong>挂起函数 (suspending function)</strong>。</p>
+<ul>
+<li><p><strong><code>suspend</code> 函数的特点:</strong></p>
+<ul>
+<li><p><strong>可以挂起 (suspend) 和恢复 (resume):</strong>  <code>suspend</code> 函数可以在执行过程中<strong>挂起</strong>当前协程的执行，并在稍后<strong>恢复</strong>执行。  挂起操作是非阻塞的，不会阻塞线程。</p>
+</li>
+<li><p><strong>只能在协程或其他的 <code>suspend</code> 函数中调用:</strong>  <code>suspend</code> 函数不能在普通的函数 (例如 <code>main</code> 函数) 中直接调用，只能在协程作用域或其他的 <code>suspend</code> 函数中调用。  这是为了确保挂起操作在协程上下文中正确执行。</p>
+</li>
+<li><p><strong>编译器转换:</strong>  Kotlin 编译器会对 <code>suspend</code> 函数进行特殊处理，将其转换为状态机 (state machine)，以便实现挂起和恢复的功能。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>例子：一个简单的 <code>delaySuspend()</code> 挂起函数，模拟耗时操作。</strong></p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> kotlinx.coroutines.*</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义一个 suspend 函数，模拟延迟操作</span></span><br><span class="line"><span class="keyword">suspend</span> <span class="function"><span class="keyword">fun</span> <span class="title">delaySuspend</span><span class="params">(timeMillis: <span class="type">Long</span>)</span></span> &#123;</span><br><span class="line">    println(<span class="string">&quot;开始延迟 <span class="subst">$&#123;timeMillis&#125;</span>ms&quot;</span>)</span><br><span class="line">    delay(timeMillis) <span class="comment">// delay 是一个 suspend 函数，用于挂起协程，非阻塞线程</span></span><br><span class="line">    println(<span class="string">&quot;延迟结束&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> = runBlocking &#123; <span class="comment">// runBlocking 是一个协程构建器，用于启动顶层协程 (阻塞当前线程，主要用于 main 函数或测试)</span></span><br><span class="line">    println(<span class="string">&quot;协程开始&quot;</span>)</span><br><span class="line">    delaySuspend(<span class="number">1000</span>) <span class="comment">// 调用 suspend 函数 delaySuspend</span></span><br><span class="line">    println(<span class="string">&quot;协程结束&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>运行结果 (大致):</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">协程开始</span><br><span class="line">开始延迟 1000ms</span><br><span class="line">延迟结束</span><br><span class="line">协程结束</span><br></pre></td></tr></table></figure>
+
+<p><strong>解释:</strong></p>
+<ol>
+<li><p><code>delaySuspend(1000)</code> 是一个 <code>suspend</code> 函数调用。  当协程执行到 <code>delay(1000)</code> 时，协程会被<strong>挂起</strong>，但<strong>当前线程不会被阻塞</strong>。</p>
+</li>
+<li><p>在协程挂起期间，线程可以继续执行其他的任务 (例如处理其他的协程)。</p>
+</li>
+<li><p><code>delay(1000)</code> 模拟了一个耗时 1000ms 的操作 (例如网络请求、I&#x2F;O 操作)。  在 1000ms 后，协程会被<strong>恢复</strong>执行，从 <code>delay(1000)</code> 之后的位置继续执行。</p>
+</li>
+<li><p><code>println(&quot;延迟结束&quot;)</code> 和 <code>println(&quot;协程结束&quot;)</code> 会在协程恢复执行后被顺序执行。</p>
+</li>
+</ol>
+<p><strong>注意 <code>delay()</code> 函数:</strong>  <code>delay()</code> 是 Kotlin 协程库提供的一个 <code>suspend</code> 函数，用于挂起协程指定的时间，非阻塞线程。  <code>delay()</code> 函数只能在协程作用域或 <code>suspend</code> 函数中调用。</p>
+<p><strong><code>launch</code>, <code>async</code>, <code>runBlocking</code></strong></p>
+<p>Kotlin 协程提供了多种<strong>协程构建器 (Coroutine Builders)</strong>，用于启动和管理协程。  最常用的协程构建器包括 <code>launch</code>, <code>async</code>, <code>runBlocking</code>。</p>
+<ul>
+<li><p><strong><code>launch</code>:</strong>  启动一个新的<strong>不返回结果</strong>的协程。  <code>launch</code> 返回一个 <code>Job</code> 对象，可以用于控制协程的生命周期 (例如取消协程)。  <code>launch</code> 常用于启动后台任务，例如执行网络请求、更新 UI 等。</p>
+  <figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> = runBlocking &#123;</span><br><span class="line">    println(<span class="string">&quot;主协程开始&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> job = launch &#123; <span class="comment">// 使用 launch 启动一个新的协程，不返回结果</span></span><br><span class="line">        println(<span class="string">&quot;Launched coroutine started&quot;</span>)</span><br><span class="line">        delay(<span class="number">2000</span>) <span class="comment">// 挂起 2 秒</span></span><br><span class="line">        println(<span class="string">&quot;Launched coroutine finished&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    delay(<span class="number">1000</span>) <span class="comment">// 主协程挂起 1 秒</span></span><br><span class="line">    println(<span class="string">&quot;主协程继续执行&quot;</span>)</span><br><span class="line"></span><br><span class="line">    job.join() <span class="comment">// 等待 launched 协程执行完成，再继续执行主协程</span></span><br><span class="line">    println(<span class="string">&quot;主协程结束&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>  <strong>运行结果 (大致):</strong></p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">主协程开始</span><br><span class="line">Launched coroutine started</span><br><span class="line">主协程继续执行</span><br><span class="line">Launched coroutine finished</span><br><span class="line">主协程结束</span><br></pre></td></tr></table></figure>
+
+<p>  <strong>解释:</strong></p>
+<ol>
+<li><p><code>launch &#123; ... &#125;</code> 启动一个新的协程，该协程执行花括号 <code>&#123;&#125;</code> 中的代码块。  <code>launch</code> 返回一个 <code>Job</code> 对象，赋值给 <code>job</code> 变量。</p>
+</li>
+<li><p>启动的协程和主协程<strong>并发执行</strong>。  主协程先挂起 1 秒，然后继续执行 <code>println(&quot;主协程继续执行&quot;)</code>。  同时，launched 协程也在后台执行，挂起 2 秒后打印 “Launched coroutine finished”。</p>
+</li>
+<li><p><code>job.join()</code> 用于<strong>等待</strong> <code>job</code> 协程执行完成。  主协程会挂起，直到 <code>job</code> 协程执行完成，再继续执行 <code>println(&quot;主协程结束&quot;)</code>。  <code>join()</code> 函数也是一个 <code>suspend</code> 函数。</p>
+</li>
+</ol>
+</li>
+<li><p><strong><code>async</code>:</strong>  启动一个新的<strong>返回结果</strong>的协程。  <code>async</code> 返回一个 <code>Deferred&lt;T&gt;</code> 对象，<code>Deferred&lt;T&gt;</code> 是 <code>Job</code> 的子接口，表示一个将会在未来某个时刻返回结果的协程。  可以使用 <code>await()</code> 函数来获取协程的返回值 (挂起当前协程，直到结果可用)。  <code>async</code> 常用于并发执行多个计算任务，并获取结果。</p>
+  <figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> kotlin.system.*</span><br><span class="line"></span><br><span class="line"><span class="keyword">suspend</span> <span class="function"><span class="keyword">fun</span> <span class="title">calculateValue</span><span class="params">(value: <span class="type">Int</span>)</span></span>: <span class="built_in">Int</span> &#123;</span><br><span class="line">    delay(<span class="number">1000</span>) <span class="comment">// 模拟耗时计算</span></span><br><span class="line">    <span class="keyword">return</span> value * <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> = runBlocking &#123;</span><br><span class="line">    <span class="keyword">val</span> time = measureTimeMillis &#123; <span class="comment">// measureTimeMillis 函数用于测量代码块的执行时间</span></span><br><span class="line">        println(<span class="string">&quot;开始并发计算&quot;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">val</span> deferred1: Deferred&lt;<span class="built_in">Int</span>&gt; = async &#123; calculateValue(<span class="number">10</span>) &#125; <span class="comment">// 启动第一个 async 协程</span></span><br><span class="line">        <span class="keyword">val</span> deferred2: Deferred&lt;<span class="built_in">Int</span>&gt; = async &#123; calculateValue(<span class="number">20</span>) &#125; <span class="comment">// 启动第二个 async 协程</span></span><br><span class="line"></span><br><span class="line">        println(<span class="string">&quot;等待结果...&quot;</span>)</span><br><span class="line">        <span class="keyword">val</span> result1 = deferred1.await() <span class="comment">// 等待第一个协程的结果 (挂起)</span></span><br><span class="line">        <span class="keyword">val</span> result2 = deferred2.await() <span class="comment">// 等待第二个协程的结果 (挂起)</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">val</span> total = result1 + result2</span><br><span class="line">        println(<span class="string">&quot;总和结果: <span class="variable">$total</span>&quot;</span>) <span class="comment">// 输出: 总和结果: 60 (20 + 40)</span></span><br><span class="line">    &#125;</span><br><span class="line">    println(<span class="string">&quot;总耗时: <span class="variable">$time</span> ms&quot;</span>) <span class="comment">// 总耗时大约 1 秒 (因为两个协程并发执行，而不是串行执行)</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>  <strong>运行结果 (大致):</strong></p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">开始并发计算</span><br><span class="line">等待结果...</span><br><span class="line">总和结果: 60</span><br><span class="line">总耗时: 1015 ms</span><br></pre></td></tr></table></figure>
+
+<p>  <strong>解释:</strong></p>
+<ol>
+<li><p><code>async &#123; calculateValue(10) &#125;</code> 和 <code>async &#123; calculateValue(20) &#125;</code> 启动两个协程<strong>并发执行</strong> <code>calculateValue</code> 函数。  <code>async</code> 返回 <code>Deferred&lt;Int&gt;</code> 对象，分别赋值给 <code>deferred1</code> 和 <code>deferred2</code>。</p>
+</li>
+<li><p><code>deferred1.await()</code> 和 <code>deferred2.await()</code> <strong>挂起</strong>当前协程，直到 <code>deferred1</code> 和 <code>deferred2</code> 协程计算完成并返回结果。</p>
+</li>
+<li><p>由于两个协程是并发执行的，所以总耗时大约是 1 秒 (而不是 2 秒，如果串行执行，总耗时会是 2 秒)。</p>
+</li>
+</ol>
+</li>
+<li><p><strong><code>runBlocking</code>:</strong>  启动一个新的<strong>阻塞式</strong>协程。  <code>runBlocking</code> 会<strong>阻塞当前线程</strong>，直到协程执行完成。  <code>runBlocking</code> 主要用于启动<strong>顶层协程</strong> (例如 <code>main</code> 函数的协程) 和<strong>测试</strong>代码中。  在普通的代码中，应该尽量避免使用 <code>runBlocking</code>，因为它会阻塞线程，违背了协程的非阻塞特性。</p>
+  <figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> = runBlocking &#123; <span class="comment">// runBlocking 启动顶层协程，阻塞 main 函数所在的线程</span></span><br><span class="line">    println(<span class="string">&quot;RunBlocking coroutine started&quot;</span>)</span><br><span class="line">    delay(<span class="number">1500</span>) <span class="comment">// 挂起 1.5 秒</span></span><br><span class="line">    println(<span class="string">&quot;RunBlocking coroutine finished&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>  <code>main()</code> 函数的返回值类型 <code>Unit</code> 被 <code>runBlocking</code> 的返回值类型 <code>Unit</code> 替换，并且 <code>main()</code> 函数体被 <code>runBlocking &#123; ... &#125;</code> 包裹。  这样 <code>main()</code> 函数就成为了一个协程入口点。</p>
+</li>
+</ul>
+<p><strong>简单的协程示例</strong></p>
+<p><strong>示例：使用协程进行网络请求并显示结果。</strong>  (需要添加 Kotlin 协程库依赖，例如 <code>implementation(&quot;org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4&quot;)</code> 或最新版本，如果你是 Android 项目，或者 <code>implementation(&quot;org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4&quot;)</code> 如果是 JVM 项目)</p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> kotlinx.coroutines.*</span><br><span class="line"><span class="keyword">import</span> java.net.URL</span><br><span class="line"></span><br><span class="line"><span class="keyword">suspend</span> <span class="function"><span class="keyword">fun</span> <span class="title">fetchWebPage</span><span class="params">(url: <span class="type">String</span>)</span></span>: String &#123;</span><br><span class="line">    println(<span class="string">&quot;Fetching webpage from: <span class="variable">$url</span>&quot;</span>)</span><br><span class="line">    delay(<span class="number">2000</span>) <span class="comment">// 模拟网络延迟</span></span><br><span class="line">    <span class="keyword">val</span> response = URL(url).readText() <span class="comment">// 阻塞式网络请求 (在实际应用中，应该使用非阻塞的 HttpClient，这里为了简化示例)</span></span><br><span class="line">    println(<span class="string">&quot;Webpage fetched&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> response</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> = runBlocking &#123;</span><br><span class="line">    println(<span class="string">&quot;程序开始&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> webpageContent = withContext(Dispatchers.IO) &#123; <span class="comment">// 使用 withContext(Dispatchers.IO) 切换到 IO 线程池执行耗时 I/O 操作</span></span><br><span class="line">        fetchWebPage(<span class="string">&quot;https://www.example.com&quot;</span>) <span class="comment">// 调用 suspend 函数 fetchWebPage</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    println(<span class="string">&quot;Webpage content length: <span class="subst">$&#123;webpageContent.length&#125;</span>&quot;</span>)</span><br><span class="line">    println(<span class="string">&quot;程序结束&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>运行结果 (大致):</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">程序开始</span><br><span class="line">Fetching webpage from: https://www.example.com</span><br><span class="line">Webpage fetched</span><br><span class="line">Webpage content length: ... (example.com 网页内容的长度)</span><br><span class="line">程序结束</span><br></pre></td></tr></table></figure>
+
+<p><strong>解释:</strong></p>
+<ol>
+<li><p><code>fetchWebPage(url)</code> 是一个 <code>suspend</code> 函数，模拟网络请求。  <code>delay(2000)</code> 模拟网络延迟，<code>URL(url).readText()</code> 进行阻塞式网络请求 (实际应用中应该使用非阻塞的 HttpClient，例如 <code>ktor-client</code> 等)。</p>
+</li>
+<li><p><code>withContext(Dispatchers.IO) &#123; ... &#125;</code> 用于<strong>切换协程的执行上下文 (CoroutineContext)</strong> 到 <code>Dispatchers.IO</code> 线程池。  <code>Dispatchers.IO</code> 是 Kotlin 协程库预定义的<strong>线程池</strong>，专门用于执行<strong>I&#x2F;O 密集型</strong>的任务 (例如网络请求、文件操作)。  在 <code>withContext(Dispatchers.IO)</code> 代码块中执行的代码会在 IO 线程池中运行，不会阻塞主线程 (或调用 <code>runBlocking</code> 的线程)。</p>
+</li>
+<li><p><code>fetchWebPage(&quot;https://www.example.com&quot;)</code> 在 <code>withContext(Dispatchers.IO)</code> 代码块中被调用，因此网络请求操作会在 IO 线程池中执行，不会阻塞主线程。</p>
+</li>
+<li><p><code>withContext(Dispatchers.IO)</code> 也是一个 <code>suspend</code> 函数，它会挂起当前协程，直到代码块中的代码执行完成，并返回代码块的最后一个表达式的值 (即 <code>fetchWebPage()</code> 的返回值)。</p>
+</li>
+<li><p><code>println(&quot;Webpage content length: $&#123;webpageContent.length&#125;&quot;)</code> 在网络请求完成后执行，打印网页内容的长度。</p>
+</li>
+</ol>
+<p><strong>Dispatchers (调度器):</strong></p>
+<p>Kotlin 协程使用<strong>调度器 (Dispatchers)</strong> 来决定协程在哪个线程或线程池上执行。  常用的调度器包括：</p>
+<ul>
+<li><strong><code>Dispatchers.Main</code>:</strong>  主线程 (UI 线程)，通常用于 UI 操作 (Android UI 线程，或 JVM Swing&#x2F;JavaFX UI 线程)。</li>
+<li><strong><code>Dispatchers.IO</code>:</strong>  IO 线程池，用于执行 I&#x2F;O 密集型任务 (网络请求、文件操作、数据库访问等)。</li>
+<li><strong><code>Dispatchers.Default</code>:</strong>  默认线程池，用于执行 CPU 密集型任务 (计算密集型任务)。</li>
+<li><strong><code>Dispatchers.Unconfined</code>:</strong>  不受限的调度器，在当前线程或立即执行，不推荐在实际应用中使用。</li>
+<li><strong><code>newSingleThreadContext(&quot;MyThread&quot;)</code>:</strong>  创建单线程上下文，在指定的单线程上执行协程。</li>
+<li><strong><code>newFixedThreadPoolContext(4, &quot;ThreadPool&quot;)</code>:</strong>  创建固定大小的线程池上下文。</li>
+</ul>
+<p><strong>总结:</strong>  协程是一种强大的异步编程工具，可以简化异步代码的编写，并提高程序的并发性能。  本章只是对协程的初步介绍，Kotlin 协程还有很多高级特性，例如协程取消、异常处理、通道 (Channels)、Actor、Flow 等，将在后续章节深入学习。</p>
+
+          </div>
+        </div>
+
+        <!-- 文章底部 -->
+        <div class="px-8 py-8">
+          <!-- 标签 -->
+          
+            <div class="flex flex-wrap gap-2 mb-8">
+              
+                <a href="/tags/KOTLIN/" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm text-gray-600 transition-colors">
+                  KOTLIN
+                </a>
+                
+            </div>
+            
+
+              <!-- 分享 -->
+              <div class="flex items-center justify-between mb-8 py-6 border-t border-b">
+                <div class="text-sm text-gray-500">分享文章：</div>
+                <div class="flex gap-4">
+                  <button class="text-gray-400 hover:text-gray-600 transition-colors">
+                    <i class="far fa-copy text-xl"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- 上一篇/下一篇 -->
+              <div class="flex flex-col sm:flex-row justify-between gap-4">
+                
+                  <a href="/cm6z6k8ko000stcx56um5fvfc.html" class="group flex-1">
+                    <div class="text-sm text-gray-500 mb-1">上一篇</div>
+                    <div class="group-hover:text-blue-600 transition-colors">
+                      Kotlin (十三) | Kotlin 与 Java 互操作
+                    </div>
+                  </a>
+                  
+                    
+                      <a href="/cm6q0phmo0001vcx50gui235k.html" class="group flex-1 text-right">
+                        <div class="text-sm text-gray-500 mb-1">下一篇</div>
+                        <div class="group-hover:text-blue-600 transition-colors">
+                          Alpine 基础镜像
+                        </div>
+                      </a>
+                      
+              </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 侧边栏 -->
+    <aside class="lg:w-1/4 mt-8 lg:mt-0 space-y-6">
+      <!-- 作者信息 -->
+      <div class="bg-white rounded-xl p-6">
+        <div class="flex items-center gap-4 mb-4">
+          <img src="/images/avatar.jpg" class="w-16 h-16 rounded-full">
+          <div>
+            <h3 class="font-medium">Nunumao</h3>
+            <p class="text-sm text-gray-500">开发工程师</p>
+          </div>
+        </div>
+        <p class="text-sm text-gray-600 mb-4">专注于技术研究，热爱分享技术心得</p>
+        <div class="flex justify-center gap-4">
+          <a href="https://github.com/nunumao" target="_blank" class="text-gray-400 hover:text-gray-600">
+            <i class="fab fa-github text-xl"></i>
+          </a>
+          <a href="mailto:gm292018748@email.com" target="_blank" class="text-gray-400 hover:text-[#1DA1F2]">
+            <i class="fas fa-envelope text-xl"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 目录 -->
+      <div class="bg-white rounded-xl p-6 sticky top-24">
+        <h2 class="text-lg font-medium mb-4">目录</h2>
+        <nav class="space-y-2 text-sm">
+          
+        </nav>
+      </div>
+
+      <!-- 分类列表 -->
+      <div class="bg-white rounded-xl p-6">
+        <h2 class="text-lg font-medium mb-4">文章分类</h2>
+        <div class="space-y-3">
+          
+            <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="flex items-center justify-between group">
+              <div class="flex items-center">
+                <i class="fas fa-folder text-gray-500 w-5"></i>
+                <span class="text-sm group-hover:text-blue-600">
+                  服务器
+                </span>
+              </div>
+              <span class="text-xs text-gray-500">
+                3
+              </span>
+            </a>
+            
+            <a href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/" class="flex items-center justify-between group">
+              <div class="flex items-center">
+                <i class="fas fa-server text-green-500 w-5"></i>
+                <span class="text-sm group-hover:text-blue-600">
+                  后端技术
+                </span>
+              </div>
+              <span class="text-xs text-gray-500">
+                20
+              </span>
+            </a>
+            
+            <a href="/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/" class="flex items-center justify-between group">
+              <div class="flex items-center">
+                <i class="fas fa-code text-blue-500 w-5"></i>
+                <span class="text-sm group-hover:text-blue-600">
+                  前端技术
+                </span>
+              </div>
+              <span class="text-xs text-gray-500">
+                1
+              </span>
+            </a>
+            
+        </div>
+      </div>
+
+      <!-- 相关文章 -->
+      <div class="bg-white rounded-xl p-6">
+        <h2 class="text-lg font-medium mb-4">相关文章</h2>
+        <div class="space-y-4">
+          
+            <a href="/cm6z562wp0000ysx5fx4xfxyq.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (一) | 基本语法
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm6z562wt0001ysx5g3tn4b0o.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (四) | 类和对象
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm6z562wx0003ysx5e2pn7bg7.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (二) | 控制流
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm6z562wy0005ysx551of5kin.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (三) | 函数
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm6z6k8kb0000tcx56eq63qfa.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (七) | 集合
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+        </div>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<style>
+  .markdown-body {
+    box-sizing: border-box;
+    min-width: 200px;
+    max-width: 100%;
+    margin: 0 auto;
+    background-color: white;
+  }
+
+  /* 适配深色模式 */
+  @media (prefers-color-scheme: dark) {
+    .markdown-body {
+      color-scheme: dark;
+      --color-prettylights-syntax-comment: #8b949e;
+      --color-prettylights-syntax-constant: #79c0ff;
+      --color-prettylights-syntax-entity: #d2a8ff;
+      --color-prettylights-syntax-storage-modifier-import: #c9d1d9;
+      --color-prettylights-syntax-entity-tag: #7ee787;
+      --color-prettylights-syntax-keyword: #ff7b72;
+      --color-prettylights-syntax-string: #a5d6ff;
+      --color-prettylights-syntax-variable: #ffa657;
+      --color-prettylights-syntax-brackethighlighter-unmatched: #f85149;
+      --color-prettylights-syntax-invalid-illegal-text: #f0f6fc;
+      --color-prettylights-syntax-invalid-illegal-bg: #8e1519;
+      --color-prettylights-syntax-carriage-return-text: #f0f6fc;
+      --color-prettylights-syntax-carriage-return-bg: #b62324;
+      --color-prettylights-syntax-string-regexp: #7ee787;
+      --color-prettylights-syntax-markup-list: #f2cc60;
+      --color-prettylights-syntax-markup-heading: #1f6feb;
+      --color-prettylights-syntax-markup-italic: #c9d1d9;
+      --color-prettylights-syntax-markup-bold: #c9d1d9;
+      --color-prettylights-syntax-markup-deleted-text: #ffdcd7;
+      --color-prettylights-syntax-markup-deleted-bg: #67060c;
+      --color-prettylights-syntax-markup-inserted-text: #aff5b4;
+      --color-prettylights-syntax-markup-inserted-bg: #033a16;
+      --color-prettylights-syntax-markup-changed-text: #ffdfb6;
+      --color-prettylights-syntax-markup-changed-bg: #5a1e02;
+      --color-prettylights-syntax-markup-ignored-text: #c9d1d9;
+      --color-prettylights-syntax-markup-ignored-bg: #1158c7;
+      --color-prettylights-syntax-meta-diff-range: #d2a8ff;
+      --color-prettylights-syntax-brackethighlighter-angle: #8b949e;
+      --color-prettylights-syntax-sublimelinter-gutter-mark: #484f58;
+      --color-prettylights-syntax-constant-other-reference-link: #a5d6ff;
+      --color-fg-default: #c9d1d9;
+      --color-fg-muted: #8b949e;
+      --color-fg-subtle: #6e7681;
+      --color-canvas-default: #0d1117;
+      --color-canvas-subtle: #161b22;
+      --color-border-default: #30363d;
+      --color-border-muted: #21262d;
+      --color-neutral-muted: rgba(110, 118, 129, 0.4);
+      --color-accent-fg: #58a6ff;
+      --color-accent-emphasis: #1f6feb;
+      --color-attention-subtle: rgba(187, 128, 9, 0.15);
+      --color-danger-fg: #f85149;
+    }
+  }
+</style>
+  <!-- 页脚 -->
+<footer class="border-t mt-16">
+  <div class="max-w-4xl mx-auto px-4 py-8 text-center text-sm text-gray-500">
+    <p>© 2025 nunumao. Built with <a href="#" class="text-blue-600">Hexo</a></p>
+  </div>
+</footer>
+</body>
+
+</html>
