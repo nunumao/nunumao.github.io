@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>编程日记</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  
+<link rel="stylesheet" href="/css/github-markdown.css">
+
+  
+<link rel="stylesheet" href="/css/atom-one-dark.css">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+<script src="/js/jquery.min.js"></script>
+
+  
+<script src="/js/script.js"></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="bg-gray-50 text-gray-800">
+  <div class="lg:hidden fixed right-4 top-4 z-50">
+    <button class="p-2 bg-white/80 backdrop-blur-sm rounded-lg border" data-mobile-menu-trigger><i class="fas fa-bars"></i></button>
+  </div>
+  <!-- 导航栏 -->
+  <nav class="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-40">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="flex justify-between items-center h-16">
+        <a href="/" class="text-xl font-serif">编程日记</a>
+        <!-- 桌面端导航 -->
+        <div class="hidden lg:flex items-center space-x-6">
+          <div class="flex items-center space-x-6 text-sm">
+            <a href="/" class="hover:text-blue-600" data-i18n="nav.home">首页</a>
+            <!-- 分类下拉菜单 -->
+            <div class="relative group">
+              <a href="/categories" class="hover:text-blue-600">分类</a>
+              <!-- 优化后的下拉内容 -->
+              <div class="absolute left-0 mt-2 py-2 bg-white backdrop-blur-sm border rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div class="grid grid-cols-2 gap-1 w-[400px] p-4">
+                  
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/前端技术/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>前端技术</span>
+                        </a>
+                      
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/服务器/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>服务器</span>
+                        </a>
+                      
+                    
+                      
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/后端技术/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>后端技术</span>
+                        </a>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                  
+                </div>
+              </div>
+            </div>
+            <a href="/case" class="hover:text-blue-600" data-i18n="nav.case">作品</a>
+            <a href="/archives" class="hover:text-blue-600" data-i18n="nav.archives">归档</a>
+            <a href="/about" class="hover:text-blue-600" data-i18n="nav.about">关于</a>
+            <!-- 搜索框 -->
+            <div class="relative">
+              <input type="search" placeholder="Search articles..." class="w-48 px-4 py-1 text-sm border rounded-full bg-gray-50 focus:outline-none focus:ring-1 focus:ring-blue-500">
+              <i class="fas fa-search absolute right-3 top-2 text-gray-400"></i>
+            </div>
+            <!-- 语言切换 -->
+            <div class="flex items-center space-x-2 ml-4 text-sm border-l pl-4">
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('en-US')">EN</button>
+              <span class="text-gray-300">|</span>
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('zh-CN')">简</button>
+              <span class="text-gray-300">|</span>
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('zh-TW')">繁</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div id="mobileMenu" class="fixed inset-0 bg-white/90 backdrop-blur-sm z-40 lg:hidden hidden">
+    <div class="h-full w-full flex flex-col items-center justify-center space-y-6 text-lg">
+      <a href="/" class="hover:text-blue-600" data-i18n="nav.home">首页</a>
+      <a href="/categories" class="hover:text-blue-600" data-i18n="nav.categories">分类</a>
+      <a href="/case" class="hover:text-blue-600" data-i18n="nav.case">作品</a>
+      <a href="/archives" class="hover:text-blue-600" data-i18n="nav.archive">归档</a>
+      <a href="/about" class="hover:text-blue-600" data-i18n="nav.about">关于</a>
+      <div class="flex items-center space-x-4 mt-4">
+        <button class="lang-switch hover:text-blue-600" data-lang="en">EN</button>
+        <button class="lang-switch hover:text-blue-600" data-lang="zh">简</button>
+        <button class="lang-switch hover:text-blue-600" data-lang="zh-TW">繁</button>
+      </div>
+    </div>
+  </div>
+  <main class="max-w-5xl mx-auto px-4 py-12">
+  <div class="lg:flex lg:gap-8">
+    <!-- 文章主体 -->
+    <article class="lg:w-3/4">
+      <!-- 文章容器 -->
+      <div class="bg-white rounded-xl overflow-hidden">
+        <!-- 文章头部 -->
+        <div class="px-8 pt-12 pb-8">
+          <!-- 标题 -->
+          <h1 class="text-3xl font-medium mb-6 leading-snug">
+            机器学习 (四) | 常见问题的处理思路
+          </h1>
+
+          <!-- 元信息 -->
+          <div class="flex flex-wrap items-center gap-6 text-sm text-gray-500">
+            <span>
+              <i class="fas fa-folder-open mr-2"></i>
+              
+                <a href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/PYTHON/" class="hover:text-blue-600">
+                  PYTHON
+                </a>
+                
+            </span>
+            <span>
+              <i class="far fa-calendar mr-2"></i>
+              2025-02-04
+            </span>
+            <span><i class="far fa-clock mr-2"></i>15 分钟阅读</span>
+            <span><i class="far fa-eye mr-2"></i>
+              0
+            </span>
+          </div>
+        </div>
+
+        <!-- 文章内容 -->
+        <div class="px-8 py-10 border-t border-b">
+          <div class="markdown-body">
+            <p><strong>处理不平衡数据 (Handling Imbalanced Data):  少数派的困境</strong></p>
+<p>在很多实际问题中，不同类别的数据量可能相差悬殊。 例如，在欺诈检测中，正常的交易远多于欺诈交易；在疾病诊断中，健康人群远多于患病人群。 这种情况下，如果直接使用标准算法，模型可能会偏向多数类，而忽略少数类。 这就像一个班级里，大部分是男生，模型可能就简单地认为所有人都是男生。</p>
+<ul>
+<li><p><strong>问题所在:</strong>  模型的目标是最小化整体的错误率，因此它更容易学习到如何正确预测多数类，因为多数类的样本提供了更多的“学习机会”。</p>
+</li>
+<li><p><strong>解决方法:</strong>  Sklearn 和相关的库提供了一些处理不平衡数据的方法：</p>
+<ul>
+<li><p><strong>重采样 (Resampling):</strong></p>
+<ul>
+<li><strong>欠采样 (Undersampling):</strong>  减少多数类样本的数量，使其与少数类样本数量接近。  就像从男生堆里随机移除一些人。</li>
+<li><strong>过采样 (Oversampling):</strong>  增加少数类样本的数量，使其与多数类样本数量接近。  常见的方法是复制少数类样本，或者生成新的、合成的少数类样本 (例如，使用 SMOTE 算法，但我们这里不写代码)。 就像复制一些女生，或者创造一些“虚拟女生”。</li>
+</ul>
+</li>
+<li><p><strong>调整类别权重 (Adjusting Class Weights):</strong>  在训练模型时，给少数类样本赋予更高的权重，让模型更加重视对少数类的学习。  就像告诉模型，预测对一个女生比预测对一个男生更重要。 Sklearn 中的一些分类器提供了 <code>class_weight</code> 参数来实现这一点。</p>
+</li>
+<li><p><strong>使用对不平衡数据更鲁棒的算法:</strong>  有些算法天生对不平衡数据更敏感。 例如，基于树的模型（如随机森林、梯度提升机）在处理不平衡数据方面通常表现更好。</p>
+</li>
+<li><p><strong>使用合适的评估指标:</strong>  准确率在不平衡数据上可能会产生误导。  我们应该使用精确率、召回率、F1-score、AUC 等更合适的指标来评估模型性能。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>大规模数据和模型效率 (Large-Scale Data and Model Efficiency):  速度与激情</strong></p>
+<p>当数据量非常庞大时，模型的训练时间和内存消耗会成为一个问题。  我们需要考虑如何提高模型的训练效率和处理大规模数据的能力。</p>
+<ul>
+<li><p><strong>使用增量学习 (Incremental Learning):</strong>  有些 Sklearn 模型支持增量学习，这意味着模型可以逐步地从新的数据中学习，而不需要重新训练整个模型。 这对于处理流式数据或非常大的数据集非常有用。 例如，<code>SGDClassifier</code> 和 <code>SGDRegressor</code> 就支持增量学习。</p>
+</li>
+<li><p><strong>使用外存学习 (Out-of-Core Learning):</strong>  当数据量太大，无法一次性加载到内存中时，可以使用外存学习技术。  Sklearn 提供了一些工具，例如 <code>joblib.memory</code>，可以帮助我们高效地处理存储在磁盘上的数据。</p>
+</li>
+<li><p><strong>选择更高效的算法:</strong>  不同的算法在处理大规模数据时的效率不同。  例如，线性模型通常比一些复杂的非线性模型训练速度更快。</p>
+</li>
+<li><p><strong>特征降维:</strong>  减少特征数量可以降低模型的计算复杂度。</p>
+</li>
+<li><p><strong>分布式计算:</strong>  将模型的训练任务分布到多台计算机上进行，可以显著加快训练速度。  虽然 Sklearn 本身不直接支持分布式计算，但可以与其他库（如 Dask、Spark）结合使用。</p>
+</li>
+</ul>
+<p><strong>模型可解释性 (Model Interpretability):  打开黑盒子</strong></p>
+<p>有些模型（如深度神经网络）被认为是“黑盒子”，因为我们很难理解它们是如何做出预测的。  在某些领域（如医疗、金融），理解模型决策背后的原因非常重要。  模型可解释性关注的是如何让模型变得更加透明和易于理解。</p>
+<ul>
+<li><p><strong>为什么需要可解释性？</strong></p>
+<ul>
+<li><strong>信任:</strong>  更容易信任一个你知道其工作原理的模型。</li>
+<li><strong>调试:</strong>  更容易发现模型中的错误或偏差。</li>
+<li><strong>洞察:</strong>  可以从模型中学到关于数据的有价值的知识。</li>
+<li><strong>合规:</strong>  某些法规要求模型具有可解释性。</li>
+</ul>
+</li>
+<li><p><strong>Sklearn 和可解释性:</strong></p>
+<ul>
+<li><p><strong>固有可解释性模型:</strong>  有些模型本身就比较容易解释，例如线性回归和决策树。  我们可以直接查看线性回归的系数，或者查看决策树的规则。</p>
+</li>
+<li><p><strong>模型无关的可解释性方法:</strong>  这些方法可以应用于任何类型的模型，来理解模型的行为。</p>
+<ul>
+<li><strong>特征重要性 (Feature Importance):</strong>  衡量每个特征对模型预测的重要性程度。  Sklearn 中的一些模型提供了 <code>feature_importances_</code> 属性。</li>
+<li><strong>局部可解释性 (Local Explanations):</strong>  解释模型对特定样本的预测结果。  LIME 和 SHAP 是两种常用的局部可解释性方法（虽然它们不是 Sklearn 自带的，但经常与 Sklearn 模型一起使用）。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>伦理考量 (Ethical Considerations):  负责任的 AI</strong></p>
+<p>机器学习模型的应用越来越广泛，但也带来了一些伦理问题，例如：</p>
+<ul>
+<li><p><strong>偏见 (Bias):</strong>  如果训练数据中存在偏见，模型也可能会学习到这些偏见，并做出不公平或歧视性的预测。  例如，如果用于训练人脸识别模型的数据集中，男性面孔远多于女性面孔，那么模型在识别女性面孔时可能表现不佳。</p>
+</li>
+<li><p><strong>公平性 (Fairness):</strong>  如何确保模型对不同群体的人做出公平的预测？  这涉及到如何定义和衡量公平性。</p>
+</li>
+<li><p><strong>隐私 (Privacy):</strong>  如何在使用数据的同时保护个人隐私？</p>
+</li>
+<li><p><strong>透明度和问责制 (Transparency and Accountability):</strong>  模型的决策过程是否透明？  如果模型做出错误的预测，谁来负责？</p>
+</li>
+</ul>
+<p>这些问题没有简单的答案，需要我们在开发和部署机器学习模型时进行仔细的思考和权衡。</p>
+<p><strong>模型部署 (Model Deployment):  让模型落地</strong></p>
+<p>训练好的模型最终需要部署到实际应用中，才能发挥其价值。  模型部署涉及到将模型集成到应用程序、网站或其他系统中，以便可以接收新的数据并进行预测。</p>
+<ul>
+<li><p><strong>Sklearn 和模型部署:</strong>  Sklearn 提供了模型持久化的功能，可以将训练好的模型保存下来，然后在部署环境中加载和使用。</p>
+</li>
+<li><p><strong>常见的部署方式:</strong></p>
+<ul>
+<li><strong>作为 Web 服务 (Web Service):</strong>  使用 Flask、Django 等 Web 框架创建一个 API，接收请求并返回预测结果.</li>
+<li><strong>集成到移动应用中:</strong>  将模型嵌入到移动应用程序中。</li>
+<li><strong>批量预测 (Batch Prediction):</strong>  对于需要预测大量数据的场景，可以批量读取数据并进行预测。</li>
+</ul>
+</li>
+</ul>
+<p><strong>持续学习和模型监控 (Continuous Learning and Model Monitoring):  保持活力</strong></p>
+<p>模型部署后，并不是一劳永逸的。  随着时间的推移，数据分布可能会发生变化（称为“概念漂移”），导致模型性能下降。  我们需要持续监控模型的性能，并在必要时进行重新训练或更新。</p>
+<p>这些更深入的议题展示了机器学习不仅仅是关于算法本身，还涉及到数据处理、效率、可解释性、伦理以及实际应用等多个方面。  理解这些概念，可以帮助我们更全面、更负责任地应用 Sklearn 和机器学习技术。</p>
+
+          </div>
+        </div>
+
+        <!-- 文章底部 -->
+        <div class="px-8 py-8">
+          <!-- 标签 -->
+          
+            <div class="flex flex-wrap gap-2 mb-8">
+              
+                <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm text-gray-600 transition-colors">
+                  机器学习
+                </a>
+                
+            </div>
+            
+
+              <!-- 分享 -->
+              <div class="flex items-center justify-between mb-8 py-6 border-t border-b">
+                <div class="text-sm text-gray-500">分享文章：</div>
+                <div class="flex gap-4">
+                  <button class="text-gray-400 hover:text-gray-600 transition-colors">
+                    <i class="far fa-copy text-xl"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- 上一篇/下一篇 -->
+              <div class="flex flex-col sm:flex-row justify-between gap-4">
+                
+                  <a href="/cm72nkaxh001jwkwt6pr4fyio.html" class="group flex-1">
+                    <div class="text-sm text-gray-500 mb-1">上一篇</div>
+                    <div class="group-hover:text-blue-600 transition-colors">
+                      机器学习 (三) | Sklearn管道
+                    </div>
+                  </a>
+                  
+                    
+                      <a href="/cm72nkaxk001rwkwt5ofh8i24.html" class="group flex-1 text-right">
+                        <div class="text-sm text-gray-500 mb-1">下一篇</div>
+                        <div class="group-hover:text-blue-600 transition-colors">
+                          深度学习
+                        </div>
+                      </a>
+                      
+              </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 侧边栏 -->
+    <aside class="lg:w-1/4 mt-8 lg:mt-0 space-y-6">
+      <!-- 作者信息 -->
+      <div class="bg-white rounded-xl p-6">
+        <div class="flex items-center gap-4 mb-4">
+          <img src="/images/avatar.jpg" class="w-16 h-16 rounded-full">
+          <div>
+            <h3 class="font-medium">Nunumao</h3>
+            <p class="text-sm text-gray-500">开发工程师</p>
+          </div>
+        </div>
+        <p class="text-sm text-gray-600 mb-4">专注于技术研究，热爱分享技术心得</p>
+        <div class="flex justify-center gap-4">
+          <a href="https://github.com/nunumao" target="_blank" class="text-gray-400 hover:text-gray-600">
+            <i class="fab fa-github text-xl"></i>
+          </a>
+          <a href="mailto:gm292018748@email.com" target="_blank" class="text-gray-400 hover:text-[#1DA1F2]">
+            <i class="fas fa-envelope text-xl"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 目录 -->
+      <div class="bg-white rounded-xl p-6 sticky top-24">
+        <h2 class="text-lg font-medium mb-4">目录</h2>
+        <nav class="space-y-2 text-sm">
+          
+        </nav>
+      </div>
+
+      <!-- 分类列表 -->
+      <div class="bg-white rounded-xl p-6">
+        <h2 class="text-lg font-medium mb-4">文章分类</h2>
+        <div class="space-y-3">
+          
+            <a href="/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/" class="flex items-center justify-between group">
+              <div class="flex items-center">
+                <i class="fas fa-code text-blue-500 w-5"></i>
+                <span class="text-sm group-hover:text-blue-600">
+                  前端技术
+                </span>
+              </div>
+              <span class="text-xs text-gray-500">
+                1
+              </span>
+            </a>
+            
+            <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="flex items-center justify-between group">
+              <div class="flex items-center">
+                <i class="fas fa-folder text-gray-500 w-5"></i>
+                <span class="text-sm group-hover:text-blue-600">
+                  服务器
+                </span>
+              </div>
+              <span class="text-xs text-gray-500">
+                3
+              </span>
+            </a>
+            
+            <a href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/" class="flex items-center justify-between group">
+              <div class="flex items-center">
+                <i class="fas fa-server text-green-500 w-5"></i>
+                <span class="text-sm group-hover:text-blue-600">
+                  后端技术
+                </span>
+              </div>
+              <span class="text-xs text-gray-500">
+                31
+              </span>
+            </a>
+            
+        </div>
+      </div>
+
+      <!-- 相关文章 -->
+      <div class="bg-white rounded-xl p-6">
+        <h2 class="text-lg font-medium mb-4">相关文章</h2>
+        <div class="space-y-4">
+          
+            <a href="/cm72nkaxe001awkwtc6bdgyhu.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Hello World
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-13</p>
+            </a>
+            
+            <a href="/cm72nkax6000bwkwt554c1z0e.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (一) | 基本语法
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm72nkax7000ewkwt2l4293ed.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (三) | 函数
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm72nkax7000hwkwt7pw007e6.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (七) | 集合
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm72nkax9000jwkwtccbg0esu.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (二) | 控制流
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+        </div>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<style>
+  .markdown-body {
+    box-sizing: border-box;
+    min-width: 200px;
+    max-width: 100%;
+    margin: 0 auto;
+    background-color: white;
+  }
+
+  /* 适配深色模式 */
+  @media (prefers-color-scheme: dark) {
+    .markdown-body {
+      color-scheme: dark;
+      --color-prettylights-syntax-comment: #8b949e;
+      --color-prettylights-syntax-constant: #79c0ff;
+      --color-prettylights-syntax-entity: #d2a8ff;
+      --color-prettylights-syntax-storage-modifier-import: #c9d1d9;
+      --color-prettylights-syntax-entity-tag: #7ee787;
+      --color-prettylights-syntax-keyword: #ff7b72;
+      --color-prettylights-syntax-string: #a5d6ff;
+      --color-prettylights-syntax-variable: #ffa657;
+      --color-prettylights-syntax-brackethighlighter-unmatched: #f85149;
+      --color-prettylights-syntax-invalid-illegal-text: #f0f6fc;
+      --color-prettylights-syntax-invalid-illegal-bg: #8e1519;
+      --color-prettylights-syntax-carriage-return-text: #f0f6fc;
+      --color-prettylights-syntax-carriage-return-bg: #b62324;
+      --color-prettylights-syntax-string-regexp: #7ee787;
+      --color-prettylights-syntax-markup-list: #f2cc60;
+      --color-prettylights-syntax-markup-heading: #1f6feb;
+      --color-prettylights-syntax-markup-italic: #c9d1d9;
+      --color-prettylights-syntax-markup-bold: #c9d1d9;
+      --color-prettylights-syntax-markup-deleted-text: #ffdcd7;
+      --color-prettylights-syntax-markup-deleted-bg: #67060c;
+      --color-prettylights-syntax-markup-inserted-text: #aff5b4;
+      --color-prettylights-syntax-markup-inserted-bg: #033a16;
+      --color-prettylights-syntax-markup-changed-text: #ffdfb6;
+      --color-prettylights-syntax-markup-changed-bg: #5a1e02;
+      --color-prettylights-syntax-markup-ignored-text: #c9d1d9;
+      --color-prettylights-syntax-markup-ignored-bg: #1158c7;
+      --color-prettylights-syntax-meta-diff-range: #d2a8ff;
+      --color-prettylights-syntax-brackethighlighter-angle: #8b949e;
+      --color-prettylights-syntax-sublimelinter-gutter-mark: #484f58;
+      --color-prettylights-syntax-constant-other-reference-link: #a5d6ff;
+      --color-fg-default: #c9d1d9;
+      --color-fg-muted: #8b949e;
+      --color-fg-subtle: #6e7681;
+      --color-canvas-default: #0d1117;
+      --color-canvas-subtle: #161b22;
+      --color-border-default: #30363d;
+      --color-border-muted: #21262d;
+      --color-neutral-muted: rgba(110, 118, 129, 0.4);
+      --color-accent-fg: #58a6ff;
+      --color-accent-emphasis: #1f6feb;
+      --color-attention-subtle: rgba(187, 128, 9, 0.15);
+      --color-danger-fg: #f85149;
+    }
+  }
+</style>
+  <!-- 页脚 -->
+<footer class="border-t mt-16">
+  <div class="max-w-4xl mx-auto px-4 py-8 text-center text-sm text-gray-500">
+    <p>© 2025 nunumao. Built with <a href="#" class="text-blue-600">Hexo</a></p>
+  </div>
+</footer>
+</body>
+
+</html>

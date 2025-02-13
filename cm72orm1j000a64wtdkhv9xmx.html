@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>编程日记</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  
+<link rel="stylesheet" href="/css/github-markdown.css">
+
+  
+<link rel="stylesheet" href="/css/atom-one-dark.css">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+<script src="/js/jquery.min.js"></script>
+
+  
+<script src="/js/script.js"></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="bg-gray-50 text-gray-800">
+  <div class="lg:hidden fixed right-4 top-4 z-50">
+    <button class="p-2 bg-white/80 backdrop-blur-sm rounded-lg border" data-mobile-menu-trigger><i class="fas fa-bars"></i></button>
+  </div>
+  <!-- 导航栏 -->
+  <nav class="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-40">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="flex justify-between items-center h-16">
+        <a href="/" class="text-xl font-serif">编程日记</a>
+        <!-- 桌面端导航 -->
+        <div class="hidden lg:flex items-center space-x-6">
+          <div class="flex items-center space-x-6 text-sm">
+            <a href="/" class="hover:text-blue-600" data-i18n="nav.home">首页</a>
+            <!-- 分类下拉菜单 -->
+            <div class="relative group">
+              <a href="/categories" class="hover:text-blue-600">分类</a>
+              <!-- 优化后的下拉内容 -->
+              <div class="absolute left-0 mt-2 py-2 bg-white backdrop-blur-sm border rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div class="grid grid-cols-2 gap-1 w-[400px] p-4">
+                  
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/前端技术/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>前端技术</span>
+                        </a>
+                      
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/服务器/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>服务器</span>
+                        </a>
+                      
+                    
+                      
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/后端技术/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>后端技术</span>
+                        </a>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                  
+                </div>
+              </div>
+            </div>
+            <a href="/case" class="hover:text-blue-600" data-i18n="nav.case">作品</a>
+            <a href="/archives" class="hover:text-blue-600" data-i18n="nav.archives">归档</a>
+            <a href="/about" class="hover:text-blue-600" data-i18n="nav.about">关于</a>
+            <!-- 搜索框 -->
+            <div class="relative">
+              <input type="search" placeholder="Search articles..." class="w-48 px-4 py-1 text-sm border rounded-full bg-gray-50 focus:outline-none focus:ring-1 focus:ring-blue-500">
+              <i class="fas fa-search absolute right-3 top-2 text-gray-400"></i>
+            </div>
+            <!-- 语言切换 -->
+            <div class="flex items-center space-x-2 ml-4 text-sm border-l pl-4">
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('en-US')">EN</button>
+              <span class="text-gray-300">|</span>
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('zh-CN')">简</button>
+              <span class="text-gray-300">|</span>
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('zh-TW')">繁</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div id="mobileMenu" class="fixed inset-0 bg-white/90 backdrop-blur-sm z-40 lg:hidden hidden">
+    <div class="h-full w-full flex flex-col items-center justify-center space-y-6 text-lg">
+      <a href="/" class="hover:text-blue-600" data-i18n="nav.home">首页</a>
+      <a href="/categories" class="hover:text-blue-600" data-i18n="nav.categories">分类</a>
+      <a href="/case" class="hover:text-blue-600" data-i18n="nav.case">作品</a>
+      <a href="/archives" class="hover:text-blue-600" data-i18n="nav.archive">归档</a>
+      <a href="/about" class="hover:text-blue-600" data-i18n="nav.about">关于</a>
+      <div class="flex items-center space-x-4 mt-4">
+        <button class="lang-switch hover:text-blue-600" data-lang="en">EN</button>
+        <button class="lang-switch hover:text-blue-600" data-lang="zh">简</button>
+        <button class="lang-switch hover:text-blue-600" data-lang="zh-TW">繁</button>
+      </div>
+    </div>
+  </div>
+  <main class="max-w-5xl mx-auto px-4 py-12">
+  <div class="lg:flex lg:gap-8">
+    <!-- 文章主体 -->
+    <article class="lg:w-3/4">
+      <!-- 文章容器 -->
+      <div class="bg-white rounded-xl overflow-hidden">
+        <!-- 文章头部 -->
+        <div class="px-8 pt-12 pb-8">
+          <!-- 标题 -->
+          <h1 class="text-3xl font-medium mb-6 leading-snug">
+            Maven (五) 依赖管理
+          </h1>
+
+          <!-- 元信息 -->
+          <div class="flex flex-wrap items-center gap-6 text-sm text-gray-500">
+            <span>
+              <i class="fas fa-folder-open mr-2"></i>
+              
+                <a href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/Maven/" class="hover:text-blue-600">
+                  Maven
+                </a>
+                
+            </span>
+            <span>
+              <i class="far fa-calendar mr-2"></i>
+              2025-02-10
+            </span>
+            <span><i class="far fa-clock mr-2"></i>15 分钟阅读</span>
+            <span><i class="far fa-eye mr-2"></i>
+              0
+            </span>
+          </div>
+        </div>
+
+        <!-- 文章内容 -->
+        <div class="px-8 py-10 border-t border-b">
+          <div class="markdown-body">
+            <p><strong>第五章： 依赖管理</strong></p>
+<p><strong>5.1 什么是依赖管理？</strong></p>
+<p>在软件开发中，一个项目通常会依赖于许多外部的库 (Library) 或组件 (Component) 来完成特定的功能。  例如，一个 Web 应用可能需要依赖 Spring Framework 来进行框架搭建，依赖 Jackson 或 Gson 来处理 JSON 数据，依赖 MySQL Connector&#x2F;J 来连接 MySQL 数据库等等。  这些外部库就是项目的 <strong>依赖 (Dependency)</strong>。</p>
+<p><strong>依赖管理的目标:</strong></p>
+<ul>
+<li><strong>统一管理项目依赖:</strong>  集中管理项目所依赖的所有外部库，包括库的版本、作用范围等信息。</li>
+<li><strong>自动下载依赖:</strong>  自动从 Maven 仓库下载项目所需的依赖库，无需手动下载和复制 JAR 包。</li>
+<li><strong>解决依赖冲突:</strong>  自动或半自动地解决项目依赖中可能出现的版本冲突问题。</li>
+<li><strong>传递性依赖管理:</strong>  自动处理依赖的依赖 (传递性依赖)，简化依赖关系的维护。</li>
+<li><strong>依赖版本控制:</strong>  清晰地管理和控制项目所依赖的库的版本，方便版本升级和维护。</li>
+</ul>
+<p><strong>5.2 依赖声明 (<code>&lt;dependencies&gt;</code>)</strong></p>
+<p>在 Maven 项目中，我们通过 <strong><code>pom.xml</code> 文件</strong> 的 <code>&lt;dependencies&gt;</code> 元素来 <strong>声明项目依赖</strong>。  <code>&lt;dependencies&gt;</code> 元素包含一个或多个 <code>&lt;dependency&gt;</code> 子元素，每个 <code>&lt;dependency&gt;</code> 元素声明一个具体的依赖。</p>
+<p><strong><code>&lt;dependency&gt;</code> 元素的结构:</strong></p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.12<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span>  <span class="comment">&lt;!-- 可选，依赖范围 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">optional</span>&gt;</span>false<span class="tag">&lt;/<span class="name">optional</span>&gt;</span> <span class="comment">&lt;!-- 可选，是否可选依赖 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span> <span class="comment">&lt;!-- 可选，排除传递性依赖 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>...<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>...<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- ... 更多依赖 ... --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong><code>&lt;dependency&gt;</code> 元素的主要子元素:</strong></p>
+<ul>
+<li><strong><code>&lt;groupId&gt;</code>, <code>&lt;artifactId&gt;</code>, <code>&lt;version&gt;</code> (必填):</strong>  <strong>依赖的 Maven 坐标</strong>，唯一标识一个依赖库。  你需要从 Maven 中央仓库或其他仓库找到你需要的依赖库的 Maven 坐标，并填写到 <code>&lt;dependency&gt;</code> 元素中。</li>
+<li><strong><code>&lt;scope&gt;</code> (可选):</strong>  <strong>依赖范围</strong>，指定依赖在哪些生命周期阶段有效。  常用的依赖范围类型将在 5.3 节详细讲解。  如果 <code>&lt;scope&gt;</code> 元素没有指定，则默认值为 <code>compile</code>。</li>
+<li><strong><code>&lt;optional&gt;</code> (可选):</strong>  <strong>是否可选依赖</strong>，默认为 <code>false</code>。  如果设置为 <code>true</code>，表示这个依赖是可选的，即使项目依赖了它，其他依赖这个项目的项目也不需要强制依赖它。  通常用于开发库或组件时，某些功能是可选的，可以根据需要选择是否引入相关依赖。</li>
+<li><strong><code>&lt;exclusions&gt;</code> (可选):</strong>  <strong>排除传递性依赖</strong>，用于排除某个依赖库的传递性依赖。  当你的项目依赖 A，A 又依赖 B，但你不想引入 B，可以使用 <code>&lt;exclusions&gt;</code> 排除 B 的传递性依赖。</li>
+</ul>
+<p><strong>示例： 声明 JUnit 测试框架依赖</strong></p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.12<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这个示例声明了项目依赖 JUnit 4.12 版本，并且依赖范围为 <code>test</code>，表示 JUnit 依赖只在测试阶段有效，不会被打包到最终的 JAR 或 WAR 文件中。</p>
+<p><strong>5.3 依赖范围 (Dependency Scope)</strong></p>
+<p><code>&lt;scope&gt;</code> 元素用于指定 <strong>依赖的作用范围</strong>，即依赖在哪些生命周期阶段有效。  Maven 提供了多种依赖范围类型，不同的依赖范围类型会影响依赖在编译、测试、运行和打包等阶段的行为。</p>
+<p>常用的依赖范围类型：</p>
+<ul>
+<li><p><strong><code>compile</code> (编译范围，默认):</strong></p>
+<ul>
+<li><strong>默认的依赖范围</strong>，如果 <code>&lt;scope&gt;</code> 元素没有指定，则默认为 <code>compile</code>。</li>
+<li><code>compile</code> 范围的依赖在 <strong>所有生命周期阶段都有效</strong>，包括编译、测试、运行和打包。</li>
+<li>适用于 <strong>编译时需要，运行时也需要的依赖</strong>。  例如，Spring Core, Spring MVC 等框架依赖。</li>
+</ul>
+</li>
+<li><p><strong><code>test</code> (测试范围):</strong></p>
+<ul>
+<li><code>test</code> 范围的依赖只在 <strong>测试阶段有效</strong>，例如编译测试代码、运行单元测试。</li>
+<li><code>test</code> 范围的依赖 <strong>不会被打包到最终的 JAR 或 WAR 文件中</strong>。</li>
+<li>适用于 <strong>只在测试代码中使用的依赖</strong>。  例如，JUnit, Mockito 等测试框架。</li>
+</ul>
+</li>
+<li><p><strong><code>runtime</code> (运行时范围):</strong></p>
+<ul>
+<li><code>runtime</code> 范围的依赖在 <strong>编译时不需要</strong>，但在 <strong>运行时需要</strong>。</li>
+<li><code>runtime</code> 范围的依赖会被 <strong>打包到最终的 JAR 或 WAR 文件中</strong>，并且在运行时会被加载到 classpath 中。</li>
+<li>适用于 <strong>编译时不需要，运行时才需要的依赖</strong>。  例如，JDBC 驱动 (例如 MySQL Connector&#x2F;J)。  编译时只需要 JDBC API 接口，运行时才需要具体的 JDBC 驱动实现。</li>
+</ul>
+</li>
+<li><p><strong><code>provided</code> (已提供范围):</strong></p>
+<ul>
+<li><code>provided</code> 范围的依赖在 <strong>编译和测试时有效</strong>，但在 <strong>运行时由运行环境提供</strong>。</li>
+<li><code>provided</code> 范围的依赖 <strong>不会被打包到最终的 JAR 或 WAR 文件中</strong>。</li>
+<li>适用于 <strong>运行时由容器或环境提供的依赖</strong>。  例如，Servlet API, JSP API (在 Web 应用服务器中已经提供)。  在开发 Web 应用时，编译和测试需要 Servlet API 和 JSP API，但运行时 Web 应用服务器会提供这些 API，所以不需要将这些 API 打包到 WAR 文件中。</li>
+</ul>
+</li>
+<li><p><strong><code>system</code> (系统范围):</strong></p>
+<ul>
+<li>类似于 <code>provided</code> 范围，但 <code>system</code> 范围的依赖需要 <strong>显式指定依赖库的本地路径</strong>。</li>
+<li><strong>不推荐使用 <code>system</code> 范围</strong>，因为它破坏了 Maven 的可移植性，依赖库的路径依赖于本地环境。  应该尽量使用 Maven 仓库管理依赖。</li>
+</ul>
+</li>
+<li><p><strong><code>import</code> (导入范围):</strong></p>
+<ul>
+<li><code>import</code> 范围只在 <code>&lt;dependencyManagement&gt;</code> 元素中有效，用于 <strong>导入其他 POM 文件的 <code>&lt;dependencyManagement&gt;</code> 配置</strong>。  我们会在 5.6 节讲解依赖管理 BOM 时介绍 <code>import</code> 范围。</li>
+</ul>
+</li>
+</ul>
+<p><strong>依赖范围对 Classpath 的影响:</strong></p>
+<p>不同的依赖范围会影响依赖库在不同生命周期阶段的 classpath。  Classpath 是 Java 虚拟机 (JVM) 在运行时查找类文件的路径。</p>
+<table>
+<thead>
+<tr>
+<th>依赖范围</th>
+<th>编译 Classpath</th>
+<th>测试 Classpath</th>
+<th>运行时 Classpath</th>
+<th>打包</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>compile</code></td>
+<td>包含</td>
+<td>包含</td>
+<td>包含</td>
+<td>打包</td>
+</tr>
+<tr>
+<td><code>test</code></td>
+<td>不包含</td>
+<td>包含</td>
+<td>不包含</td>
+<td>不打包</td>
+</tr>
+<tr>
+<td><code>runtime</code></td>
+<td>不包含</td>
+<td>包含</td>
+<td>包含</td>
+<td>打包</td>
+</tr>
+<tr>
+<td><code>provided</code></td>
+<td>包含</td>
+<td>包含</td>
+<td>不包含</td>
+<td>不打包</td>
+</tr>
+<tr>
+<td><code>system</code></td>
+<td>包含</td>
+<td>包含</td>
+<td>不包含</td>
+<td>不打包</td>
+</tr>
+</tbody></table>
+<p><strong>选择合适的依赖范围：</strong></p>
+<ul>
+<li>默认情况下，如果依赖在所有阶段都需要，使用 <code>compile</code> 范围 (默认)。</li>
+<li>如果依赖只在测试阶段使用，使用 <code>test</code> 范围。</li>
+<li>如果依赖编译时不需要，运行时才需要，使用 <code>runtime</code> 范围。</li>
+<li>如果依赖运行时由环境提供，使用 <code>provided</code> 范围。</li>
+<li>尽量避免使用 <code>system</code> 范围。</li>
+</ul>
+<p><strong>5.4 传递性依赖 (Transitive Dependency)</strong></p>
+<p>Maven 的依赖管理具有 <strong>传递性</strong>。  这意味着，如果你的项目直接依赖 A，而 A 又依赖 B，那么你的项目 <strong>间接地也依赖了 B</strong>。  Maven 会自动解析和下载项目的直接依赖和传递性依赖。</p>
+<p><strong>传递性依赖的优点：</strong></p>
+<ul>
+<li><strong>简化依赖声明:</strong>  开发者只需要声明直接依赖，Maven 会自动处理传递性依赖，无需手动声明所有依赖的依赖。</li>
+<li><strong>减少依赖冲突:</strong>  Maven 会自动解决传递性依赖可能引起的版本冲突问题 (将在 5.5 节讲解)。</li>
+</ul>
+<p><strong>传递性依赖的缺点：</strong></p>
+<ul>
+<li><strong>依赖引入不可控:</strong>  传递性依赖可能会引入一些你不需要的依赖库，导致项目依赖膨胀。</li>
+<li><strong>依赖冲突风险:</strong>  传递性依赖可能导致版本冲突，需要进行依赖冲突解决。</li>
+</ul>
+<p><strong>传递性依赖的示例:</strong></p>
+<p>假设你的项目 <code>my-project</code> 依赖 <code>spring-webmvc</code>，而 <code>spring-webmvc</code> 又依赖 <code>spring-context</code> 和 <code>jackson-databind</code>。  那么，<code>my-project</code> 除了直接依赖 <code>spring-webmvc</code> 之外，还会 <strong>传递性依赖</strong> <code>spring-context</code> 和 <code>jackson-databind</code>。  Maven 会自动下载 <code>spring-context</code> 和 <code>jackson-databind</code> 以及它们的传递性依赖。</p>
+<p><strong>5.5 依赖冲突解决 (Dependency Conflict Resolution)</strong></p>
+<p>由于传递性依赖的存在，项目中可能会出现 <strong>依赖冲突 (Dependency Conflict)</strong>，即同一个依赖库的不同版本被引入到项目中。  例如，你的项目直接依赖 A 和 B，而 A 传递性依赖 C-1.0，B 传递性依赖 C-2.0，那么项目中就同时引入了 C-1.0 和 C-2.0 两个版本，这可能会导致运行时错误。</p>
+<p><strong>Maven 依赖冲突解决原则:</strong></p>
+<p>Maven 默认采用以下原则来解决依赖冲突：</p>
+<ol>
+<li><p><strong>路径最近原则 (Nearest-wins):</strong>  当多个依赖路径都指向同一个依赖库时，<strong>路径最短的依赖路径优先</strong>。  例如，如果 A 依赖 C-1.0，B 依赖 D 依赖 C-2.0，而你的项目直接依赖 A 和 B，那么 C-1.0 的依赖路径比 C-2.0 的依赖路径短，所以 Maven 会选择 C-1.0 版本。</p>
+</li>
+<li><p><strong>声明顺序原则 (First-declared wins):</strong>  如果多个依赖路径的长度相同，那么 <strong>在 POM 文件中先声明的依赖优先</strong>。  例如，如果 A 依赖 C-1.0，B 依赖 C-2.0，而你的项目直接依赖 A 和 B，且 A 在 POM 文件中先声明，那么 Maven 会选择 C-1.0 版本。</p>
+</li>
+</ol>
+<p><strong>依赖冲突解决方法:</strong></p>
+<p>除了 Maven 的默认冲突解决原则，你还可以使用以下方法来显式解决依赖冲突：</p>
+<ul>
+<li><p><strong>依赖调解 (Dependency Mediation):</strong>  在 <code>&lt;dependencyManagement&gt;</code> 元素中 <strong>强制指定某个依赖的版本</strong>，可以覆盖 Maven 的默认版本选择。  <code>&lt;dependencyManagement&gt;</code> 中声明的依赖不会被实际引入，只是用来管理依赖版本。</p>
+</li>
+<li><p><strong>依赖排除 (<code>&lt;exclusions&gt;</code>):</strong>  在 <code>&lt;dependency&gt;</code> 元素中使用 <code>&lt;exclusions&gt;</code> 子元素 <strong>排除某个传递性依赖</strong>，可以阻止某个依赖库被引入到项目中。</p>
+</li>
+<li><p><strong>直接依赖优先:</strong>  如果以上方法都无法解决冲突，可以考虑 <strong>将冲突的传递性依赖声明为直接依赖</strong>，并指定需要的版本，这样可以强制 Maven 使用你指定的版本。</p>
+</li>
+</ul>
+<p><strong>使用 <code>mvn dependency:tree</code> 命令分析依赖树:</strong></p>
+<p><code>mvn dependency:tree</code> 命令可以 <strong>打印项目的依赖树</strong>，帮助你分析项目的依赖关系，查看传递性依赖，以及定位依赖冲突。  通过分析依赖树，你可以更好地理解依赖冲突的原因，并选择合适的冲突解决方法。</p>
+<p><strong>5.6 依赖管理 BOM (Bill of Materials)</strong></p>
+<p><strong>BOM (Bill of Materials)</strong> 是一种 <strong>依赖管理最佳实践</strong>，用于 <strong>统一管理一组相关依赖的版本</strong>。  BOM 本身是一个特殊的 POM 文件，它定义了一组依赖的版本信息，但不实际引入依赖。  其他项目可以通过 <strong>导入 BOM</strong> 来继承 BOM 中定义的依赖版本，从而避免版本冲突，并简化依赖管理。</p>
+<p><strong>依赖管理 BOM 的优点:</strong></p>
+<ul>
+<li><strong>统一版本管理:</strong>  集中管理一组相关依赖的版本，方便版本升级和维护。</li>
+<li><strong>避免版本冲突:</strong>  确保一组相关依赖的版本兼容性，避免版本冲突。</li>
+<li><strong>简化依赖声明:</strong>  项目只需要导入 BOM，就可以使用 BOM 中管理的所有依赖，无需显式指定版本号。</li>
+</ul>
+<p><strong>常用的依赖管理 BOM:</strong></p>
+<ul>
+<li><strong>Spring Boot Dependencies BOM:</strong>  <code>org.springframework.boot:spring-boot-dependencies</code>，用于管理 Spring Boot 生态体系的依赖版本。</li>
+<li><strong>Spring Cloud Dependencies BOM:</strong>  <code>org.springframework.cloud:spring-cloud-dependencies</code>，用于管理 Spring Cloud 生态体系的依赖版本。</li>
+<li><strong>Apache Commons BOM:</strong>  <code>org.apache.commons:apache-commons-bom</code>，用于管理 Apache Commons 组件的依赖版本。</li>
+</ul>
+<p><strong>如何使用依赖管理 BOM:</strong></p>
+<ol>
+<li><p><strong>在 <code>&lt;dependencyManagement&gt;</code> 元素中导入 BOM:</strong>  使用 <code>&lt;dependency&gt;</code> 元素声明对 BOM 的依赖，并将 <code>&lt;scope&gt;</code> 设置为 <code>import</code>，<code>&lt;type&gt;</code> 设置为 <code>pom</code>。</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencyManagement</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-dependencies<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.7.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">type</span>&gt;</span>pom<span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span>import<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencyManagement</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>在 <code>&lt;dependencies&gt;</code> 元素中声明依赖，省略版本号:</strong>  导入 BOM 后，在 <code>&lt;dependencies&gt;</code> 元素中声明 BOM 中管理的依赖时，可以省略 <code>&lt;version&gt;</code> 元素，Maven 会自动从 BOM 中获取版本号。</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 版本号从 spring-boot-dependencies BOM 中继承，无需显式指定 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<p><strong>总结第五章:</strong></p>
+<p>第五章我们深入学习了 Maven 的依赖管理，包括依赖声明、依赖范围、传递性依赖、依赖冲突解决和依赖管理 BOM 等重要概念。  掌握 Maven 的依赖管理，可以极大地简化项目依赖的管理工作，提高开发效率和项目稳定性。</p>
+
+          </div>
+        </div>
+
+        <!-- 文章底部 -->
+        <div class="px-8 py-8">
+          <!-- 标签 -->
+          
+            <div class="flex flex-wrap gap-2 mb-8">
+              
+                <a href="/tags/Maven/" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm text-gray-600 transition-colors">
+                  Maven
+                </a>
+                
+            </div>
+            
+
+              <!-- 分享 -->
+              <div class="flex items-center justify-between mb-8 py-6 border-t border-b">
+                <div class="text-sm text-gray-500">分享文章：</div>
+                <div class="flex gap-4">
+                  <button class="text-gray-400 hover:text-gray-600 transition-colors">
+                    <i class="far fa-copy text-xl"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- 上一篇/下一篇 -->
+              <div class="flex flex-col sm:flex-row justify-between gap-4">
+                
+                  <a href="/cm72orm1h000664wth5ps3yfn.html" class="group flex-1">
+                    <div class="text-sm text-gray-500 mb-1">上一篇</div>
+                    <div class="group-hover:text-blue-600 transition-colors">
+                      Maven (二) Maven 安装与配置
+                    </div>
+                  </a>
+                  
+                    
+                      <a href="/cm72orm1k000c64wtanka8jc2.html" class="group flex-1 text-right">
+                        <div class="text-sm text-gray-500 mb-1">下一篇</div>
+                        <div class="group-hover:text-blue-600 transition-colors">
+                          Maven (六) 构建 Profile
+                        </div>
+                      </a>
+                      
+              </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 侧边栏 -->
+    <aside class="lg:w-1/4 mt-8 lg:mt-0 space-y-6">
+      <!-- 作者信息 -->
+      <div class="bg-white rounded-xl p-6">
+        <div class="flex items-center gap-4 mb-4">
+          <img src="/images/avatar.jpg" class="w-16 h-16 rounded-full">
+          <div>
+            <h3 class="font-medium">Nunumao</h3>
+            <p class="text-sm text-gray-500">开发工程师</p>
+          </div>
+        </div>
+        <p class="text-sm text-gray-600 mb-4">专注于技术研究，热爱分享技术心得</p>
+        <div class="flex justify-center gap-4">
+          <a href="https://github.com/nunumao" target="_blank" class="text-gray-400 hover:text-gray-600">
+            <i class="fab fa-github text-xl"></i>
+          </a>
+          <a href="mailto:gm292018748@email.com" target="_blank" class="text-gray-400 hover:text-[#1DA1F2]">
+            <i class="fas fa-envelope text-xl"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 目录 -->
+      <div class="bg-white rounded-xl p-6 sticky top-24">
+        <h2 class="text-lg font-medium mb-4">目录</h2>
+        <nav class="space-y-2 text-sm">
+          
+        </nav>
+      </div>
+
+      <!-- 分类列表 -->
+      <div class="bg-white rounded-xl p-6">
+        <h2 class="text-lg font-medium mb-4">文章分类</h2>
+        <div class="space-y-3">
+          
+            <a href="/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/" class="flex items-center justify-between group">
+              <div class="flex items-center">
+                <i class="fas fa-code text-blue-500 w-5"></i>
+                <span class="text-sm group-hover:text-blue-600">
+                  前端技术
+                </span>
+              </div>
+              <span class="text-xs text-gray-500">
+                1
+              </span>
+            </a>
+            
+            <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="flex items-center justify-between group">
+              <div class="flex items-center">
+                <i class="fas fa-folder text-gray-500 w-5"></i>
+                <span class="text-sm group-hover:text-blue-600">
+                  服务器
+                </span>
+              </div>
+              <span class="text-xs text-gray-500">
+                3
+              </span>
+            </a>
+            
+            <a href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/" class="flex items-center justify-between group">
+              <div class="flex items-center">
+                <i class="fas fa-server text-green-500 w-5"></i>
+                <span class="text-sm group-hover:text-blue-600">
+                  后端技术
+                </span>
+              </div>
+              <span class="text-xs text-gray-500">
+                31
+              </span>
+            </a>
+            
+        </div>
+      </div>
+
+      <!-- 相关文章 -->
+      <div class="bg-white rounded-xl p-6">
+        <h2 class="text-lg font-medium mb-4">相关文章</h2>
+        <div class="space-y-4">
+          
+            <a href="/cm72nkaxe001awkwtc6bdgyhu.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Hello World
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-13</p>
+            </a>
+            
+            <a href="/cm72nkax6000bwkwt554c1z0e.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (一) | 基本语法
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm72nkax7000ewkwt2l4293ed.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (三) | 函数
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm72nkax7000hwkwt7pw007e6.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (七) | 集合
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm72nkax9000jwkwtccbg0esu.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (二) | 控制流
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+        </div>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<style>
+  .markdown-body {
+    box-sizing: border-box;
+    min-width: 200px;
+    max-width: 100%;
+    margin: 0 auto;
+    background-color: white;
+  }
+
+  /* 适配深色模式 */
+  @media (prefers-color-scheme: dark) {
+    .markdown-body {
+      color-scheme: dark;
+      --color-prettylights-syntax-comment: #8b949e;
+      --color-prettylights-syntax-constant: #79c0ff;
+      --color-prettylights-syntax-entity: #d2a8ff;
+      --color-prettylights-syntax-storage-modifier-import: #c9d1d9;
+      --color-prettylights-syntax-entity-tag: #7ee787;
+      --color-prettylights-syntax-keyword: #ff7b72;
+      --color-prettylights-syntax-string: #a5d6ff;
+      --color-prettylights-syntax-variable: #ffa657;
+      --color-prettylights-syntax-brackethighlighter-unmatched: #f85149;
+      --color-prettylights-syntax-invalid-illegal-text: #f0f6fc;
+      --color-prettylights-syntax-invalid-illegal-bg: #8e1519;
+      --color-prettylights-syntax-carriage-return-text: #f0f6fc;
+      --color-prettylights-syntax-carriage-return-bg: #b62324;
+      --color-prettylights-syntax-string-regexp: #7ee787;
+      --color-prettylights-syntax-markup-list: #f2cc60;
+      --color-prettylights-syntax-markup-heading: #1f6feb;
+      --color-prettylights-syntax-markup-italic: #c9d1d9;
+      --color-prettylights-syntax-markup-bold: #c9d1d9;
+      --color-prettylights-syntax-markup-deleted-text: #ffdcd7;
+      --color-prettylights-syntax-markup-deleted-bg: #67060c;
+      --color-prettylights-syntax-markup-inserted-text: #aff5b4;
+      --color-prettylights-syntax-markup-inserted-bg: #033a16;
+      --color-prettylights-syntax-markup-changed-text: #ffdfb6;
+      --color-prettylights-syntax-markup-changed-bg: #5a1e02;
+      --color-prettylights-syntax-markup-ignored-text: #c9d1d9;
+      --color-prettylights-syntax-markup-ignored-bg: #1158c7;
+      --color-prettylights-syntax-meta-diff-range: #d2a8ff;
+      --color-prettylights-syntax-brackethighlighter-angle: #8b949e;
+      --color-prettylights-syntax-sublimelinter-gutter-mark: #484f58;
+      --color-prettylights-syntax-constant-other-reference-link: #a5d6ff;
+      --color-fg-default: #c9d1d9;
+      --color-fg-muted: #8b949e;
+      --color-fg-subtle: #6e7681;
+      --color-canvas-default: #0d1117;
+      --color-canvas-subtle: #161b22;
+      --color-border-default: #30363d;
+      --color-border-muted: #21262d;
+      --color-neutral-muted: rgba(110, 118, 129, 0.4);
+      --color-accent-fg: #58a6ff;
+      --color-accent-emphasis: #1f6feb;
+      --color-attention-subtle: rgba(187, 128, 9, 0.15);
+      --color-danger-fg: #f85149;
+    }
+  }
+</style>
+  <!-- 页脚 -->
+<footer class="border-t mt-16">
+  <div class="max-w-4xl mx-auto px-4 py-8 text-center text-sm text-gray-500">
+    <p>© 2025 nunumao. Built with <a href="#" class="text-blue-600">Hexo</a></p>
+  </div>
+</footer>
+</body>
+
+</html>

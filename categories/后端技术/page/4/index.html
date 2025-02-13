@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>编程日记</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  
+<link rel="stylesheet" href="/css/github-markdown.css">
+
+  
+<link rel="stylesheet" href="/css/atom-one-dark.css">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+<script src="/js/jquery.min.js"></script>
+
+  
+<script src="/js/script.js"></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="bg-gray-50 text-gray-800">
+  <div class="lg:hidden fixed right-4 top-4 z-50">
+    <button class="p-2 bg-white/80 backdrop-blur-sm rounded-lg border" data-mobile-menu-trigger><i class="fas fa-bars"></i></button>
+  </div>
+  <!-- 导航栏 -->
+  <nav class="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-40">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="flex justify-between items-center h-16">
+        <a href="/" class="text-xl font-serif">编程日记</a>
+        <!-- 桌面端导航 -->
+        <div class="hidden lg:flex items-center space-x-6">
+          <div class="flex items-center space-x-6 text-sm">
+            <a href="/" class="hover:text-blue-600" data-i18n="nav.home">首页</a>
+            <!-- 分类下拉菜单 -->
+            <div class="relative group">
+              <a href="/categories" class="hover:text-blue-600">分类</a>
+              <!-- 优化后的下拉内容 -->
+              <div class="absolute left-0 mt-2 py-2 bg-white backdrop-blur-sm border rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div class="grid grid-cols-2 gap-1 w-[400px] p-4">
+                  
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/前端技术/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>前端技术</span>
+                        </a>
+                      
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/服务器/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>服务器</span>
+                        </a>
+                      
+                    
+                      
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/后端技术/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>后端技术</span>
+                        </a>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                  
+                </div>
+              </div>
+            </div>
+            <a href="/case" class="hover:text-blue-600" data-i18n="nav.case">作品</a>
+            <a href="/archives" class="hover:text-blue-600" data-i18n="nav.archives">归档</a>
+            <a href="/about" class="hover:text-blue-600" data-i18n="nav.about">关于</a>
+            <!-- 搜索框 -->
+            <div class="relative">
+              <input type="search" placeholder="Search articles..." class="w-48 px-4 py-1 text-sm border rounded-full bg-gray-50 focus:outline-none focus:ring-1 focus:ring-blue-500">
+              <i class="fas fa-search absolute right-3 top-2 text-gray-400"></i>
+            </div>
+            <!-- 语言切换 -->
+            <div class="flex items-center space-x-2 ml-4 text-sm border-l pl-4">
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('en-US')">EN</button>
+              <span class="text-gray-300">|</span>
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('zh-CN')">简</button>
+              <span class="text-gray-300">|</span>
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('zh-TW')">繁</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div id="mobileMenu" class="fixed inset-0 bg-white/90 backdrop-blur-sm z-40 lg:hidden hidden">
+    <div class="h-full w-full flex flex-col items-center justify-center space-y-6 text-lg">
+      <a href="/" class="hover:text-blue-600" data-i18n="nav.home">首页</a>
+      <a href="/categories" class="hover:text-blue-600" data-i18n="nav.categories">分类</a>
+      <a href="/case" class="hover:text-blue-600" data-i18n="nav.case">作品</a>
+      <a href="/archives" class="hover:text-blue-600" data-i18n="nav.archive">归档</a>
+      <a href="/about" class="hover:text-blue-600" data-i18n="nav.about">关于</a>
+      <div class="flex items-center space-x-4 mt-4">
+        <button class="lang-switch hover:text-blue-600" data-lang="en">EN</button>
+        <button class="lang-switch hover:text-blue-600" data-lang="zh">简</button>
+        <button class="lang-switch hover:text-blue-600" data-lang="zh-TW">繁</button>
+      </div>
+    </div>
+  </div>
+  <main class="max-w-5xl mx-auto px-4 py-12">
+  <div class="mb-12">
+    <h1 class="text-3xl font-medium mb-4">
+      后端技术
+    </h1>
+    <div class="flex items-center text-sm text-gray-500">
+      <i class="fas fa-folder-open mr-2"></i>
+      <span>共 1 篇文章</span>
+    </div>
+  </div>
+
+  <!-- 文章列表 -->
+  <div class="space-y-8">
+    
+    <article class="group border-b pb-8">
+      <div class="mb-2 text-sm text-gray-500">
+        2025-02-03
+      </div>
+      <h2 class="text-xl font-medium mb-3 group-hover:text-blue-600">
+        <a href="/cm72nkaxj001nwkwt9ujd1jgn.html">
+          机器学习
+        </a>
+      </h2>
+      
+      <div class="flex flex-wrap items-center gap-4 text-sm">
+        <span class="text-gray-500">
+          <i class="fas fa-folder-open mr-2"></i>
+          
+          <a href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/" class="hover:text-blue-600">
+            后端技术 / 
+          </a>
+          
+          <a href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/PYTHON/" class="hover:text-blue-600">
+            PYTHON
+          </a>
+          
+        </span>
+        
+        <span class="text-gray-500">
+          <i class="fas fa-tags mr-2"></i>
+          <span class="space-x-1">
+            
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="hover:text-blue-600">机器学习</a>
+            
+          </span>
+        </span>
+        
+      </div>
+    </article>
+    
+  </div>
+
+  <!-- 分页 -->
+  
+  <div class="flex justify-center space-x-2 mt-12">
+    <a class="extend prev" rel="prev" href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/page/3/">上一页</a><a class="page-number" href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/">1</a><span class="space">&hellip;</span><a class="page-number" href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/page/3/">3</a><span class="page-number current">4</span>
+  </div>
+  
+</main>
+  <!-- 页脚 -->
+<footer class="border-t mt-16">
+  <div class="max-w-4xl mx-auto px-4 py-8 text-center text-sm text-gray-500">
+    <p>© 2025 nunumao. Built with <a href="#" class="text-blue-600">Hexo</a></p>
+  </div>
+</footer>
+</body>
+
+</html>

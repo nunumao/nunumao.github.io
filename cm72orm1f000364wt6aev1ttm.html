@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>编程日记</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  
+<link rel="stylesheet" href="/css/github-markdown.css">
+
+  
+<link rel="stylesheet" href="/css/atom-one-dark.css">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+<script src="/js/jquery.min.js"></script>
+
+  
+<script src="/js/script.js"></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="bg-gray-50 text-gray-800">
+  <div class="lg:hidden fixed right-4 top-4 z-50">
+    <button class="p-2 bg-white/80 backdrop-blur-sm rounded-lg border" data-mobile-menu-trigger><i class="fas fa-bars"></i></button>
+  </div>
+  <!-- 导航栏 -->
+  <nav class="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-40">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="flex justify-between items-center h-16">
+        <a href="/" class="text-xl font-serif">编程日记</a>
+        <!-- 桌面端导航 -->
+        <div class="hidden lg:flex items-center space-x-6">
+          <div class="flex items-center space-x-6 text-sm">
+            <a href="/" class="hover:text-blue-600" data-i18n="nav.home">首页</a>
+            <!-- 分类下拉菜单 -->
+            <div class="relative group">
+              <a href="/categories" class="hover:text-blue-600">分类</a>
+              <!-- 优化后的下拉内容 -->
+              <div class="absolute left-0 mt-2 py-2 bg-white backdrop-blur-sm border rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div class="grid grid-cols-2 gap-1 w-[400px] p-4">
+                  
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/前端技术/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>前端技术</span>
+                        </a>
+                      
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/服务器/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>服务器</span>
+                        </a>
+                      
+                    
+                      
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/后端技术/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>后端技术</span>
+                        </a>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                  
+                </div>
+              </div>
+            </div>
+            <a href="/case" class="hover:text-blue-600" data-i18n="nav.case">作品</a>
+            <a href="/archives" class="hover:text-blue-600" data-i18n="nav.archives">归档</a>
+            <a href="/about" class="hover:text-blue-600" data-i18n="nav.about">关于</a>
+            <!-- 搜索框 -->
+            <div class="relative">
+              <input type="search" placeholder="Search articles..." class="w-48 px-4 py-1 text-sm border rounded-full bg-gray-50 focus:outline-none focus:ring-1 focus:ring-blue-500">
+              <i class="fas fa-search absolute right-3 top-2 text-gray-400"></i>
+            </div>
+            <!-- 语言切换 -->
+            <div class="flex items-center space-x-2 ml-4 text-sm border-l pl-4">
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('en-US')">EN</button>
+              <span class="text-gray-300">|</span>
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('zh-CN')">简</button>
+              <span class="text-gray-300">|</span>
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('zh-TW')">繁</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div id="mobileMenu" class="fixed inset-0 bg-white/90 backdrop-blur-sm z-40 lg:hidden hidden">
+    <div class="h-full w-full flex flex-col items-center justify-center space-y-6 text-lg">
+      <a href="/" class="hover:text-blue-600" data-i18n="nav.home">首页</a>
+      <a href="/categories" class="hover:text-blue-600" data-i18n="nav.categories">分类</a>
+      <a href="/case" class="hover:text-blue-600" data-i18n="nav.case">作品</a>
+      <a href="/archives" class="hover:text-blue-600" data-i18n="nav.archive">归档</a>
+      <a href="/about" class="hover:text-blue-600" data-i18n="nav.about">关于</a>
+      <div class="flex items-center space-x-4 mt-4">
+        <button class="lang-switch hover:text-blue-600" data-lang="en">EN</button>
+        <button class="lang-switch hover:text-blue-600" data-lang="zh">简</button>
+        <button class="lang-switch hover:text-blue-600" data-lang="zh-TW">繁</button>
+      </div>
+    </div>
+  </div>
+  <main class="max-w-5xl mx-auto px-4 py-12">
+  <div class="lg:flex lg:gap-8">
+    <!-- 文章主体 -->
+    <article class="lg:w-3/4">
+      <!-- 文章容器 -->
+      <div class="bg-white rounded-xl overflow-hidden">
+        <!-- 文章头部 -->
+        <div class="px-8 pt-12 pb-8">
+          <!-- 标题 -->
+          <h1 class="text-3xl font-medium mb-6 leading-snug">
+            Maven (七) 项目聚合与继承
+          </h1>
+
+          <!-- 元信息 -->
+          <div class="flex flex-wrap items-center gap-6 text-sm text-gray-500">
+            <span>
+              <i class="fas fa-folder-open mr-2"></i>
+              
+                <a href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/Maven/" class="hover:text-blue-600">
+                  Maven
+                </a>
+                
+            </span>
+            <span>
+              <i class="far fa-calendar mr-2"></i>
+              2025-02-10
+            </span>
+            <span><i class="far fa-clock mr-2"></i>15 分钟阅读</span>
+            <span><i class="far fa-eye mr-2"></i>
+              0
+            </span>
+          </div>
+        </div>
+
+        <!-- 文章内容 -->
+        <div class="px-8 py-10 border-t border-b">
+          <div class="markdown-body">
+            <p><strong>第七章： 项目聚合与继承</strong></p>
+<p><strong>7.1 为什么需要项目聚合与继承？</strong></p>
+<p>在实际软件开发中，很多项目规模庞大，功能复杂。  为了更好地组织和管理这些大型项目，我们通常会采用 <strong>模块化 (Modularization)</strong> 的设计思想，将项目拆分成多个独立的模块 (Module)。  每个模块负责项目的一部分功能，模块之间可以相互依赖，共同构成完整的系统。</p>
+<p><strong>多模块项目的好处：</strong></p>
+<ul>
+<li><strong>模块化开发:</strong>  将大型项目分解为更小的、更易于管理和开发的模块，降低开发复杂度。</li>
+<li><strong>代码重用性:</strong>  模块可以被其他项目或模块重用，提高代码复用率。</li>
+<li><strong>并行开发:</strong>  不同的团队可以并行开发不同的模块，提高开发效率。</li>
+<li><strong>易于维护:</strong>  模块化结构使得项目更易于维护和升级，修改一个模块不会影响其他模块。</li>
+<li><strong>清晰的项目结构:</strong>  模块化结构使得项目结构更清晰，易于理解和组织。</li>
+</ul>
+<p><strong>Maven 项目聚合与继承的目的：</strong></p>
+<p>Maven 提供了 <strong>项目聚合</strong> 和 <strong>项目继承</strong> 机制，用于更好地管理和构建多模块项目。</p>
+<ul>
+<li><strong>项目聚合 (Project Aggregation):</strong>  用于 <strong>统一构建</strong> 多个相互关联的模块。  通过一个 <strong>父 POM</strong> 文件来管理和构建多个 <strong>子模块</strong>。  父 POM 本身不包含实际的代码，只是一个 POM 文件，用于聚合子模块。</li>
+<li><strong>项目继承 (Project Inheritance):</strong>  用于 <strong>代码和配置的重用</strong>。  子模块可以 <strong>继承父模块的配置</strong>，例如 <code>groupId</code>, <code>version</code>, 依赖管理、插件管理等。  减少子模块的重复配置，提高配置的统一性和可维护性。</li>
+</ul>
+<p><strong>7.2 项目聚合 (Project Aggregation)</strong></p>
+<p>项目聚合通过 <strong>父 POM</strong> 文件来 <strong>聚合</strong> 多个 <strong>子模块</strong>。  父 POM 文件使用 <code>&lt;modules&gt;</code> 元素声明子模块，Maven 可以通过父 POM 文件统一构建所有的子模块。</p>
+<p><strong>父 POM 的特点：</strong></p>
+<ul>
+<li><strong><code>packaging</code> 类型为 <code>pom</code>:</strong>  父 POM 的 <code>&lt;packaging&gt;</code> 元素必须设置为 <code>pom</code>，表示这是一个 POM 项目，不是可执行的 JAR 或 WAR 包。</li>
+<li><strong>包含 <code>&lt;modules&gt;</code> 元素:</strong>  父 POM 文件包含 <code>&lt;modules&gt;</code> 元素，用于声明所有的子模块。</li>
+<li><strong>本身不包含源代码:</strong>  父 POM 文件本身不包含源代码，主要用于聚合和管理子模块。</li>
+</ul>
+<p><strong>子模块的特点：</strong></p>
+<ul>
+<li><strong><code>packaging</code> 类型可以是 <code>jar</code>, <code>war</code> 等:</strong>  子模块的 <code>&lt;packaging&gt;</code> 类型可以是任何 Maven 支持的 Packaging 类型，例如 <code>jar</code>, <code>war</code>, <code>ear</code> 等，取决于模块的具体功能。</li>
+<li><strong>位于父模块的子目录下:</strong>  子模块的目录通常位于父模块的子目录下。</li>
+<li><strong>可以依赖其他模块:</strong>  子模块可以依赖父模块或其他子模块。</li>
+</ul>
+<p><strong>父 POM 文件示例:</strong></p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span>?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://maven.apache.org/POM/4.0.0&quot;</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.example<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>parent-project<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">packaging</span>&gt;</span>pom<span class="tag">&lt;/<span class="name">packaging</span>&gt;</span>  <span class="comment">&lt;!-- packaging 类型为 pom --&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>Parent Project<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">modules</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span>&gt;</span>module-a<span class="tag">&lt;/<span class="name">module</span>&gt;</span>  <span class="comment">&lt;!-- 声明子模块 A，目录为 module-a --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span>&gt;</span>module-b<span class="tag">&lt;/<span class="name">module</span>&gt;</span>  <span class="comment">&lt;!-- 声明子模块 B，目录为 module-b --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">modules</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- ... 其他配置 (dependencyManagement, pluginManagement 等) ... --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>子模块 POM 文件示例 (module-a&#x2F;pom.xml):</strong></p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span>?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://maven.apache.org/POM/4.0.0&quot;</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">parent</span>&gt;</span>  <span class="comment">&lt;!-- 声明父模块 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.example<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>parent-project<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">relativePath</span>&gt;</span>../pom.xml<span class="tag">&lt;/<span class="name">relativePath</span>&gt;</span>  <span class="comment">&lt;!-- 父 POM 文件的相对路径 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>module-a<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>  <span class="comment">&lt;!-- 子模块 A 的 artifactId --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">packaging</span>&gt;</span>jar<span class="tag">&lt;/<span class="name">packaging</span>&gt;</span>       <span class="comment">&lt;!-- 子模块 A 的 packaging 类型 --&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>Module A<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- ... 模块 A 的依赖和构建配置 ... --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>多模块项目的目录结构：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">parent-project/         (父模块根目录)</span><br><span class="line">├── pom.xml             (父 POM 文件)</span><br><span class="line">├── module-a/          (子模块 A 目录)</span><br><span class="line">│   └── pom.xml         (子模块 A 的 POM 文件)</span><br><span class="line">└── module-b/          (子模块 B 目录)</span><br><span class="line">    └── pom.xml         (子模块 B 的 POM 文件)</span><br></pre></td></tr></table></figure>
+
+<p><strong>构建多模块项目：</strong></p>
+<p>在父模块根目录下执行 Maven 命令 (例如 <code>mvn clean install</code>)，Maven 会自动 <strong>递归构建所有的子模块</strong>。  子模块的构建顺序会根据模块之间的依赖关系自动调整。  例如，如果 <code>module-b</code> 依赖 <code>module-a</code>，则 Maven 会先构建 <code>module-a</code>，再构建 <code>module-b</code>。</p>
+<p><strong>7.3 项目继承 (Project Inheritance)</strong></p>
+<p>项目继承允许子模块 <strong>继承父模块的配置</strong>。  子模块通过在 POM 文件中声明 <code>&lt;parent&gt;</code> 元素来指定父模块。  子模块可以继承父模块的以下配置：</p>
+<ul>
+<li><strong><code>groupId</code>, <code>version</code>:</strong>  如果子模块没有显式指定 <code>groupId</code> 和 <code>version</code>，则会 <strong>默认继承父模块的 <code>groupId</code> 和 <code>version</code></strong>。  通常只在父 POM 中定义 <code>groupId</code> 和 <code>version</code>，子模块省略这两个元素，保持项目版本号的统一。</li>
+<li><strong><code>&lt;dependencyManagement&gt;</code>:</strong>  <strong>依赖管理配置</strong>，父模块的 <code>&lt;dependencyManagement&gt;</code> 配置会被子模块继承。  子模块可以使用父模块中定义的依赖，并省略版本号，版本号从父模块的 <code>&lt;dependencyManagement&gt;</code> 中继承。</li>
+<li><strong><code>&lt;pluginManagement&gt;</code>:</strong>  <strong>插件管理配置</strong>，父模块的 <code>&lt;pluginManagement&gt;</code> 配置会被子模块继承。  子模块可以使用父模块中定义的插件，并省略版本号和部分配置，配置从父模块的 <code>&lt;pluginManagement&gt;</code> 中继承。</li>
+<li><strong><code>&lt;repositories&gt;</code> 和 <code>&lt;pluginRepositories&gt;</code>:</strong>  仓库和插件仓库配置。</li>
+<li><strong><code>&lt;properties&gt;</code>:</strong>  属性配置。</li>
+<li><strong><code>&lt;reporting&gt;</code>:</strong>  报告配置。</li>
+<li><strong>其他配置:</strong>  例如 <code>&lt;name&gt;</code>, <code>&lt;description&gt;</code>, <code>&lt;url&gt;</code>, <code>&lt;licenses&gt;</code>, <code>&lt;developers&gt;</code>, <code>&lt;mailingLists&gt;</code>, <code>&lt;scm&gt;</code>, <code>&lt;issueManagement&gt;</code>, <code>&lt;ciManagement&gt;</code>, <code>&lt;distributionManagement&gt;</code>, <code>&lt;organization&gt;</code> 等项目信息配置。</li>
+</ul>
+<p><strong>子模块 POM 文件中的 <code>&lt;parent&gt;</code> 元素：</strong></p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.example<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>parent-project<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">relativePath</span>&gt;</span>../pom.xml<span class="tag">&lt;/<span class="name">relativePath</span>&gt;</span>  <span class="comment">&lt;!-- 父 POM 文件的相对路径 --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong><code>&lt;groupId&gt;</code>, <code>&lt;artifactId&gt;</code>, <code>&lt;version&gt;</code>:</strong>  父模块的 Maven 坐标，用于唯一标识父模块。</li>
+<li><strong><code>&lt;relativePath&gt;</code> (可选):</strong>  <strong>父 POM 文件相对于子模块 POM 文件的路径</strong>。  默认情况下，Maven 会在父目录中查找 <code>pom.xml</code> 文件。  如果父模块 POM 文件不在父目录中，或者目录结构比较复杂，需要使用 <code>&lt;relativePath&gt;</code> 显式指定父模块 POM 文件的路径。  如果父 POM 和子 POM 在同一目录下，可以省略 <code>&lt;relativePath&gt;</code>。  如果父 POM 在父目录，通常设置为 <code>../pom.xml</code>。</li>
+</ul>
+<p><strong><code>dependencyManagement</code> 和 <code>pluginManagement</code> 的作用 (在父 POM 中):</strong></p>
+<ul>
+<li><p><strong>统一依赖版本管理 (<code>dependencyManagement</code>):</strong>  在父 POM 的 <code>&lt;dependencyManagement&gt;</code> 中定义依赖的版本号，子模块在声明依赖时可以省略版本号，版本号从父 POM 中继承。  这样可以 <strong>统一管理项目中所有模块的依赖版本</strong>，避免版本冲突，方便版本升级。</p>
+</li>
+<li><p><strong>统一插件版本和配置管理 (<code>pluginManagement</code>):</strong>  在父 POM 的 <code>&lt;pluginManagement&gt;</code> 中定义插件的版本号和通用配置，子模块在使用插件时可以省略版本号，并继承父 POM 中的通用配置。  这样可以 <strong>统一管理项目中所有模块的插件版本和配置</strong>，提高插件配置的统一性和可维护性。</p>
+</li>
+</ul>
+<p><strong>示例： 父 POM 的 <code>dependencyManagement</code> 配置</strong></p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencyManagement</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.3.20<span class="tag">&lt;/<span class="name">version</span>&gt;</span>  <span class="comment">&lt;!-- 在父 POM 中统一管理 Spring Core 版本 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-context<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.3.20<span class="tag">&lt;/<span class="name">version</span>&gt;</span>  <span class="comment">&lt;!-- 在父 POM 中统一管理 Spring Context 版本 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencyManagement</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>子模块 POM 使用父 POM 的 <code>dependencyManagement</code> 配置:</strong></p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 版本号从父 POM 的 dependencyManagement 中继承，无需显式指定 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-context<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 版本号从父 POM 的 dependencyManagement 中继承，无需显式指定 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>7.4 聚合与继承的关系</strong></p>
+<ul>
+<li><strong>聚合是管理构建过程:</strong>  父 POM 聚合子模块，统一构建所有的子模块。</li>
+<li><strong>继承是管理 POM 配置:</strong>  子模块继承父 POM 的配置，实现配置的重用和统一管理。</li>
+</ul>
+<p><strong>聚合和继承通常一起使用</strong>，用于构建和管理多模块项目。  父 POM 作为聚合模块，同时也是子模块的父模块，子模块继承父 POM 的配置，父 POM 聚合所有的子模块。</p>
+<p><strong>7.5 最佳实践</strong></p>
+<ul>
+<li><strong>父 POM 的 <code>packaging</code> 类型设置为 <code>pom</code>。</strong></li>
+<li><strong>在父 POM 中统一管理 <code>groupId</code> 和 <code>version</code>，子模块省略这两个元素。</strong></li>
+<li><strong>在父 POM 的 <code>dependencyManagement</code> 中统一管理依赖版本。</strong></li>
+<li><strong>在父 POM 的 <code>pluginManagement</code> 中统一管理插件版本和通用配置。</strong></li>
+<li><strong>子模块通过 <code>&lt;parent&gt;</code> 元素声明父模块。</strong></li>
+<li><strong>合理划分模块，保持模块的独立性和内聚性。</strong></li>
+</ul>
+<p><strong>总结第七章:</strong></p>
+<p>第七章我们学习了 Maven 的项目聚合和项目继承，包括父 POM 和子模块 POM 的结构、配置和作用。  项目聚合用于统一构建多模块项目，项目继承用于代码和配置的重用。  掌握项目聚合和继承，可以更好地组织和管理大型 Maven 项目，提高代码重用性和构建效率。</p>
+
+          </div>
+        </div>
+
+        <!-- 文章底部 -->
+        <div class="px-8 py-8">
+          <!-- 标签 -->
+          
+            <div class="flex flex-wrap gap-2 mb-8">
+              
+                <a href="/tags/Maven/" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm text-gray-600 transition-colors">
+                  Maven
+                </a>
+                
+            </div>
+            
+
+              <!-- 分享 -->
+              <div class="flex items-center justify-between mb-8 py-6 border-t border-b">
+                <div class="text-sm text-gray-500">分享文章：</div>
+                <div class="flex gap-4">
+                  <button class="text-gray-400 hover:text-gray-600 transition-colors">
+                    <i class="far fa-copy text-xl"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- 上一篇/下一篇 -->
+              <div class="flex flex-col sm:flex-row justify-between gap-4">
+                
+                  <a href="/cm72orm1c000164wtcvvk6owp.html" class="group flex-1">
+                    <div class="text-sm text-gray-500 mb-1">上一篇</div>
+                    <div class="group-hover:text-blue-600 transition-colors">
+                      Maven (三) Maven 项目基础
+                    </div>
+                  </a>
+                  
+                    
+                      <a href="/cm72orm1g000564wtc8lbegm5.html" class="group flex-1 text-right">
+                        <div class="text-sm text-gray-500 mb-1">下一篇</div>
+                        <div class="group-hover:text-blue-600 transition-colors">
+                          Maven (九) Maven 插件
+                        </div>
+                      </a>
+                      
+              </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 侧边栏 -->
+    <aside class="lg:w-1/4 mt-8 lg:mt-0 space-y-6">
+      <!-- 作者信息 -->
+      <div class="bg-white rounded-xl p-6">
+        <div class="flex items-center gap-4 mb-4">
+          <img src="/images/avatar.jpg" class="w-16 h-16 rounded-full">
+          <div>
+            <h3 class="font-medium">Nunumao</h3>
+            <p class="text-sm text-gray-500">开发工程师</p>
+          </div>
+        </div>
+        <p class="text-sm text-gray-600 mb-4">专注于技术研究，热爱分享技术心得</p>
+        <div class="flex justify-center gap-4">
+          <a href="https://github.com/nunumao" target="_blank" class="text-gray-400 hover:text-gray-600">
+            <i class="fab fa-github text-xl"></i>
+          </a>
+          <a href="mailto:gm292018748@email.com" target="_blank" class="text-gray-400 hover:text-[#1DA1F2]">
+            <i class="fas fa-envelope text-xl"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 目录 -->
+      <div class="bg-white rounded-xl p-6 sticky top-24">
+        <h2 class="text-lg font-medium mb-4">目录</h2>
+        <nav class="space-y-2 text-sm">
+          
+        </nav>
+      </div>
+
+      <!-- 分类列表 -->
+      <div class="bg-white rounded-xl p-6">
+        <h2 class="text-lg font-medium mb-4">文章分类</h2>
+        <div class="space-y-3">
+          
+            <a href="/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/" class="flex items-center justify-between group">
+              <div class="flex items-center">
+                <i class="fas fa-code text-blue-500 w-5"></i>
+                <span class="text-sm group-hover:text-blue-600">
+                  前端技术
+                </span>
+              </div>
+              <span class="text-xs text-gray-500">
+                1
+              </span>
+            </a>
+            
+            <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="flex items-center justify-between group">
+              <div class="flex items-center">
+                <i class="fas fa-folder text-gray-500 w-5"></i>
+                <span class="text-sm group-hover:text-blue-600">
+                  服务器
+                </span>
+              </div>
+              <span class="text-xs text-gray-500">
+                3
+              </span>
+            </a>
+            
+            <a href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/" class="flex items-center justify-between group">
+              <div class="flex items-center">
+                <i class="fas fa-server text-green-500 w-5"></i>
+                <span class="text-sm group-hover:text-blue-600">
+                  后端技术
+                </span>
+              </div>
+              <span class="text-xs text-gray-500">
+                31
+              </span>
+            </a>
+            
+        </div>
+      </div>
+
+      <!-- 相关文章 -->
+      <div class="bg-white rounded-xl p-6">
+        <h2 class="text-lg font-medium mb-4">相关文章</h2>
+        <div class="space-y-4">
+          
+            <a href="/cm72nkaxe001awkwtc6bdgyhu.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Hello World
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-13</p>
+            </a>
+            
+            <a href="/cm72nkax6000bwkwt554c1z0e.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (一) | 基本语法
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm72nkax7000ewkwt2l4293ed.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (三) | 函数
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm72nkax7000hwkwt7pw007e6.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (七) | 集合
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm72nkax9000jwkwtccbg0esu.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (二) | 控制流
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+        </div>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<style>
+  .markdown-body {
+    box-sizing: border-box;
+    min-width: 200px;
+    max-width: 100%;
+    margin: 0 auto;
+    background-color: white;
+  }
+
+  /* 适配深色模式 */
+  @media (prefers-color-scheme: dark) {
+    .markdown-body {
+      color-scheme: dark;
+      --color-prettylights-syntax-comment: #8b949e;
+      --color-prettylights-syntax-constant: #79c0ff;
+      --color-prettylights-syntax-entity: #d2a8ff;
+      --color-prettylights-syntax-storage-modifier-import: #c9d1d9;
+      --color-prettylights-syntax-entity-tag: #7ee787;
+      --color-prettylights-syntax-keyword: #ff7b72;
+      --color-prettylights-syntax-string: #a5d6ff;
+      --color-prettylights-syntax-variable: #ffa657;
+      --color-prettylights-syntax-brackethighlighter-unmatched: #f85149;
+      --color-prettylights-syntax-invalid-illegal-text: #f0f6fc;
+      --color-prettylights-syntax-invalid-illegal-bg: #8e1519;
+      --color-prettylights-syntax-carriage-return-text: #f0f6fc;
+      --color-prettylights-syntax-carriage-return-bg: #b62324;
+      --color-prettylights-syntax-string-regexp: #7ee787;
+      --color-prettylights-syntax-markup-list: #f2cc60;
+      --color-prettylights-syntax-markup-heading: #1f6feb;
+      --color-prettylights-syntax-markup-italic: #c9d1d9;
+      --color-prettylights-syntax-markup-bold: #c9d1d9;
+      --color-prettylights-syntax-markup-deleted-text: #ffdcd7;
+      --color-prettylights-syntax-markup-deleted-bg: #67060c;
+      --color-prettylights-syntax-markup-inserted-text: #aff5b4;
+      --color-prettylights-syntax-markup-inserted-bg: #033a16;
+      --color-prettylights-syntax-markup-changed-text: #ffdfb6;
+      --color-prettylights-syntax-markup-changed-bg: #5a1e02;
+      --color-prettylights-syntax-markup-ignored-text: #c9d1d9;
+      --color-prettylights-syntax-markup-ignored-bg: #1158c7;
+      --color-prettylights-syntax-meta-diff-range: #d2a8ff;
+      --color-prettylights-syntax-brackethighlighter-angle: #8b949e;
+      --color-prettylights-syntax-sublimelinter-gutter-mark: #484f58;
+      --color-prettylights-syntax-constant-other-reference-link: #a5d6ff;
+      --color-fg-default: #c9d1d9;
+      --color-fg-muted: #8b949e;
+      --color-fg-subtle: #6e7681;
+      --color-canvas-default: #0d1117;
+      --color-canvas-subtle: #161b22;
+      --color-border-default: #30363d;
+      --color-border-muted: #21262d;
+      --color-neutral-muted: rgba(110, 118, 129, 0.4);
+      --color-accent-fg: #58a6ff;
+      --color-accent-emphasis: #1f6feb;
+      --color-attention-subtle: rgba(187, 128, 9, 0.15);
+      --color-danger-fg: #f85149;
+    }
+  }
+</style>
+  <!-- 页脚 -->
+<footer class="border-t mt-16">
+  <div class="max-w-4xl mx-auto px-4 py-8 text-center text-sm text-gray-500">
+    <p>© 2025 nunumao. Built with <a href="#" class="text-blue-600">Hexo</a></p>
+  </div>
+</footer>
+</body>
+
+</html>

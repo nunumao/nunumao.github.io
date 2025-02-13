@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>编程日记</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  
+<link rel="stylesheet" href="/css/github-markdown.css">
+
+  
+<link rel="stylesheet" href="/css/atom-one-dark.css">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+<script src="/js/jquery.min.js"></script>
+
+  
+<script src="/js/script.js"></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="bg-gray-50 text-gray-800">
+  <div class="lg:hidden fixed right-4 top-4 z-50">
+    <button class="p-2 bg-white/80 backdrop-blur-sm rounded-lg border" data-mobile-menu-trigger><i class="fas fa-bars"></i></button>
+  </div>
+  <!-- 导航栏 -->
+  <nav class="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-40">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="flex justify-between items-center h-16">
+        <a href="/" class="text-xl font-serif">编程日记</a>
+        <!-- 桌面端导航 -->
+        <div class="hidden lg:flex items-center space-x-6">
+          <div class="flex items-center space-x-6 text-sm">
+            <a href="/" class="hover:text-blue-600" data-i18n="nav.home">首页</a>
+            <!-- 分类下拉菜单 -->
+            <div class="relative group">
+              <a href="/categories" class="hover:text-blue-600">分类</a>
+              <!-- 优化后的下拉内容 -->
+              <div class="absolute left-0 mt-2 py-2 bg-white backdrop-blur-sm border rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div class="grid grid-cols-2 gap-1 w-[400px] p-4">
+                  
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/前端技术/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>前端技术</span>
+                        </a>
+                      
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/服务器/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>服务器</span>
+                        </a>
+                      
+                    
+                      
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/后端技术/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>后端技术</span>
+                        </a>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                  
+                </div>
+              </div>
+            </div>
+            <a href="/case" class="hover:text-blue-600" data-i18n="nav.case">作品</a>
+            <a href="/archives" class="hover:text-blue-600" data-i18n="nav.archives">归档</a>
+            <a href="/about" class="hover:text-blue-600" data-i18n="nav.about">关于</a>
+            <!-- 搜索框 -->
+            <div class="relative">
+              <input type="search" placeholder="Search articles..." class="w-48 px-4 py-1 text-sm border rounded-full bg-gray-50 focus:outline-none focus:ring-1 focus:ring-blue-500">
+              <i class="fas fa-search absolute right-3 top-2 text-gray-400"></i>
+            </div>
+            <!-- 语言切换 -->
+            <div class="flex items-center space-x-2 ml-4 text-sm border-l pl-4">
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('en-US')">EN</button>
+              <span class="text-gray-300">|</span>
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('zh-CN')">简</button>
+              <span class="text-gray-300">|</span>
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('zh-TW')">繁</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div id="mobileMenu" class="fixed inset-0 bg-white/90 backdrop-blur-sm z-40 lg:hidden hidden">
+    <div class="h-full w-full flex flex-col items-center justify-center space-y-6 text-lg">
+      <a href="/" class="hover:text-blue-600" data-i18n="nav.home">首页</a>
+      <a href="/categories" class="hover:text-blue-600" data-i18n="nav.categories">分类</a>
+      <a href="/case" class="hover:text-blue-600" data-i18n="nav.case">作品</a>
+      <a href="/archives" class="hover:text-blue-600" data-i18n="nav.archive">归档</a>
+      <a href="/about" class="hover:text-blue-600" data-i18n="nav.about">关于</a>
+      <div class="flex items-center space-x-4 mt-4">
+        <button class="lang-switch hover:text-blue-600" data-lang="en">EN</button>
+        <button class="lang-switch hover:text-blue-600" data-lang="zh">简</button>
+        <button class="lang-switch hover:text-blue-600" data-lang="zh-TW">繁</button>
+      </div>
+    </div>
+  </div>
+  <main class="max-w-5xl mx-auto px-4 py-12">
+  <div class="lg:flex lg:gap-8">
+    <!-- 文章主体 -->
+    <article class="lg:w-3/4">
+      <!-- 文章容器 -->
+      <div class="bg-white rounded-xl overflow-hidden">
+        <!-- 文章头部 -->
+        <div class="px-8 pt-12 pb-8">
+          <!-- 标题 -->
+          <h1 class="text-3xl font-medium mb-6 leading-snug">
+            Maven (九) Maven 插件
+          </h1>
+
+          <!-- 元信息 -->
+          <div class="flex flex-wrap items-center gap-6 text-sm text-gray-500">
+            <span>
+              <i class="fas fa-folder-open mr-2"></i>
+              
+                <a href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/Maven/" class="hover:text-blue-600">
+                  Maven
+                </a>
+                
+            </span>
+            <span>
+              <i class="far fa-calendar mr-2"></i>
+              2025-02-10
+            </span>
+            <span><i class="far fa-clock mr-2"></i>15 分钟阅读</span>
+            <span><i class="far fa-eye mr-2"></i>
+              0
+            </span>
+          </div>
+        </div>
+
+        <!-- 文章内容 -->
+        <div class="px-8 py-10 border-t border-b">
+          <div class="markdown-body">
+            <p><strong>第九章： Maven 插件</strong></p>
+<p><strong>9.1 什么是 Maven 插件？</strong></p>
+<p>Maven 插件 (Plugin) 是 Maven 功能的 <strong>扩展单元</strong>。  它是一组预定义的代码，用于执行特定的构建任务。  可以将 Maven 插件看作是 Maven 的 <strong>工具箱</strong>，每个插件都是一个工具，可以完成特定的任务。</p>
+<p><strong>Maven 插件的主要作用：</strong></p>
+<ul>
+<li><strong>扩展 Maven 功能：</strong>  Maven 核心框架只提供基本的构建流程和生命周期，具体的构建任务 (例如编译、测试、打包、部署等) 都是通过插件来实现的。  Maven 插件可以扩展 Maven 的功能，使其能够完成各种复杂的构建任务。</li>
+<li><strong>定制构建过程：</strong>  通过配置和使用不同的插件，可以定制 Maven 的构建过程，满足不同项目的构建需求。</li>
+<li><strong>代码重用：</strong>  Maven 插件是可重用的组件，可以在不同的 Maven 项目中共享和使用。</li>
+<li><strong>社区生态丰富：</strong>  Maven 社区提供了大量的插件，涵盖了各种常见的构建任务和工具集成 (例如代码检查、代码格式化、代码覆盖率、静态分析、代码混淆、版本控制集成、持续集成集成、部署到各种应用服务器或云平台等)。</li>
+</ul>
+<p><strong>9.2 Maven 插件的分类</strong></p>
+<p>Maven 插件可以分为两种类型：</p>
+<ol>
+<li><strong>构建插件 (Build Plugin)</strong></li>
+<li><strong>报告插件 (Reporting Plugin)</strong></li>
+</ol>
+<p><strong>9.2.1 构建插件 (Build Plugin)</strong></p>
+<ul>
+<li><strong>作用：</strong>  <strong>在构建过程中执行各种构建任务</strong>。  构建插件与 Maven 构建生命周期绑定，在生命周期的不同阶段执行不同的构建任务。</li>
+<li><strong>配置位置：</strong>  构建插件配置在 <code>pom.xml</code> 文件的 <code>&lt;build&gt;</code> -&gt; <code>&lt;plugins&gt;</code> 元素中。</li>
+<li><strong>常用构建插件：</strong><ul>
+<li><code>maven-compiler-plugin</code>:  用于编译源代码和测试代码。</li>
+<li><code>maven-surefire-plugin</code>:  用于运行单元测试。</li>
+<li><code>maven-failsafe-plugin</code>:  用于运行集成测试。</li>
+<li><code>maven-jar-plugin</code>:  用于打包 JAR 文件。</li>
+<li><code>maven-war-plugin</code>:  用于打包 WAR 文件 (Web 应用)。</li>
+<li><code>maven-ear-plugin</code>:  用于打包 EAR 文件 (企业级应用)。</li>
+<li><code>maven-resources-plugin</code>:  用于处理资源文件。</li>
+<li><code>maven-install-plugin</code>:  用于将 package 安装到本地仓库。</li>
+<li><code>maven-deploy-plugin</code>:  用于将 package 部署到远程仓库。</li>
+<li><code>maven-clean-plugin</code>:  用于清理项目。</li>
+<li><code>maven-assembly-plugin</code>:  用于自定义构建输出文件的结构和内容 (例如创建 ZIP 包、TAR 包、自定义目录结构)。</li>
+<li><code>maven-dependency-plugin</code>:  用于依赖管理相关任务 (例如查看依赖树、分析依赖关系、拷贝依赖)。</li>
+<li><code>maven-antrun-plugin</code>:  用于在 Maven 构建过程中执行 Ant 任务。</li>
+<li><code>exec-maven-plugin</code>:  用于在 Maven 构建过程中执行系统命令或 Java 程序。</li>
+</ul>
+</li>
+</ul>
+<p><strong>9.2.2 报告插件 (Reporting Plugin)</strong></p>
+<ul>
+<li><strong>作用：</strong>  <strong>生成项目报告</strong>。  报告插件用于生成各种项目报告，例如项目站点文档、代码质量报告、测试覆盖率报告、依赖分析报告等。</li>
+<li><strong>配置位置：</strong>  报告插件配置在 <code>pom.xml</code> 文件的 <code>&lt;reporting&gt;</code> -&gt; <code>&lt;plugins&gt;</code> 元素中。  报告插件通常与 <code>site</code> 生命周期配合使用，在 <code>mvn site</code> 命令执行时生成报告。</li>
+<li><strong>常用报告插件：</strong><ul>
+<li><code>maven-site-plugin</code>:  用于生成项目站点文档。</li>
+<li><code>maven-project-info-reports-plugin</code>:  用于生成项目信息报告 (例如项目依赖报告、项目插件报告、项目团队报告等)。</li>
+<li><code>maven-javadoc-plugin</code>:  用于生成 Javadoc 文档。</li>
+<li><code>maven-jxr-plugin</code>:  用于生成带有代码 cross-reference 的 HTML 报告。</li>
+<li><code>maven-surefire-report-plugin</code>:  用于生成单元测试报告。</li>
+<li><code>maven-checkstyle-plugin</code>:  用于生成 Checkstyle 代码风格检查报告。</li>
+<li><code>maven-pmd-plugin</code>:  用于生成 PMD 代码缺陷检查报告。</li>
+<li><code>maven-dependency-analyzer-plugin</code>:  用于生成依赖分析报告。</li>
+<li><code>jacoco-maven-plugin</code>:  用于生成 JaCoCo 代码覆盖率报告。</li>
+</ul>
+</li>
+</ul>
+<p><strong>9.3 插件的坐标 (Plugin Coordinates)</strong></p>
+<p>Maven 插件也使用 <strong>Maven 坐标 (GroupId, ArtifactId, Version)</strong> 进行唯一标识。  插件的坐标与依赖库的坐标格式相同。</p>
+<ul>
+<li><strong><code>groupId</code>:</strong>  插件的组织 ID，通常以 <code>org.apache.maven.plugins</code> 开头 (官方插件) 或以其他组织或公司的域名反写开头 (第三方插件)。</li>
+<li><strong><code>artifactId</code>:</strong>  插件的名称，例如 <code>maven-compiler-plugin</code>, <code>maven-surefire-plugin</code>, <code>jacoco-maven-plugin</code>。</li>
+<li><strong><code>version</code>:</strong>  插件的版本号，例如 <code>3.8.1</code>, <code>2.22.2</code>, <code>0.8.7</code>。</li>
+</ul>
+<p><strong>9.4 插件的使用</strong></p>
+<p>Maven 插件的使用主要包括以下几个方面：</p>
+<ol>
+<li><strong>声明插件依赖 (可选)</strong></li>
+<li><strong>配置插件</strong></li>
+<li><strong>执行插件目标</strong></li>
+</ol>
+<p><strong>9.4.1 声明插件依赖 (可选)</strong></p>
+<p>对于 <strong>构建插件</strong>，通常 <strong>不需要显式声明插件依赖</strong>。  Maven 会根据插件的坐标自动下载和使用插件。  Maven 核心插件 (groupId 为 <code>org.apache.maven.plugins</code>) 默认包含在 Maven 发行版中，可以直接使用，无需声明依赖。  第三方插件 (groupId 不是 <code>org.apache.maven.plugins</code>) 需要在 <code>pom.xml</code> 文件中声明插件依赖，Maven 才能找到和使用插件。</p>
+<p>对于 <strong>报告插件</strong>，需要在 <code>pom.xml</code> 文件的 <code>&lt;reporting&gt;</code> -&gt; <code>&lt;plugins&gt;</code> 元素中声明插件依赖，Maven 才能在生成站点报告时使用报告插件。</p>
+<p><strong>声明插件依赖的示例 (在 <code>&lt;reporting&gt;</code> 中声明报告插件):</strong></p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">reporting</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-javadoc-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.3.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">reporting</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>9.4.2 配置插件</strong></p>
+<p>Maven 插件的配置可以在 <code>pom.xml</code> 文件中进行。</p>
+<ul>
+<li><p><strong>构建插件配置:</strong>  在 <code>pom.xml</code> 文件的 <code>&lt;build&gt;</code> -&gt; <code>&lt;plugins&gt;</code> 元素中配置构建插件。</p>
+ <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-compiler-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.8.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span>  <span class="comment">&lt;!-- 插件版本 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">configuration</span>&gt;</span>  <span class="comment">&lt;!-- 插件配置 --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">source</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">source</span>&gt;</span>  <span class="comment">&lt;!-- 源代码 Java 版本 --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">target</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">target</span>&gt;</span>  <span class="comment">&lt;!-- 目标 JVM Java 版本 --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">encoding</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="name">encoding</span>&gt;</span> <span class="comment">&lt;!-- 源代码编码 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- ... 更多构建插件配置 ... --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>报告插件配置:</strong>  在 <code>pom.xml</code> 文件的 <code>&lt;reporting&gt;</code> -&gt; <code>&lt;plugins&gt;</code> 元素中配置报告插件。</p>
+ <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">reporting</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-javadoc-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.3.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span> <span class="comment">&lt;!-- 插件版本 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">configuration</span>&gt;</span>  <span class="comment">&lt;!-- 插件配置 --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">reportSets</span>&gt;</span>  <span class="comment">&lt;!-- 报告集配置 --&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">reportSet</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">id</span>&gt;</span>default<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">reports</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">report</span>&gt;</span>javadoc<span class="tag">&lt;/<span class="name">report</span>&gt;</span>  <span class="comment">&lt;!-- 生成 Javadoc 报告 --&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">report</span>&gt;</span>test-javadoc<span class="tag">&lt;/<span class="name">report</span>&gt;</span> <span class="comment">&lt;!-- 生成 Test Javadoc 报告 --&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">reports</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">reportSet</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">reportSets</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- ... 更多报告插件配置 ... --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">reporting</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong><code>&lt;configuration&gt;</code> 元素:</strong>  用于配置插件的参数。  不同的插件有不同的参数，插件的参数可以在插件的官方文档中查阅。  插件参数通常以 XML 元素的形式配置在 <code>&lt;configuration&gt;</code> 元素中。</p>
+</li>
+<li><p><strong>插件版本:</strong>  建议 <strong>显式指定插件的版本号</strong>，避免使用默认版本，确保构建的稳定性和可重复性。  插件版本可以在 <code>&lt;plugin&gt;</code> 元素的 <code>&lt;version&gt;</code> 子元素中指定。</p>
+</li>
+</ul>
+<p><strong>9.4.3 执行插件目标</strong></p>
+<p>Maven 插件的目标 (Goal) 可以通过以下几种方式执行：</p>
+<ol>
+<li><p><strong>绑定到生命周期阶段：</strong>  Maven 插件的目标可以绑定到 Maven 生命周期阶段，当 Maven 执行到该生命周期阶段时，会自动执行与之绑定的插件目标。  Maven 已经为一些常用的生命周期阶段默认绑定了插件目标 (例如 <code>compile</code> 阶段绑定了 <code>maven-compiler-plugin:compile</code> 目标，<code>test</code> 阶段绑定了 <code>maven-surefire-plugin:test</code> 目标，<code>package</code> 阶段绑定了 <code>maven-jar-plugin:jar</code> 目标)。  也可以在 <code>pom.xml</code> 文件中自定义插件目标与生命周期阶段的绑定关系 (使用 <code>&lt;executions&gt;</code> 元素)。</p>
+<ul>
+<li><p><strong>自定义插件目标与生命周期阶段的绑定 (在 <code>&lt;build&gt;</code> -&gt; <code>&lt;plugins&gt;</code> -&gt; <code>&lt;plugin&gt;</code> 中配置 <code>&lt;executions&gt;</code>):</strong></p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-antrun-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">executions</span>&gt;</span>  <span class="comment">&lt;!-- 插件目标执行配置 --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">execution</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">id</span>&gt;</span>generate-version-file<span class="tag">&lt;/<span class="name">id</span>&gt;</span>  <span class="comment">&lt;!-- execution ID，唯一标识 --&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">phase</span>&gt;</span>initialize<span class="tag">&lt;/<span class="name">phase</span>&gt;</span>  <span class="comment">&lt;!-- 绑定的生命周期阶段 --&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">goals</span>&gt;</span>  <span class="comment">&lt;!-- 要执行的插件目标列表 --&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">goal</span>&gt;</span>run<span class="tag">&lt;/<span class="name">goal</span>&gt;</span>  <span class="comment">&lt;!-- 执行 antrun 插件的 run 目标 --&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">configuration</span>&gt;</span>  <span class="comment">&lt;!-- 插件目标配置 --&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">target</span>&gt;</span>  <span class="comment">&lt;!-- antrun 插件的 target 配置 --&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">echo</span> <span class="attr">message</span>=<span class="string">&quot;Generating version file...&quot;</span>/&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">echo</span> <span class="attr">file</span>=<span class="string">&quot;$&#123;project.build.directory&#125;/version.txt&quot;</span> <span class="attr">message</span>=<span class="string">&quot;$&#123;project.version&#125;&quot;</span>/&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">target</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">executions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>命令行直接执行：</strong>  可以使用 <code>mvn &lt;plugin-groupId&gt;:&lt;plugin-artifactId&gt;:&lt;plugin-version&gt;:&lt;goal&gt;</code> 命令在命令行直接执行插件目标。  如果插件是 Maven 核心插件 (groupId 为 <code>org.apache.maven.plugins</code>)，可以省略 <code>groupId</code>，简写为 <code>mvn &lt;plugin-artifactId&gt;:&lt;goal&gt;</code>.  如果插件目标是插件的默认目标 (插件通常会定义一个默认目标)，可以省略 <code>goal</code>，简写为 <code>mvn &lt;plugin-artifactId&gt;</code>.</p>
+<ul>
+<li><p><strong>命令行直接执行插件目标的示例：</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mvn compiler:compile  <span class="comment"># 执行 maven-compiler-plugin 插件的 compile 目标 (核心插件，省略 groupId)</span></span><br><span class="line">mvn dependency:tree   <span class="comment"># 执行 maven-dependency-plugin 插件的 tree 目标 (核心插件，省略 groupId)</span></span><br><span class="line">mvn org.jacoco:jacoco-maven-plugin:report <span class="comment"># 执行 jacoco-maven-plugin 插件的 report 目标 (第三方插件，需要完整坐标)</span></span><br><span class="line">mvn antrun:run       <span class="comment"># 执行 maven-antrun-plugin 插件的默认目标 (run 目标是 antrun 插件的默认目标)</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+<p><strong>9.5 插件的生命周期绑定 (Plugin Bindings)</strong></p>
+<p>Maven 为每个生命周期阶段都 <strong>预定义</strong> 了一组 <strong>默认的插件绑定 (Default Plugin Bindings)</strong>。  这些默认绑定定义了在每个生命周期阶段默认执行的插件目标。  Maven 核心插件通常都绑定到了 <code>default</code> 生命周期的不同阶段。</p>
+<p>可以使用 <code>mvn help:describe -Dplugin=&lt;plugin-artifactId&gt; -Dgoal=&lt;goal&gt;</code> 命令查看插件目标的详细信息，包括插件目标绑定的生命周期阶段。  例如，查看 <code>maven-compiler-plugin:compile</code> 目标的绑定信息：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mvn <span class="built_in">help</span>:describe -Dplugin=compiler -Dgoal=compile</span><br></pre></td></tr></table></figure>
+
+<p><strong>自定义插件绑定：</strong></p>
+<p>可以在 <code>pom.xml</code> 文件中 <strong>自定义插件绑定</strong>，覆盖 Maven 的默认绑定，或添加新的插件绑定。  自定义插件绑定通过在 <code>&lt;plugin&gt;</code> 元素中配置 <code>&lt;executions&gt;</code> 元素来实现。</p>
+<p><strong>9.6 插件的管理 (<code>pluginManagement</code>)</strong></p>
+<p>与 <code>dependencyManagement</code> 类似，Maven 也提供了 <code>pluginManagement</code> 元素，用于 <strong>统一管理插件的版本和配置</strong>。  <code>pluginManagement</code> 元素定义在 <code>&lt;build&gt;</code> 元素下，与 <code>&lt;plugins&gt;</code> 元素平级。</p>
+<ul>
+<li><strong><code>pluginManagement</code> 的作用：</strong><ul>
+<li><strong>统一插件版本管理：</strong>  在 <code>pluginManagement</code> 中定义插件的版本号，在 <code>&lt;plugins&gt;</code> 元素中使用插件时可以省略版本号，版本号从 <code>pluginManagement</code> 中继承。</li>
+<li><strong>统一插件配置管理：</strong>  在 <code>pluginManagement</code> 中定义插件的通用配置，在 <code>&lt;plugins&gt;</code> 元素中使用插件时可以继承 <code>pluginManagement</code> 中的配置。</li>
+<li><strong>不实际执行插件：</strong>  <code>pluginManagement</code> 中定义的插件配置 <strong>不会被实际执行</strong>，只是用来管理插件版本和配置。  需要在 <code>&lt;plugins&gt;</code> 元素中显式声明插件，才能实际使用插件。</li>
+</ul>
+</li>
+</ul>
+<p><strong><code>pluginManagement</code> 的配置示例：</strong></p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">pluginManagement</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-compiler-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.8.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span>  <span class="comment">&lt;!-- 在 pluginManagement 中统一管理插件版本 --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">source</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">source</span>&gt;</span>  <span class="comment">&lt;!-- 在 pluginManagement 中定义通用配置 --&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">target</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">target</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">encoding</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="name">encoding</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">pluginManagement</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-compiler-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- 版本号从 pluginManagement 中继承，无需显式指定 --&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- configuration 配置会与 pluginManagement 中的配置合并，如果配置冲突，以 plugins 中配置为准 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>总结第九章:</strong></p>
+<p>第九章我们深入学习了 Maven 插件，包括插件的分类 (构建插件和报告插件)、插件的坐标、插件的使用 (声明插件依赖、配置插件、执行插件目标)、插件的生命周期绑定、插件的管理 (<code>pluginManagement</code>)。  Maven 插件是 Maven 功能扩展的核心机制，掌握 Maven 插件的使用和配置，可以帮助你更好地定制和扩展 Maven 的构建过程。</p>
+
+          </div>
+        </div>
+
+        <!-- 文章底部 -->
+        <div class="px-8 py-8">
+          <!-- 标签 -->
+          
+            <div class="flex flex-wrap gap-2 mb-8">
+              
+                <a href="/tags/Maven/" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm text-gray-600 transition-colors">
+                  Maven
+                </a>
+                
+            </div>
+            
+
+              <!-- 分享 -->
+              <div class="flex items-center justify-between mb-8 py-6 border-t border-b">
+                <div class="text-sm text-gray-500">分享文章：</div>
+                <div class="flex gap-4">
+                  <button class="text-gray-400 hover:text-gray-600 transition-colors">
+                    <i class="far fa-copy text-xl"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- 上一篇/下一篇 -->
+              <div class="flex flex-col sm:flex-row justify-between gap-4">
+                
+                  <a href="/cm72orm1f000364wt6aev1ttm.html" class="group flex-1">
+                    <div class="text-sm text-gray-500 mb-1">上一篇</div>
+                    <div class="group-hover:text-blue-600 transition-colors">
+                      Maven (七) 项目聚合与继承
+                    </div>
+                  </a>
+                  
+                    
+                      <a href="/cm72orm1h000664wth5ps3yfn.html" class="group flex-1 text-right">
+                        <div class="text-sm text-gray-500 mb-1">下一篇</div>
+                        <div class="group-hover:text-blue-600 transition-colors">
+                          Maven (二) Maven 安装与配置
+                        </div>
+                      </a>
+                      
+              </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 侧边栏 -->
+    <aside class="lg:w-1/4 mt-8 lg:mt-0 space-y-6">
+      <!-- 作者信息 -->
+      <div class="bg-white rounded-xl p-6">
+        <div class="flex items-center gap-4 mb-4">
+          <img src="/images/avatar.jpg" class="w-16 h-16 rounded-full">
+          <div>
+            <h3 class="font-medium">Nunumao</h3>
+            <p class="text-sm text-gray-500">开发工程师</p>
+          </div>
+        </div>
+        <p class="text-sm text-gray-600 mb-4">专注于技术研究，热爱分享技术心得</p>
+        <div class="flex justify-center gap-4">
+          <a href="https://github.com/nunumao" target="_blank" class="text-gray-400 hover:text-gray-600">
+            <i class="fab fa-github text-xl"></i>
+          </a>
+          <a href="mailto:gm292018748@email.com" target="_blank" class="text-gray-400 hover:text-[#1DA1F2]">
+            <i class="fas fa-envelope text-xl"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 目录 -->
+      <div class="bg-white rounded-xl p-6 sticky top-24">
+        <h2 class="text-lg font-medium mb-4">目录</h2>
+        <nav class="space-y-2 text-sm">
+          
+        </nav>
+      </div>
+
+      <!-- 分类列表 -->
+      <div class="bg-white rounded-xl p-6">
+        <h2 class="text-lg font-medium mb-4">文章分类</h2>
+        <div class="space-y-3">
+          
+            <a href="/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/" class="flex items-center justify-between group">
+              <div class="flex items-center">
+                <i class="fas fa-code text-blue-500 w-5"></i>
+                <span class="text-sm group-hover:text-blue-600">
+                  前端技术
+                </span>
+              </div>
+              <span class="text-xs text-gray-500">
+                1
+              </span>
+            </a>
+            
+            <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="flex items-center justify-between group">
+              <div class="flex items-center">
+                <i class="fas fa-folder text-gray-500 w-5"></i>
+                <span class="text-sm group-hover:text-blue-600">
+                  服务器
+                </span>
+              </div>
+              <span class="text-xs text-gray-500">
+                3
+              </span>
+            </a>
+            
+            <a href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/" class="flex items-center justify-between group">
+              <div class="flex items-center">
+                <i class="fas fa-server text-green-500 w-5"></i>
+                <span class="text-sm group-hover:text-blue-600">
+                  后端技术
+                </span>
+              </div>
+              <span class="text-xs text-gray-500">
+                31
+              </span>
+            </a>
+            
+        </div>
+      </div>
+
+      <!-- 相关文章 -->
+      <div class="bg-white rounded-xl p-6">
+        <h2 class="text-lg font-medium mb-4">相关文章</h2>
+        <div class="space-y-4">
+          
+            <a href="/cm72nkaxe001awkwtc6bdgyhu.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Hello World
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-13</p>
+            </a>
+            
+            <a href="/cm72nkax6000bwkwt554c1z0e.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (一) | 基本语法
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm72nkax7000ewkwt2l4293ed.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (三) | 函数
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm72nkax7000hwkwt7pw007e6.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (七) | 集合
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm72nkax9000jwkwtccbg0esu.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (二) | 控制流
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+        </div>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<style>
+  .markdown-body {
+    box-sizing: border-box;
+    min-width: 200px;
+    max-width: 100%;
+    margin: 0 auto;
+    background-color: white;
+  }
+
+  /* 适配深色模式 */
+  @media (prefers-color-scheme: dark) {
+    .markdown-body {
+      color-scheme: dark;
+      --color-prettylights-syntax-comment: #8b949e;
+      --color-prettylights-syntax-constant: #79c0ff;
+      --color-prettylights-syntax-entity: #d2a8ff;
+      --color-prettylights-syntax-storage-modifier-import: #c9d1d9;
+      --color-prettylights-syntax-entity-tag: #7ee787;
+      --color-prettylights-syntax-keyword: #ff7b72;
+      --color-prettylights-syntax-string: #a5d6ff;
+      --color-prettylights-syntax-variable: #ffa657;
+      --color-prettylights-syntax-brackethighlighter-unmatched: #f85149;
+      --color-prettylights-syntax-invalid-illegal-text: #f0f6fc;
+      --color-prettylights-syntax-invalid-illegal-bg: #8e1519;
+      --color-prettylights-syntax-carriage-return-text: #f0f6fc;
+      --color-prettylights-syntax-carriage-return-bg: #b62324;
+      --color-prettylights-syntax-string-regexp: #7ee787;
+      --color-prettylights-syntax-markup-list: #f2cc60;
+      --color-prettylights-syntax-markup-heading: #1f6feb;
+      --color-prettylights-syntax-markup-italic: #c9d1d9;
+      --color-prettylights-syntax-markup-bold: #c9d1d9;
+      --color-prettylights-syntax-markup-deleted-text: #ffdcd7;
+      --color-prettylights-syntax-markup-deleted-bg: #67060c;
+      --color-prettylights-syntax-markup-inserted-text: #aff5b4;
+      --color-prettylights-syntax-markup-inserted-bg: #033a16;
+      --color-prettylights-syntax-markup-changed-text: #ffdfb6;
+      --color-prettylights-syntax-markup-changed-bg: #5a1e02;
+      --color-prettylights-syntax-markup-ignored-text: #c9d1d9;
+      --color-prettylights-syntax-markup-ignored-bg: #1158c7;
+      --color-prettylights-syntax-meta-diff-range: #d2a8ff;
+      --color-prettylights-syntax-brackethighlighter-angle: #8b949e;
+      --color-prettylights-syntax-sublimelinter-gutter-mark: #484f58;
+      --color-prettylights-syntax-constant-other-reference-link: #a5d6ff;
+      --color-fg-default: #c9d1d9;
+      --color-fg-muted: #8b949e;
+      --color-fg-subtle: #6e7681;
+      --color-canvas-default: #0d1117;
+      --color-canvas-subtle: #161b22;
+      --color-border-default: #30363d;
+      --color-border-muted: #21262d;
+      --color-neutral-muted: rgba(110, 118, 129, 0.4);
+      --color-accent-fg: #58a6ff;
+      --color-accent-emphasis: #1f6feb;
+      --color-attention-subtle: rgba(187, 128, 9, 0.15);
+      --color-danger-fg: #f85149;
+    }
+  }
+</style>
+  <!-- 页脚 -->
+<footer class="border-t mt-16">
+  <div class="max-w-4xl mx-auto px-4 py-8 text-center text-sm text-gray-500">
+    <p>© 2025 nunumao. Built with <a href="#" class="text-blue-600">Hexo</a></p>
+  </div>
+</footer>
+</body>
+
+</html>

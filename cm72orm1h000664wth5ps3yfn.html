@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>编程日记</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  
+<link rel="stylesheet" href="/css/github-markdown.css">
+
+  
+<link rel="stylesheet" href="/css/atom-one-dark.css">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+<script src="/js/jquery.min.js"></script>
+
+  
+<script src="/js/script.js"></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="bg-gray-50 text-gray-800">
+  <div class="lg:hidden fixed right-4 top-4 z-50">
+    <button class="p-2 bg-white/80 backdrop-blur-sm rounded-lg border" data-mobile-menu-trigger><i class="fas fa-bars"></i></button>
+  </div>
+  <!-- 导航栏 -->
+  <nav class="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-40">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="flex justify-between items-center h-16">
+        <a href="/" class="text-xl font-serif">编程日记</a>
+        <!-- 桌面端导航 -->
+        <div class="hidden lg:flex items-center space-x-6">
+          <div class="flex items-center space-x-6 text-sm">
+            <a href="/" class="hover:text-blue-600" data-i18n="nav.home">首页</a>
+            <!-- 分类下拉菜单 -->
+            <div class="relative group">
+              <a href="/categories" class="hover:text-blue-600">分类</a>
+              <!-- 优化后的下拉内容 -->
+              <div class="absolute left-0 mt-2 py-2 bg-white backdrop-blur-sm border rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div class="grid grid-cols-2 gap-1 w-[400px] p-4">
+                  
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/前端技术/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>前端技术</span>
+                        </a>
+                      
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/服务器/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>服务器</span>
+                        </a>
+                      
+                    
+                      
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/后端技术/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>后端技术</span>
+                        </a>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                  
+                </div>
+              </div>
+            </div>
+            <a href="/case" class="hover:text-blue-600" data-i18n="nav.case">作品</a>
+            <a href="/archives" class="hover:text-blue-600" data-i18n="nav.archives">归档</a>
+            <a href="/about" class="hover:text-blue-600" data-i18n="nav.about">关于</a>
+            <!-- 搜索框 -->
+            <div class="relative">
+              <input type="search" placeholder="Search articles..." class="w-48 px-4 py-1 text-sm border rounded-full bg-gray-50 focus:outline-none focus:ring-1 focus:ring-blue-500">
+              <i class="fas fa-search absolute right-3 top-2 text-gray-400"></i>
+            </div>
+            <!-- 语言切换 -->
+            <div class="flex items-center space-x-2 ml-4 text-sm border-l pl-4">
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('en-US')">EN</button>
+              <span class="text-gray-300">|</span>
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('zh-CN')">简</button>
+              <span class="text-gray-300">|</span>
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('zh-TW')">繁</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div id="mobileMenu" class="fixed inset-0 bg-white/90 backdrop-blur-sm z-40 lg:hidden hidden">
+    <div class="h-full w-full flex flex-col items-center justify-center space-y-6 text-lg">
+      <a href="/" class="hover:text-blue-600" data-i18n="nav.home">首页</a>
+      <a href="/categories" class="hover:text-blue-600" data-i18n="nav.categories">分类</a>
+      <a href="/case" class="hover:text-blue-600" data-i18n="nav.case">作品</a>
+      <a href="/archives" class="hover:text-blue-600" data-i18n="nav.archive">归档</a>
+      <a href="/about" class="hover:text-blue-600" data-i18n="nav.about">关于</a>
+      <div class="flex items-center space-x-4 mt-4">
+        <button class="lang-switch hover:text-blue-600" data-lang="en">EN</button>
+        <button class="lang-switch hover:text-blue-600" data-lang="zh">简</button>
+        <button class="lang-switch hover:text-blue-600" data-lang="zh-TW">繁</button>
+      </div>
+    </div>
+  </div>
+  <main class="max-w-5xl mx-auto px-4 py-12">
+  <div class="lg:flex lg:gap-8">
+    <!-- 文章主体 -->
+    <article class="lg:w-3/4">
+      <!-- 文章容器 -->
+      <div class="bg-white rounded-xl overflow-hidden">
+        <!-- 文章头部 -->
+        <div class="px-8 pt-12 pb-8">
+          <!-- 标题 -->
+          <h1 class="text-3xl font-medium mb-6 leading-snug">
+            Maven (二) Maven 安装与配置
+          </h1>
+
+          <!-- 元信息 -->
+          <div class="flex flex-wrap items-center gap-6 text-sm text-gray-500">
+            <span>
+              <i class="fas fa-folder-open mr-2"></i>
+              
+                <a href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/Maven/" class="hover:text-blue-600">
+                  Maven
+                </a>
+                
+            </span>
+            <span>
+              <i class="far fa-calendar mr-2"></i>
+              2025-02-10
+            </span>
+            <span><i class="far fa-clock mr-2"></i>15 分钟阅读</span>
+            <span><i class="far fa-eye mr-2"></i>
+              0
+            </span>
+          </div>
+        </div>
+
+        <!-- 文章内容 -->
+        <div class="px-8 py-10 border-t border-b">
+          <div class="markdown-body">
+            <p><strong>第二章： Maven 安装与配置</strong></p>
+<p><strong>2.1 检查 JDK 安装</strong></p>
+<p>Maven 是基于 Java 开发的，所以首先要确保你的电脑上已经安装了 <strong>Java Development Kit (JDK)</strong>。  Maven 3.3.0 及以上版本需要 JDK 1.7 或更高版本。  推荐使用 JDK 1.8 或 JDK 11。</p>
+<p><strong>检查 JDK 版本步骤：</strong></p>
+<ol>
+<li><p><strong>打开终端或命令提示符。</strong></p>
+</li>
+<li><p><strong>输入命令：</strong> <code>java -version</code></p>
+<p>你应该看到类似下面的输出 (版本号可能不同):</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">java version &quot;1.8.0_291&quot;</span><br><span class="line">Java(TM) SE Runtime Environment (build 1.8.0_291-b10)</span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM (build 25.291-b10, mixed mode)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>如果你看到了 Java 版本信息，说明 JDK 已经安装。  请确保版本号是 1.7 或更高。</li>
+<li>如果你看到错误信息，例如 “java 不是内部或外部命令，也不是可运行的程序”，说明 JDK 没有安装或者没有配置到环境变量中。  你需要先安装 JDK 并配置好环境变量。  (JDK 安装和环境变量配置超出了本 Maven 教程的范围，你可以搜索相关的教程来完成 JDK 的安装和配置)</li>
+</ul>
+</li>
+</ol>
+<p><strong>确保 JDK_HOME 环境变量 (可选但推荐):</strong></p>
+<p>除了 <code>PATH</code> 环境变量，设置 <code>JAVA_HOME</code> 或 <code>JDK_HOME</code> 环境变量也是一个好的习惯，尤其是在需要配置多个 Java 版本时。  Maven 和其他 Java 工具可能会使用 <code>JAVA_HOME</code> 或 <code>JDK_HOME</code> 来找到 JDK 的安装目录。</p>
+<p><strong>设置 <code>JAVA_HOME</code> 或 <code>JDK_HOME</code> 环境变量 (以 Windows 为例):</strong></p>
+<ol>
+<li><strong>找到你的 JDK 安装目录。</strong>  例如 <code>C:\Program Files\Java\jdk1.8.0_xxx</code></li>
+<li><strong>打开 “控制面板” -&gt; “系统与安全” -&gt; “系统” -&gt; “高级系统设置” -&gt; “环境变量”。</strong></li>
+<li><strong>在 “系统变量” 中，点击 “新建”。</strong><ul>
+<li>变量名：<code>JAVA_HOME</code> (或者 <code>JDK_HOME</code>)</li>
+<li>变量值：你的 JDK 安装目录 (例如 <code>C:\Program Files\Java\jdk1.8.0_xxx</code>)</li>
+</ul>
+</li>
+<li><strong>点击 “确定” 保存所有更改。</strong></li>
+</ol>
+<p><strong>2.2 下载 Maven</strong></p>
+<ol>
+<li><strong>访问 Apache Maven 官网下载页面:</strong> <a target="_blank" rel="noopener" href="https://maven.apache.org/download.cgi">https://maven.apache.org/download.cgi</a></li>
+<li><strong>在 “Files” 部分，找到 “Binary zip archive”</strong> (例如 <code>apache-maven-3.x.x-bin.zip</code>)。</li>
+<li><strong>点击链接下载 ZIP 文件。</strong>  不要下载 “source code” 版本。</li>
+</ol>
+<p><strong>选择 Maven 版本：</strong></p>
+<ul>
+<li><strong>稳定版本 (Recommended):</strong>  通常选择官网推荐的稳定版本。</li>
+<li><strong>最新版本 (Latest):</strong>  如果你想尝试最新的功能，可以选择最新版本，但可能存在一些未知的 bug。</li>
+<li><strong>旧版本 (Older Versions):</strong>  如果你的项目需要兼容旧版本的 Maven，可以选择旧版本。  但通常不推荐使用过旧的版本。</li>
+</ul>
+<p><strong>下载完成后，你会得到一个 ZIP 压缩包，例如 <code>apache-maven-3.x.x-bin.zip</code>。</strong></p>
+<p><strong>2.3 安装 Maven</strong></p>
+<p>Maven 的安装非常简单，只需要将下载的 ZIP 压缩包解压到你电脑的某个目录即可。  这个目录就是 Maven 的安装目录。</p>
+<p><strong>安装步骤：</strong></p>
+<ol>
+<li><strong>选择一个目录作为 Maven 的安装目录。</strong>  例如：<ul>
+<li><strong>Windows:</strong> <code>C:\apache-maven-3.x.x</code> (或者 <code>D:\tools\apache-maven-3.x.x</code> 等， 避免使用包含空格的路径，例如 “Program Files”)</li>
+<li><strong>macOS&#x2F;Linux:</strong> <code>/opt/apache-maven-3.x.x</code> (或者 <code>/usr/local/maven</code> 等)</li>
+</ul>
+</li>
+<li><strong>将下载的 ZIP 文件 <code>apache-maven-3.x.x-bin.zip</code> 解压到你选择的目录。</strong></li>
+</ol>
+<p><strong>解压完成后，你的 Maven 就已经 “安装” 完成了。  实际上 Maven 是一个绿色软件，解压即可用，不需要额外的安装程序。</strong></p>
+<p><strong>2.4 配置 Maven 环境变量</strong></p>
+<p>为了能够在命令行中直接运行 <code>mvn</code> 命令，我们需要配置 Maven 的环境变量。  我们需要设置 <code>MAVEN_HOME</code> 环境变量，并将 Maven 的 <code>bin</code> 目录添加到 <code>PATH</code> 环境变量中。</p>
+<p><strong>配置环境变量步骤 (以 Windows 为例，macOS&#x2F;Linux 类似，参考之前的步骤):</strong></p>
+<ol>
+<li><strong>打开 “控制面板” -&gt; “系统与安全” -&gt; “系统” -&gt; “高级系统设置” -&gt; “环境变量”。</strong></li>
+<li><strong>在 “系统变量” 中，点击 “新建”。</strong><ul>
+<li>变量名：<code>MAVEN_HOME</code></li>
+<li>变量值：你的 Maven 解压目录 (例如 <code>C:\apache-maven-3.x.x</code>)</li>
+</ul>
+</li>
+<li><strong>在 “系统变量” 中，找到 “Path” 变量，双击编辑。</strong></li>
+<li><strong>点击 “新建”，添加 <code>%MAVEN_HOME%\bin</code></strong></li>
+<li><strong>点击 “确定” 保存所有更改。</strong></li>
+</ol>
+<p><strong>配置环境变量步骤 (macOS&#x2F;Linux，参考之前的步骤):</strong></p>
+<ol>
+<li><p><strong>打开终端，编辑你的 shell 配置文件 (例如 <code>.bash_profile</code>, <code>.zshrc</code>)。</strong></p>
+</li>
+<li><p><strong>在文件末尾添加以下行 (替换成你的 Maven 解压目录):</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> MAVEN_HOME=/opt/apache-maven-3.x.x</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$MAVEN_HOME</span>/bin</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>保存文件，并执行 <code>source ~/.bash_profile</code> 或 <code>source ~/.zshrc</code> (根据你的 shell 配置文件)。</strong></p>
+</li>
+</ol>
+<p><strong>2.5 验证 Maven 安装</strong></p>
+<p>配置完环境变量后，我们需要验证 Maven 是否安装成功。</p>
+<p><strong>验证步骤：</strong></p>
+<ol>
+<li><p><strong>打开新的终端或命令提示符窗口</strong> (之前打开的窗口可能环境变量还没有生效，需要重新打开)。</p>
+</li>
+<li><p><strong>输入命令：</strong> <code>mvn -v</code> 或 <code>mvn --version</code></p>
+<p>如果安装成功，你应该看到类似下面的输出 (版本号可能不同):</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Apache Maven 3.x.x (xxxxxxx; 2023-xx-xxTxx:xx:xx+xxxx)</span><br><span class="line">Maven home: /path/to/your/apache-maven-3.x.x</span><br><span class="line">Java version: 1.x.x, vendor: ..., runtime: ...</span><br><span class="line">OS name: ..., version: ..., arch: ..., family: ...</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>如果看到 Maven 版本信息，恭喜你，Maven 安装成功了！</strong></li>
+<li><strong>如果看到错误信息，例如 “mvn 不是内部或外部命令，也不是可运行的程序”，说明环境变量配置有问题。</strong>  请仔细检查环境变量配置步骤，确保 <code>MAVEN_HOME</code> 和 <code>PATH</code> 配置正确，并重新打开终端窗口。  如果仍然有问题，可以重启电脑试试。</li>
+</ul>
+</li>
+</ol>
+<p><strong>2.6 Maven 本地仓库</strong></p>
+<p>Maven 本地仓库是 Maven 用来 <strong>缓存依赖</strong> 的地方。  当你第一次运行 Maven 命令需要下载某个依赖时，Maven 会从远程仓库下载依赖，然后 <strong>保存到本地仓库</strong>。  下次再需要这个依赖时，Maven 会直接从本地仓库读取，而不需要再次从远程仓库下载，这样可以 <strong>加速构建过程</strong>。</p>
+<p><strong>默认本地仓库位置:</strong></p>
+<ul>
+<li><strong><code>用户目录/.m2/repository</code></strong>  (例如 Windows: <code>C:\Users\YourUsername\.m2\repository</code>, macOS&#x2F;Linux: <code>/Users/YourUsername/.m2/repository</code>)</li>
+</ul>
+<p><strong>修改本地仓库位置 (通过 <code>settings.xml</code> 文件):</strong></p>
+<p>你可以通过修改 Maven 的 <code>settings.xml</code> 文件来更改本地仓库的默认位置。</p>
+<ol>
+<li><p><strong>找到 <code>settings.xml</code> 文件。</strong></p>
+<ul>
+<li><p><strong>全局 <code>settings.xml</code>:</strong> 位于 Maven 安装目录的 <code>conf</code> 目录下 (例如 <code>C:\apache-maven-3.x.x\conf\settings.xml</code>)</p>
+</li>
+<li><p><strong>用户 <code>settings.xml</code>:</strong> 位于 <code>用户目录/.m2</code> 目录下 (例如 <code>C:\Users\YourUsername\.m2\settings.xml</code>)</p>
+</li>
+<li><p><strong>优先使用用户 <code>settings.xml</code>:</strong>  如果用户目录 <code>.m2</code> 下没有 <code>settings.xml</code> 文件，你可以从全局 <code>settings.xml</code> 文件复制一份到用户目录 <code>.m2</code> 下，然后进行修改。  <strong>推荐修改用户 <code>settings.xml</code>，不要直接修改全局 <code>settings.xml</code>。</strong></p>
+</li>
+</ul>
+</li>
+<li><p><strong>打开 <code>settings.xml</code> 文件，找到 <code>&lt;localRepository&gt;</code> 标签 (默认是被注释掉的)。</strong></p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- localRepository</span></span><br><span class="line"><span class="comment"> | The path to the local repository maven will use to store artifacts.</span></span><br><span class="line"><span class="comment"> |</span></span><br><span class="line"><span class="comment"> | Default: $&#123;user.home&#125;/.m2/repository</span></span><br><span class="line"><span class="comment">&lt;localRepository&gt;/path/to/local/repo&lt;/localRepository&gt;</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>取消注释 <code>&lt;localRepository&gt;</code> 标签，并修改 <code>&lt;localRepository&gt;</code> 的值为你想要设置的本地仓库路径。</strong></p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">localRepository</span>&gt;</span>D:\maven\repository<span class="tag">&lt;/<span class="name">localRepository</span>&gt;</span>  <span class="comment">&lt;!-- 例如，设置本地仓库到 D:\maven\repository --&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>保存 <code>settings.xml</code> 文件。</strong></p>
+<p><strong>注意：修改本地仓库位置后，之前已经下载到旧本地仓库的依赖不会自动迁移到新的本地仓库。  你需要手动清理旧本地仓库，或者让 Maven 重新下载依赖到新的本地仓库。</strong></p>
+</li>
+</ol>
+<p><strong>2.7 Maven Settings 文件 (<code>settings.xml</code>)</strong></p>
+<p><code>settings.xml</code> 文件是 Maven 的 <strong>全局配置文件</strong>，用于配置 Maven 的全局行为。  除了修改本地仓库位置，<code>settings.xml</code> 还可以配置：</p>
+<ul>
+<li><strong>镜像 (Mirrors):</strong>  用于加速依赖下载，例如配置国内的 Maven 镜像。</li>
+<li><strong>代理 (Proxy):</strong>  如果你的网络需要通过代理才能访问外部网络，可以在 <code>settings.xml</code> 中配置代理。</li>
+<li><strong>服务器认证 (Servers):</strong>  配置访问私服仓库需要的用户名和密码。</li>
+<li><strong>Profile (全局 Profile):</strong>  可以在 <code>settings.xml</code> 中定义全局 Profile，并设置默认激活的 Profile。</li>
+</ul>
+<p>我们会在后续章节中逐步学习 <code>settings.xml</code> 的更多配置。</p>
+<p><strong>总结第二章:</strong></p>
+<p>第二章我们学习了 Maven 的安装步骤，包括检查 JDK 安装、下载 Maven、安装 Maven (解压)、配置环境变量和验证 Maven 安装。  我们还了解了 Maven 本地仓库的作用和如何修改本地仓库位置，以及 <code>settings.xml</code> 文件的基本作用。</p>
+
+          </div>
+        </div>
+
+        <!-- 文章底部 -->
+        <div class="px-8 py-8">
+          <!-- 标签 -->
+          
+            <div class="flex flex-wrap gap-2 mb-8">
+              
+                <a href="/tags/Maven/" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm text-gray-600 transition-colors">
+                  Maven
+                </a>
+                
+            </div>
+            
+
+              <!-- 分享 -->
+              <div class="flex items-center justify-between mb-8 py-6 border-t border-b">
+                <div class="text-sm text-gray-500">分享文章：</div>
+                <div class="flex gap-4">
+                  <button class="text-gray-400 hover:text-gray-600 transition-colors">
+                    <i class="far fa-copy text-xl"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- 上一篇/下一篇 -->
+              <div class="flex flex-col sm:flex-row justify-between gap-4">
+                
+                  <a href="/cm72orm1g000564wtc8lbegm5.html" class="group flex-1">
+                    <div class="text-sm text-gray-500 mb-1">上一篇</div>
+                    <div class="group-hover:text-blue-600 transition-colors">
+                      Maven (九) Maven 插件
+                    </div>
+                  </a>
+                  
+                    
+                      <a href="/cm72orm1j000a64wtdkhv9xmx.html" class="group flex-1 text-right">
+                        <div class="text-sm text-gray-500 mb-1">下一篇</div>
+                        <div class="group-hover:text-blue-600 transition-colors">
+                          Maven (五) 依赖管理
+                        </div>
+                      </a>
+                      
+              </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 侧边栏 -->
+    <aside class="lg:w-1/4 mt-8 lg:mt-0 space-y-6">
+      <!-- 作者信息 -->
+      <div class="bg-white rounded-xl p-6">
+        <div class="flex items-center gap-4 mb-4">
+          <img src="/images/avatar.jpg" class="w-16 h-16 rounded-full">
+          <div>
+            <h3 class="font-medium">Nunumao</h3>
+            <p class="text-sm text-gray-500">开发工程师</p>
+          </div>
+        </div>
+        <p class="text-sm text-gray-600 mb-4">专注于技术研究，热爱分享技术心得</p>
+        <div class="flex justify-center gap-4">
+          <a href="https://github.com/nunumao" target="_blank" class="text-gray-400 hover:text-gray-600">
+            <i class="fab fa-github text-xl"></i>
+          </a>
+          <a href="mailto:gm292018748@email.com" target="_blank" class="text-gray-400 hover:text-[#1DA1F2]">
+            <i class="fas fa-envelope text-xl"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 目录 -->
+      <div class="bg-white rounded-xl p-6 sticky top-24">
+        <h2 class="text-lg font-medium mb-4">目录</h2>
+        <nav class="space-y-2 text-sm">
+          
+        </nav>
+      </div>
+
+      <!-- 分类列表 -->
+      <div class="bg-white rounded-xl p-6">
+        <h2 class="text-lg font-medium mb-4">文章分类</h2>
+        <div class="space-y-3">
+          
+            <a href="/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/" class="flex items-center justify-between group">
+              <div class="flex items-center">
+                <i class="fas fa-code text-blue-500 w-5"></i>
+                <span class="text-sm group-hover:text-blue-600">
+                  前端技术
+                </span>
+              </div>
+              <span class="text-xs text-gray-500">
+                1
+              </span>
+            </a>
+            
+            <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="flex items-center justify-between group">
+              <div class="flex items-center">
+                <i class="fas fa-folder text-gray-500 w-5"></i>
+                <span class="text-sm group-hover:text-blue-600">
+                  服务器
+                </span>
+              </div>
+              <span class="text-xs text-gray-500">
+                3
+              </span>
+            </a>
+            
+            <a href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/" class="flex items-center justify-between group">
+              <div class="flex items-center">
+                <i class="fas fa-server text-green-500 w-5"></i>
+                <span class="text-sm group-hover:text-blue-600">
+                  后端技术
+                </span>
+              </div>
+              <span class="text-xs text-gray-500">
+                31
+              </span>
+            </a>
+            
+        </div>
+      </div>
+
+      <!-- 相关文章 -->
+      <div class="bg-white rounded-xl p-6">
+        <h2 class="text-lg font-medium mb-4">相关文章</h2>
+        <div class="space-y-4">
+          
+            <a href="/cm72nkaxe001awkwtc6bdgyhu.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Hello World
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-13</p>
+            </a>
+            
+            <a href="/cm72nkax6000bwkwt554c1z0e.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (一) | 基本语法
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm72nkax7000ewkwt2l4293ed.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (三) | 函数
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm72nkax7000hwkwt7pw007e6.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (七) | 集合
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm72nkax9000jwkwtccbg0esu.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (二) | 控制流
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+        </div>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<style>
+  .markdown-body {
+    box-sizing: border-box;
+    min-width: 200px;
+    max-width: 100%;
+    margin: 0 auto;
+    background-color: white;
+  }
+
+  /* 适配深色模式 */
+  @media (prefers-color-scheme: dark) {
+    .markdown-body {
+      color-scheme: dark;
+      --color-prettylights-syntax-comment: #8b949e;
+      --color-prettylights-syntax-constant: #79c0ff;
+      --color-prettylights-syntax-entity: #d2a8ff;
+      --color-prettylights-syntax-storage-modifier-import: #c9d1d9;
+      --color-prettylights-syntax-entity-tag: #7ee787;
+      --color-prettylights-syntax-keyword: #ff7b72;
+      --color-prettylights-syntax-string: #a5d6ff;
+      --color-prettylights-syntax-variable: #ffa657;
+      --color-prettylights-syntax-brackethighlighter-unmatched: #f85149;
+      --color-prettylights-syntax-invalid-illegal-text: #f0f6fc;
+      --color-prettylights-syntax-invalid-illegal-bg: #8e1519;
+      --color-prettylights-syntax-carriage-return-text: #f0f6fc;
+      --color-prettylights-syntax-carriage-return-bg: #b62324;
+      --color-prettylights-syntax-string-regexp: #7ee787;
+      --color-prettylights-syntax-markup-list: #f2cc60;
+      --color-prettylights-syntax-markup-heading: #1f6feb;
+      --color-prettylights-syntax-markup-italic: #c9d1d9;
+      --color-prettylights-syntax-markup-bold: #c9d1d9;
+      --color-prettylights-syntax-markup-deleted-text: #ffdcd7;
+      --color-prettylights-syntax-markup-deleted-bg: #67060c;
+      --color-prettylights-syntax-markup-inserted-text: #aff5b4;
+      --color-prettylights-syntax-markup-inserted-bg: #033a16;
+      --color-prettylights-syntax-markup-changed-text: #ffdfb6;
+      --color-prettylights-syntax-markup-changed-bg: #5a1e02;
+      --color-prettylights-syntax-markup-ignored-text: #c9d1d9;
+      --color-prettylights-syntax-markup-ignored-bg: #1158c7;
+      --color-prettylights-syntax-meta-diff-range: #d2a8ff;
+      --color-prettylights-syntax-brackethighlighter-angle: #8b949e;
+      --color-prettylights-syntax-sublimelinter-gutter-mark: #484f58;
+      --color-prettylights-syntax-constant-other-reference-link: #a5d6ff;
+      --color-fg-default: #c9d1d9;
+      --color-fg-muted: #8b949e;
+      --color-fg-subtle: #6e7681;
+      --color-canvas-default: #0d1117;
+      --color-canvas-subtle: #161b22;
+      --color-border-default: #30363d;
+      --color-border-muted: #21262d;
+      --color-neutral-muted: rgba(110, 118, 129, 0.4);
+      --color-accent-fg: #58a6ff;
+      --color-accent-emphasis: #1f6feb;
+      --color-attention-subtle: rgba(187, 128, 9, 0.15);
+      --color-danger-fg: #f85149;
+    }
+  }
+</style>
+  <!-- 页脚 -->
+<footer class="border-t mt-16">
+  <div class="max-w-4xl mx-auto px-4 py-8 text-center text-sm text-gray-500">
+    <p>© 2025 nunumao. Built with <a href="#" class="text-blue-600">Hexo</a></p>
+  </div>
+</footer>
+</body>
+
+</html>

@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>编程日记</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  
+<link rel="stylesheet" href="/css/github-markdown.css">
+
+  
+<link rel="stylesheet" href="/css/atom-one-dark.css">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+<script src="/js/jquery.min.js"></script>
+
+  
+<script src="/js/script.js"></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="bg-gray-50 text-gray-800">
+  <div class="lg:hidden fixed right-4 top-4 z-50">
+    <button class="p-2 bg-white/80 backdrop-blur-sm rounded-lg border" data-mobile-menu-trigger><i class="fas fa-bars"></i></button>
+  </div>
+  <!-- 导航栏 -->
+  <nav class="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-40">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="flex justify-between items-center h-16">
+        <a href="/" class="text-xl font-serif">编程日记</a>
+        <!-- 桌面端导航 -->
+        <div class="hidden lg:flex items-center space-x-6">
+          <div class="flex items-center space-x-6 text-sm">
+            <a href="/" class="hover:text-blue-600" data-i18n="nav.home">首页</a>
+            <!-- 分类下拉菜单 -->
+            <div class="relative group">
+              <a href="/categories" class="hover:text-blue-600">分类</a>
+              <!-- 优化后的下拉内容 -->
+              <div class="absolute left-0 mt-2 py-2 bg-white backdrop-blur-sm border rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div class="grid grid-cols-2 gap-1 w-[400px] p-4">
+                  
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/前端技术/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>前端技术</span>
+                        </a>
+                      
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/服务器/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>服务器</span>
+                        </a>
+                      
+                    
+                      
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/后端技术/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>后端技术</span>
+                        </a>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                  
+                </div>
+              </div>
+            </div>
+            <a href="/case" class="hover:text-blue-600" data-i18n="nav.case">作品</a>
+            <a href="/archives" class="hover:text-blue-600" data-i18n="nav.archives">归档</a>
+            <a href="/about" class="hover:text-blue-600" data-i18n="nav.about">关于</a>
+            <!-- 搜索框 -->
+            <div class="relative">
+              <input type="search" placeholder="Search articles..." class="w-48 px-4 py-1 text-sm border rounded-full bg-gray-50 focus:outline-none focus:ring-1 focus:ring-blue-500">
+              <i class="fas fa-search absolute right-3 top-2 text-gray-400"></i>
+            </div>
+            <!-- 语言切换 -->
+            <div class="flex items-center space-x-2 ml-4 text-sm border-l pl-4">
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('en-US')">EN</button>
+              <span class="text-gray-300">|</span>
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('zh-CN')">简</button>
+              <span class="text-gray-300">|</span>
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('zh-TW')">繁</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div id="mobileMenu" class="fixed inset-0 bg-white/90 backdrop-blur-sm z-40 lg:hidden hidden">
+    <div class="h-full w-full flex flex-col items-center justify-center space-y-6 text-lg">
+      <a href="/" class="hover:text-blue-600" data-i18n="nav.home">首页</a>
+      <a href="/categories" class="hover:text-blue-600" data-i18n="nav.categories">分类</a>
+      <a href="/case" class="hover:text-blue-600" data-i18n="nav.case">作品</a>
+      <a href="/archives" class="hover:text-blue-600" data-i18n="nav.archive">归档</a>
+      <a href="/about" class="hover:text-blue-600" data-i18n="nav.about">关于</a>
+      <div class="flex items-center space-x-4 mt-4">
+        <button class="lang-switch hover:text-blue-600" data-lang="en">EN</button>
+        <button class="lang-switch hover:text-blue-600" data-lang="zh">简</button>
+        <button class="lang-switch hover:text-blue-600" data-lang="zh-TW">繁</button>
+      </div>
+    </div>
+  </div>
+  <main class="max-w-5xl mx-auto px-4 py-12">
+  <div class="lg:flex lg:gap-8">
+    <!-- 文章主体 -->
+    <article class="lg:w-3/4">
+      <!-- 文章容器 -->
+      <div class="bg-white rounded-xl overflow-hidden">
+        <!-- 文章头部 -->
+        <div class="px-8 pt-12 pb-8">
+          <!-- 标题 -->
+          <h1 class="text-3xl font-medium mb-6 leading-snug">
+            Maven (六) 构建 Profile
+          </h1>
+
+          <!-- 元信息 -->
+          <div class="flex flex-wrap items-center gap-6 text-sm text-gray-500">
+            <span>
+              <i class="fas fa-folder-open mr-2"></i>
+              
+                <a href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/Maven/" class="hover:text-blue-600">
+                  Maven
+                </a>
+                
+            </span>
+            <span>
+              <i class="far fa-calendar mr-2"></i>
+              2025-02-10
+            </span>
+            <span><i class="far fa-clock mr-2"></i>15 分钟阅读</span>
+            <span><i class="far fa-eye mr-2"></i>
+              0
+            </span>
+          </div>
+        </div>
+
+        <!-- 文章内容 -->
+        <div class="px-8 py-10 border-t border-b">
+          <div class="markdown-body">
+            <p><strong>第六章： 构建 Profile</strong></p>
+<p><strong>6.1 什么是 Maven Profile？</strong></p>
+<p>Maven Profile 用于 <strong>自定义不同环境或构建目标的构建过程</strong>。 它们允许你为以下情况定义不同的配置：</p>
+<ul>
+<li><strong>不同环境：</strong> 开发环境、测试环境、预发布环境、生产环境等等。</li>
+<li><strong>不同操作系统：</strong> Windows, Linux, macOS。</li>
+<li><strong>不同 JDK 版本。</strong></li>
+<li><strong>不同构建目标：</strong> 构建 JAR 包、WAR 包，或者运行集成测试等。</li>
+</ul>
+<p><strong>为什么要使用 Profile？</strong></p>
+<ul>
+<li><strong>环境特定的配置：</strong> 你可以为每个环境定义不同的配置，例如数据库连接信息、日志级别、资源文件等等。</li>
+<li><strong>构建自定义：</strong> 你可以根据不同的条件自定义构建过程，例如激活不同的插件或插件版本。</li>
+<li><strong>避免直接修改 POM 文件：</strong> Profile 允许你在不修改主 POM 文件的情况下切换配置，保持 POM 文件的整洁和可维护性。</li>
+<li><strong>灵活性和可重用性：</strong> Profile 提供了一种灵活和可重用的方式来管理不同的构建配置。</li>
+</ul>
+<p><strong>6.2 在 <code>pom.xml</code> 中定义 Profile</strong></p>
+<p>Profile 是在你的 <code>pom.xml</code> 文件中的 <code>&lt;profiles&gt;</code> 元素内定义的。 每个 profile 由一个 <code>&lt;profile&gt;</code> 元素定义，并且拥有一个唯一的 <code>&lt;id&gt;</code>。</p>
+<p><strong>Profile 的基本结构：</strong></p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">profiles</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span>&gt;</span>dev<span class="tag">&lt;/<span class="name">id</span>&gt;</span>  <span class="comment">&lt;!-- Profile 的 ID，唯一标识 --&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- Profile 的配置 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span>&gt;</span>prod<span class="tag">&lt;/<span class="name">id</span>&gt;</span>  <span class="comment">&lt;!-- 另一个 Profile 的 ID --&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 另一个 Profile 的配置 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">profiles</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong><code>&lt;profile&gt;</code> 元素的主要子元素：</strong></p>
+<ul>
+<li><p><strong><code>&lt;id&gt;</code> (必需):</strong>  <strong>Profile 的 ID</strong>，用于在 Maven 中唯一标识一个 Profile。  ID 通常使用简短且具有描述性的名称，例如 <code>dev</code>, <code>test</code>, <code>prod</code>, <code>windows</code>, <code>jdk1.8</code> 等。</p>
+</li>
+<li><p><strong><code>&lt;activation&gt;</code> (可选):</strong>  <strong>Profile 激活配置</strong>，用于定义在什么条件下激活该 Profile。  如果没有 <code>&lt;activation&gt;</code> 元素，则 Profile 默认不会自动激活，需要显式激活。  <code>&lt;activation&gt;</code> 元素可以包含以下子元素来定义激活条件：</p>
+<ul>
+<li><strong><code>&lt;activeByDefault&gt;</code>:</strong>  设置为 <code>true</code> 时，该 Profile 将 <strong>默认激活</strong>。  一个 POM 文件中只能有一个 Profile 设置为 <code>activeByDefault</code> 为 <code>true</code>。</li>
+<li><strong><code>&lt;jdk&gt;</code>:</strong>  根据 <strong>JDK 版本</strong> 激活 Profile。  例如 <code>&lt;jdk&gt;1.8&lt;/jdk&gt;</code> 表示当 JDK 版本为 1.8 时激活 Profile，<code>&lt;jdk&gt;[1.7,)&lt;/jdk&gt;</code> 表示当 JDK 版本大于等于 1.7 时激活 Profile。</li>
+<li><strong><code>&lt;os&gt;</code>:</strong>  根据 <strong>操作系统</strong> 激活 Profile。  可以根据操作系统的 <code>family</code> (例如 <code>windows</code>, <code>unix</code>, <code>mac</code>), <code>name</code>, <code>arch</code>, <code>version</code> 等属性激活 Profile。</li>
+<li><strong><code>&lt;property&gt;</code>:</strong>  根据 <strong>Maven 属性</strong> 或 <strong>系统属性</strong> 激活 Profile。  例如 <code>&lt;property&gt;&lt;name&gt;env&lt;/name&gt;&lt;value&gt;dev&lt;/value&gt;&lt;/property&gt;</code> 表示当 Maven 属性或系统属性 <code>env</code> 的值为 <code>dev</code> 时激活 Profile。</li>
+<li><strong><code>&lt;file&gt;</code>:</strong>  根据 <strong>文件存在性</strong> 激活 Profile。  可以根据文件是否存在 (<code>&lt;exists&gt;</code>) 或文件不存在 (<code>&lt;missing&gt;</code>) 激活 Profile。</li>
+</ul>
+</li>
+<li><p><strong>配置元素 (可选):</strong>  Profile 中可以配置以下元素，用于 <strong>覆盖或修改 POM 文件中原有的配置</strong>：</p>
+<ul>
+<li><strong><code>&lt;properties&gt;</code>:</strong>  定义 Profile 特有的 <strong>Maven 属性</strong>。  这些属性可以在 POM 文件和其他配置文件中引用。</li>
+<li><strong><code>&lt;dependencies&gt;</code>:</strong>  <strong>依赖管理</strong>，可以在 Profile 中添加、移除或替换依赖。</li>
+<li><strong><code>&lt;repositories&gt;</code>:</strong>  <strong>仓库配置</strong>，可以在 Profile 中添加、移除或替换仓库。</li>
+<li><strong><code>&lt;pluginRepositories&gt;</code>:</strong>  <strong>插件仓库配置</strong>，可以在 Profile 中添加、移除或替换插件仓库。</li>
+<li><strong><code>&lt;build&gt;</code>:</strong>  <strong>构建配置</strong>，可以修改构建相关的配置，例如：<ul>
+<li><code>&lt;defaultGoal&gt;</code>:  定义默认的 Maven 目标。</li>
+<li><code>&lt;resources&gt;</code>:  资源文件配置。</li>
+<li><code>&lt;testResources&gt;</code>:  测试资源文件配置。</li>
+<li><code>&lt;plugins&gt;</code>:  插件配置。</li>
+<li><code>&lt;filters&gt;</code>:  过滤器配置。</li>
+<li><code>&lt;extensions&gt;</code>:  扩展配置。</li>
+<li><code>&lt;pluginManagement&gt;</code>:  插件管理配置。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>6.3 Profile 激活方式</strong></p>
+<p>Maven 提供了多种 Profile 激活方式：</p>
+<ol>
+<li><p><strong>默认激活 (<code>&lt;activeByDefault&gt;</code>)</strong></p>
+<p>在 Profile 的 <code>&lt;activation&gt;</code> 元素中设置 <code>&lt;activeByDefault&gt;true&lt;/activeByDefault&gt;</code> 可以将该 Profile 设置为 <strong>默认激活</strong>。  在一个 POM 文件中，只能有一个 Profile 设置为默认激活。</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>dev<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">activation</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">activeByDefault</span>&gt;</span>true<span class="tag">&lt;/<span class="name">activeByDefault</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">activation</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- ... 配置 ... --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>当没有显式指定激活 Profile 时，默认激活的 Profile 会被使用。</p>
+</li>
+<li><p><strong>命令行激活 (<code>-P &lt;profile-id&gt;</code>)</strong></p>
+<p>在执行 Maven 命令时，可以使用 <code>-P &lt;profile-id&gt;</code> 参数来 <strong>显式激活指定的 Profile</strong>。  可以同时激活多个 Profile，使用逗号分隔 Profile ID，例如 <code>-P dev,debug</code>。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mvn clean install -P prod</span><br><span class="line">mvn <span class="built_in">test</span> -P dev</span><br><span class="line">mvn package -P windows,jdk1.8</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong><code>settings.xml</code> 文件激活 (<code>&lt;activeProfiles&gt;</code>)</strong></p>
+<p>可以在 Maven 的 <code>settings.xml</code> 文件中配置 <code>&lt;activeProfiles&gt;</code> 元素来 <strong>全局激活 Profile</strong>。  在 <code>settings.xml</code> 中激活的 Profile 会 <strong>覆盖</strong> POM 文件中默认激活的 Profile。</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">settings</span>&gt;</span></span><br><span class="line">    ...</span><br><span class="line">    <span class="tag">&lt;<span class="name">activeProfiles</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">activeProfile</span>&gt;</span>prod<span class="tag">&lt;/<span class="name">activeProfile</span>&gt;</span>  <span class="comment">&lt;!-- 激活 ID 为 prod 的 Profile --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">activeProfile</span>&gt;</span>debug<span class="tag">&lt;/<span class="name">activeProfile</span>&gt;</span> <span class="comment">&lt;!-- 激活 ID 为 debug 的 Profile --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">activeProfiles</span>&gt;</span></span><br><span class="line">    ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>自动激活 (基于 <code>&lt;activation&gt;</code> 元素)</strong></p>
+<p>通过配置 <code>&lt;activation&gt;</code> 元素中的 <code>&lt;jdk&gt;</code>, <code>&lt;os&gt;</code>, <code>&lt;property&gt;</code>, <code>&lt;file&gt;</code> 等子元素，可以实现 <strong>自动激活 Profile</strong>。  当满足 <code>&lt;activation&gt;</code> 元素定义的条件时，Profile 会自动被激活。</p>
+<ul>
+<li><p><strong>基于 JDK 版本激活:</strong></p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>jdk1.8<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">activation</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">jdk</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">jdk</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">activation</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- ... 配置 ... --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>基于操作系统激活:</strong></p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>windows<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">activation</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">os</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">family</span>&gt;</span>windows<span class="tag">&lt;/<span class="name">family</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">os</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">activation</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- ... 配置 ... --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>基于属性激活:</strong></p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>dev-env<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">activation</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">name</span>&gt;</span>env<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">value</span>&gt;</span>dev<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">activation</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- ... 配置 ... --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>可以使用 <code>-D&lt;property&gt;=&lt;value&gt;</code> 命令行参数或在 <code>settings.xml</code> 中配置 <code>&lt;properties&gt;</code> 元素来设置 Maven 属性。  系统属性可以通过 <code>-D&lt;property&gt;=&lt;value&gt;</code> 命令行参数设置。</p>
+</li>
+<li><p><strong>基于文件存在性激活:</strong></p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>offline<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">activation</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">file</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">missing</span>&gt;</span>$&#123;user.home&#125;/.m2/repository.lock<span class="tag">&lt;/<span class="name">missing</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">file</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">activation</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- ... 配置 ... --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+<p><strong>6.4 Profile 配置示例</strong></p>
+<p>下面是一些 Profile 配置示例，展示如何在 Profile 中配置不同的元素。</p>
+<ul>
+<li><p><strong>示例 1:  配置不同的数据库连接信息</strong></p>
+ <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">profiles</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span>&gt;</span>dev<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">db.url</span>&gt;</span>jdbc:mysql://localhost:3306/dev_db<span class="tag">&lt;/<span class="name">db.url</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">db.username</span>&gt;</span>dev_user<span class="tag">&lt;/<span class="name">db.username</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">db.password</span>&gt;</span>dev_password<span class="tag">&lt;/<span class="name">db.password</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span>&gt;</span>prod<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">db.url</span>&gt;</span>jdbc:mysql://prod.example.com:3306/prod_db<span class="tag">&lt;/<span class="name">db.url</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">db.username</span>&gt;</span>prod_user<span class="tag">&lt;/<span class="name">db.username</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">db.password</span>&gt;</span>prod_password<span class="tag">&lt;/<span class="name">db.password</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">profiles</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">directory</span>&gt;</span>src/main/resources<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">filtering</span>&gt;</span>true<span class="tag">&lt;/<span class="name">filtering</span>&gt;</span>  <span class="comment">&lt;!-- 启用资源过滤 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p> 在 <code>src/main/resources</code> 目录下的配置文件 (例如 <code>application.properties</code>) 中可以使用 <code>$&#123;db.url&#125;</code>, <code>$&#123;db.username&#125;</code>, <code>$&#123;db.password&#125;</code> 占位符，Maven 会在 <code>process-resources</code> 阶段根据激活的 Profile 替换这些占位符。</p>
+</li>
+<li><p><strong>示例 2:  配置不同的依赖</strong></p>
+ <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">profiles</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span>&gt;</span>jdk1.6<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">activation</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">jdk</span>&gt;</span>1.6<span class="tag">&lt;/<span class="name">jdk</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">activation</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.servlet<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>servlet-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.5<span class="tag">&lt;/<span class="name">version</span>&gt;</span> <span class="comment">&lt;!-- JDK 1.6 兼容的 Servlet API 版本 --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span>&gt;</span>jdk1.8<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">activation</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">jdk</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">jdk</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">activation</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.servlet<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>javax.servlet-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.1.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span> <span class="comment">&lt;!-- JDK 1.8 兼容的 Servlet API 版本 --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">profiles</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p> 根据不同的 JDK 版本，使用不同版本的 Servlet API 依赖。</p>
+</li>
+<li><p><strong>示例 3: 配置不同的插件</strong></p>
+ <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">profiles</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span>&gt;</span>dev<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-compiler-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">debug</span>&gt;</span>true<span class="tag">&lt;/<span class="name">debug</span>&gt;</span>  <span class="comment">&lt;!-- 开发环境启用 debug 模式 --&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span>&gt;</span>prod<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-compiler-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">optimize</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optimize</span>&gt;</span> <span class="comment">&lt;!-- 生产环境启用代码优化 --&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">profiles</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p> 根据不同的环境，配置不同的编译器插件参数。</p>
+</li>
+</ul>
+<p><strong>6.5 Profile 的优先级</strong></p>
+<p>当多个 Profile 同时被激活时，Maven 会按照一定的优先级规则合并 Profile 的配置。  Profile 的优先级顺序 (从高到低)：</p>
+<ol>
+<li><strong>命令行激活的 Profile (<code>-P</code>)</strong></li>
+<li><strong><code>settings.xml</code> 文件中 <code>activeProfiles</code> 激活的 Profile</strong></li>
+<li><strong>用户 <code>settings.xml</code> 文件中 <code>profiles</code> 定义的 Profile</strong></li>
+<li><strong>全局 <code>settings.xml</code> 文件中 <code>profiles</code> 定义的 Profile</strong></li>
+<li><strong>POM 文件中 <code>activeByDefault</code> 激活的 Profile</strong></li>
+<li><strong>POM 文件中 <code>profiles</code> 定义的 Profile (按定义顺序)</strong></li>
+</ol>
+<p>优先级高的 Profile 配置会覆盖优先级低的 Profile 配置。  如果多个 Profile 配置了相同的元素，则优先级最高的 Profile 配置生效。</p>
+<p><strong>总结第六章:</strong></p>
+<p>第六章我们学习了 Maven Profile 的概念和用法，包括 Profile 的定义、Profile 的激活方式和 Profile 的配置示例。  Maven Profile 是一个强大的工具，可以帮助我们灵活地管理不同环境下的构建配置，提高项目的可移植性和可维护性。</p>
+
+          </div>
+        </div>
+
+        <!-- 文章底部 -->
+        <div class="px-8 py-8">
+          <!-- 标签 -->
+          
+            <div class="flex flex-wrap gap-2 mb-8">
+              
+                <a href="/tags/Maven/" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm text-gray-600 transition-colors">
+                  Maven
+                </a>
+                
+            </div>
+            
+
+              <!-- 分享 -->
+              <div class="flex items-center justify-between mb-8 py-6 border-t border-b">
+                <div class="text-sm text-gray-500">分享文章：</div>
+                <div class="flex gap-4">
+                  <button class="text-gray-400 hover:text-gray-600 transition-colors">
+                    <i class="far fa-copy text-xl"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- 上一篇/下一篇 -->
+              <div class="flex flex-col sm:flex-row justify-between gap-4">
+                
+                  <a href="/cm72orm1j000a64wtdkhv9xmx.html" class="group flex-1">
+                    <div class="text-sm text-gray-500 mb-1">上一篇</div>
+                    <div class="group-hover:text-blue-600 transition-colors">
+                      Maven (五) 依赖管理
+                    </div>
+                  </a>
+                  
+                    
+                      <a href="/cm72orm1l000g64wt0zhded2u.html" class="group flex-1 text-right">
+                        <div class="text-sm text-gray-500 mb-1">下一篇</div>
+                        <div class="group-hover:text-blue-600 transition-colors">
+                          Maven (四) Maven 构建生命周期
+                        </div>
+                      </a>
+                      
+              </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 侧边栏 -->
+    <aside class="lg:w-1/4 mt-8 lg:mt-0 space-y-6">
+      <!-- 作者信息 -->
+      <div class="bg-white rounded-xl p-6">
+        <div class="flex items-center gap-4 mb-4">
+          <img src="/images/avatar.jpg" class="w-16 h-16 rounded-full">
+          <div>
+            <h3 class="font-medium">Nunumao</h3>
+            <p class="text-sm text-gray-500">开发工程师</p>
+          </div>
+        </div>
+        <p class="text-sm text-gray-600 mb-4">专注于技术研究，热爱分享技术心得</p>
+        <div class="flex justify-center gap-4">
+          <a href="https://github.com/nunumao" target="_blank" class="text-gray-400 hover:text-gray-600">
+            <i class="fab fa-github text-xl"></i>
+          </a>
+          <a href="mailto:gm292018748@email.com" target="_blank" class="text-gray-400 hover:text-[#1DA1F2]">
+            <i class="fas fa-envelope text-xl"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 目录 -->
+      <div class="bg-white rounded-xl p-6 sticky top-24">
+        <h2 class="text-lg font-medium mb-4">目录</h2>
+        <nav class="space-y-2 text-sm">
+          
+        </nav>
+      </div>
+
+      <!-- 分类列表 -->
+      <div class="bg-white rounded-xl p-6">
+        <h2 class="text-lg font-medium mb-4">文章分类</h2>
+        <div class="space-y-3">
+          
+            <a href="/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/" class="flex items-center justify-between group">
+              <div class="flex items-center">
+                <i class="fas fa-code text-blue-500 w-5"></i>
+                <span class="text-sm group-hover:text-blue-600">
+                  前端技术
+                </span>
+              </div>
+              <span class="text-xs text-gray-500">
+                1
+              </span>
+            </a>
+            
+            <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="flex items-center justify-between group">
+              <div class="flex items-center">
+                <i class="fas fa-folder text-gray-500 w-5"></i>
+                <span class="text-sm group-hover:text-blue-600">
+                  服务器
+                </span>
+              </div>
+              <span class="text-xs text-gray-500">
+                3
+              </span>
+            </a>
+            
+            <a href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/" class="flex items-center justify-between group">
+              <div class="flex items-center">
+                <i class="fas fa-server text-green-500 w-5"></i>
+                <span class="text-sm group-hover:text-blue-600">
+                  后端技术
+                </span>
+              </div>
+              <span class="text-xs text-gray-500">
+                31
+              </span>
+            </a>
+            
+        </div>
+      </div>
+
+      <!-- 相关文章 -->
+      <div class="bg-white rounded-xl p-6">
+        <h2 class="text-lg font-medium mb-4">相关文章</h2>
+        <div class="space-y-4">
+          
+            <a href="/cm72nkaxe001awkwtc6bdgyhu.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Hello World
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-13</p>
+            </a>
+            
+            <a href="/cm72nkax6000bwkwt554c1z0e.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (一) | 基本语法
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm72nkax7000ewkwt2l4293ed.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (三) | 函数
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm72nkax7000hwkwt7pw007e6.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (七) | 集合
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm72nkax9000jwkwtccbg0esu.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (二) | 控制流
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+        </div>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<style>
+  .markdown-body {
+    box-sizing: border-box;
+    min-width: 200px;
+    max-width: 100%;
+    margin: 0 auto;
+    background-color: white;
+  }
+
+  /* 适配深色模式 */
+  @media (prefers-color-scheme: dark) {
+    .markdown-body {
+      color-scheme: dark;
+      --color-prettylights-syntax-comment: #8b949e;
+      --color-prettylights-syntax-constant: #79c0ff;
+      --color-prettylights-syntax-entity: #d2a8ff;
+      --color-prettylights-syntax-storage-modifier-import: #c9d1d9;
+      --color-prettylights-syntax-entity-tag: #7ee787;
+      --color-prettylights-syntax-keyword: #ff7b72;
+      --color-prettylights-syntax-string: #a5d6ff;
+      --color-prettylights-syntax-variable: #ffa657;
+      --color-prettylights-syntax-brackethighlighter-unmatched: #f85149;
+      --color-prettylights-syntax-invalid-illegal-text: #f0f6fc;
+      --color-prettylights-syntax-invalid-illegal-bg: #8e1519;
+      --color-prettylights-syntax-carriage-return-text: #f0f6fc;
+      --color-prettylights-syntax-carriage-return-bg: #b62324;
+      --color-prettylights-syntax-string-regexp: #7ee787;
+      --color-prettylights-syntax-markup-list: #f2cc60;
+      --color-prettylights-syntax-markup-heading: #1f6feb;
+      --color-prettylights-syntax-markup-italic: #c9d1d9;
+      --color-prettylights-syntax-markup-bold: #c9d1d9;
+      --color-prettylights-syntax-markup-deleted-text: #ffdcd7;
+      --color-prettylights-syntax-markup-deleted-bg: #67060c;
+      --color-prettylights-syntax-markup-inserted-text: #aff5b4;
+      --color-prettylights-syntax-markup-inserted-bg: #033a16;
+      --color-prettylights-syntax-markup-changed-text: #ffdfb6;
+      --color-prettylights-syntax-markup-changed-bg: #5a1e02;
+      --color-prettylights-syntax-markup-ignored-text: #c9d1d9;
+      --color-prettylights-syntax-markup-ignored-bg: #1158c7;
+      --color-prettylights-syntax-meta-diff-range: #d2a8ff;
+      --color-prettylights-syntax-brackethighlighter-angle: #8b949e;
+      --color-prettylights-syntax-sublimelinter-gutter-mark: #484f58;
+      --color-prettylights-syntax-constant-other-reference-link: #a5d6ff;
+      --color-fg-default: #c9d1d9;
+      --color-fg-muted: #8b949e;
+      --color-fg-subtle: #6e7681;
+      --color-canvas-default: #0d1117;
+      --color-canvas-subtle: #161b22;
+      --color-border-default: #30363d;
+      --color-border-muted: #21262d;
+      --color-neutral-muted: rgba(110, 118, 129, 0.4);
+      --color-accent-fg: #58a6ff;
+      --color-accent-emphasis: #1f6feb;
+      --color-attention-subtle: rgba(187, 128, 9, 0.15);
+      --color-danger-fg: #f85149;
+    }
+  }
+</style>
+  <!-- 页脚 -->
+<footer class="border-t mt-16">
+  <div class="max-w-4xl mx-auto px-4 py-8 text-center text-sm text-gray-500">
+    <p>© 2025 nunumao. Built with <a href="#" class="text-blue-600">Hexo</a></p>
+  </div>
+</footer>
+</body>
+
+</html>

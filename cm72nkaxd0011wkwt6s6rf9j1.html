@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>编程日记</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  
+<link rel="stylesheet" href="/css/github-markdown.css">
+
+  
+<link rel="stylesheet" href="/css/atom-one-dark.css">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+<script src="/js/jquery.min.js"></script>
+
+  
+<script src="/js/script.js"></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="bg-gray-50 text-gray-800">
+  <div class="lg:hidden fixed right-4 top-4 z-50">
+    <button class="p-2 bg-white/80 backdrop-blur-sm rounded-lg border" data-mobile-menu-trigger><i class="fas fa-bars"></i></button>
+  </div>
+  <!-- 导航栏 -->
+  <nav class="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-40">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="flex justify-between items-center h-16">
+        <a href="/" class="text-xl font-serif">编程日记</a>
+        <!-- 桌面端导航 -->
+        <div class="hidden lg:flex items-center space-x-6">
+          <div class="flex items-center space-x-6 text-sm">
+            <a href="/" class="hover:text-blue-600" data-i18n="nav.home">首页</a>
+            <!-- 分类下拉菜单 -->
+            <div class="relative group">
+              <a href="/categories" class="hover:text-blue-600">分类</a>
+              <!-- 优化后的下拉内容 -->
+              <div class="absolute left-0 mt-2 py-2 bg-white backdrop-blur-sm border rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div class="grid grid-cols-2 gap-1 w-[400px] p-4">
+                  
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/前端技术/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>前端技术</span>
+                        </a>
+                      
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/服务器/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>服务器</span>
+                        </a>
+                      
+                    
+                      
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/后端技术/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>后端技术</span>
+                        </a>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                  
+                </div>
+              </div>
+            </div>
+            <a href="/case" class="hover:text-blue-600" data-i18n="nav.case">作品</a>
+            <a href="/archives" class="hover:text-blue-600" data-i18n="nav.archives">归档</a>
+            <a href="/about" class="hover:text-blue-600" data-i18n="nav.about">关于</a>
+            <!-- 搜索框 -->
+            <div class="relative">
+              <input type="search" placeholder="Search articles..." class="w-48 px-4 py-1 text-sm border rounded-full bg-gray-50 focus:outline-none focus:ring-1 focus:ring-blue-500">
+              <i class="fas fa-search absolute right-3 top-2 text-gray-400"></i>
+            </div>
+            <!-- 语言切换 -->
+            <div class="flex items-center space-x-2 ml-4 text-sm border-l pl-4">
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('en-US')">EN</button>
+              <span class="text-gray-300">|</span>
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('zh-CN')">简</button>
+              <span class="text-gray-300">|</span>
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('zh-TW')">繁</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div id="mobileMenu" class="fixed inset-0 bg-white/90 backdrop-blur-sm z-40 lg:hidden hidden">
+    <div class="h-full w-full flex flex-col items-center justify-center space-y-6 text-lg">
+      <a href="/" class="hover:text-blue-600" data-i18n="nav.home">首页</a>
+      <a href="/categories" class="hover:text-blue-600" data-i18n="nav.categories">分类</a>
+      <a href="/case" class="hover:text-blue-600" data-i18n="nav.case">作品</a>
+      <a href="/archives" class="hover:text-blue-600" data-i18n="nav.archive">归档</a>
+      <a href="/about" class="hover:text-blue-600" data-i18n="nav.about">关于</a>
+      <div class="flex items-center space-x-4 mt-4">
+        <button class="lang-switch hover:text-blue-600" data-lang="en">EN</button>
+        <button class="lang-switch hover:text-blue-600" data-lang="zh">简</button>
+        <button class="lang-switch hover:text-blue-600" data-lang="zh-TW">繁</button>
+      </div>
+    </div>
+  </div>
+  <main class="max-w-5xl mx-auto px-4 py-12">
+  <div class="lg:flex lg:gap-8">
+    <!-- 文章主体 -->
+    <article class="lg:w-3/4">
+      <!-- 文章容器 -->
+      <div class="bg-white rounded-xl overflow-hidden">
+        <!-- 文章头部 -->
+        <div class="px-8 pt-12 pb-8">
+          <!-- 标题 -->
+          <h1 class="text-3xl font-medium mb-6 leading-snug">
+            Kotlin (十三) | Kotlin 与 Java 互操作
+          </h1>
+
+          <!-- 元信息 -->
+          <div class="flex flex-wrap items-center gap-6 text-sm text-gray-500">
+            <span>
+              <i class="fas fa-folder-open mr-2"></i>
+              
+                <a href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/KOTLIN/" class="hover:text-blue-600">
+                  KOTLIN
+                </a>
+                
+            </span>
+            <span>
+              <i class="far fa-calendar mr-2"></i>
+              2025-02-10
+            </span>
+            <span><i class="far fa-clock mr-2"></i>15 分钟阅读</span>
+            <span><i class="far fa-eye mr-2"></i>
+              0
+            </span>
+          </div>
+        </div>
+
+        <!-- 文章内容 -->
+        <div class="px-8 py-10 border-t border-b">
+          <div class="markdown-body">
+            <p><strong>Kotlin 与 Java 互操作</strong></p>
+<p>Kotlin 和 Java 具有出色的互操作性 (interoperability)，这是 Kotlin 最重要的特性之一。  这意味着 Kotlin 代码可以无缝地调用 Java 代码，反之亦然。  这种互操作性使得 Kotlin 可以轻松地集成到现有的 Java 项目中，并且可以利用庞大的 Java 生态系统中的各种库和框架。</p>
+<p><strong>在 Kotlin 中调用 Java 代码</strong></p>
+<p>Kotlin 可以直接使用 Java 编写的类、接口、方法和字段，就像它们是 Kotlin 代码一样。  由于 Kotlin 运行在 Java 虚拟机 (JVM) 上，并且与 Java 字节码兼容，因此 Kotlin 可以无缝地与 Java 代码进行交互。</p>
+<ul>
+<li><p><strong>直接使用 Java 类:</strong>  你可以在 Kotlin 代码中直接实例化 Java 类，并调用其方法和访问其字段。</p>
+  <figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList</span><br><span class="line"><span class="keyword">import</span> java.util.Date</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">// 创建 Java ArrayList 对象</span></span><br><span class="line">    <span class="keyword">val</span> javaList = ArrayList&lt;String&gt;()</span><br><span class="line">    javaList.add(<span class="string">&quot;Hello&quot;</span>)</span><br><span class="line">    javaList.add(<span class="string">&quot;Java&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 遍历 Java ArrayList</span></span><br><span class="line">    <span class="keyword">for</span> (item <span class="keyword">in</span> javaList) &#123;</span><br><span class="line">        println(item)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建 Java Date 对象</span></span><br><span class="line">    <span class="keyword">val</span> javaDate = Date()</span><br><span class="line">    println(<span class="string">&quot;Current Java Date: <span class="variable">$javaDate</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 调用 Java String 类的方法</span></span><br><span class="line">    <span class="keyword">val</span> javaString = <span class="string">&quot;Java String&quot;</span></span><br><span class="line">    <span class="keyword">val</span> upperCaseString = javaString.toUpperCase()</span><br><span class="line">    println(<span class="string">&quot;Uppercase Java String: <span class="variable">$upperCaseString</span>&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>处理 Java 的 nullability:</strong>  Java 的类型系统没有像 Kotlin 那样严格的空安全机制。  在 Java 中，引用类型默认是可以为 <code>null</code> 的。  当 Kotlin 代码调用 Java 代码时，Kotlin 编译器无法完全确定 Java 代码返回的值是否可能为 <code>null</code>。  因此，Kotlin 将来自 Java 的类型视为<strong>平台类型 (Platform Types)</strong>。</p>
+<ul>
+<li><p><strong>平台类型 (<code>Type!</code>):</strong>  平台类型本质上是一种<strong>模糊的类型</strong>，它既不是可空类型 (<code>Type?</code>) 也不是不可空类型 (<code>Type</code>)，而是由 Java 代码的 nullability 信息决定的。  平台类型用 <code>Type!</code> 表示 (例如 <code>String!</code>, <code>List!</code>, <code>Object!</code>)，感叹号 <code>!</code> 只是表示平台类型，不是 Kotlin 的非空断言运算符 <code>!!</code>。</p>
+</li>
+<li><p><strong>Kotlin 如何处理平台类型:</strong></p>
+<ul>
+<li>当你声明一个平台类型的变量时，Kotlin 编译器允许你将其视为可空类型 (<code>Type?</code>) 或不可空类型 (<code>Type</code>)。  你需要根据实际情况自行判断和处理 null 值。</li>
+<li>如果你将平台类型变量当作不可空类型使用，并且在运行时 Java 代码返回了 <code>null</code>，则 Kotlin 代码可能会抛出 NPE。</li>
+<li>为了安全起见，<strong>建议将平台类型视为可空类型 (<code>Type?</code>) 来处理</strong>，并进行空值检查。</li>
+</ul>
+</li>
+</ul>
+  <figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.lang.System</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">// System.getProperty(&quot;os.name&quot;) 返回 Java 平台类型 String!</span></span><br><span class="line">    <span class="keyword">val</span> osName = System.getProperty(<span class="string">&quot;os.name&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 可以将平台类型视为不可空类型 String</span></span><br><span class="line">    <span class="keyword">val</span> length = osName.length <span class="comment">// 如果 osName 确实不为 null，可以正常运行</span></span><br><span class="line">    println(<span class="string">&quot;OS Name length: <span class="variable">$length</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 也可以将平台类型视为可空类型 String?，更安全</span></span><br><span class="line">    <span class="keyword">val</span> nullableOsName: String? = System.getProperty(<span class="string">&quot;os.name&quot;</span>)</span><br><span class="line">    <span class="keyword">if</span> (nullableOsName != <span class="literal">null</span>) &#123;</span><br><span class="line">        println(<span class="string">&quot;OS Name: <span class="variable">$nullableOsName</span>, Length: <span class="subst">$&#123;nullableOsName.length&#125;</span>&quot;</span>)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        println(<span class="string">&quot;OS Name is null&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Java 的 <code>@Nullable</code> 和 <code>@NotNull</code> 注解:</strong>  为了改善 Kotlin 对 Java nullability 的理解，Java 引入了 <code>@Nullable</code> 和 <code>@NotNull</code> 注解 (例如来自 JSR-305, Android Support Annotations, JetBrains Annotations 等)。  如果在 Java 代码中使用这些注解标记方法参数、返回值或字段，Kotlin 编译器可以更好地推断 Java 代码的 nullability 信息。</p>
+<ul>
+<li>如果 Java 代码使用了 <code>@NotNull</code> 注解，Kotlin 会将其视为不可空类型。</li>
+<li>如果 Java 代码使用了 <code>@Nullable</code> 注解，Kotlin 会将其视为可空类型。</li>
+<li>如果 Java 代码没有使用这些注解，Kotlin 会将其视为平台类型。</li>
+</ul>
+<p>  <strong>示例 (假设 Java 代码使用了 <code>@Nullable</code> 和 <code>@NotNull</code> 注解):</strong></p>
+<p>  <strong>Java 代码 (ExampleJavaClass.java):</strong></p>
+  <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> org.jetbrains.annotations.Nullable;</span><br><span class="line"><span class="keyword">import</span> org.jetbrains.annotations.NotNull;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ExampleJavaClass</span> &#123;</span><br><span class="line">    <span class="meta">@Nullable</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getNullableString</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>; <span class="comment">// 示例，返回 null</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@NotNull</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getNonNullString</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Non-null String&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>  <strong>Kotlin 代码:</strong></p>
+  <figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> javaObj = ExampleJavaClass()</span><br><span class="line"></span><br><span class="line">    <span class="comment">// getNullableString() 在 Java 中使用了 @Nullable 注解，Kotlin 推断为 String? (可空类型)</span></span><br><span class="line">    <span class="keyword">val</span> nullableString: String? = javaObj.getNullableString()</span><br><span class="line">    println(<span class="string">&quot;Nullable String from Java: <span class="variable">$nullableString</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// getNonNullString() 在 Java 中使用了 @NotNull 注解，Kotlin 推断为 String (不可空类型)</span></span><br><span class="line">    <span class="keyword">val</span> nonNullString: String = javaObj.getNonNullString()</span><br><span class="line">    println(<span class="string">&quot;Non-null String from Java: <span class="variable">$nonNullString</span>&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>  使用 Java 的 nullability 注解可以提高 Kotlin 与 Java 互操作时的类型安全性。  建议在 Java 代码中尽可能使用这些注解，以便 Kotlin 编译器能够更好地理解 Java 代码的 nullability 信息。</p>
+</li>
+</ul>
+<p><strong>在 Java 中调用 Kotlin 代码</strong></p>
+<p>Java 也可以直接使用 Kotlin 编写的类、函数和属性。  Kotlin 编译器会将 Kotlin 代码编译成 Java 字节码，使得 Java 代码可以像调用普通的 Java 类一样调用 Kotlin 代码。</p>
+<ul>
+<li><p><strong>直接使用 Kotlin 类:</strong>  你可以在 Java 代码中直接实例化 Kotlin 类，并调用其方法和访问其属性。</p>
+<p>  <strong>Kotlin 代码 (ExampleKotlinClass.kt):</strong></p>
+  <figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="keyword">data</span> <span class="keyword">class</span> <span class="title class_">KotlinDataClass</span>(<span class="keyword">val</span> name: String, <span class="keyword">val</span> age: <span class="built_in">Int</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ExampleKotlinClass</span>(<span class="keyword">val</span> message: String) &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">greet</span><span class="params">(name: <span class="type">String</span>)</span></span>: String &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Hello, <span class="variable">$name</span>! Message: <span class="variable">$message</span>&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">companion</span> <span class="keyword">object</span> &#123;</span><br><span class="line">        <span class="meta">@JvmStatic</span> <span class="comment">// 使用 @JvmStatic 注解，使 Kotlin 函数在 Java 中成为静态方法</span></span><br><span class="line">        <span class="function"><span class="keyword">fun</span> <span class="title">kotlinStaticFunction</span><span class="params">(value: <span class="type">Int</span>)</span></span>: <span class="built_in">Int</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> value * value</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>  <strong>Java 代码 (Main.java):</strong></p>
+  <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 创建 Kotlin 数据类对象</span></span><br><span class="line">        <span class="type">KotlinDataClass</span> <span class="variable">kotlinData</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">KotlinDataClass</span>(<span class="string">&quot;Kotlin User&quot;</span>, <span class="number">28</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;Kotlin Data Class: &quot;</span> + kotlinData.getName() + <span class="string">&quot;, &quot;</span> + kotlinData.getAge());</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 创建 Kotlin 类对象</span></span><br><span class="line">        <span class="type">ExampleKotlinClass</span> <span class="variable">kotlinObj</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ExampleKotlinClass</span>(<span class="string">&quot;Hello from Java&quot;</span>);</span><br><span class="line">        <span class="type">String</span> <span class="variable">greeting</span> <span class="operator">=</span> kotlinObj.greet(<span class="string">&quot;Java User&quot;</span>);</span><br><span class="line">        System.out.println(greeting);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 调用 Kotlin 伴生对象的静态方法 (使用了 @JvmStatic 注解)</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">result</span> <span class="operator">=</span> ExampleKotlinClass.kotlinStaticFunction(<span class="number">5</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;Kotlin Static Function Result: &quot;</span> + result);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>访问 Kotlin 的属性:</strong>  Kotlin 的 <code>val</code> 属性在 Java 中会编译成带有 <code>get</code> 前缀的 getter 方法 (例如 <code>getName()</code>, <code>getAge()</code>, <code>getMessage()</code>)。  Kotlin 的 <code>var</code> 属性在 Java 中会编译成带有 <code>get</code> 和 <code>set</code> 前缀的 getter 和 setter 方法 (例如 <code>getProperty()</code>, <code>setProperty()</code>)。</p>
+</li>
+<li><p><strong>访问 Kotlin 的函数:</strong>  Kotlin 的普通函数在 Java 中会编译成实例方法 (instance methods)，需要通过 Kotlin 类的对象来调用。  Kotlin 的顶层函数 (声明在文件顶层的函数，不在任何类中) 在 Java 中会编译成静态方法，位于以 Kotlin 文件名命名的类中 (例如 <code>ExampleKotlinClassKt.kt</code> 文件中的顶层函数会位于 <code>ExampleKotlinClassKt</code> Java 类中)。</p>
+</li>
+<li><p><strong><code>@JvmStatic</code>, <code>@JvmField</code>, <code>@JvmOverloads</code> 注解:</strong>  Kotlin 提供了一些 <code>@Jvm...</code> 注解，用于更精细地控制 Kotlin 代码在 Java 中如何暴露和使用，以提高 Java 调用 Kotlin 代码的便利性和性能。</p>
+<ul>
+<li><p><strong><code>@JvmStatic</code>:</strong>  用于修饰 Kotlin 伴生对象 (companion object) 中的函数或属性，使其在 Java 中成为真正的 <strong>静态方法 (static method)</strong> 或 <strong>静态字段 (static field)</strong>。  如果没有 <code>@JvmStatic</code> 注解，Kotlin 伴生对象成员在 Java 中只能通过 <code>Companion</code> 静态字段来访问 (例如 <code>ExampleKotlinClass.Companion.kotlinStaticFunction()</code>)，使用 <code>@JvmStatic</code> 注解后，可以直接像 Java 静态方法一样调用 (例如 <code>ExampleKotlinClass.kotlinStaticFunction()</code>)。</p>
+</li>
+<li><p><strong><code>@JvmField</code>:</strong>  用于修饰 Kotlin 属性，使其在 Java 中成为 <strong>公共字段 (public field)</strong>，而不是通过 getter&#x2F;setter 方法访问。  这可以提高 Java 访问 Kotlin 属性的性能，但会失去 Kotlin 属性的封装性。  通常只在性能敏感的场景下使用。</p>
+</li>
+<li><p><strong><code>@JvmOverloads</code>:</strong>  用于修饰 Kotlin 函数的构造函数或方法，指示 Kotlin 编译器生成 <strong>Java 重载 (overloads)</strong> 方法，以支持 Java 调用 Kotlin 带有默认参数的函数。  Kotlin 的默认参数在 Java 中是不可见的，Java 必须显式提供所有参数。  使用 <code>@JvmOverloads</code> 注解后，Kotlin 编译器会为 Java 生成多个重载方法，模拟 Kotlin 的默认参数效果。</p>
+</li>
+</ul>
+<p>  <strong>示例 (使用 <code>@JvmStatic</code>, <code>@JvmField</code>, <code>@JvmOverloads</code> 注解):</strong></p>
+<p>  <strong>Kotlin 代码 (ExampleKotlinAnnotations.kt):</strong></p>
+  <figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ExampleKotlinAnnotations</span> <span class="meta">@JvmOverloads</span> <span class="keyword">constructor</span>( <span class="comment">// @JvmOverloads 用于构造函数</span></span><br><span class="line">    <span class="keyword">val</span> name: String,</span><br><span class="line">    <span class="keyword">val</span> age: <span class="built_in">Int</span> = <span class="number">25</span>, <span class="comment">// 默认参数</span></span><br><span class="line">    <span class="meta">@JvmField</span> <span class="keyword">val</span> isStudent: <span class="built_in">Boolean</span> = <span class="literal">false</span> <span class="comment">// @JvmField 用于属性</span></span><br><span class="line">) &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">greet</span><span class="params">(prefix: <span class="type">String</span>, name: <span class="type">String</span>)</span></span>: String &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;<span class="variable">$prefix</span> <span class="variable">$name</span>&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@JvmOverloads</span> <span class="comment">// @JvmOverloads 用于方法</span></span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">sendMessage</span><span class="params">(message: <span class="type">String</span>, recipient: <span class="type">String</span> = <span class="string">&quot;Default Recipient&quot;</span>)</span></span> &#123; <span class="comment">// 默认参数</span></span><br><span class="line">        println(<span class="string">&quot;Send message: <span class="variable">$message</span> to <span class="variable">$recipient</span>&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">companion</span> <span class="keyword">object</span> &#123;</span><br><span class="line">        <span class="meta">@JvmStatic</span> <span class="comment">// @JvmStatic 用于伴生对象函数</span></span><br><span class="line">        <span class="function"><span class="keyword">fun</span> <span class="title">calculateSum</span><span class="params">(a: <span class="type">Int</span>, b: <span class="type">Int</span>)</span></span>: <span class="built_in">Int</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> a + b</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>  <strong>Java 代码 (AnnotationMain.java):</strong></p>
+  <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AnnotationMain</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 使用 @JvmOverloads 生成的 Java 重载构造函数</span></span><br><span class="line">        <span class="type">ExampleKotlinAnnotations</span> <span class="variable">obj1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ExampleKotlinAnnotations</span>(<span class="string">&quot;Alice&quot;</span>); <span class="comment">// 使用默认 age 和 isStudent</span></span><br><span class="line">        <span class="type">ExampleKotlinAnnotations</span> <span class="variable">obj2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ExampleKotlinAnnotations</span>(<span class="string">&quot;Bob&quot;</span>, <span class="number">30</span>); <span class="comment">// 使用指定 age，默认 isStudent</span></span><br><span class="line">        <span class="type">ExampleKotlinAnnotations</span> <span class="variable">obj3</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ExampleKotlinAnnotations</span>(<span class="string">&quot;Charlie&quot;</span>, <span class="number">35</span>, <span class="literal">true</span>); <span class="comment">// 使用所有参数</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 访问 @JvmField 注解的属性，直接访问字段</span></span><br><span class="line">        System.out.println(<span class="string">&quot;Is Student (Field Access): &quot;</span> + obj3.isStudent);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 调用 @JvmOverloads 生成的 Java 重载方法</span></span><br><span class="line">        obj3.sendMessage(<span class="string">&quot;Hello from Java&quot;</span>); <span class="comment">// 使用默认 recipient</span></span><br><span class="line">        obj3.sendMessage(<span class="string">&quot;Hi&quot;</span>, <span class="string">&quot;John&quot;</span>); <span class="comment">// 指定 recipient</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 调用 @JvmStatic 注解的静态方法，像 Java 静态方法一样调用</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> ExampleKotlinAnnotations.Companion.calculateSum(<span class="number">10</span>, <span class="number">20</span>); <span class="comment">// 没有 @JvmStatic 的调用方式</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">staticSum</span> <span class="operator">=</span> ExampleKotlinAnnotations.calculateSum(<span class="number">30</span>, <span class="number">40</span>); <span class="comment">// 使用 @JvmStatic 注解后的调用方式</span></span><br><span class="line">        System.out.println(<span class="string">&quot;Static Sum: &quot;</span> + staticSum);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>  使用 <code>@JvmStatic</code>, <code>@JvmField</code>, <code>@JvmOverloads</code> 等注解可以使 Kotlin 代码在 Java 中使用起来更加方便和自然，并提高互操作性能。</p>
+</li>
+</ul>
+<p><strong>互操作性考虑和最佳实践</strong></p>
+<ul>
+<li><p><strong>异常处理:</strong>  Kotlin 和 Java 的异常处理机制基本相同 (都使用 try-catch-finally 语句)。  当 Kotlin 代码调用 Java 代码时，可以正常捕获 Java 代码抛出的异常。  同样，Java 代码也可以捕获 Kotlin 代码抛出的异常。  建议在跨语言边界处进行适当的异常处理，确保程序的健壮性。</p>
+</li>
+<li><p><strong>Nullability 处理:</strong>  在 Kotlin 和 Java 互操作时，nullability 是一个需要特别注意的问题。  Java 的平台类型和 Kotlin 的可空类型&#x2F;不可空类型之间的转换需要谨慎处理。  建议：</p>
+<ul>
+<li><strong>将平台类型视为可空类型 (<code>Type?</code>) 来处理，并进行空值检查。</strong></li>
+<li><strong>在 Java 代码中尽可能使用 <code>@Nullable</code> 和 <code>@NotNull</code> 注解，提供更明确的 nullability 信息，以便 Kotlin 编译器更好地推断类型。</strong></li>
+<li><strong>在 Kotlin 代码中，可以使用安全调用运算符 <code>?.</code>, Elvis 运算符 <code>?:</code>, <code>let</code>, <code>run</code> 等空安全工具来处理可能来自 Java 代码的 null 值。</strong></li>
+</ul>
+</li>
+<li><p><strong>代码风格和命名约定:</strong>  为了提高 Kotlin 和 Java 混合项目代码的可读性和可维护性，建议遵循统一的代码风格和命名约定。  例如，可以使用 Kotlin 官方的代码风格指南，并尽量保持 Kotlin 代码和 Java 代码风格的一致性。</p>
+</li>
+<li><p><strong>逐步迁移和混合开发:</strong>  Kotlin 的互操作性使得可以逐步将现有的 Java 项目迁移到 Kotlin，或者在新的模块中使用 Kotlin 开发，与现有的 Java 模块共存。  这为 Java 项目迁移到 Kotlin 提供了平滑过渡的方案。  在混合开发项目中，可以充分利用 Kotlin 的现代特性和简洁语法，同时保留和复用已有的 Java 代码和库。</p>
+</li>
+</ul>
+<p><strong>总结:</strong>  Kotlin 和 Java 的互操作性是 Kotlin 的核心优势之一。  通过 Kotlin 与 Java 的互操作，你可以：</p>
+<ul>
+<li>在 Kotlin 项目中使用庞大的 Java 生态系统中的各种库和框架。</li>
+<li>逐步将现有的 Java 项目迁移到 Kotlin，或者在混合项目中使用 Kotlin 和 Java 协同开发。</li>
+<li>利用 Kotlin 的现代特性和简洁语法，同时保留和复用已有的 Java 代码。</li>
+</ul>
+<p>理解 Kotlin 和 Java 互操作的机制和最佳实践，可以帮助你更有效地进行 Kotlin 和 Java 混合开发，构建更强大、更健壮的应用。</p>
+
+          </div>
+        </div>
+
+        <!-- 文章底部 -->
+        <div class="px-8 py-8">
+          <!-- 标签 -->
+          
+            <div class="flex flex-wrap gap-2 mb-8">
+              
+                <a href="/tags/KOTLIN/" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm text-gray-600 transition-colors">
+                  KOTLIN
+                </a>
+                
+            </div>
+            
+
+              <!-- 分享 -->
+              <div class="flex items-center justify-between mb-8 py-6 border-t border-b">
+                <div class="text-sm text-gray-500">分享文章：</div>
+                <div class="flex gap-4">
+                  <button class="text-gray-400 hover:text-gray-600 transition-colors">
+                    <i class="far fa-copy text-xl"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- 上一篇/下一篇 -->
+              <div class="flex flex-col sm:flex-row justify-between gap-4">
+                
+                  <a href="/cm72nkaxc000zwkwt6lim9wdz.html" class="group flex-1">
+                    <div class="text-sm text-gray-500 mb-1">上一篇</div>
+                    <div class="group-hover:text-blue-600 transition-colors">
+                      Kotlin (六) | 接口
+                    </div>
+                  </a>
+                  
+                    
+                      <a href="/cm72nkaxd0013wkwtasnm4p1f.html" class="group flex-1 text-right">
+                        <div class="text-sm text-gray-500 mb-1">下一篇</div>
+                        <div class="group-hover:text-blue-600 transition-colors">
+                          Kotlin (十二) | 协程
+                        </div>
+                      </a>
+                      
+              </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 侧边栏 -->
+    <aside class="lg:w-1/4 mt-8 lg:mt-0 space-y-6">
+      <!-- 作者信息 -->
+      <div class="bg-white rounded-xl p-6">
+        <div class="flex items-center gap-4 mb-4">
+          <img src="/images/avatar.jpg" class="w-16 h-16 rounded-full">
+          <div>
+            <h3 class="font-medium">Nunumao</h3>
+            <p class="text-sm text-gray-500">开发工程师</p>
+          </div>
+        </div>
+        <p class="text-sm text-gray-600 mb-4">专注于技术研究，热爱分享技术心得</p>
+        <div class="flex justify-center gap-4">
+          <a href="https://github.com/nunumao" target="_blank" class="text-gray-400 hover:text-gray-600">
+            <i class="fab fa-github text-xl"></i>
+          </a>
+          <a href="mailto:gm292018748@email.com" target="_blank" class="text-gray-400 hover:text-[#1DA1F2]">
+            <i class="fas fa-envelope text-xl"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 目录 -->
+      <div class="bg-white rounded-xl p-6 sticky top-24">
+        <h2 class="text-lg font-medium mb-4">目录</h2>
+        <nav class="space-y-2 text-sm">
+          
+        </nav>
+      </div>
+
+      <!-- 分类列表 -->
+      <div class="bg-white rounded-xl p-6">
+        <h2 class="text-lg font-medium mb-4">文章分类</h2>
+        <div class="space-y-3">
+          
+            <a href="/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/" class="flex items-center justify-between group">
+              <div class="flex items-center">
+                <i class="fas fa-code text-blue-500 w-5"></i>
+                <span class="text-sm group-hover:text-blue-600">
+                  前端技术
+                </span>
+              </div>
+              <span class="text-xs text-gray-500">
+                1
+              </span>
+            </a>
+            
+            <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="flex items-center justify-between group">
+              <div class="flex items-center">
+                <i class="fas fa-folder text-gray-500 w-5"></i>
+                <span class="text-sm group-hover:text-blue-600">
+                  服务器
+                </span>
+              </div>
+              <span class="text-xs text-gray-500">
+                3
+              </span>
+            </a>
+            
+            <a href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/" class="flex items-center justify-between group">
+              <div class="flex items-center">
+                <i class="fas fa-server text-green-500 w-5"></i>
+                <span class="text-sm group-hover:text-blue-600">
+                  后端技术
+                </span>
+              </div>
+              <span class="text-xs text-gray-500">
+                31
+              </span>
+            </a>
+            
+        </div>
+      </div>
+
+      <!-- 相关文章 -->
+      <div class="bg-white rounded-xl p-6">
+        <h2 class="text-lg font-medium mb-4">相关文章</h2>
+        <div class="space-y-4">
+          
+            <a href="/cm72nkaxe001awkwtc6bdgyhu.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Hello World
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-13</p>
+            </a>
+            
+            <a href="/cm72nkax6000bwkwt554c1z0e.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (一) | 基本语法
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm72nkax7000ewkwt2l4293ed.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (三) | 函数
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm72nkax7000hwkwt7pw007e6.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (七) | 集合
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm72nkax9000jwkwtccbg0esu.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (二) | 控制流
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+        </div>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<style>
+  .markdown-body {
+    box-sizing: border-box;
+    min-width: 200px;
+    max-width: 100%;
+    margin: 0 auto;
+    background-color: white;
+  }
+
+  /* 适配深色模式 */
+  @media (prefers-color-scheme: dark) {
+    .markdown-body {
+      color-scheme: dark;
+      --color-prettylights-syntax-comment: #8b949e;
+      --color-prettylights-syntax-constant: #79c0ff;
+      --color-prettylights-syntax-entity: #d2a8ff;
+      --color-prettylights-syntax-storage-modifier-import: #c9d1d9;
+      --color-prettylights-syntax-entity-tag: #7ee787;
+      --color-prettylights-syntax-keyword: #ff7b72;
+      --color-prettylights-syntax-string: #a5d6ff;
+      --color-prettylights-syntax-variable: #ffa657;
+      --color-prettylights-syntax-brackethighlighter-unmatched: #f85149;
+      --color-prettylights-syntax-invalid-illegal-text: #f0f6fc;
+      --color-prettylights-syntax-invalid-illegal-bg: #8e1519;
+      --color-prettylights-syntax-carriage-return-text: #f0f6fc;
+      --color-prettylights-syntax-carriage-return-bg: #b62324;
+      --color-prettylights-syntax-string-regexp: #7ee787;
+      --color-prettylights-syntax-markup-list: #f2cc60;
+      --color-prettylights-syntax-markup-heading: #1f6feb;
+      --color-prettylights-syntax-markup-italic: #c9d1d9;
+      --color-prettylights-syntax-markup-bold: #c9d1d9;
+      --color-prettylights-syntax-markup-deleted-text: #ffdcd7;
+      --color-prettylights-syntax-markup-deleted-bg: #67060c;
+      --color-prettylights-syntax-markup-inserted-text: #aff5b4;
+      --color-prettylights-syntax-markup-inserted-bg: #033a16;
+      --color-prettylights-syntax-markup-changed-text: #ffdfb6;
+      --color-prettylights-syntax-markup-changed-bg: #5a1e02;
+      --color-prettylights-syntax-markup-ignored-text: #c9d1d9;
+      --color-prettylights-syntax-markup-ignored-bg: #1158c7;
+      --color-prettylights-syntax-meta-diff-range: #d2a8ff;
+      --color-prettylights-syntax-brackethighlighter-angle: #8b949e;
+      --color-prettylights-syntax-sublimelinter-gutter-mark: #484f58;
+      --color-prettylights-syntax-constant-other-reference-link: #a5d6ff;
+      --color-fg-default: #c9d1d9;
+      --color-fg-muted: #8b949e;
+      --color-fg-subtle: #6e7681;
+      --color-canvas-default: #0d1117;
+      --color-canvas-subtle: #161b22;
+      --color-border-default: #30363d;
+      --color-border-muted: #21262d;
+      --color-neutral-muted: rgba(110, 118, 129, 0.4);
+      --color-accent-fg: #58a6ff;
+      --color-accent-emphasis: #1f6feb;
+      --color-attention-subtle: rgba(187, 128, 9, 0.15);
+      --color-danger-fg: #f85149;
+    }
+  }
+</style>
+  <!-- 页脚 -->
+<footer class="border-t mt-16">
+  <div class="max-w-4xl mx-auto px-4 py-8 text-center text-sm text-gray-500">
+    <p>© 2025 nunumao. Built with <a href="#" class="text-blue-600">Hexo</a></p>
+  </div>
+</footer>
+</body>
+
+</html>

@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>编程日记</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  
+<link rel="stylesheet" href="/css/github-markdown.css">
+
+  
+<link rel="stylesheet" href="/css/atom-one-dark.css">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+<script src="/js/jquery.min.js"></script>
+
+  
+<script src="/js/script.js"></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="bg-gray-50 text-gray-800">
+  <div class="lg:hidden fixed right-4 top-4 z-50">
+    <button class="p-2 bg-white/80 backdrop-blur-sm rounded-lg border" data-mobile-menu-trigger><i class="fas fa-bars"></i></button>
+  </div>
+  <!-- 导航栏 -->
+  <nav class="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-40">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="flex justify-between items-center h-16">
+        <a href="/" class="text-xl font-serif">编程日记</a>
+        <!-- 桌面端导航 -->
+        <div class="hidden lg:flex items-center space-x-6">
+          <div class="flex items-center space-x-6 text-sm">
+            <a href="/" class="hover:text-blue-600" data-i18n="nav.home">首页</a>
+            <!-- 分类下拉菜单 -->
+            <div class="relative group">
+              <a href="/categories" class="hover:text-blue-600">分类</a>
+              <!-- 优化后的下拉内容 -->
+              <div class="absolute left-0 mt-2 py-2 bg-white backdrop-blur-sm border rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div class="grid grid-cols-2 gap-1 w-[400px] p-4">
+                  
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/前端技术/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>前端技术</span>
+                        </a>
+                      
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/服务器/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>服务器</span>
+                        </a>
+                      
+                    
+                      
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/后端技术/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>后端技术</span>
+                        </a>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                  
+                </div>
+              </div>
+            </div>
+            <a href="/case" class="hover:text-blue-600" data-i18n="nav.case">作品</a>
+            <a href="/archives" class="hover:text-blue-600" data-i18n="nav.archives">归档</a>
+            <a href="/about" class="hover:text-blue-600" data-i18n="nav.about">关于</a>
+            <!-- 搜索框 -->
+            <div class="relative">
+              <input type="search" placeholder="Search articles..." class="w-48 px-4 py-1 text-sm border rounded-full bg-gray-50 focus:outline-none focus:ring-1 focus:ring-blue-500">
+              <i class="fas fa-search absolute right-3 top-2 text-gray-400"></i>
+            </div>
+            <!-- 语言切换 -->
+            <div class="flex items-center space-x-2 ml-4 text-sm border-l pl-4">
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('en-US')">EN</button>
+              <span class="text-gray-300">|</span>
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('zh-CN')">简</button>
+              <span class="text-gray-300">|</span>
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('zh-TW')">繁</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div id="mobileMenu" class="fixed inset-0 bg-white/90 backdrop-blur-sm z-40 lg:hidden hidden">
+    <div class="h-full w-full flex flex-col items-center justify-center space-y-6 text-lg">
+      <a href="/" class="hover:text-blue-600" data-i18n="nav.home">首页</a>
+      <a href="/categories" class="hover:text-blue-600" data-i18n="nav.categories">分类</a>
+      <a href="/case" class="hover:text-blue-600" data-i18n="nav.case">作品</a>
+      <a href="/archives" class="hover:text-blue-600" data-i18n="nav.archive">归档</a>
+      <a href="/about" class="hover:text-blue-600" data-i18n="nav.about">关于</a>
+      <div class="flex items-center space-x-4 mt-4">
+        <button class="lang-switch hover:text-blue-600" data-lang="en">EN</button>
+        <button class="lang-switch hover:text-blue-600" data-lang="zh">简</button>
+        <button class="lang-switch hover:text-blue-600" data-lang="zh-TW">繁</button>
+      </div>
+    </div>
+  </div>
+  <main class="max-w-5xl mx-auto px-4 py-12">
+  <div class="lg:flex lg:gap-8">
+    <!-- 文章主体 -->
+    <article class="lg:w-3/4">
+      <!-- 文章容器 -->
+      <div class="bg-white rounded-xl overflow-hidden">
+        <!-- 文章头部 -->
+        <div class="px-8 pt-12 pb-8">
+          <!-- 标题 -->
+          <h1 class="text-3xl font-medium mb-6 leading-snug">
+            Maven (十) 高级 Maven 用法
+          </h1>
+
+          <!-- 元信息 -->
+          <div class="flex flex-wrap items-center gap-6 text-sm text-gray-500">
+            <span>
+              <i class="fas fa-folder-open mr-2"></i>
+              
+                <a href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/Maven/" class="hover:text-blue-600">
+                  Maven
+                </a>
+                
+            </span>
+            <span>
+              <i class="far fa-calendar mr-2"></i>
+              2025-02-10
+            </span>
+            <span><i class="far fa-clock mr-2"></i>15 分钟阅读</span>
+            <span><i class="far fa-eye mr-2"></i>
+              0
+            </span>
+          </div>
+        </div>
+
+        <!-- 文章内容 -->
+        <div class="px-8 py-10 border-t border-b">
+          <div class="markdown-body">
+            <p><strong>第十章： 高级 Maven 用法</strong></p>
+<p><strong>10.1 Maven Archetype (项目骨架)</strong></p>
+<p>Maven Archetype 本质上是 <strong>项目模板</strong> 或 <strong>骨架</strong>。 它们提供预定义的项目结构、基本的 <code>pom.xml</code> 文件，有时甚至提供一些示例代码，以帮助你快速启动新的 Maven 项目。 Archetype 对于快速创建遵循最佳实践和约定的项目非常有用。</p>
+<p><strong>使用 Archetype 的好处：</strong></p>
+<ul>
+<li><strong>快速项目设置：</strong> 快速生成项目结构和基本配置。</li>
+<li><strong>一致性和标准化：</strong> 确保项目遵循组织内一致的结构和最佳实践。</li>
+<li><strong>减少样板代码：</strong> 避免从头开始编写重复的配置和项目设置代码。</li>
+<li><strong>可自定义的模板：</strong> 你可以创建自己的自定义 archetype 以满足特定的项目需求。</li>
+</ul>
+<p><strong>使用 Maven Archetype：</strong></p>
+<p>使用 Archetype 的主要命令是 <code>mvn archetype:generate</code>。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mvn archetype:generate</span><br></pre></td></tr></table></figure>
+
+<p>当你运行此命令时，Maven 将进入交互模式（除非指定了 <code>-DinteractiveMode=false</code>），并提示你从列表中选择一个 archetype。 你可以通过关键字或 archetype 坐标过滤 archetype。</p>
+<p><strong>示例： 使用 archetype 生成 Spring Boot 项目：</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mvn archetype:generate \</span><br><span class="line">    -DgroupId=com.example \</span><br><span class="line">    -DartifactId=my-spring-boot-app \</span><br><span class="line">    -DarchetypeGroupId=org.springframework.boot \</span><br><span class="line">    -DarchetypeArtifactId=spring-boot-maven-archetype \</span><br><span class="line">    -DarchetypeVersion=2.7.0</span><br></pre></td></tr></table></figure>
+
+<p><strong>参数解释：</strong></p>
+<ul>
+<li><code>-DgroupId</code>，<code>-DartifactId</code>，<code>-Dversion</code>： 这些定义了你的新项目的 Maven 坐标。</li>
+<li><code>-DarchetypeGroupId</code>，<code>-DarchetypeArtifactId</code>，<code>-DarchetypeVersion</code>： 这些定义了你要使用的 archetype 的 Maven 坐标。</li>
+<li><code>-DinteractiveMode=false</code>： 这个（可选）参数禁用交互模式，适用于脚本编写或自动化。</li>
+</ul>
+<p><strong>常用的 Maven Archetype：</strong></p>
+<ul>
+<li><code>maven-archetype-quickstart</code>： 创建一个基本的 Java 项目，具有简单的目录结构。</li>
+<li><code>maven-archetype-webapp</code>： 创建一个基本的 Web 应用程序项目结构。</li>
+<li><code>spring-boot-maven-archetype</code>： 创建一个 Spring Boot 项目结构（由 Spring Initializr 提供）。</li>
+<li><code>android-archetype-quickstart</code>： 创建一个基本的 Android 应用程序项目结构（用于 Android 开发）。</li>
+</ul>
+<p><strong>创建自定义 Archetype：</strong></p>
+<p>你还可以创建自己的自定义 Maven archetype，以标准化组织内的项目创建。 创建自定义 archetype 是一个更高级的主题，但对于具有特定项目需求的大型团队或组织来说可能非常有益。 它涉及到创建一个特殊的 Maven 项目，该项目具有特定的结构和描述符，用于定义模板。</p>
+<p><strong>10.2 Maven Assembly Plugin (Maven 程序集插件)</strong></p>
+<p>Maven Assembly Plugin 用于为你的项目创建自定义的 <strong>分发包</strong>。 它允许你将项目构件（JAR，WAR 等）、依赖项和其他资源打包成各种格式，例如 ZIP，TAR.GZ 或自定义目录结构。 这对于创建可部署包或软件分发包尤其有用。</p>
+<p><strong>Maven Assembly Plugin 的用例：</strong></p>
+<ul>
+<li><strong>创建分发 ZIP&#x2F;TAR 归档文件：</strong> 将你的应用程序及其依赖项打包到一个归档文件中，以便于分发和部署。</li>
+<li><strong>创建自定义目录布局：</strong> 为你的分发包定义特定的目录结构，包括配置文件、脚本和文档。</li>
+<li><strong>打包依赖项：</strong> 将项目依赖项包含在分发归档文件中（例如，对于独立应用程序）。</li>
+<li><strong>创建 shaded JAR (uber-JAR)：</strong> 将所有依赖项打包到一个 JAR 文件中，这对于在具有依赖冲突的环境中部署可能很有用。</li>
+</ul>
+<p><strong>配置 Maven Assembly Plugin：</strong></p>
+<p>Assembly Plugin 在 <code>pom.xml</code> 文件中的 <code>&lt;build&gt;</code> -&gt; <code>&lt;plugins&gt;</code> 部分中配置。 你需要定义一个 <strong>assembly 描述符</strong> 文件（通常为 <code>assembly.xml</code>），该文件指定应如何创建分发包。</p>
+<p><strong>示例： 使用 <code>assembly.xml</code> 创建 ZIP 分发包：</strong></p>
+<p><strong><code>pom.xml</code> (配置插件):</strong></p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-assembly-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.3.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">executions</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">execution</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">id</span>&gt;</span>create-distribution<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">phase</span>&gt;</span>package<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">goals</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">goal</span>&gt;</span>single<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">descriptorRefs</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">descriptorRef</span>&gt;</span>jar-with-dependencies<span class="tag">&lt;/<span class="name">descriptorRef</span>&gt;</span> <span class="comment">&lt;!-- 预定义的描述符 --&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">descriptorRefs</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">appendAssemblyId</span>&gt;</span>false<span class="tag">&lt;/<span class="name">appendAssemblyId</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">finalName</span>&gt;</span>$&#123;project.artifactId&#125;-$&#123;project.version&#125;-distribution<span class="tag">&lt;/<span class="name">finalName</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">executions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong><code>assembly.xml</code> (描述符文件 - 可以使用预定义的描述符或自定义):</strong></p>
+<p>在此示例中，我们使用预定义的描述符 <code>jar-with-dependencies</code>。 你也可以创建自定义描述符。 自定义 <code>assembly.xml</code> 描述符可能如下所示：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">assembly</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2&quot;</span></span></span><br><span class="line"><span class="tag">          <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">          <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2 http://maven.apache.org/xsd/assembly-1.1.2.xsd&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>distribution<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">formats</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">format</span>&gt;</span>zip<span class="tag">&lt;/<span class="name">format</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">formats</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">includeBaseDirectory</span>&gt;</span>false<span class="tag">&lt;/<span class="name">includeBaseDirectory</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">fileSets</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">fileSet</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">directory</span>&gt;</span>$&#123;project.build.directory&#125;<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">outputDirectory</span>&gt;</span>/<span class="tag">&lt;/<span class="name">outputDirectory</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">includes</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">include</span>&gt;</span>$&#123;project.build.finalName&#125;.jar<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">includes</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">fileSet</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">fileSet</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">directory</span>&gt;</span>src/main/resources<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">outputDirectory</span>&gt;</span>/config<span class="tag">&lt;/<span class="name">outputDirectory</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">fileSet</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">fileSet</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">directory</span>&gt;</span>src/main/scripts<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">outputDirectory</span>&gt;</span>/bin<span class="tag">&lt;/<span class="name">outputDirectory</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">fileMode</span>&gt;</span>755<span class="tag">&lt;/<span class="name">fileMode</span>&gt;</span> <span class="comment">&lt;!-- 使脚本在类 Unix 系统上可执行 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">fileSet</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">fileSets</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencySets</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependencySet</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">outputDirectory</span>&gt;</span>/lib<span class="tag">&lt;/<span class="name">outputDirectory</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span>runtime<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependencySet</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencySets</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">assembly</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>运行 Assembly Plugin：</strong></p>
+<p>配置插件和描述符后，运行 <code>package</code> 阶段（或程序集目标绑定到的任何阶段）：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mvn package</span><br></pre></td></tr></table></figure>
+
+<p>ZIP 分发文件（例如 <code>my-project-1.0-SNAPSHOT-distribution.zip</code>）将在 <code>target</code> 目录中创建。</p>
+<p><strong>10.3 Maven Reporting (Maven 报告)</strong></p>
+<p>Maven Reporting 用于在 <code>site</code> 生命周期中生成 <strong>项目文档和报告</strong>。 Maven 提供了丰富的报告插件集，可以生成各种类型的报告，例如项目信息报告、Javadoc、代码质量报告（Checkstyle，PMD）和测试报告（Surefire）。 这些报告通常集成到 Maven Site Plugin 生成的项目网站中。</p>
+<p><strong>Maven Reporting 的好处：</strong></p>
+<ul>
+<li><strong>自动文档生成：</strong> 基于你的项目代码和配置自动生成项目文档和报告。</li>
+<li><strong>项目网站生成：</strong> 创建具有集成报告的一致且专业的项目网站。</li>
+<li><strong>提高项目可见性：</strong> 提供对项目质量、代码风格、依赖项和测试结果的宝贵见解。</li>
+<li><strong>易于共享和协作：</strong> 项目网站可以轻松地与团队成员、利益相关者或公众共享。</li>
+</ul>
+<p><strong>配置 Maven Reporting 插件：</strong></p>
+<p>报告插件在 <code>pom.xml</code> 文件的 <code>&lt;reporting&gt;</code> 部分中配置。</p>
+<p><strong>示例： 配置 Maven Reporting 插件：</strong></p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">reporting</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-project-info-reports-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.2.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-javadoc-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.3.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-surefire-report-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.22.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-checkstyle-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.1.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">configLocation</span>&gt;</span>checkstyle.xml<span class="tag">&lt;/<span class="name">configLocation</span>&gt;</span> <span class="comment">&lt;!-- 自定义 Checkstyle 配置文件 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">reportSets</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">reportSet</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">reports</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">report</span>&gt;</span>checkstyle<span class="tag">&lt;/<span class="name">report</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">reports</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">reportSet</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">reportSets</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">reporting</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>生成项目站点和报告：</strong></p>
+<p>要生成项目站点和报告，请运行 <code>site</code> 生命周期阶段：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mvn site</span><br></pre></td></tr></table></figure>
+
+<p>生成的站点将位于 <code>target/site</code> 目录中。 你可以在浏览器中打开 <code>index.html</code> 文件以查看项目网站和报告。</p>
+<p><strong>10.4 Maven 和 CI&#x2F;CD 集成 (Maven 与 CI&#x2F;CD 集成)</strong></p>
+<p>Maven 广泛用于持续集成和持续交付 (CI&#x2F;CD) 管道，以自动化构建、测试和部署过程。 Maven 的标准化构建生命周期和插件生态系统使其非常适合 CI&#x2F;CD 自动化。</p>
+<p><strong>与 Maven 集成的常见 CI&#x2F;CD 步骤：</strong></p>
+<ol>
+<li><strong>源代码管理 (SCM) 集成：</strong> CI&#x2F;CD 工具（例如 Jenkins，GitLab CI，GitHub Actions）与 SCM 系统（例如 Git，SVN）集成，以在推送代码更改时自动触发构建。</li>
+<li><strong>构建自动化：</strong> CI&#x2F;CD 管道执行 Maven 命令（例如 <code>mvn clean install</code>，<code>mvn clean deploy</code>）以自动化构建过程。</li>
+<li><strong>自动化测试：</strong> Maven 的 <code>test</code> 阶段自动运行单元测试。 CI&#x2F;CD 管道还可以与集成测试框架和代码质量工具集成。</li>
+<li><strong>构件仓库集成：</strong> CI&#x2F;CD 管道可以使用 Maven 的 <code>deploy</code> 阶段将构建的构件（JAR，WAR）部署到构件仓库（例如 Nexus，Artifactory）。</li>
+<li><strong>部署自动化：</strong> CI&#x2F;CD 管道可以与部署工具（例如 Ansible，Docker，Kubernetes）集成，以自动化将应用程序部署到目标环境。</li>
+</ol>
+<p><strong>示例 CI&#x2F;CD 管道步骤（使用 Jenkins）：</strong></p>
+<ol>
+<li><strong>检出代码：</strong> Jenkins 从 Git 仓库检出最新代码。</li>
+<li><strong>Maven 构建：</strong> Jenkins 执行 <code>mvn clean install</code> 以构建、测试和打包应用程序。</li>
+<li><strong>代码质量检查：</strong> Jenkins 执行 Maven 插件进行代码质量分析（例如 Checkstyle，PMD，SonarQube）。</li>
+<li><strong>构件部署：</strong> Jenkins 执行 <code>mvn deploy</code> 以将构建的 JAR&#x2F;WAR 部署到 Nexus 仓库。</li>
+<li><strong>部署到环境：</strong> Jenkins 触发部署脚本或工具（例如 Ansible，Docker，Kubernetes）以将应用程序部署到暂存或生产环境。</li>
+<li><strong>通知：</strong> Jenkins 发送有关构建状态和部署结果的通知（例如电子邮件，Slack）。</li>
+</ol>
+<p><strong>CI&#x2F;CD 与 Maven 集成的好处：</strong></p>
+<ul>
+<li><strong>自动化：</strong> 自动化整个软件交付管道，从代码提交到部署。</li>
+<li><strong>更快的反馈循环：</strong> 通过自动化构建和测试，获得关于代码更改的快速反馈。</li>
+<li><strong>提高代码质量：</strong> 将代码质量检查集成到管道中，以确</li>
+</ul>
+
+          </div>
+        </div>
+
+        <!-- 文章底部 -->
+        <div class="px-8 py-8">
+          <!-- 标签 -->
+          
+            <div class="flex flex-wrap gap-2 mb-8">
+              
+                <a href="/tags/Maven/" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm text-gray-600 transition-colors">
+                  Maven
+                </a>
+                
+            </div>
+            
+
+              <!-- 分享 -->
+              <div class="flex items-center justify-between mb-8 py-6 border-t border-b">
+                <div class="text-sm text-gray-500">分享文章：</div>
+                <div class="flex gap-4">
+                  <button class="text-gray-400 hover:text-gray-600 transition-colors">
+                    <i class="far fa-copy text-xl"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- 上一篇/下一篇 -->
+              <div class="flex flex-col sm:flex-row justify-between gap-4">
+                
+                  <a href="/cm72orm1l000g64wt0zhded2u.html" class="group flex-1">
+                    <div class="text-sm text-gray-500 mb-1">上一篇</div>
+                    <div class="group-hover:text-blue-600 transition-colors">
+                      Maven (四) Maven 构建生命周期
+                    </div>
+                  </a>
+                  
+                    
+                      <a href="/cm72orm1o001664wt8srpfdx2.html" class="group flex-1 text-right">
+                        <div class="text-sm text-gray-500 mb-1">下一篇</div>
+                        <div class="group-hover:text-blue-600 transition-colors">
+                          Maven (十一) Maven 最佳实践与技巧
+                        </div>
+                      </a>
+                      
+              </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 侧边栏 -->
+    <aside class="lg:w-1/4 mt-8 lg:mt-0 space-y-6">
+      <!-- 作者信息 -->
+      <div class="bg-white rounded-xl p-6">
+        <div class="flex items-center gap-4 mb-4">
+          <img src="/images/avatar.jpg" class="w-16 h-16 rounded-full">
+          <div>
+            <h3 class="font-medium">Nunumao</h3>
+            <p class="text-sm text-gray-500">开发工程师</p>
+          </div>
+        </div>
+        <p class="text-sm text-gray-600 mb-4">专注于技术研究，热爱分享技术心得</p>
+        <div class="flex justify-center gap-4">
+          <a href="https://github.com/nunumao" target="_blank" class="text-gray-400 hover:text-gray-600">
+            <i class="fab fa-github text-xl"></i>
+          </a>
+          <a href="mailto:gm292018748@email.com" target="_blank" class="text-gray-400 hover:text-[#1DA1F2]">
+            <i class="fas fa-envelope text-xl"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 目录 -->
+      <div class="bg-white rounded-xl p-6 sticky top-24">
+        <h2 class="text-lg font-medium mb-4">目录</h2>
+        <nav class="space-y-2 text-sm">
+          
+        </nav>
+      </div>
+
+      <!-- 分类列表 -->
+      <div class="bg-white rounded-xl p-6">
+        <h2 class="text-lg font-medium mb-4">文章分类</h2>
+        <div class="space-y-3">
+          
+            <a href="/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/" class="flex items-center justify-between group">
+              <div class="flex items-center">
+                <i class="fas fa-code text-blue-500 w-5"></i>
+                <span class="text-sm group-hover:text-blue-600">
+                  前端技术
+                </span>
+              </div>
+              <span class="text-xs text-gray-500">
+                1
+              </span>
+            </a>
+            
+            <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="flex items-center justify-between group">
+              <div class="flex items-center">
+                <i class="fas fa-folder text-gray-500 w-5"></i>
+                <span class="text-sm group-hover:text-blue-600">
+                  服务器
+                </span>
+              </div>
+              <span class="text-xs text-gray-500">
+                3
+              </span>
+            </a>
+            
+            <a href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/" class="flex items-center justify-between group">
+              <div class="flex items-center">
+                <i class="fas fa-server text-green-500 w-5"></i>
+                <span class="text-sm group-hover:text-blue-600">
+                  后端技术
+                </span>
+              </div>
+              <span class="text-xs text-gray-500">
+                31
+              </span>
+            </a>
+            
+        </div>
+      </div>
+
+      <!-- 相关文章 -->
+      <div class="bg-white rounded-xl p-6">
+        <h2 class="text-lg font-medium mb-4">相关文章</h2>
+        <div class="space-y-4">
+          
+            <a href="/cm72nkaxe001awkwtc6bdgyhu.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Hello World
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-13</p>
+            </a>
+            
+            <a href="/cm72nkax6000bwkwt554c1z0e.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (一) | 基本语法
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm72nkax7000ewkwt2l4293ed.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (三) | 函数
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm72nkax7000hwkwt7pw007e6.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (七) | 集合
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm72nkax9000jwkwtccbg0esu.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (二) | 控制流
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+        </div>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<style>
+  .markdown-body {
+    box-sizing: border-box;
+    min-width: 200px;
+    max-width: 100%;
+    margin: 0 auto;
+    background-color: white;
+  }
+
+  /* 适配深色模式 */
+  @media (prefers-color-scheme: dark) {
+    .markdown-body {
+      color-scheme: dark;
+      --color-prettylights-syntax-comment: #8b949e;
+      --color-prettylights-syntax-constant: #79c0ff;
+      --color-prettylights-syntax-entity: #d2a8ff;
+      --color-prettylights-syntax-storage-modifier-import: #c9d1d9;
+      --color-prettylights-syntax-entity-tag: #7ee787;
+      --color-prettylights-syntax-keyword: #ff7b72;
+      --color-prettylights-syntax-string: #a5d6ff;
+      --color-prettylights-syntax-variable: #ffa657;
+      --color-prettylights-syntax-brackethighlighter-unmatched: #f85149;
+      --color-prettylights-syntax-invalid-illegal-text: #f0f6fc;
+      --color-prettylights-syntax-invalid-illegal-bg: #8e1519;
+      --color-prettylights-syntax-carriage-return-text: #f0f6fc;
+      --color-prettylights-syntax-carriage-return-bg: #b62324;
+      --color-prettylights-syntax-string-regexp: #7ee787;
+      --color-prettylights-syntax-markup-list: #f2cc60;
+      --color-prettylights-syntax-markup-heading: #1f6feb;
+      --color-prettylights-syntax-markup-italic: #c9d1d9;
+      --color-prettylights-syntax-markup-bold: #c9d1d9;
+      --color-prettylights-syntax-markup-deleted-text: #ffdcd7;
+      --color-prettylights-syntax-markup-deleted-bg: #67060c;
+      --color-prettylights-syntax-markup-inserted-text: #aff5b4;
+      --color-prettylights-syntax-markup-inserted-bg: #033a16;
+      --color-prettylights-syntax-markup-changed-text: #ffdfb6;
+      --color-prettylights-syntax-markup-changed-bg: #5a1e02;
+      --color-prettylights-syntax-markup-ignored-text: #c9d1d9;
+      --color-prettylights-syntax-markup-ignored-bg: #1158c7;
+      --color-prettylights-syntax-meta-diff-range: #d2a8ff;
+      --color-prettylights-syntax-brackethighlighter-angle: #8b949e;
+      --color-prettylights-syntax-sublimelinter-gutter-mark: #484f58;
+      --color-prettylights-syntax-constant-other-reference-link: #a5d6ff;
+      --color-fg-default: #c9d1d9;
+      --color-fg-muted: #8b949e;
+      --color-fg-subtle: #6e7681;
+      --color-canvas-default: #0d1117;
+      --color-canvas-subtle: #161b22;
+      --color-border-default: #30363d;
+      --color-border-muted: #21262d;
+      --color-neutral-muted: rgba(110, 118, 129, 0.4);
+      --color-accent-fg: #58a6ff;
+      --color-accent-emphasis: #1f6feb;
+      --color-attention-subtle: rgba(187, 128, 9, 0.15);
+      --color-danger-fg: #f85149;
+    }
+  }
+</style>
+  <!-- 页脚 -->
+<footer class="border-t mt-16">
+  <div class="max-w-4xl mx-auto px-4 py-8 text-center text-sm text-gray-500">
+    <p>© 2025 nunumao. Built with <a href="#" class="text-blue-600">Hexo</a></p>
+  </div>
+</footer>
+</body>
+
+</html>

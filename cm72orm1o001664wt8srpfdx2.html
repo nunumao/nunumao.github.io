@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>编程日记</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  
+<link rel="stylesheet" href="/css/github-markdown.css">
+
+  
+<link rel="stylesheet" href="/css/atom-one-dark.css">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+<script src="/js/jquery.min.js"></script>
+
+  
+<script src="/js/script.js"></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="bg-gray-50 text-gray-800">
+  <div class="lg:hidden fixed right-4 top-4 z-50">
+    <button class="p-2 bg-white/80 backdrop-blur-sm rounded-lg border" data-mobile-menu-trigger><i class="fas fa-bars"></i></button>
+  </div>
+  <!-- 导航栏 -->
+  <nav class="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-40">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="flex justify-between items-center h-16">
+        <a href="/" class="text-xl font-serif">编程日记</a>
+        <!-- 桌面端导航 -->
+        <div class="hidden lg:flex items-center space-x-6">
+          <div class="flex items-center space-x-6 text-sm">
+            <a href="/" class="hover:text-blue-600" data-i18n="nav.home">首页</a>
+            <!-- 分类下拉菜单 -->
+            <div class="relative group">
+              <a href="/categories" class="hover:text-blue-600">分类</a>
+              <!-- 优化后的下拉内容 -->
+              <div class="absolute left-0 mt-2 py-2 bg-white backdrop-blur-sm border rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div class="grid grid-cols-2 gap-1 w-[400px] p-4">
+                  
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/前端技术/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>前端技术</span>
+                        </a>
+                      
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/服务器/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>服务器</span>
+                        </a>
+                      
+                    
+                      
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/后端技术/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>后端技术</span>
+                        </a>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                  
+                </div>
+              </div>
+            </div>
+            <a href="/case" class="hover:text-blue-600" data-i18n="nav.case">作品</a>
+            <a href="/archives" class="hover:text-blue-600" data-i18n="nav.archives">归档</a>
+            <a href="/about" class="hover:text-blue-600" data-i18n="nav.about">关于</a>
+            <!-- 搜索框 -->
+            <div class="relative">
+              <input type="search" placeholder="Search articles..." class="w-48 px-4 py-1 text-sm border rounded-full bg-gray-50 focus:outline-none focus:ring-1 focus:ring-blue-500">
+              <i class="fas fa-search absolute right-3 top-2 text-gray-400"></i>
+            </div>
+            <!-- 语言切换 -->
+            <div class="flex items-center space-x-2 ml-4 text-sm border-l pl-4">
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('en-US')">EN</button>
+              <span class="text-gray-300">|</span>
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('zh-CN')">简</button>
+              <span class="text-gray-300">|</span>
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('zh-TW')">繁</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div id="mobileMenu" class="fixed inset-0 bg-white/90 backdrop-blur-sm z-40 lg:hidden hidden">
+    <div class="h-full w-full flex flex-col items-center justify-center space-y-6 text-lg">
+      <a href="/" class="hover:text-blue-600" data-i18n="nav.home">首页</a>
+      <a href="/categories" class="hover:text-blue-600" data-i18n="nav.categories">分类</a>
+      <a href="/case" class="hover:text-blue-600" data-i18n="nav.case">作品</a>
+      <a href="/archives" class="hover:text-blue-600" data-i18n="nav.archive">归档</a>
+      <a href="/about" class="hover:text-blue-600" data-i18n="nav.about">关于</a>
+      <div class="flex items-center space-x-4 mt-4">
+        <button class="lang-switch hover:text-blue-600" data-lang="en">EN</button>
+        <button class="lang-switch hover:text-blue-600" data-lang="zh">简</button>
+        <button class="lang-switch hover:text-blue-600" data-lang="zh-TW">繁</button>
+      </div>
+    </div>
+  </div>
+  <main class="max-w-5xl mx-auto px-4 py-12">
+  <div class="lg:flex lg:gap-8">
+    <!-- 文章主体 -->
+    <article class="lg:w-3/4">
+      <!-- 文章容器 -->
+      <div class="bg-white rounded-xl overflow-hidden">
+        <!-- 文章头部 -->
+        <div class="px-8 pt-12 pb-8">
+          <!-- 标题 -->
+          <h1 class="text-3xl font-medium mb-6 leading-snug">
+            Maven (十一) Maven 最佳实践与技巧
+          </h1>
+
+          <!-- 元信息 -->
+          <div class="flex flex-wrap items-center gap-6 text-sm text-gray-500">
+            <span>
+              <i class="fas fa-folder-open mr-2"></i>
+              
+                <a href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/Maven/" class="hover:text-blue-600">
+                  Maven
+                </a>
+                
+            </span>
+            <span>
+              <i class="far fa-calendar mr-2"></i>
+              2025-02-10
+            </span>
+            <span><i class="far fa-clock mr-2"></i>15 分钟阅读</span>
+            <span><i class="far fa-eye mr-2"></i>
+              0
+            </span>
+          </div>
+        </div>
+
+        <!-- 文章内容 -->
+        <div class="px-8 py-10 border-t border-b">
+          <div class="markdown-body">
+            <p><strong>第十一章： Maven 最佳实践与技巧</strong></p>
+<p><strong>11.1 项目结构最佳实践</strong></p>
+<ul>
+<li><p><strong>遵循 Maven 约定优于配置的原则:</strong>  <strong>尽可能地遵循 Maven 的标准目录结构</strong>。  这能让 Maven 自动识别你的源代码、资源文件和测试代码，减少不必要的配置。  标准的 <code>src/main/java</code>, <code>src/main/resources</code>, <code>src/test/java</code>, <code>src/test/resources</code> 目录结构是 Maven 的基石。</p>
+</li>
+<li><p><strong>合理划分模块 (对于多模块项目):</strong></p>
+<ul>
+<li><strong>高内聚，低耦合:</strong>  模块应该专注于完成特定的、内聚的功能，模块之间应该保持松耦合的关系。</li>
+<li><strong>模块大小适中:</strong>  模块不宜过大，也不宜过小。  过大的模块难以维护，过小的模块则会增加模块间的管理成本。</li>
+<li><strong>模块命名规范:</strong>  使用清晰、具有描述性的模块名称，方便理解模块的功能。  例如 <code>模块名-api</code>, <code>模块名-service</code>, <code>模块名-web</code> 等。</li>
+</ul>
+</li>
+<li><p><strong>父 POM 放置在项目根目录:</strong>  对于多模块项目，父 POM 文件 (<code>pom.xml</code>，<code>packaging</code> 类型为 <code>pom</code>) 应该放置在项目的根目录下，子模块目录放置在父 POM 的子目录下。  使用 <code>&lt;relativePath&gt;</code> 元素正确指定父 POM 的位置 (通常是 <code>../pom.xml</code>)。</p>
+</li>
+</ul>
+<p><strong>11.2 依赖管理最佳实践</strong></p>
+<ul>
+<li><p><strong>使用 <code>dependencyManagement</code> 统一管理依赖版本:</strong>  在父 POM 或项目 POM 中使用 <code>&lt;dependencyManagement&gt;</code> 元素来集中管理所有依赖的版本号。  子模块或子项目在声明依赖时，可以省略版本号，从 <code>dependencyManagement</code> 中继承版本。  这能确保整个项目依赖版本的一致性，避免版本冲突，并方便版本升级。</p>
+</li>
+<li><p><strong>避免直接在子模块中定义依赖版本 (除非必要):</strong>  除非有特殊需求，否则尽量不要在子模块的 <code>&lt;dependencies&gt;</code> 元素中显式指定依赖版本。  版本管理应该统一在 <code>&lt;dependencyManagement&gt;</code> 中进行。</p>
+</li>
+<li><p><strong>分析和解决依赖冲突:</strong>  使用 <code>mvn dependency:tree</code> 命令分析项目的依赖树，查看传递性依赖和依赖冲突。  如果发现依赖冲突，使用 <strong>依赖调解</strong> (<code>&lt;dependencyManagement&gt;</code>)、<strong>依赖排除</strong> (<code>&lt;exclusions&gt;</code>) 或 <strong>直接依赖覆盖</strong> 等方法解决冲突。</p>
+</li>
+<li><p><strong>及时更新依赖版本，关注安全漏洞:</strong>  定期检查项目依赖的版本，及时升级到最新的稳定版本，修复已知的安全漏洞。  可以使用 <code>mvn versions:display-dependency-updates</code> 和 <code>mvn versions:display-plugin-updates</code> 命令检查依赖和插件的版本更新。</p>
+</li>
+<li><p><strong>谨慎使用 <code>system</code> 范围依赖:</strong>  <code>system</code> 范围依赖会破坏 Maven 的可移植性，应该尽量避免使用。  如果必须使用本地 JAR 包，可以考虑将其安装到本地仓库，然后使用 <code>compile</code> 或 <code>runtime</code> 范围的依赖。</p>
+</li>
+<li><p><strong>使用依赖管理 BOM (Bill of Materials):</strong>  对于使用大量相关依赖的项目 (例如 Spring Boot, Spring Cloud)，使用官方提供的 BOM 可以简化依赖管理，避免版本冲突。  通过 <code>&lt;dependencyManagement&gt;</code> 和 <code>&lt;scope&gt;import&lt;/scope&gt;</code> 导入 BOM。</p>
+</li>
+</ul>
+<p><strong>11.3 插件使用最佳实践</strong></p>
+<ul>
+<li><p><strong>只使用必要的插件:</strong>  避免过度使用插件，只添加项目构建真正需要的插件，保持 POM 文件的简洁和构建过程的清晰。</p>
+</li>
+<li><p><strong>显式指定插件版本:</strong>  始终在 <code>&lt;plugin&gt;</code> 元素中 <strong>显式指定插件的版本号</strong>，避免使用默认版本。  这能确保构建的稳定性和可重复性，防止插件版本升级导致构建行为发生意外变化。  版本号应该在 <code>pluginManagement</code> 中统一管理。</p>
+</li>
+<li><p><strong>合理配置插件参数:</strong>  仔细阅读插件的文档，了解插件的各个参数的含义和作用，根据项目需求合理配置插件参数。  避免使用插件的默认配置，而是根据实际情况进行定制化配置。</p>
+</li>
+<li><p><strong>使用 <code>pluginManagement</code> 统一管理插件版本和配置:</strong>  在父 POM 或项目 POM 中使用 <code>&lt;pluginManagement&gt;</code> 元素来集中管理所有插件的版本号和通用配置。  子模块或子项目在使用插件时，可以省略版本号，并继承 <code>pluginManagement</code> 中的配置。  这能确保整个项目插件版本和配置的一致性。</p>
+</li>
+<li><p><strong>了解常用插件的功能:</strong>  熟悉 Maven 常用插件的功能和用法，例如 <code>maven-compiler-plugin</code>, <code>maven-surefire-plugin</code>, <code>maven-jar-plugin</code>, <code>maven-assembly-plugin</code>, <code>maven-site-plugin</code> 等。</p>
+</li>
+<li><p><strong>自定义插件 (高级):</strong>  如果 Maven 现有插件无法满足项目需求，可以考虑开发自定义 Maven 插件，扩展 Maven 的功能。  但自定义插件开发比较复杂，需要深入了解 Maven 插件开发规范。</p>
+</li>
+</ul>
+<p><strong>11.4 POM 文件编写最佳实践</strong></p>
+<ul>
+<li><p><strong>保持 POM 文件简洁易读:</strong>  尽量避免在 POM 文件中添加过多的配置，遵循约定优于配置的原则。  使用清晰的 XML 结构，合理缩进和注释，提高 POM 文件的可读性。</p>
+</li>
+<li><p><strong>添加项目描述信息:</strong>  在 POM 文件中添加 <code>&lt;name&gt;</code>, <code>&lt;description&gt;</code>, <code>&lt;url&gt;</code>, <code>&lt;organization&gt;</code>, <code>&lt;licenses&gt;</code>, <code>&lt;developers&gt;</code> 等项目描述信息，完善项目的元数据。</p>
+</li>
+<li><p><strong>使用 Maven 属性 (Properties) 管理配置:</strong>  使用 <code>&lt;properties&gt;</code> 元素定义 Maven 属性，并在 POM 文件和资源文件中引用属性。  例如，使用属性管理依赖版本号、插件版本号、环境相关的配置信息等。  这能提高配置的可维护性和灵活性。</p>
+</li>
+<li><p><strong>合理使用 Profile 管理不同环境的配置:</strong>  使用 Maven Profile 来管理不同环境 (例如开发、测试、生产) 的配置信息，例如数据库连接信息、日志级别、资源文件等。  避免硬编码环境相关的配置信息。</p>
+</li>
+<li><p><strong>添加注释:</strong>  在 POM 文件中添加必要的注释，解释配置的含义和目的，方便自己和团队成员理解和维护 POM 文件。</p>
+</li>
+<li><p><strong>版本号命名规范:</strong>  遵循合理的版本号命名规范，例如使用 <code>SNAPSHOT</code> 版本表示开发中版本，使用 <code>RELEASE</code> 版本表示发布版本，使用里程碑版本 (Milestone)、RC 版本 (Release Candidate) 等表示预发布版本。</p>
+</li>
+</ul>
+<p><strong>11.5 Maven 命令使用技巧</strong></p>
+<ul>
+<li><p><strong>善用 <code>mvn clean</code> 命令:</strong>  在构建之前，先执行 <code>mvn clean</code> 命令清理 <code>target</code> 目录，确保构建环境的干净，避免旧的构建输出文件影响新的构建结果。</p>
+</li>
+<li><p><strong>使用 <code>-D&lt;property&gt;=&lt;value&gt;</code> 命令行参数设置 Maven 属性:</strong>  可以使用 <code>-D&lt;property&gt;=&lt;value&gt;</code> 命令行参数临时设置 Maven 属性，例如 <code>-DskipTests=true</code> 可以跳过测试阶段，<code>-Dmaven.test.failure.ignore=true</code> 可以忽略测试失败。</p>
+</li>
+<li><p><strong>使用 <code>-P &lt;profile-id&gt;</code> 命令行参数激活 Profile:</strong>  可以使用 <code>-P &lt;profile-id&gt;</code> 命令行参数显式激活指定的 Profile，例如 <code>mvn package -P prod</code> 激活 <code>prod</code> Profile 进行打包。</p>
+</li>
+<li><p><strong>使用 <code>mvn help:describe</code> 命令查看插件信息:</strong>  可以使用 <code>mvn help:describe -Dplugin=&lt;plugin-artifactId&gt; -Dgoal=&lt;goal&gt;</code> 命令查看插件目标的详细信息，包括插件参数、生命周期绑定等。</p>
+</li>
+<li><p><strong>使用 <code>mvn dependency:tree</code> 命令分析依赖树:</strong>  使用 <code>mvn dependency:tree</code> 命令分析项目的依赖树，查看传递性依赖和依赖冲突。</p>
+</li>
+<li><p><strong>组合使用 Maven 命令:</strong>  可以将多个 Maven 命令组合在一起执行，例如 <code>mvn clean install</code>， <code>mvn clean package deploy</code> 等。</p>
+</li>
+<li><p><strong>使用 Maven Wrapper (mvnw):</strong>  使用 Maven Wrapper 可以将 Maven 版本控制在项目级别，确保团队成员使用相同的 Maven 版本进行构建，避免 Maven 版本不一致导致的问题。  Maven Wrapper 还可以简化新成员加入项目时的 Maven 安装和配置过程。</p>
+</li>
+</ul>
+<p><strong>11.6 其他技巧</strong></p>
+<ul>
+<li><p><strong>使用 IDE 集成 Maven:</strong>  主流的 IDE (例如 IntelliJ IDEA, Eclipse) 都提供了良好的 Maven 集成，可以方便地进行 Maven 项目的创建、构建、依赖管理、插件管理等操作。  使用 IDE 可以提高 Maven 使用效率。</p>
+</li>
+<li><p><strong>持续学习 Maven:</strong>  Maven 社区活跃，不断有新的特性和插件出现。  持续学习 Maven 的新特性和最佳实践，可以让你更好地使用 Maven。  关注 Maven 官方文档、社区论坛、博客等资源。</p>
+</li>
+<li><p><strong>参考 Maven 最佳实践项目:</strong>  学习优秀的开源 Maven 项目 (例如 Spring Boot, Apache Camel) 的 POM 文件和项目结构，借鉴它们的最佳实践。</p>
+</li>
+</ul>
+<p><strong>总结第十一章： Maven 最佳实践与技巧</strong></p>
+<p>第十一章我们总结了 Maven 的最佳实践和技巧，涵盖了项目结构、依赖管理、插件使用、POM 文件编写和 Maven 命令使用等方面。  遵循这些最佳实践和技巧，可以帮助你更高效、更规范地使用 Maven，构建更高质量、更易于维护的 Maven 项目。</p>
+<p><strong>恭喜你，你已经完成了 Maven 入门到进阶的学习！</strong>  我们从 Maven 的基本概念开始，逐步学习了 Maven 的核心功能和高级用法，并总结了 Maven 的最佳实践和技巧。  希望这个教程能够帮助你掌握 Maven，并在实际项目中使用 Maven 提高开发效率和项目质量。</p>
+
+          </div>
+        </div>
+
+        <!-- 文章底部 -->
+        <div class="px-8 py-8">
+          <!-- 标签 -->
+          
+            <div class="flex flex-wrap gap-2 mb-8">
+              
+                <a href="/tags/Maven/" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm text-gray-600 transition-colors">
+                  Maven
+                </a>
+                
+            </div>
+            
+
+              <!-- 分享 -->
+              <div class="flex items-center justify-between mb-8 py-6 border-t border-b">
+                <div class="text-sm text-gray-500">分享文章：</div>
+                <div class="flex gap-4">
+                  <button class="text-gray-400 hover:text-gray-600 transition-colors">
+                    <i class="far fa-copy text-xl"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- 上一篇/下一篇 -->
+              <div class="flex flex-col sm:flex-row justify-between gap-4">
+                
+                  <a href="/cm72orm1l000j64wtbrxdh7dl.html" class="group flex-1">
+                    <div class="text-sm text-gray-500 mb-1">上一篇</div>
+                    <div class="group-hover:text-blue-600 transition-colors">
+                      Maven (十) 高级 Maven 用法
+                    </div>
+                  </a>
+                  
+                    
+                      <a href="/cm72orm1o001764wt2a668s0j.html" class="group flex-1 text-right">
+                        <div class="text-sm text-gray-500 mb-1">下一篇</div>
+                        <div class="group-hover:text-blue-600 transition-colors">
+                          Maven (八) 仓库
+                        </div>
+                      </a>
+                      
+              </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 侧边栏 -->
+    <aside class="lg:w-1/4 mt-8 lg:mt-0 space-y-6">
+      <!-- 作者信息 -->
+      <div class="bg-white rounded-xl p-6">
+        <div class="flex items-center gap-4 mb-4">
+          <img src="/images/avatar.jpg" class="w-16 h-16 rounded-full">
+          <div>
+            <h3 class="font-medium">Nunumao</h3>
+            <p class="text-sm text-gray-500">开发工程师</p>
+          </div>
+        </div>
+        <p class="text-sm text-gray-600 mb-4">专注于技术研究，热爱分享技术心得</p>
+        <div class="flex justify-center gap-4">
+          <a href="https://github.com/nunumao" target="_blank" class="text-gray-400 hover:text-gray-600">
+            <i class="fab fa-github text-xl"></i>
+          </a>
+          <a href="mailto:gm292018748@email.com" target="_blank" class="text-gray-400 hover:text-[#1DA1F2]">
+            <i class="fas fa-envelope text-xl"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 目录 -->
+      <div class="bg-white rounded-xl p-6 sticky top-24">
+        <h2 class="text-lg font-medium mb-4">目录</h2>
+        <nav class="space-y-2 text-sm">
+          
+        </nav>
+      </div>
+
+      <!-- 分类列表 -->
+      <div class="bg-white rounded-xl p-6">
+        <h2 class="text-lg font-medium mb-4">文章分类</h2>
+        <div class="space-y-3">
+          
+            <a href="/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/" class="flex items-center justify-between group">
+              <div class="flex items-center">
+                <i class="fas fa-code text-blue-500 w-5"></i>
+                <span class="text-sm group-hover:text-blue-600">
+                  前端技术
+                </span>
+              </div>
+              <span class="text-xs text-gray-500">
+                1
+              </span>
+            </a>
+            
+            <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="flex items-center justify-between group">
+              <div class="flex items-center">
+                <i class="fas fa-folder text-gray-500 w-5"></i>
+                <span class="text-sm group-hover:text-blue-600">
+                  服务器
+                </span>
+              </div>
+              <span class="text-xs text-gray-500">
+                3
+              </span>
+            </a>
+            
+            <a href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/" class="flex items-center justify-between group">
+              <div class="flex items-center">
+                <i class="fas fa-server text-green-500 w-5"></i>
+                <span class="text-sm group-hover:text-blue-600">
+                  后端技术
+                </span>
+              </div>
+              <span class="text-xs text-gray-500">
+                31
+              </span>
+            </a>
+            
+        </div>
+      </div>
+
+      <!-- 相关文章 -->
+      <div class="bg-white rounded-xl p-6">
+        <h2 class="text-lg font-medium mb-4">相关文章</h2>
+        <div class="space-y-4">
+          
+            <a href="/cm72nkaxe001awkwtc6bdgyhu.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Hello World
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-13</p>
+            </a>
+            
+            <a href="/cm72nkax6000bwkwt554c1z0e.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (一) | 基本语法
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm72nkax7000ewkwt2l4293ed.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (三) | 函数
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm72nkax7000hwkwt7pw007e6.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (七) | 集合
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm72nkax9000jwkwtccbg0esu.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (二) | 控制流
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+        </div>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<style>
+  .markdown-body {
+    box-sizing: border-box;
+    min-width: 200px;
+    max-width: 100%;
+    margin: 0 auto;
+    background-color: white;
+  }
+
+  /* 适配深色模式 */
+  @media (prefers-color-scheme: dark) {
+    .markdown-body {
+      color-scheme: dark;
+      --color-prettylights-syntax-comment: #8b949e;
+      --color-prettylights-syntax-constant: #79c0ff;
+      --color-prettylights-syntax-entity: #d2a8ff;
+      --color-prettylights-syntax-storage-modifier-import: #c9d1d9;
+      --color-prettylights-syntax-entity-tag: #7ee787;
+      --color-prettylights-syntax-keyword: #ff7b72;
+      --color-prettylights-syntax-string: #a5d6ff;
+      --color-prettylights-syntax-variable: #ffa657;
+      --color-prettylights-syntax-brackethighlighter-unmatched: #f85149;
+      --color-prettylights-syntax-invalid-illegal-text: #f0f6fc;
+      --color-prettylights-syntax-invalid-illegal-bg: #8e1519;
+      --color-prettylights-syntax-carriage-return-text: #f0f6fc;
+      --color-prettylights-syntax-carriage-return-bg: #b62324;
+      --color-prettylights-syntax-string-regexp: #7ee787;
+      --color-prettylights-syntax-markup-list: #f2cc60;
+      --color-prettylights-syntax-markup-heading: #1f6feb;
+      --color-prettylights-syntax-markup-italic: #c9d1d9;
+      --color-prettylights-syntax-markup-bold: #c9d1d9;
+      --color-prettylights-syntax-markup-deleted-text: #ffdcd7;
+      --color-prettylights-syntax-markup-deleted-bg: #67060c;
+      --color-prettylights-syntax-markup-inserted-text: #aff5b4;
+      --color-prettylights-syntax-markup-inserted-bg: #033a16;
+      --color-prettylights-syntax-markup-changed-text: #ffdfb6;
+      --color-prettylights-syntax-markup-changed-bg: #5a1e02;
+      --color-prettylights-syntax-markup-ignored-text: #c9d1d9;
+      --color-prettylights-syntax-markup-ignored-bg: #1158c7;
+      --color-prettylights-syntax-meta-diff-range: #d2a8ff;
+      --color-prettylights-syntax-brackethighlighter-angle: #8b949e;
+      --color-prettylights-syntax-sublimelinter-gutter-mark: #484f58;
+      --color-prettylights-syntax-constant-other-reference-link: #a5d6ff;
+      --color-fg-default: #c9d1d9;
+      --color-fg-muted: #8b949e;
+      --color-fg-subtle: #6e7681;
+      --color-canvas-default: #0d1117;
+      --color-canvas-subtle: #161b22;
+      --color-border-default: #30363d;
+      --color-border-muted: #21262d;
+      --color-neutral-muted: rgba(110, 118, 129, 0.4);
+      --color-accent-fg: #58a6ff;
+      --color-accent-emphasis: #1f6feb;
+      --color-attention-subtle: rgba(187, 128, 9, 0.15);
+      --color-danger-fg: #f85149;
+    }
+  }
+</style>
+  <!-- 页脚 -->
+<footer class="border-t mt-16">
+  <div class="max-w-4xl mx-auto px-4 py-8 text-center text-sm text-gray-500">
+    <p>© 2025 nunumao. Built with <a href="#" class="text-blue-600">Hexo</a></p>
+  </div>
+</footer>
+</body>
+
+</html>

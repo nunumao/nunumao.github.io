@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>编程日记</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  
+<link rel="stylesheet" href="/css/github-markdown.css">
+
+  
+<link rel="stylesheet" href="/css/atom-one-dark.css">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+<script src="/js/jquery.min.js"></script>
+
+  
+<script src="/js/script.js"></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="bg-gray-50 text-gray-800">
+  <div class="lg:hidden fixed right-4 top-4 z-50">
+    <button class="p-2 bg-white/80 backdrop-blur-sm rounded-lg border" data-mobile-menu-trigger><i class="fas fa-bars"></i></button>
+  </div>
+  <!-- 导航栏 -->
+  <nav class="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-40">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="flex justify-between items-center h-16">
+        <a href="/" class="text-xl font-serif">编程日记</a>
+        <!-- 桌面端导航 -->
+        <div class="hidden lg:flex items-center space-x-6">
+          <div class="flex items-center space-x-6 text-sm">
+            <a href="/" class="hover:text-blue-600" data-i18n="nav.home">首页</a>
+            <!-- 分类下拉菜单 -->
+            <div class="relative group">
+              <a href="/categories" class="hover:text-blue-600">分类</a>
+              <!-- 优化后的下拉内容 -->
+              <div class="absolute left-0 mt-2 py-2 bg-white backdrop-blur-sm border rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div class="grid grid-cols-2 gap-1 w-[400px] p-4">
+                  
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/前端技术/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>前端技术</span>
+                        </a>
+                      
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/服务器/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>服务器</span>
+                        </a>
+                      
+                    
+                      
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/后端技术/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>后端技术</span>
+                        </a>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                  
+                </div>
+              </div>
+            </div>
+            <a href="/case" class="hover:text-blue-600" data-i18n="nav.case">作品</a>
+            <a href="/archives" class="hover:text-blue-600" data-i18n="nav.archives">归档</a>
+            <a href="/about" class="hover:text-blue-600" data-i18n="nav.about">关于</a>
+            <!-- 搜索框 -->
+            <div class="relative">
+              <input type="search" placeholder="Search articles..." class="w-48 px-4 py-1 text-sm border rounded-full bg-gray-50 focus:outline-none focus:ring-1 focus:ring-blue-500">
+              <i class="fas fa-search absolute right-3 top-2 text-gray-400"></i>
+            </div>
+            <!-- 语言切换 -->
+            <div class="flex items-center space-x-2 ml-4 text-sm border-l pl-4">
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('en-US')">EN</button>
+              <span class="text-gray-300">|</span>
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('zh-CN')">简</button>
+              <span class="text-gray-300">|</span>
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('zh-TW')">繁</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div id="mobileMenu" class="fixed inset-0 bg-white/90 backdrop-blur-sm z-40 lg:hidden hidden">
+    <div class="h-full w-full flex flex-col items-center justify-center space-y-6 text-lg">
+      <a href="/" class="hover:text-blue-600" data-i18n="nav.home">首页</a>
+      <a href="/categories" class="hover:text-blue-600" data-i18n="nav.categories">分类</a>
+      <a href="/case" class="hover:text-blue-600" data-i18n="nav.case">作品</a>
+      <a href="/archives" class="hover:text-blue-600" data-i18n="nav.archive">归档</a>
+      <a href="/about" class="hover:text-blue-600" data-i18n="nav.about">关于</a>
+      <div class="flex items-center space-x-4 mt-4">
+        <button class="lang-switch hover:text-blue-600" data-lang="en">EN</button>
+        <button class="lang-switch hover:text-blue-600" data-lang="zh">简</button>
+        <button class="lang-switch hover:text-blue-600" data-lang="zh-TW">繁</button>
+      </div>
+    </div>
+  </div>
+  <main class="max-w-5xl mx-auto px-4 py-12">
+  <div class="lg:flex lg:gap-8">
+    <!-- 文章主体 -->
+    <article class="lg:w-3/4">
+      <!-- 文章容器 -->
+      <div class="bg-white rounded-xl overflow-hidden">
+        <!-- 文章头部 -->
+        <div class="px-8 pt-12 pb-8">
+          <!-- 标题 -->
+          <h1 class="text-3xl font-medium mb-6 leading-snug">
+            Maven (八) 仓库
+          </h1>
+
+          <!-- 元信息 -->
+          <div class="flex flex-wrap items-center gap-6 text-sm text-gray-500">
+            <span>
+              <i class="fas fa-folder-open mr-2"></i>
+              
+                <a href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/Maven/" class="hover:text-blue-600">
+                  Maven
+                </a>
+                
+            </span>
+            <span>
+              <i class="far fa-calendar mr-2"></i>
+              2025-02-10
+            </span>
+            <span><i class="far fa-clock mr-2"></i>15 分钟阅读</span>
+            <span><i class="far fa-eye mr-2"></i>
+              0
+            </span>
+          </div>
+        </div>
+
+        <!-- 文章内容 -->
+        <div class="px-8 py-10 border-t border-b">
+          <div class="markdown-body">
+            <p><strong>第八章： 仓库</strong></p>
+<p><strong>8.1 什么是 Maven 仓库？</strong></p>
+<p>Maven 仓库 (Repository) 是一个 <strong>集中存储构件 (Artifacts) 的场所</strong>。  你可以把它想象成一个 <strong>图书馆</strong> 或者 <strong>仓库</strong>，里面存放着各种各样的 “书籍” (构件)，Maven 可以从中 “借阅” (下载) 项目构建所需的 “书籍”。</p>
+<p><strong>Maven 仓库的主要作用：</strong></p>
+<ul>
+<li><strong>构件存储中心：</strong>  集中存储 Maven 项目构建所需的各种构件，例如依赖库 (JAR 包)、插件、项目自身的输出构件等。</li>
+<li><strong>构件共享平台：</strong>  方便团队成员之间共享构件，例如公司内部的私有库可以发布到私服仓库，供团队成员使用。</li>
+<li><strong>依赖管理基础：</strong>  Maven 依赖管理的核心是 Maven 仓库，Maven 从仓库中查找和下载项目声明的依赖。</li>
+<li><strong>插件管理基础：</strong>  Maven 插件也存储在仓库中，Maven 从仓库中下载和使用插件。</li>
+</ul>
+<p><strong>8.2 Maven 仓库的类型</strong></p>
+<p>Maven 仓库主要分为三种类型：</p>
+<ol>
+<li><strong>本地仓库 (Local Repository)</strong></li>
+<li><strong>中央仓库 (Central Repository)</strong></li>
+<li><strong>远程仓库 (Remote Repository)</strong></li>
+</ol>
+<p><strong>8.2.1 本地仓库 (Local Repository)</strong></p>
+<ul>
+<li><p><strong>位置：</strong> 默认情况下，本地仓库位于 <code>用户目录/.m2/repository</code> 目录下 (例如 Windows: <code>C:\Users\YourUsername\.m2\repository</code>, macOS&#x2F;Linux: <code>/Users/YourUsername/.m2/repository</code>)。  本地仓库的路径可以通过修改 <code>settings.xml</code> 文件进行自定义 (我们在第二章已经讲过)。</p>
+</li>
+<li><p><strong>作用：</strong></p>
+<ul>
+<li><strong>缓存远程仓库下载的构件：</strong>  当你第一次运行 Maven 命令需要下载某个依赖时，Maven 会先从远程仓库下载依赖，然后 <strong>缓存到本地仓库</strong>。</li>
+<li><strong>加速构建过程：</strong>  下次再需要这个依赖时，Maven 会 <strong>直接从本地仓库读取</strong>，而不需要再次从远程仓库下载，这样可以 <strong>加速构建过程</strong>，节省网络带宽。</li>
+<li><strong>存储本地安装的构件：</strong>  当你执行 <code>mvn install</code> 命令将项目构件安装到本地仓库时，构件会被存储到本地仓库中。</li>
+</ul>
+</li>
+<li><p><strong>特点：</strong></p>
+<ul>
+<li><strong>本地唯一：</strong>  每个开发者本地电脑上都有一个独立的本地仓库。</li>
+<li><strong>默认仓库：</strong>  Maven 默认会优先从本地仓库查找构件。</li>
+<li><strong>可配置：</strong>  本地仓库的路径可以自定义配置。</li>
+</ul>
+</li>
+</ul>
+<p><strong>8.2.2 中央仓库 (Central Repository)</strong></p>
+<ul>
+<li><p><strong>位置：</strong>  中央仓库是一个 <strong>公共的远程仓库</strong>，由 Maven 社区维护，地址是： <a target="_blank" rel="noopener" href="https://repo.maven.apache.org/maven2/">https://repo.maven.apache.org/maven2/</a></p>
+</li>
+<li><p><strong>作用：</strong></p>
+<ul>
+<li><strong>存储大量的开源构件：</strong>  中央仓库存储了 <strong>绝大多数常用的开源 Java 库</strong> (例如 Spring Framework, JUnit, Jackson, Guava 等)。</li>
+<li><strong>默认远程仓库：</strong>  Maven 默认会从中央仓库下载依赖。  当你本地仓库找不到依赖时，Maven 会自动从中央仓库下载。</li>
+</ul>
+</li>
+<li><p><strong>特点：</strong></p>
+<ul>
+<li><strong>公共仓库：</strong>  任何人都可以访问和使用中央仓库。</li>
+<li><strong>权威仓库：</strong>  由 Maven 社区官方维护，构件质量有保障。</li>
+<li><strong>全球唯一：</strong>  只有一个中央仓库。</li>
+</ul>
+</li>
+</ul>
+<p><strong>8.2.3 远程仓库 (Remote Repository)</strong></p>
+<ul>
+<li><p><strong>位置：</strong>  远程仓库是 <strong>除了中央仓库之外的其他远程仓库</strong>。  可以是 <strong>公共的远程仓库</strong> (例如 JCenter - 已关闭,  Spring Maven Repository, Alibaba Maven Repository)，也可以是 <strong>公司内部的私服仓库</strong> (例如 Nexus, Artifactory, JFrog)。</p>
+</li>
+<li><p><strong>作用：</strong></p>
+<ul>
+<li><strong>扩展构件来源：</strong>  中央仓库虽然存储了大量的开源构件，但仍然无法覆盖所有情况。  远程仓库可以 <strong>补充中央仓库的不足</strong>，提供更多构件来源。</li>
+<li><strong>存储私有构件：</strong>  公司内部开发的私有库或组件，不适合发布到公共的中央仓库，可以发布到 <strong>公司内部的私服仓库</strong>，供团队成员使用。</li>
+<li><strong>控制构件访问：</strong>  私服仓库可以 <strong>控制构件的访问权限</strong>，例如只有授权用户才能访问和下载某些构件。</li>
+<li><strong>加速构件下载：</strong>  私服仓库通常部署在内网，下载速度更快。  私服仓库还可以作为中央仓库的 <strong>代理</strong>，缓存中央仓库的构件，减少对公网的访问压力，并加速下载速度。</li>
+</ul>
+</li>
+<li><p><strong>类型：</strong></p>
+<ul>
+<li><strong>公共远程仓库：</strong>  例如 Spring Maven Repository, Alibaba Maven Repository 等，任何人都可以访问和使用，通常用于访问特定的第三方库。</li>
+<li><strong>私服仓库 (Repository Manager)：</strong>  例如 Nexus, Artifactory, JFrog 等，通常由公司或组织搭建和维护，用于管理公司内部的私有库和缓存代理公共仓库。</li>
+</ul>
+</li>
+</ul>
+<p><strong>常用的私服仓库软件：</strong></p>
+<ul>
+<li><strong>Sonatype Nexus Repository Manager:</strong>  流行的开源私服仓库管理软件，功能强大，社区活跃。</li>
+<li><strong>JFrog Artifactory:</strong>  商业化的私服仓库管理软件，功能全面，性能优秀。</li>
+<li><strong>Apache Archiva:</strong>  Apache 基金会旗下的开源私服仓库管理软件，轻量级，易于部署。</li>
+</ul>
+<p><strong>8.3 仓库的配置</strong></p>
+<p>Maven 仓库的配置主要包括：</p>
+<ol>
+<li><strong>本地仓库配置 (通过 <code>settings.xml</code>)</strong></li>
+<li><strong>远程仓库配置 (通过 <code>pom.xml</code> 或 <code>settings.xml</code>)</strong></li>
+<li><strong>镜像配置 (通过 <code>settings.xml</code>)</strong></li>
+<li><strong>认证配置 (通过 <code>settings.xml</code>)</strong></li>
+</ol>
+<p><strong>8.3.1 本地仓库配置 (通过 <code>settings.xml</code>)</strong></p>
+<p>我们在第二章已经讲过如何通过修改 <code>settings.xml</code> 文件中的 <code>&lt;localRepository&gt;</code> 元素来配置本地仓库的路径。  这里不再赘述。</p>
+<p><strong>8.3.2 远程仓库配置 (通过 <code>pom.xml</code> 或 <code>settings.xml</code>)</strong></p>
+<p>远程仓库的配置可以在 <strong>项目级别</strong> 的 <code>pom.xml</code> 文件中配置，也可以在 <strong>全局级别</strong> 的 <code>settings.xml</code> 文件中配置。</p>
+<ul>
+<li><p><strong>在 <code>pom.xml</code> 中配置 (项目级别):</strong>  在 <code>pom.xml</code> 文件中使用 <code>&lt;repositories&gt;</code> 元素来配置远程仓库。  在 <code>&lt;repositories&gt;</code> 元素中可以配置多个 <code>&lt;repository&gt;</code> 子元素，每个 <code>&lt;repository&gt;</code> 元素定义一个远程仓库。</p>
+ <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">repositories</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">repository</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span>&gt;</span>spring-milestones<span class="tag">&lt;/<span class="name">id</span>&gt;</span>  <span class="comment">&lt;!-- 仓库 ID，唯一标识 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">name</span>&gt;</span>Spring Milestones Repository<span class="tag">&lt;/<span class="name">name</span>&gt;</span> <span class="comment">&lt;!-- 仓库名称，描述信息 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">url</span>&gt;</span>https://repo.spring.io/milestone<span class="tag">&lt;/<span class="name">url</span>&gt;</span> <span class="comment">&lt;!-- 仓库 URL，仓库地址 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">releases</span>&gt;</span>  <span class="comment">&lt;!-- Release 版本下载策略 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span> <span class="comment">&lt;!-- 是否启用 Release 版本下载 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">updatePolicy</span>&gt;</span>daily<span class="tag">&lt;/<span class="name">updatePolicy</span>&gt;</span> <span class="comment">&lt;!-- Release 版本更新策略，例如 daily, always, interval:XXX, never --&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">releases</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">snapshots</span>&gt;</span> <span class="comment">&lt;!-- Snapshot 版本下载策略 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>false<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span> <span class="comment">&lt;!-- 是否启用 Snapshot 版本下载 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">updatePolicy</span>&gt;</span>always<span class="tag">&lt;/<span class="name">updatePolicy</span>&gt;</span> <span class="comment">&lt;!-- Snapshot 版本更新策略，例如 daily, always, interval:XXX, never --&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">snapshots</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">repository</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- ... 更多远程仓库 ... --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">repositories</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong><code>&lt;id&gt;</code> (必需):</strong>  <strong>仓库 ID</strong>，用于唯一标识一个远程仓库。  仓库 ID 必须是唯一的，通常使用仓库名称或描述性的 ID。</li>
+<li><strong><code>&lt;name&gt;</code> (可选):</strong>  <strong>仓库名称</strong>，用于描述仓库的信息，方便阅读和维护。</li>
+<li><strong><code>&lt;url&gt;</code> (必需):</strong>  <strong>仓库 URL</strong>，指向远程仓库的地址。  通常是 HTTP 或 HTTPS URL。</li>
+<li><strong><code>&lt;releases&gt;</code> 和 <code>&lt;snapshots&gt;</code> (可选):</strong>  <strong>Release 和 Snapshot 版本下载策略</strong>。  用于配置是否启用 Release 和 Snapshot 版本的下载，以及版本更新策略。<ul>
+<li><strong><code>&lt;enabled&gt;</code>:</strong>  设置为 <code>true</code> 表示启用该类型版本的下载，设置为 <code>false</code> 表示禁用。</li>
+<li><strong><code>&lt;updatePolicy&gt;</code>:</strong>  版本更新策略，指定 Maven 何时检查仓库中该类型版本的更新。  常用的值包括：<ul>
+<li><code>daily</code>:  每天检查一次更新 (默认值)。</li>
+<li><code>always</code>:  每次构建都检查更新。</li>
+<li><code>interval:XXX</code>:  每隔 XXX 分钟检查一次更新 (例如 <code>interval:60</code> 表示每隔 60 分钟检查一次更新)。</li>
+<li><code>never</code>:  从不检查更新。</li>
+</ul>
+</li>
+<li><strong><code>&lt;checksumPolicy&gt;</code>:</strong>  校验和策略，指定 Maven 如何处理校验和错误。  常用的值包括：<ul>
+<li><code>warn</code>:  校验和错误时发出警告 (默认值)。</li>
+<li><code>fail</code>:  校验和错误时构建失败。</li>
+<li><code>ignore</code>:  忽略校验和错误。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>在 <code>settings.xml</code> 中配置 (全局级别):</strong>  在 <code>settings.xml</code> 文件中使用 <code>&lt;profiles&gt;</code> -&gt; <code>&lt;profile&gt;</code> -&gt; <code>&lt;repositories&gt;</code> 元素来配置远程仓库。  在 <code>settings.xml</code> 中配置的远程仓库会 <strong>全局生效</strong>，应用于所有的 Maven 项目。  通常用于配置公司内部的私服仓库或常用的公共远程仓库。</p>
+ <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">settings</span>&gt;</span></span><br><span class="line">    ...</span><br><span class="line">    <span class="tag">&lt;<span class="name">profiles</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>my-remote-repos<span class="tag">&lt;/<span class="name">id</span>&gt;</span>  <span class="comment">&lt;!-- Profile ID --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">repositories</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">repository</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">id</span>&gt;</span>my-private-repo<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">name</span>&gt;</span>My Private Repository<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://nexus.example.com/repository/maven-private/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">releases</span>&gt;</span><span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span><span class="tag">&lt;/<span class="name">releases</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">snapshots</span>&gt;</span><span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span><span class="tag">&lt;/<span class="name">snapshots</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">repository</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!-- ... 更多远程仓库 ... --&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">repositories</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">profiles</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">activeProfiles</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">activeProfile</span>&gt;</span>my-remote-repos<span class="tag">&lt;/<span class="name">activeProfile</span>&gt;</span>  <span class="comment">&lt;!-- 激活包含远程仓库配置的 Profile --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">activeProfiles</span>&gt;</span></span><br><span class="line">    ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p> 需要在 <code>&lt;activeProfiles&gt;</code> 元素中激活包含远程仓库配置的 Profile，才能使远程仓库配置生效。</p>
+</li>
+</ul>
+<p><strong>8.3.3 镜像配置 (通过 <code>settings.xml</code>)</strong></p>
+<p>镜像 (Mirror) 用于 <strong>替换默认的中央仓库或指定的远程仓库</strong>。  当配置了镜像后，Maven 在下载构件时，会 <strong>将对被镜像仓库的请求重定向到镜像仓库</strong>。  通常用于 <strong>加速构件下载</strong>，例如配置国内的 Maven 镜像，可以加速从中央仓库下载构件的速度。</p>
+<p>镜像配置在 <code>settings.xml</code> 文件中使用 <code>&lt;mirrors&gt;</code> 元素进行配置。</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">settings</span>&gt;</span></span><br><span class="line">    ...</span><br><span class="line">    <span class="tag">&lt;<span class="name">mirrors</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>alimaven<span class="tag">&lt;/<span class="name">id</span>&gt;</span>  <span class="comment">&lt;!-- 镜像 ID，唯一标识 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">name</span>&gt;</span>aliyun maven<span class="tag">&lt;/<span class="name">name</span>&gt;</span> <span class="comment">&lt;!-- 镜像名称，描述信息 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">url</span>&gt;</span>https://maven.aliyun.com/repository/public<span class="tag">&lt;/<span class="name">url</span>&gt;</span> <span class="comment">&lt;!-- 镜像仓库 URL --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span>  <span class="comment">&lt;!-- 镜像目标仓库，指定要镜像的仓库 ID 或仓库匹配模式 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- ... 更多镜像 ... --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">mirrors</span>&gt;</span></span><br><span class="line">    ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong><code>&lt;id&gt;</code> (必需):</strong>  <strong>镜像 ID</strong>，用于唯一标识一个镜像。</li>
+<li><strong><code>&lt;name&gt;</code> (可选):</strong>  <strong>镜像名称</strong>，用于描述镜像的信息。</li>
+<li><strong><code>&lt;url&gt;</code> (必需):</strong>  <strong>镜像仓库 URL</strong>，指向镜像仓库的地址。</li>
+<li><strong><code>&lt;mirrorOf&gt;</code> (必需):</strong>  <strong>镜像目标仓库</strong>，指定要镜像的仓库 ID 或仓库匹配模式。  常用的值包括：<ul>
+<li><code>central</code>:  镜像中央仓库。</li>
+<li><code>*</code>:  镜像所有远程仓库 (包括中央仓库和所有在 <code>pom.xml</code> 或 <code>settings.xml</code> 中配置的远程仓库)。</li>
+<li><code>&lt;repository-id&gt;</code>:  镜像指定的仓库 ID 的仓库。</li>
+<li><code>*,!&lt;repository-id&gt;</code>:  镜像除指定仓库 ID 之外的所有仓库。</li>
+</ul>
+</li>
+</ul>
+<p><strong>常用的国内 Maven 镜像：</strong></p>
+<ul>
+<li><strong>阿里云 Maven 镜像:</strong> <code>https://maven.aliyun.com/repository/public</code> (镜像中央仓库和其他常用仓库)</li>
+<li><strong>网易 Maven 镜像:</strong> <code>http://maven.netease.com/repository/maven-public/</code> (镜像中央仓库)</li>
+</ul>
+<p><strong>8.3.4 认证配置 (通过 <code>settings.xml</code>)</strong></p>
+<p>当访问 <strong>需要认证</strong> 的远程仓库 (例如私服仓库) 时，需要在 <code>settings.xml</code> 文件中配置 <strong>服务器认证信息</strong>，包括用户名和密码。  认证配置使用 <code>&lt;servers&gt;</code> 元素进行配置。</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">settings</span>&gt;</span></span><br><span class="line">    ...</span><br><span class="line">    <span class="tag">&lt;<span class="name">servers</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">server</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>my-private-repo<span class="tag">&lt;/<span class="name">id</span>&gt;</span>  <span class="comment">&lt;!-- 服务器 ID，必须与远程仓库的 ID 匹配 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">username</span>&gt;</span>user<span class="tag">&lt;/<span class="name">username</span>&gt;</span>  <span class="comment">&lt;!-- 认证用户名 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">password</span>&gt;</span>password<span class="tag">&lt;/<span class="name">password</span>&gt;</span> <span class="comment">&lt;!-- 认证密码 --&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- &lt;privateKey&gt;/path/to/private/key&lt;/privateKey&gt;  可以使用私钥进行认证 --&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- &lt;passphrase&gt;private-key-passphrase&lt;/passphrase&gt;  私钥密码 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">server</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- ... 更多服务器认证 ... --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">servers</span>&gt;</span></span><br><span class="line">    ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong><code>&lt;id&gt;</code> (必需):</strong>  <strong>服务器 ID</strong>，必须与远程仓库的 <code>&lt;id&gt;</code> 元素的值 <strong>完全匹配</strong>，Maven 才能将认证信息应用到对应的远程仓库。</li>
+<li><strong><code>&lt;username&gt;</code> (可选):</strong>  <strong>认证用户名</strong>。</li>
+<li><strong><code>&lt;password&gt;</code> (可选):</strong>  <strong>认证密码</strong>。  <strong>注意：密码明文存储在 <code>settings.xml</code> 文件中存在安全风险，建议使用加密方式存储密码 (例如 Maven Setting Security)。</strong></li>
+<li><strong><code>&lt;privateKey&gt;</code> 和 <code>&lt;passphrase&gt;</code> (可选):</strong>  用于 <strong>基于私钥的认证</strong>。  可以配置私钥文件路径和私钥密码。</li>
+</ul>
+<p><strong>8.4 仓库的搜索顺序</strong></p>
+<p>当 Maven 需要下载一个依赖时，它会按照以下顺序搜索仓库：</p>
+<ol>
+<li><strong>本地仓库 (Local Repository)</strong></li>
+<li><strong>在 <code>pom.xml</code> 中配置的 <code>&lt;repositories&gt;</code> 中的远程仓库 (按照 <code>&lt;repositories&gt;</code> 元素的配置顺序)</strong></li>
+<li><strong>中央仓库 (Central Repository)</strong></li>
+</ol>
+<p><strong>搜索流程：</strong></p>
+<ol>
+<li>Maven 首先检查 <strong>本地仓库</strong> 是否存在需要的构件。  如果存在，则直接使用本地仓库的构件，构建过程结束。</li>
+<li>如果本地仓库不存在需要的构件，Maven 会 <strong>遍历在 <code>pom.xml</code> 中配置的 <code>&lt;repositories&gt;</code> 元素中定义的远程仓库</strong>，按照配置顺序依次搜索每个远程仓库。  如果在某个远程仓库中找到了需要的构件，则从该远程仓库下载构件到本地仓库，并使用该构件进行构建，构建过程结束。</li>
+<li>如果在所有在 <code>pom.xml</code> 中配置的远程仓库中都找不到需要的构件，Maven 会 <strong>最后搜索中央仓库</strong>。  如果在中央仓库中找到了需要的构件，则从中央仓库下载构件到本地仓库，并使用该构件进行构建，构建过程结束。</li>
+<li>如果在所有仓库中都找不到需要的构件，Maven 构建 <strong>失败</strong>，并抛出 <strong><code>DependencyResolutionException</code> 异常</strong>。</li>
+</ol>
+<p><strong>镜像的影响：</strong></p>
+<p>如果配置了镜像，Maven 在搜索仓库时，会 <strong>先检查是否配置了镜像</strong>。  如果配置了镜像，则 <strong>直接访问镜像仓库</strong>，而不是原始的仓库。  例如，如果配置了中央仓库的镜像，Maven 在搜索中央仓库时，会直接访问镜像仓库，而不会访问中央仓库的原始地址。</p>
+<p><strong>总结第八章:</strong></p>
+<p>第八章我们深入学习了 Maven 仓库，包括本地仓库、中央仓库和远程仓库的类型和作用，以及仓库的配置方法 (本地仓库配置、远程仓库配置、镜像配置、认证配置) 和仓库的搜索顺序。  理解 Maven 仓库对于有效地使用 Maven 进行依赖管理和项目构建至关重要。</p>
+
+          </div>
+        </div>
+
+        <!-- 文章底部 -->
+        <div class="px-8 py-8">
+          <!-- 标签 -->
+          
+            <div class="flex flex-wrap gap-2 mb-8">
+              
+                <a href="/tags/Maven/" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm text-gray-600 transition-colors">
+                  Maven
+                </a>
+                
+            </div>
+            
+
+              <!-- 分享 -->
+              <div class="flex items-center justify-between mb-8 py-6 border-t border-b">
+                <div class="text-sm text-gray-500">分享文章：</div>
+                <div class="flex gap-4">
+                  <button class="text-gray-400 hover:text-gray-600 transition-colors">
+                    <i class="far fa-copy text-xl"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- 上一篇/下一篇 -->
+              <div class="flex flex-col sm:flex-row justify-between gap-4">
+                
+                  <a href="/cm72orm1o001664wt8srpfdx2.html" class="group flex-1">
+                    <div class="text-sm text-gray-500 mb-1">上一篇</div>
+                    <div class="group-hover:text-blue-600 transition-colors">
+                      Maven (十一) Maven 最佳实践与技巧
+                    </div>
+                  </a>
+                  
+                    
+                      <a href="/cm72nkax10001wkwtdcx54f6l.html" class="group flex-1 text-right">
+                        <div class="text-sm text-gray-500 mb-1">下一篇</div>
+                        <div class="group-hover:text-blue-600 transition-colors">
+                          JavaScript 模块化规范 | CommonJS
+                        </div>
+                      </a>
+                      
+              </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 侧边栏 -->
+    <aside class="lg:w-1/4 mt-8 lg:mt-0 space-y-6">
+      <!-- 作者信息 -->
+      <div class="bg-white rounded-xl p-6">
+        <div class="flex items-center gap-4 mb-4">
+          <img src="/images/avatar.jpg" class="w-16 h-16 rounded-full">
+          <div>
+            <h3 class="font-medium">Nunumao</h3>
+            <p class="text-sm text-gray-500">开发工程师</p>
+          </div>
+        </div>
+        <p class="text-sm text-gray-600 mb-4">专注于技术研究，热爱分享技术心得</p>
+        <div class="flex justify-center gap-4">
+          <a href="https://github.com/nunumao" target="_blank" class="text-gray-400 hover:text-gray-600">
+            <i class="fab fa-github text-xl"></i>
+          </a>
+          <a href="mailto:gm292018748@email.com" target="_blank" class="text-gray-400 hover:text-[#1DA1F2]">
+            <i class="fas fa-envelope text-xl"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 目录 -->
+      <div class="bg-white rounded-xl p-6 sticky top-24">
+        <h2 class="text-lg font-medium mb-4">目录</h2>
+        <nav class="space-y-2 text-sm">
+          
+        </nav>
+      </div>
+
+      <!-- 分类列表 -->
+      <div class="bg-white rounded-xl p-6">
+        <h2 class="text-lg font-medium mb-4">文章分类</h2>
+        <div class="space-y-3">
+          
+            <a href="/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/" class="flex items-center justify-between group">
+              <div class="flex items-center">
+                <i class="fas fa-code text-blue-500 w-5"></i>
+                <span class="text-sm group-hover:text-blue-600">
+                  前端技术
+                </span>
+              </div>
+              <span class="text-xs text-gray-500">
+                1
+              </span>
+            </a>
+            
+            <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="flex items-center justify-between group">
+              <div class="flex items-center">
+                <i class="fas fa-folder text-gray-500 w-5"></i>
+                <span class="text-sm group-hover:text-blue-600">
+                  服务器
+                </span>
+              </div>
+              <span class="text-xs text-gray-500">
+                3
+              </span>
+            </a>
+            
+            <a href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/" class="flex items-center justify-between group">
+              <div class="flex items-center">
+                <i class="fas fa-server text-green-500 w-5"></i>
+                <span class="text-sm group-hover:text-blue-600">
+                  后端技术
+                </span>
+              </div>
+              <span class="text-xs text-gray-500">
+                31
+              </span>
+            </a>
+            
+        </div>
+      </div>
+
+      <!-- 相关文章 -->
+      <div class="bg-white rounded-xl p-6">
+        <h2 class="text-lg font-medium mb-4">相关文章</h2>
+        <div class="space-y-4">
+          
+            <a href="/cm72nkaxe001awkwtc6bdgyhu.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Hello World
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-13</p>
+            </a>
+            
+            <a href="/cm72nkax6000bwkwt554c1z0e.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (一) | 基本语法
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm72nkax7000ewkwt2l4293ed.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (三) | 函数
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm72nkax7000hwkwt7pw007e6.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (七) | 集合
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm72nkax9000jwkwtccbg0esu.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (二) | 控制流
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+        </div>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<style>
+  .markdown-body {
+    box-sizing: border-box;
+    min-width: 200px;
+    max-width: 100%;
+    margin: 0 auto;
+    background-color: white;
+  }
+
+  /* 适配深色模式 */
+  @media (prefers-color-scheme: dark) {
+    .markdown-body {
+      color-scheme: dark;
+      --color-prettylights-syntax-comment: #8b949e;
+      --color-prettylights-syntax-constant: #79c0ff;
+      --color-prettylights-syntax-entity: #d2a8ff;
+      --color-prettylights-syntax-storage-modifier-import: #c9d1d9;
+      --color-prettylights-syntax-entity-tag: #7ee787;
+      --color-prettylights-syntax-keyword: #ff7b72;
+      --color-prettylights-syntax-string: #a5d6ff;
+      --color-prettylights-syntax-variable: #ffa657;
+      --color-prettylights-syntax-brackethighlighter-unmatched: #f85149;
+      --color-prettylights-syntax-invalid-illegal-text: #f0f6fc;
+      --color-prettylights-syntax-invalid-illegal-bg: #8e1519;
+      --color-prettylights-syntax-carriage-return-text: #f0f6fc;
+      --color-prettylights-syntax-carriage-return-bg: #b62324;
+      --color-prettylights-syntax-string-regexp: #7ee787;
+      --color-prettylights-syntax-markup-list: #f2cc60;
+      --color-prettylights-syntax-markup-heading: #1f6feb;
+      --color-prettylights-syntax-markup-italic: #c9d1d9;
+      --color-prettylights-syntax-markup-bold: #c9d1d9;
+      --color-prettylights-syntax-markup-deleted-text: #ffdcd7;
+      --color-prettylights-syntax-markup-deleted-bg: #67060c;
+      --color-prettylights-syntax-markup-inserted-text: #aff5b4;
+      --color-prettylights-syntax-markup-inserted-bg: #033a16;
+      --color-prettylights-syntax-markup-changed-text: #ffdfb6;
+      --color-prettylights-syntax-markup-changed-bg: #5a1e02;
+      --color-prettylights-syntax-markup-ignored-text: #c9d1d9;
+      --color-prettylights-syntax-markup-ignored-bg: #1158c7;
+      --color-prettylights-syntax-meta-diff-range: #d2a8ff;
+      --color-prettylights-syntax-brackethighlighter-angle: #8b949e;
+      --color-prettylights-syntax-sublimelinter-gutter-mark: #484f58;
+      --color-prettylights-syntax-constant-other-reference-link: #a5d6ff;
+      --color-fg-default: #c9d1d9;
+      --color-fg-muted: #8b949e;
+      --color-fg-subtle: #6e7681;
+      --color-canvas-default: #0d1117;
+      --color-canvas-subtle: #161b22;
+      --color-border-default: #30363d;
+      --color-border-muted: #21262d;
+      --color-neutral-muted: rgba(110, 118, 129, 0.4);
+      --color-accent-fg: #58a6ff;
+      --color-accent-emphasis: #1f6feb;
+      --color-attention-subtle: rgba(187, 128, 9, 0.15);
+      --color-danger-fg: #f85149;
+    }
+  }
+</style>
+  <!-- 页脚 -->
+<footer class="border-t mt-16">
+  <div class="max-w-4xl mx-auto px-4 py-8 text-center text-sm text-gray-500">
+    <p>© 2025 nunumao. Built with <a href="#" class="text-blue-600">Hexo</a></p>
+  </div>
+</footer>
+</body>
+
+</html>

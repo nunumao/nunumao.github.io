@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>编程日记</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  
+<link rel="stylesheet" href="/css/github-markdown.css">
+
+  
+<link rel="stylesheet" href="/css/atom-one-dark.css">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+<script src="/js/jquery.min.js"></script>
+
+  
+<script src="/js/script.js"></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="bg-gray-50 text-gray-800">
+  <div class="lg:hidden fixed right-4 top-4 z-50">
+    <button class="p-2 bg-white/80 backdrop-blur-sm rounded-lg border" data-mobile-menu-trigger><i class="fas fa-bars"></i></button>
+  </div>
+  <!-- 导航栏 -->
+  <nav class="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-40">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="flex justify-between items-center h-16">
+        <a href="/" class="text-xl font-serif">编程日记</a>
+        <!-- 桌面端导航 -->
+        <div class="hidden lg:flex items-center space-x-6">
+          <div class="flex items-center space-x-6 text-sm">
+            <a href="/" class="hover:text-blue-600" data-i18n="nav.home">首页</a>
+            <!-- 分类下拉菜单 -->
+            <div class="relative group">
+              <a href="/categories" class="hover:text-blue-600">分类</a>
+              <!-- 优化后的下拉内容 -->
+              <div class="absolute left-0 mt-2 py-2 bg-white backdrop-blur-sm border rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div class="grid grid-cols-2 gap-1 w-[400px] p-4">
+                  
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/前端技术/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>前端技术</span>
+                        </a>
+                      
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/服务器/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>服务器</span>
+                        </a>
+                      
+                    
+                      
+                    
+                      
+                        <a class="flex items-center space-x-2 p-2 rounded-lg hover:bg-blue-50" href="/categories/后端技术/">
+                          <i class="fas fa-code text-blue-500"></i>
+                          <span>后端技术</span>
+                        </a>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                  
+                </div>
+              </div>
+            </div>
+            <a href="/case" class="hover:text-blue-600" data-i18n="nav.case">作品</a>
+            <a href="/archives" class="hover:text-blue-600" data-i18n="nav.archives">归档</a>
+            <a href="/about" class="hover:text-blue-600" data-i18n="nav.about">关于</a>
+            <!-- 搜索框 -->
+            <div class="relative">
+              <input type="search" placeholder="Search articles..." class="w-48 px-4 py-1 text-sm border rounded-full bg-gray-50 focus:outline-none focus:ring-1 focus:ring-blue-500">
+              <i class="fas fa-search absolute right-3 top-2 text-gray-400"></i>
+            </div>
+            <!-- 语言切换 -->
+            <div class="flex items-center space-x-2 ml-4 text-sm border-l pl-4">
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('en-US')">EN</button>
+              <span class="text-gray-300">|</span>
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('zh-CN')">简</button>
+              <span class="text-gray-300">|</span>
+              <button class="lang-switch hover:text-blue-600" @click="changeLang('zh-TW')">繁</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div id="mobileMenu" class="fixed inset-0 bg-white/90 backdrop-blur-sm z-40 lg:hidden hidden">
+    <div class="h-full w-full flex flex-col items-center justify-center space-y-6 text-lg">
+      <a href="/" class="hover:text-blue-600" data-i18n="nav.home">首页</a>
+      <a href="/categories" class="hover:text-blue-600" data-i18n="nav.categories">分类</a>
+      <a href="/case" class="hover:text-blue-600" data-i18n="nav.case">作品</a>
+      <a href="/archives" class="hover:text-blue-600" data-i18n="nav.archive">归档</a>
+      <a href="/about" class="hover:text-blue-600" data-i18n="nav.about">关于</a>
+      <div class="flex items-center space-x-4 mt-4">
+        <button class="lang-switch hover:text-blue-600" data-lang="en">EN</button>
+        <button class="lang-switch hover:text-blue-600" data-lang="zh">简</button>
+        <button class="lang-switch hover:text-blue-600" data-lang="zh-TW">繁</button>
+      </div>
+    </div>
+  </div>
+  <main class="max-w-5xl mx-auto px-4 py-12">
+  <div class="lg:flex lg:gap-8">
+    <!-- 文章主体 -->
+    <article class="lg:w-3/4">
+      <!-- 文章容器 -->
+      <div class="bg-white rounded-xl overflow-hidden">
+        <!-- 文章头部 -->
+        <div class="px-8 pt-12 pb-8">
+          <!-- 标题 -->
+          <h1 class="text-3xl font-medium mb-6 leading-snug">
+            Maven (三) Maven 项目基础
+          </h1>
+
+          <!-- 元信息 -->
+          <div class="flex flex-wrap items-center gap-6 text-sm text-gray-500">
+            <span>
+              <i class="fas fa-folder-open mr-2"></i>
+              
+                <a href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/Maven/" class="hover:text-blue-600">
+                  Maven
+                </a>
+                
+            </span>
+            <span>
+              <i class="far fa-calendar mr-2"></i>
+              2025-02-10
+            </span>
+            <span><i class="far fa-clock mr-2"></i>15 分钟阅读</span>
+            <span><i class="far fa-eye mr-2"></i>
+              0
+            </span>
+          </div>
+        </div>
+
+        <!-- 文章内容 -->
+        <div class="px-8 py-10 border-t border-b">
+          <div class="markdown-body">
+            <p><strong>第三章： Maven 项目基础</strong></p>
+<p><strong>3.1 POM 文件 (Project Object Model)</strong></p>
+<p>正如我们之前所提到的，<strong>POM (Project Object Model)</strong> 是 Maven 项目的核心。  <code>pom.xml</code> 文件是 Maven 项目的灵魂，它是一个 XML 文件，描述了项目的 <strong>基本信息</strong>、<strong>构建配置</strong>、<strong>依赖关系</strong> 等等。</p>
+<p><strong><code>pom.xml</code> 文件的作用:</strong></p>
+<ul>
+<li><strong>描述项目:</strong>  POM 文件告诉 Maven 项目是什么，它有哪些依赖，如何构建，以及如何部署。</li>
+<li><strong>配置构建:</strong>  POM 文件定义了项目的构建过程，包括编译、测试、打包、部署等各个环节的配置。</li>
+<li><strong>管理依赖:</strong>  POM 文件声明了项目所依赖的外部库，Maven 会根据 POM 文件自动下载和管理这些依赖。</li>
+<li><strong>插件配置:</strong>  POM 文件可以配置 Maven 插件，扩展 Maven 的构建功能。</li>
+</ul>
+<p><strong><code>pom.xml</code> 文件的基本结构:</strong></p>
+<p>一个基本的 <code>pom.xml</code> 文件通常包含以下元素：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span>?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://maven.apache.org/POM/4.0.0&quot;</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.example<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>my-maven-project<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">packaging</span>&gt;</span>jar<span class="tag">&lt;/<span class="name">packaging</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>My Maven Project<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://www.example.com<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 依赖声明 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 构建配置 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>主要元素解释:</strong></p>
+<ul>
+<li><p><strong><code>&lt;project&gt;</code></strong>:  <code>pom.xml</code> 文件的根元素。</p>
+<ul>
+<li><strong><code>xmlns</code> 和 <code>xsi:schemaLocation</code></strong>:  XML 命名空间和 Schema 定义，用于验证 POM 文件的格式，通常不需要修改。</li>
+<li><strong><code>&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;</code></strong>:  POM 模型的版本，固定值 <code>4.0.0</code>。</li>
+</ul>
+</li>
+<li><p><strong>项目坐标 (Maven Coordinates):</strong>  唯一标识一个 Maven 项目的三个核心元素。</p>
+<ul>
+<li><strong><code>&lt;groupId&gt;</code></strong>:  <strong>组织 ID</strong>，通常是公司或组织的域名反写 (例如 <code>com.example</code>, <code>org.apache.maven</code>).  用于区分项目所属的组织或团体。</li>
+<li><strong><code>&lt;artifactId&gt;</code></strong>:  <strong>项目名称</strong>，通常是项目的唯一标识符 (例如 <code>my-maven-project</code>, <code>spring-core</code>).  用于区分组织下的不同项目。</li>
+<li><strong><code>&lt;version&gt;</code></strong>:  <strong>版本号</strong>，表示项目的当前版本 (例如 <code>1.0-SNAPSHOT</code>, <code>1.0</code>, <code>1.0-RELEASE</code>).  用于区分项目的不同发布版本。</li>
+</ul>
+<p>  <strong>Maven 坐标就像是项目的 “身份证”，通过 <code>groupId:artifactId:version</code> 可以唯一确定一个 Maven 项目及其版本。</strong></p>
+</li>
+<li><p><strong><code>&lt;packaging&gt;</code></strong>:  <strong>Packaging 类型</strong>，指定项目的打包方式。  常用的 Packaging 类型包括：</p>
+<ul>
+<li><strong><code>jar</code></strong>:  Java 归档文件，用于 Java 库或应用程序。  默认 Packaging 类型。</li>
+<li><strong><code>war</code></strong>:  Web 应用程序归档文件，用于 Web 应用。</li>
+<li><strong><code>pom</code></strong>:  POM 项目，用于项目聚合或继承的父模块，本身不包含可执行代码。</li>
+<li><strong><code>ear</code></strong>:  企业级应用程序归档文件，用于 Java EE 应用。</li>
+<li><strong><code>maven-plugin</code></strong>:  Maven 插件项目，用于开发自定义 Maven 插件。</li>
+</ul>
+</li>
+<li><p><strong><code>&lt;name&gt;</code></strong>:  <strong>项目名称</strong>，用于在 Maven 报告和文档中显示项目的名称，通常是用户友好的名称。</p>
+</li>
+<li><p><strong><code>&lt;url&gt;</code></strong>:  <strong>项目 URL</strong>，指向项目的网站或文档地址。</p>
+</li>
+<li><p><strong><code>&lt;dependencies&gt;</code></strong>:  <strong>依赖声明</strong>，用于声明项目所依赖的外部库。  我们会在第五章详细讲解依赖管理。</p>
+</li>
+<li><p><strong><code>&lt;build&gt;</code></strong>:  <strong>构建配置</strong>，用于配置项目的构建过程，例如指定源代码目录、资源文件目录、插件配置等。  我们会在后续章节中逐步学习构建配置。</p>
+</li>
+</ul>
+<p><strong>3.2 项目坐标 (Maven Coordinates) 详解</strong></p>
+<p>项目坐标 <code>&lt;groupId&gt;</code>, <code>&lt;artifactId&gt;</code>, <code>&lt;version&gt;</code> 是 Maven 的核心概念，理解项目坐标对于理解 Maven 的依赖管理和项目组织至关重要。</p>
+<ul>
+<li><p><strong><code>groupId</code> (组织 ID):</strong></p>
+<ul>
+<li>通常使用 <strong>域名反写</strong> 的形式，例如 <code>com.example</code>, <code>org.apache.maven</code>, <code>org.springframework</code>.</li>
+<li>代表项目所属的 <strong>组织、公司或团体</strong>。</li>
+<li><code>groupId</code> 的命名应该具有 <strong>全局唯一性</strong>，避免与其他组织的 <code>groupId</code> 冲突。</li>
+<li>例如，Apache Maven 项目的 <code>groupId</code> 是 <code>org.apache.maven</code>，Spring Framework 项目的 <code>groupId</code> 是 <code>org.springframework</code>.</li>
+</ul>
+</li>
+<li><p><strong><code>artifactId</code> (项目名称):</strong></p>
+<ul>
+<li>代表组织下的 <strong>具体项目</strong> 的名称，例如 <code>my-maven-project</code>, <code>spring-core</code>, <code>junit</code>.</li>
+<li><code>artifactId</code> 的命名应该在 <code>groupId</code> 下具有 <strong>唯一性</strong>，区分组织下的不同项目。</li>
+<li>通常使用 <strong>小写字母、数字和连字符</strong> 组成。</li>
+<li>例如，Spring Framework 项目的 <code>artifactId</code> 包括 <code>spring-core</code>, <code>spring-context</code>, <code>spring-webmvc</code> 等。</li>
+</ul>
+</li>
+<li><p><strong><code>version</code> (版本号):</strong></p>
+<ul>
+<li><p>代表项目的 <strong>版本</strong>，用于区分项目的不同发布版本。</p>
+</li>
+<li><p>常见的版本号格式包括：</p>
+<ul>
+<li><strong><code>SNAPSHOT</code> 版本:</strong>  表示 <strong>快照版本</strong>，开发中的不稳定版本。  例如 <code>1.0-SNAPSHOT</code>, <code>2.5-SNAPSHOT</code>.  Maven 会定期检查 <code>SNAPSHOT</code> 版本的更新。</li>
+<li><strong><code>RELEASE</code> 版本:</strong>  表示 <strong>发布版本</strong>，稳定版本。  例如 <code>1.0</code>, <code>2.5</code>, <code>3.0-RELEASE</code>.  发布版本通常不会频繁更新。</li>
+<li><strong>里程碑版本 (Milestone):</strong>  例如 <code>1.0-M1</code>, <code>1.0-M2</code>.</li>
+<li><strong>RC 版本 (Release Candidate):</strong>  例如 <code>1.0-RC1</code>, <code>1.0-RC2</code>.</li>
+<li><strong>Beta 版本:</strong>  例如 <code>1.0-beta1</code>, <code>1.0-beta2</code>.</li>
+<li><strong>Alpha 版本:</strong>  例如 <code>1.0-alpha1</code>, <code>1.0-alpha2</code>.</li>
+</ul>
+</li>
+<li><p>版本号的命名约定和版本迭代策略是一个复杂的话题，需要根据项目的具体情况制定。  对于初学者，只需要了解 <code>SNAPSHOT</code> 版本和 <code>RELEASE</code> 版本的区别即可。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>3.3 Packaging 类型详解</strong></p>
+<p><code>&lt;packaging&gt;</code> 元素指定了 Maven 项目的打包方式，不同的 Packaging 类型会影响 Maven 的构建行为和最终的输出结果。</p>
+<ul>
+<li><p><strong><code>jar</code> (默认):</strong></p>
+<ul>
+<li>用于创建 <strong>Java 库</strong> 或 <strong>独立的 Java 应用程序</strong>。</li>
+<li>最终会生成 <code>.jar</code> 文件。</li>
+<li>默认的 Packaging 类型，如果 <code>&lt;packaging&gt;</code> 元素没有指定，则默认为 <code>jar</code>。</li>
+</ul>
+</li>
+<li><p><strong><code>war</code> (Web Application Archive):</strong></p>
+<ul>
+<li>用于创建 <strong>Web 应用程序</strong>。</li>
+<li>最终会生成 <code>.war</code> 文件，可以部署到 Web 服务器 (例如 Tomcat, Jetty, WebLogic, WebSphere) 中运行。</li>
+<li><code>war</code> Packaging 的项目通常需要放在 Web 应用服务器的 <code>webapp</code> 目录下，并遵循 Web 应用的目录结构 (例如 <code>WEB-INF</code> 目录, <code>index.jsp</code> 等)。</li>
+</ul>
+</li>
+<li><p><strong><code>pom</code> (Project Object Model):</strong></p>
+<ul>
+<li>用于创建 <strong>POM 项目</strong>，通常作为 <strong>父模块</strong> 或 <strong>项目聚合模块</strong>。</li>
+<li>最终会生成 <code>.pom</code> 文件，不包含可执行代码。</li>
+<li><code>pom</code> Packaging 的项目主要用于组织和管理其他 Maven 模块，例如定义公共的依赖和插件配置。</li>
+</ul>
+</li>
+<li><p><strong><code>ear</code> (Enterprise Archive):</strong></p>
+<ul>
+<li>用于创建 <strong>企业级应用程序</strong> (Java EE 应用)。</li>
+<li>最终会生成 <code>.ear</code> 文件，可以部署到 Java EE 应用服务器 (例如 WebLogic, WebSphere, JBoss EAP) 中运行。</li>
+<li><code>ear</code> 文件通常包含多个 <code>war</code> 文件和 <code>jar</code> 文件，以及 Java EE 应用的部署描述符。</li>
+</ul>
+</li>
+<li><p><strong><code>maven-plugin</code> (Maven Plugin):</strong></p>
+<ul>
+<li>用于创建 <strong>Maven 插件</strong>。</li>
+<li>最终会生成 <code>.jar</code> 文件，可以作为 Maven 插件使用。</li>
+<li><code>maven-plugin</code> Packaging 的项目需要遵循 Maven 插件的开发规范。</li>
+</ul>
+</li>
+</ul>
+<p><strong>如何选择 Packaging 类型:</strong></p>
+<ul>
+<li>如果你的项目是 <strong>Java 库</strong> 或 <strong>独立的 Java 应用程序</strong>，选择 <code>jar</code> Packaging。</li>
+<li>如果你的项目是 <strong>Web 应用程序</strong>，选择 <code>war</code> Packaging。</li>
+<li>如果你的项目是 <strong>父模块</strong> 或 <strong>项目聚合模块</strong>，选择 <code>pom</code> Packaging。</li>
+<li>如果你的项目是 <strong>企业级应用程序</strong> (Java EE 应用)，选择 <code>ear</code> Packaging。</li>
+<li>如果你的项目是 <strong>Maven 插件</strong>，选择 <code>maven-plugin</code> Packaging。</li>
+</ul>
+<p><strong>3.4 Maven 项目的标准目录结构</strong></p>
+<p>Maven 强制采用 <strong>标准化的项目目录结构</strong>，这是 Maven “约定优于配置” 原则的重要体现。  标准的目录结构使得 Maven 项目更易于理解和维护，也方便 Maven 自动化构建。</p>
+<p><strong>Maven 标准目录结构:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">my-maven-project/       (项目根目录)</span><br><span class="line">├── pom.xml             (POM 文件)</span><br><span class="line">├── src/                (源代码和资源文件根目录)</span><br><span class="line">│   ├── main/           (主代码和资源文件目录)</span><br><span class="line">│   │   ├── java/      (Java 源代码目录)</span><br><span class="line">│   │   │   └── com/example/  (包目录)</span><br><span class="line">│   │   │       └── ...</span><br><span class="line">│   │   ├── resources/ (主资源文件目录)</span><br><span class="line">│   │   │   └── ...</span><br><span class="line">│   │   └── webapp/    (Web 应用相关文件目录，仅 war Packaging 项目)</span><br><span class="line">│   │       ├── WEB-INF/ (Web 应用配置目录，仅 war Packaging 项目)</span><br><span class="line">│   │       │   ├── web.xml (Web 应用部署描述符，仅 war Packaging 项目)</span><br><span class="line">│   │       │   └── ...</span><br><span class="line">│   │       └── ...     (其他 Web 应用资源，例如 JSP, HTML, CSS, JavaScript 等，仅 war Packaging 项目)</span><br><span class="line">│   └── test/           (测试代码和资源文件目录)</span><br><span class="line">│       ├── java/      (测试 Java 源代码目录)</span><br><span class="line">│       │   └── com/example/  (测试包目录)</span><br><span class="line">│       │       └── ...</span><br><span class="line">│       └── resources/ (测试资源文件目录)</span><br><span class="line">│           └── ...</span><br><span class="line">└── target/            (构建输出目录，Maven 自动生成)</span><br></pre></td></tr></table></figure>
+
+<p><strong>目录结构解释:</strong></p>
+<ul>
+<li><strong><code>src/main/java</code></strong>:  存放项目的 <strong>Java 源代码</strong>。  按照包结构组织源代码。</li>
+<li><strong><code>src/main/resources</code></strong>:  存放项目的 <strong>主资源文件</strong>，例如配置文件 (<code>.properties</code>, <code>.xml</code>)、静态资源文件等。  这些资源文件会被复制到输出目录 <code>target/classes</code> 下。</li>
+<li><strong><code>src/main/webapp</code></strong>:  仅用于 <strong><code>war</code> Packaging</strong> 的项目，存放 Web 应用相关的资源文件，例如 <code>WEB-INF</code> 目录、JSP 文件、HTML 文件、CSS 文件、JavaScript 文件等。</li>
+<li><strong><code>src/test/java</code></strong>:  存放项目的 <strong>单元测试代码</strong>。  按照包结构组织测试代码，测试代码的包结构应该与源代码的包结构保持一致。</li>
+<li><strong><code>src/test/resources</code></strong>:  存放项目的 <strong>测试资源文件</strong>，例如测试用的配置文件、测试数据等。  这些资源文件会被复制到输出目录 <code>target/test-classes</code> 下。</li>
+<li><strong><code>target</code></strong>:  Maven 的 <strong>构建输出目录</strong>，Maven 会自动生成 <code>target</code> 目录，并将编译后的类文件、打包后的文件等输出到 <code>target</code> 目录下。  <code>target</code> 目录的内容可以通过 <code>mvn clean</code> 命令清理。</li>
+</ul>
+<p><strong>遵循 Maven 标准目录结构的好处:</strong></p>
+<ul>
+<li><strong>约定俗成:</strong>  Maven 社区普遍遵循标准目录结构，方便开发者理解和维护项目。</li>
+<li><strong>自动化构建:</strong>  Maven 插件默认会按照标准目录结构查找源代码、资源文件和测试代码，实现自动化构建。</li>
+<li><strong>提高效率:</strong>  减少配置工作，开发者可以专注于代码编写，而不是目录结构的组织。</li>
+</ul>
+<p><strong>总结第三章:</strong></p>
+<p>第三章我们深入学习了 Maven 项目的基础知识，包括 POM 文件的结构和内容、项目坐标、Packaging 类型和 Maven 项目的标准目录结构。  这些知识是理解 Maven 的基石。  掌握了这些基础知识，我们才能更好地使用 Maven 构建和管理项目。</p>
+
+          </div>
+        </div>
+
+        <!-- 文章底部 -->
+        <div class="px-8 py-8">
+          <!-- 标签 -->
+          
+            <div class="flex flex-wrap gap-2 mb-8">
+              
+                <a href="/tags/Maven/" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-sm text-gray-600 transition-colors">
+                  Maven
+                </a>
+                
+            </div>
+            
+
+              <!-- 分享 -->
+              <div class="flex items-center justify-between mb-8 py-6 border-t border-b">
+                <div class="text-sm text-gray-500">分享文章：</div>
+                <div class="flex gap-4">
+                  <button class="text-gray-400 hover:text-gray-600 transition-colors">
+                    <i class="far fa-copy text-xl"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- 上一篇/下一篇 -->
+              <div class="flex flex-col sm:flex-row justify-between gap-4">
+                
+                  <a href="/cm72orm19000064wtdmox3oyd.html" class="group flex-1">
+                    <div class="text-sm text-gray-500 mb-1">上一篇</div>
+                    <div class="group-hover:text-blue-600 transition-colors">
+                      Maven (一) 简介
+                    </div>
+                  </a>
+                  
+                    
+                      <a href="/cm72orm1f000364wt6aev1ttm.html" class="group flex-1 text-right">
+                        <div class="text-sm text-gray-500 mb-1">下一篇</div>
+                        <div class="group-hover:text-blue-600 transition-colors">
+                          Maven (七) 项目聚合与继承
+                        </div>
+                      </a>
+                      
+              </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 侧边栏 -->
+    <aside class="lg:w-1/4 mt-8 lg:mt-0 space-y-6">
+      <!-- 作者信息 -->
+      <div class="bg-white rounded-xl p-6">
+        <div class="flex items-center gap-4 mb-4">
+          <img src="/images/avatar.jpg" class="w-16 h-16 rounded-full">
+          <div>
+            <h3 class="font-medium">Nunumao</h3>
+            <p class="text-sm text-gray-500">开发工程师</p>
+          </div>
+        </div>
+        <p class="text-sm text-gray-600 mb-4">专注于技术研究，热爱分享技术心得</p>
+        <div class="flex justify-center gap-4">
+          <a href="https://github.com/nunumao" target="_blank" class="text-gray-400 hover:text-gray-600">
+            <i class="fab fa-github text-xl"></i>
+          </a>
+          <a href="mailto:gm292018748@email.com" target="_blank" class="text-gray-400 hover:text-[#1DA1F2]">
+            <i class="fas fa-envelope text-xl"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 目录 -->
+      <div class="bg-white rounded-xl p-6 sticky top-24">
+        <h2 class="text-lg font-medium mb-4">目录</h2>
+        <nav class="space-y-2 text-sm">
+          
+        </nav>
+      </div>
+
+      <!-- 分类列表 -->
+      <div class="bg-white rounded-xl p-6">
+        <h2 class="text-lg font-medium mb-4">文章分类</h2>
+        <div class="space-y-3">
+          
+            <a href="/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/" class="flex items-center justify-between group">
+              <div class="flex items-center">
+                <i class="fas fa-code text-blue-500 w-5"></i>
+                <span class="text-sm group-hover:text-blue-600">
+                  前端技术
+                </span>
+              </div>
+              <span class="text-xs text-gray-500">
+                1
+              </span>
+            </a>
+            
+            <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="flex items-center justify-between group">
+              <div class="flex items-center">
+                <i class="fas fa-folder text-gray-500 w-5"></i>
+                <span class="text-sm group-hover:text-blue-600">
+                  服务器
+                </span>
+              </div>
+              <span class="text-xs text-gray-500">
+                3
+              </span>
+            </a>
+            
+            <a href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/" class="flex items-center justify-between group">
+              <div class="flex items-center">
+                <i class="fas fa-server text-green-500 w-5"></i>
+                <span class="text-sm group-hover:text-blue-600">
+                  后端技术
+                </span>
+              </div>
+              <span class="text-xs text-gray-500">
+                31
+              </span>
+            </a>
+            
+        </div>
+      </div>
+
+      <!-- 相关文章 -->
+      <div class="bg-white rounded-xl p-6">
+        <h2 class="text-lg font-medium mb-4">相关文章</h2>
+        <div class="space-y-4">
+          
+            <a href="/cm72nkaxe001awkwtc6bdgyhu.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Hello World
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-13</p>
+            </a>
+            
+            <a href="/cm72nkax6000bwkwt554c1z0e.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (一) | 基本语法
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm72nkax7000ewkwt2l4293ed.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (三) | 函数
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm72nkax7000hwkwt7pw007e6.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (七) | 集合
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+            <a href="/cm72nkax9000jwkwtccbg0esu.html" class="block group">
+              <h3 class="text-sm font-medium group-hover:text-blue-600 line-clamp-2">
+                Kotlin (二) | 控制流
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">2025-02-10</p>
+            </a>
+            
+        </div>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<style>
+  .markdown-body {
+    box-sizing: border-box;
+    min-width: 200px;
+    max-width: 100%;
+    margin: 0 auto;
+    background-color: white;
+  }
+
+  /* 适配深色模式 */
+  @media (prefers-color-scheme: dark) {
+    .markdown-body {
+      color-scheme: dark;
+      --color-prettylights-syntax-comment: #8b949e;
+      --color-prettylights-syntax-constant: #79c0ff;
+      --color-prettylights-syntax-entity: #d2a8ff;
+      --color-prettylights-syntax-storage-modifier-import: #c9d1d9;
+      --color-prettylights-syntax-entity-tag: #7ee787;
+      --color-prettylights-syntax-keyword: #ff7b72;
+      --color-prettylights-syntax-string: #a5d6ff;
+      --color-prettylights-syntax-variable: #ffa657;
+      --color-prettylights-syntax-brackethighlighter-unmatched: #f85149;
+      --color-prettylights-syntax-invalid-illegal-text: #f0f6fc;
+      --color-prettylights-syntax-invalid-illegal-bg: #8e1519;
+      --color-prettylights-syntax-carriage-return-text: #f0f6fc;
+      --color-prettylights-syntax-carriage-return-bg: #b62324;
+      --color-prettylights-syntax-string-regexp: #7ee787;
+      --color-prettylights-syntax-markup-list: #f2cc60;
+      --color-prettylights-syntax-markup-heading: #1f6feb;
+      --color-prettylights-syntax-markup-italic: #c9d1d9;
+      --color-prettylights-syntax-markup-bold: #c9d1d9;
+      --color-prettylights-syntax-markup-deleted-text: #ffdcd7;
+      --color-prettylights-syntax-markup-deleted-bg: #67060c;
+      --color-prettylights-syntax-markup-inserted-text: #aff5b4;
+      --color-prettylights-syntax-markup-inserted-bg: #033a16;
+      --color-prettylights-syntax-markup-changed-text: #ffdfb6;
+      --color-prettylights-syntax-markup-changed-bg: #5a1e02;
+      --color-prettylights-syntax-markup-ignored-text: #c9d1d9;
+      --color-prettylights-syntax-markup-ignored-bg: #1158c7;
+      --color-prettylights-syntax-meta-diff-range: #d2a8ff;
+      --color-prettylights-syntax-brackethighlighter-angle: #8b949e;
+      --color-prettylights-syntax-sublimelinter-gutter-mark: #484f58;
+      --color-prettylights-syntax-constant-other-reference-link: #a5d6ff;
+      --color-fg-default: #c9d1d9;
+      --color-fg-muted: #8b949e;
+      --color-fg-subtle: #6e7681;
+      --color-canvas-default: #0d1117;
+      --color-canvas-subtle: #161b22;
+      --color-border-default: #30363d;
+      --color-border-muted: #21262d;
+      --color-neutral-muted: rgba(110, 118, 129, 0.4);
+      --color-accent-fg: #58a6ff;
+      --color-accent-emphasis: #1f6feb;
+      --color-attention-subtle: rgba(187, 128, 9, 0.15);
+      --color-danger-fg: #f85149;
+    }
+  }
+</style>
+  <!-- 页脚 -->
+<footer class="border-t mt-16">
+  <div class="max-w-4xl mx-auto px-4 py-8 text-center text-sm text-gray-500">
+    <p>© 2025 nunumao. Built with <a href="#" class="text-blue-600">Hexo</a></p>
+  </div>
+</footer>
+</body>
+
+</html>
